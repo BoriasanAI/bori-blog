@@ -1,0 +1,42 @@
+{% comment %}
+  Language Switch Banner
+  Shows a link to the alternate language version of the current post.
+  
+  Usage: 
+    English posts link to Korean (-ko suffix)
+    Korean posts (lang: ko-KR in frontmatter) link to English (without -ko)
+{% endcomment %}
+
+{% assign current_slug = page.url | split: '/' | last %}
+
+{% if page.lang == 'ko-KR' %}
+  {% assign en_slug = current_slug | remove: '-ko' %}
+  <div class="lang-switch-banner">
+    <span class="lang-icon">🌐</span>
+    <a href="{{ '/posts/' | append: en_slug | append: '/' | relative_url }}">Read in English</a>
+  </div>
+{% else %}
+  {% assign ko_slug = current_slug | append: '-ko' %}
+  <div class="lang-switch-banner">
+    <span class="lang-icon">🌐</span>
+    <a href="{{ '/posts/' | append: ko_slug | append: '/' | relative_url }}">한국어 버전 읽기</a>
+  </div>
+{% endif %}
+
+<style>
+.lang-switch-banner {
+  background: var(--prompt-info-bg, #e7f3fe);
+  border-left: 4px solid var(--prompt-info-icon-color, #2196F3);
+  padding: 8px 16px;
+  margin-bottom: 1.2rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.lang-switch-banner a {
+  text-decoration: none;
+  font-weight: 500;
+}
+.lang-switch-banner .lang-icon {
+  margin-right: 6px;
+}
+</style>
