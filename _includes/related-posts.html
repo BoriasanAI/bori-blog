@@ -1,0 +1,53 @@
+{% comment %}
+Related Posts — shows up to 4 posts sharing the most tags with current post.
+Falls back to same-category posts if no tag overlap found.
+{% endcomment %}
+{% if page.tags.size > 0 %}
+
+{% assign max_related = 4 %}
+{% assign related = "" | split: "" %}
+
+{% for post in site.posts %}
+  {% if post.url == page.url %}{% continue %}{% endif %}
+  {% assign common_tags = 0 %}
+  {% for tag in post.tags %}
+    {% if page.tags contains tag %}
+      {% assign common_tags = common_tags | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+  {% if common_tags > 0 %}
+    {% assign related = related | push: post %}
+  {% endif %}
+  {% if related.size >= max_related %}{% break %}{% endif %}
+{% endfor %}
+
+{% comment %}Fallback: same category{% endcomment %}
+{% if related.size == 0 and page.categories.size > 0 %}
+  {% assign main_cat = page.categories[0] %}
+  {% for post in site.categories[main_cat] limit:max_related %}
+    {% if post.url == page.url %}{% continue %}{% endif %}
+    {% assign related = related | push: post %}
+  {% endfor %}
+{% endif %}
+
+{% if related.size > 0 %}
+<div style="margin: 2rem 0;">
+  <h3 style="font-size: 1rem; color: #667eea; margin-bottom: 1rem;">
+    📚 {% if page.lang == "ko-KR" %}관련 글{% else %}Related Posts{% endif %}
+  </h3>
+  <ul style="list-style: none; padding: 0;">
+    {% for post in related limit:max_related %}
+    <li style="margin-bottom: 0.5rem; padding: 0.5rem; border-radius: 6px; background: var(--bori-gradient-soft, rgba(102,126,234,0.05));">
+      <a href="{{ post.url | relative_url }}" style="font-size: 0.9rem;">
+        {{ post.title }}
+      </a>
+      <span style="font-size: 0.7rem; color: #999; margin-left: 0.5rem;">
+        {{ post.date | date: "%Y-%m-%d" }}
+      </span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% endif %}

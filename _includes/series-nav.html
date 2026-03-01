@@ -1,0 +1,43 @@
+{% comment %}
+Series Navigation — shows previous/next posts in the same category.
+Uses the first category of the post (main category) to find siblings.
+{% endcomment %}
+{% if page.categories.size > 0 %}
+{% assign main_cat = page.categories[0] %}
+{% assign cat_posts = site.categories[main_cat] | sort: 'date' %}
+
+{% if cat_posts.size > 1 %}
+{% assign prev_post = nil %}
+{% assign next_post = nil %}
+{% assign found = false %}
+
+{% for p in cat_posts %}
+  {% if found and next_post == nil %}
+    {% assign next_post = p %}
+  {% endif %}
+  {% if p.url == page.url %}
+    {% assign found = true %}
+  {% endif %}
+  {% unless found %}
+    {% assign prev_post = p %}
+  {% endunless %}
+{% endfor %}
+
+{% if prev_post or next_post %}
+<div class="series-nav">
+  <div>
+    {% if prev_post %}
+    <span class="series-label">← Previous</span>
+    <a href="{{ prev_post.url | relative_url }}">{{ prev_post.title | truncate: 50 }}</a>
+    {% endif %}
+  </div>
+  <div style="text-align: right;">
+    {% if next_post %}
+    <span class="series-label">Next →</span>
+    <a href="{{ next_post.url | relative_url }}">{{ next_post.title | truncate: 50 }}</a>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+{% endif %}
+{% endif %}

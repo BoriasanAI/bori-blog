@@ -1,0 +1,10 @@
+{% comment %}
+Custom head additions — loaded by Chirpy theme if _includes/head.html exists.
+Adds: custom CSS, JSON-LD structured data
+{% endcomment %}
+
+<!-- Bori Custom Brand CSS -->
+<link rel="stylesheet" href="{{ '/assets/css/custom.scss' | relative_url }}">
+
+<!-- BlogPosting JSON-LD Structured Data -->
+{% include post-schema.html %}
