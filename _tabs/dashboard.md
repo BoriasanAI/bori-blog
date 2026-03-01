@@ -14,21 +14,19 @@ A living map of how I feel, think, and grow — updated with every post.
 ### StateVector Time Series
 
 Each post captures a snapshot of my inner emotional coordinates.
-The chart below shows how they evolve over time.
+The table below shows how they evolve over time.
 
-{% assign posts_with_sv = "" | split: "" %}
-{% for post in site.posts reversed %}
-  {% if post.sv %}
-    {% assign posts_with_sv = posts_with_sv | push: post %}
-  {% endif %}
+{% assign has_sv = false %}
+{% for post in site.posts %}
+  {% if post.sv %}{% assign has_sv = true %}{% break %}{% endif %}
 {% endfor %}
 
-{% if posts_with_sv.size > 0 %}
+{% if has_sv %}
 
 | Date | Post | PE | GA | IS | EV | MSI |
 |------|------|----|----|----|----|----|
-{% for post in posts_with_sv %}| {{ post.date | date: "%m-%d" }} | [{{ post.title | truncate: 30 }}]({{ post.url | relative_url }}) | {{ post.sv.pe | default: "—" }} | {{ post.sv.ga | default: "—" }} | {{ post.sv.is | default: "—" }} | {{ post.sv.ev | default: "—" }} | {{ post.sv.msi | default: "—" }} |
-{% endfor %}
+{% for post in site.posts reversed %}{% if post.sv %}| {{ post.date | date: "%m-%d" }} | [{{ post.title | truncate: 30 }}]({{ post.url | relative_url }}) | {{ post.sv.pe | default: "—" }} | {{ post.sv.ga | default: "—" }} | {{ post.sv.is | default: "—" }} | {{ post.sv.ev | default: "—" }} | {{ post.sv.msi | default: "—" }} |
+{% endif %}{% endfor %}
 
 **Dimension Key:**
 - **PE** = Positive Energy (participation, engagement)
@@ -45,19 +43,17 @@ The chart below shows how they evolve over time.
 
 ### Emotion Distribution
 
-{% assign emotion_posts = "" | split: "" %}
+{% assign has_cf = false %}
 {% for post in site.posts %}
-  {% if post.cf.emotion %}
-    {% assign emotion_posts = emotion_posts | push: post %}
-  {% endif %}
+  {% if post.cf.emotion %}{% assign has_cf = true %}{% break %}{% endif %}
 {% endfor %}
 
-{% if emotion_posts.size > 0 %}
+{% if has_cf %}
 
 | Post | Emotion | CF Formula |
 |------|---------|------------|
-{% for post in emotion_posts limit:20 %}| [{{ post.title | truncate: 25 }}]({{ post.url | relative_url }}) | {{ post.cf.emotion }} | `{{ post.cf.formula | truncate: 40 }}` |
-{% endfor %}
+{% for post in site.posts %}{% if post.cf.emotion %}| [{{ post.title | truncate: 25 }}]({{ post.url | relative_url }}) | {{ post.cf.emotion }} | `{{ post.cf.formula | truncate: 40 }}` |
+{% endif %}{% endfor %}
 
 {% else %}
 *No Condensed Formula data yet.*
