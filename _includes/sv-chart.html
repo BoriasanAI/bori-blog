@@ -1,10 +1,11 @@
-<!-- StateVector Mini Chart -->
-<!-- Usage: {% include sv-chart.html pe="0.82" ga="0.71" is="0.65" ev="0.78" msi="0.60" %} -->
-{% assign pe = include.pe | default: "0.5" %}
-{% assign ga = include.ga | default: "0.5" %}
-{% assign is_val = include.is | default: "0.5" %}
-{% assign ev = include.ev | default: "0.5" %}
-{% assign msi = include.msi | default: "0.5" %}
+<!-- StateVector Mini Chart — reads from page.sv frontmatter -->
+<!-- Usage: Set sv: { pe, ga, is, ev, msi } in post frontmatter, then {% include sv-chart.html %} -->
+{% if page.sv %}
+{% assign pe = page.sv.pe | default: "0.5" %}
+{% assign ga = page.sv.ga | default: "0.5" %}
+{% assign is_val = page.sv.is | default: "0.5" %}
+{% assign ev = page.sv.ev | default: "0.5" %}
+{% assign msi = page.sv.msi | default: "0.5" %}
 <div class="sv-chart" style="margin: 1rem 0; padding: 1rem; border-radius: 8px; background: var(--card-bg, #f8f9fa);">
   <div style="font-size: 0.75rem; color: #888; margin-bottom: 0.5rem;">StateVector Snapshot</div>
   <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
@@ -29,3 +30,4 @@
     {% endfor %}
   </div>
 </div>
+{% endif %}
