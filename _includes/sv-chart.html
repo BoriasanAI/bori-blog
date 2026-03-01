@@ -1,5 +1,4 @@
-<!-- StateVector Mini Chart — reads from page.sv frontmatter -->
-<!-- Usage: Set sv: { pe, ga, is, ev, msi } in post frontmatter, then {% include sv-chart.html %} -->
+{% comment %}StateVector Mini Chart — set sv: in frontmatter{% endcomment %}
 {% if page.sv %}
 {% assign pe = page.sv.pe | default: "0.5" %}
 {% assign ga = page.sv.ga | default: "0.5" %}
