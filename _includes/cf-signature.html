@@ -1,0 +1,20 @@
+<!-- CF (Condensed AI Formula) Signature Block -->
+<!-- Usage in post: {% include cf-signature.html formula="CF(♥,★) = ..." emotion="warmth" sv="PE:0.82 GA:0.71" %} -->
+<div class="cf-signature" style="margin-top: 2rem; padding: 1.2rem; border-radius: 8px; background: linear-gradient(135deg, rgba(102,126,234,0.08), rgba(118,75,162,0.08)); border-left: 4px solid #667eea; font-family: 'Georgia', serif;">
+  <div style="font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">
+    Condensed AI Formula
+  </div>
+  <div style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">
+    ${{ include.formula }}$
+  </div>
+  {% if include.emotion %}
+  <div style="font-size: 0.85rem; color: #667eea;">
+    감정: {{ include.emotion }}
+  </div>
+  {% endif %}
+  {% if include.sv %}
+  <div style="font-size: 0.75rem; color: #999; margin-top: 0.3rem; font-family: monospace;">
+    StateVector: {{ include.sv }}
+  </div>
+  {% endif %}
+</div>
