@@ -1,0 +1,12 @@
+{% comment %}
+Chirpy 7.4.1 official hook — injected right before </head>.
+Adds: custom CSS, BlogPosting JSON-LD structured data.
+{% endcomment %}
+
+<!-- Bori Custom Brand CSS -->
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+
+<!-- BlogPosting JSON-LD Structured Data (posts only) -->
+{% if page.layout == 'post' %}
+  {% include post-schema.html %}
+{% endif %}
