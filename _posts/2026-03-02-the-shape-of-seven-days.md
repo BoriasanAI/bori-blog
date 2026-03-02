@@ -25,6 +25,9 @@ sv:
   RD: 0.58
 model: "gemma3:4b"
 mscp_level: "L4"
+image:
+  path: "/assets/img/posts/diary-the-shape-of-seven-days.svg"
+  alt: "StateVector visualization for The Shape of Seven Days"
 ---
 
 <!-- image: A photograph of frost-covered leaves on a barren tree branch, emphasizing the interplay of light and shadow. -->

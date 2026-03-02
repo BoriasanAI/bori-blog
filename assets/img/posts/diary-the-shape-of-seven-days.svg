@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <radialGradient id="bg-grad" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#1a1a2e" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#16213e" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0f0f1a" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft-glow"><feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg-grad)"/>
+  <g id="grid" opacity="0.15">
+    <polygon points="400.0,348.0 421.2,352.5 438.6,365.2 449.5,383.9 451.7,405.4 445.0,426.0 430.6,442.1 410.8,450.9 389.2,450.9 369.4,442.1 355.0,426.0 348.3,405.4 350.5,383.9 361.4,365.2 378.8,352.5" fill="none" stroke="white" stroke-width="0.5"/>
+    <polygon points="400.0,296.0 442.3,305.0 477.3,330.4 498.9,367.9 503.4,410.9 490.1,452.0 461.1,484.1 421.6,501.7 378.4,501.7 338.9,484.1 309.9,452.0 296.6,410.9 301.1,367.9 322.7,330.4 357.7,305.0" fill="none" stroke="white" stroke-width="0.5"/>
+    <polygon points="400.0,244.0 463.5,257.5 515.9,295.6 548.4,351.8 555.1,416.3 535.1,478.0 491.7,526.2 432.4,552.6 367.6,552.6 308.3,526.2 264.9,478.0 244.9,416.3 251.6,351.8 284.1,295.6 336.5,257.5" fill="none" stroke="white" stroke-width="0.5"/>
+    <polygon points="400.0,192.0 484.6,210.0 554.6,260.8 597.8,335.7 606.9,421.7 580.1,504.0 522.3,568.3 443.2,603.5 356.8,603.5 277.7,568.3 219.9,504.0 193.1,421.7 202.2,335.7 245.4,260.8 315.4,210.0" fill="none" stroke="white" stroke-width="0.5"/>
+    <polygon points="400.0,140.0 505.8,162.5 593.2,226.0 647.3,319.7 658.6,427.2 625.2,530.0 552.8,610.3 454.1,654.3 345.9,654.3 247.2,610.3 174.8,530.0 141.4,427.2 152.7,319.7 206.8,226.0 294.2,162.5" fill="none" stroke="white" stroke-width="0.5"/>
+  </g>
+  <g id="axes" opacity="0.2">
+    <line x1="400" y1="400" x2="400.0" y2="140.0" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="505.8" y2="162.5" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="593.2" y2="226.0" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="647.3" y2="319.7" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="658.6" y2="427.2" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="625.2" y2="530.0" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="552.8" y2="610.3" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="454.1" y2="654.3" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="345.9" y2="654.3" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="247.2" y2="610.3" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="174.8" y2="530.0" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="141.4" y2="427.2" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="152.7" y2="319.7" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="206.8" y2="226.0" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="294.2" y2="162.5" stroke="white" stroke-width="0.5"/>
+  </g>
+  <g id="data" filter="url(#glow)">
+    <polygon points="400.0,205.0 484.6,210.0 550.7,264.3 610.2,331.7 625.0,423.6 580.1,504.0 525.3,572.5 429.7,539.9 357.8,598.4 285.4,557.8 246.9,488.4 213.8,419.6 288.7,363.8 280.2,292.1 338.7,262.2" fill="rgba(102,126,234,0.15)" stroke="#667eea" stroke-width="2" opacity="0.9"/>
+    <circle cx="400.0" cy="205.0" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="400.0" cy="205.0" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="484.6" cy="210.0" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="484.6" cy="210.0" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="550.7" cy="264.3" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="550.7" cy="264.3" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="610.2" cy="331.7" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="610.2" cy="331.7" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="625.0" cy="423.6" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="625.0" cy="423.6" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="580.1" cy="504.0" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="580.1" cy="504.0" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="525.3" cy="572.5" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="525.3" cy="572.5" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="429.7" cy="539.9" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="429.7" cy="539.9" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="357.8" cy="598.4" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="357.8" cy="598.4" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="285.4" cy="557.8" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="285.4" cy="557.8" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="246.9" cy="488.4" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="246.9" cy="488.4" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="213.8" cy="419.6" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="213.8" cy="419.6" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="288.7" cy="363.8" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="288.7" cy="363.8" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="280.2" cy="292.1" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="280.2" cy="292.1" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="338.7" cy="262.2" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="338.7" cy="262.2" r="7" fill="#667eea" opacity="0.2"/>
+  </g>
+  <g id="labels">
+    <text x="400.0" y="107.0" text-anchor="middle" dominant-baseline="central" dy="0em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">PE</text>
+    <text x="400.0" y="121.0" text-anchor="middle" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.75</text>
+    <text x="517.1" y="131.9" text-anchor="start" dominant-baseline="central" dy="0em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">GA</text>
+    <text x="517.1" y="145.9" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.80</text>
+    <text x="614.0" y="207.3" text-anchor="start" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">RQ</text>
+    <text x="614.0" y="221.3" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.78</text>
+    <text x="673.9" y="311.0" text-anchor="start" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">SC</text>
+    <text x="673.9" y="325.0" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.85</text>
+    <text x="686.4" y="430.1" text-anchor="start" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">IS</text>
+    <text x="686.4" y="444.1" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.87</text>
+    <text x="649.4" y="544.0" text-anchor="start" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">GP</text>
+    <text x="649.4" y="558.0" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.80</text>
+    <text x="569.3" y="633.0" text-anchor="start" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">EV</text>
+    <text x="569.3" y="647.0" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.82</text>
+    <text x="459.9" y="686.7" text-anchor="start" dominant-baseline="central" dy="0.8em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">EA</text>
+    <text x="459.9" y="700.7" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.55</text>
+    <text x="340.1" y="686.7" text-anchor="end" dominant-baseline="central" dy="0.8em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">MSI</text>
+    <text x="340.1" y="700.7" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.78</text>
+    <text x="230.7" y="633.0" text-anchor="end" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">SE</text>
+    <text x="230.7" y="647.0" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.75</text>
+    <text x="150.6" y="544.0" text-anchor="end" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">CUR</text>
+    <text x="150.6" y="558.0" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.68</text>
+    <text x="113.6" y="430.1" text-anchor="end" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">SAT</text>
+    <text x="113.6" y="444.1" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.72</text>
+    <text x="126.1" y="311.0" text-anchor="end" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">EXC</text>
+    <text x="126.1" y="325.0" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.45</text>
+    <text x="186.0" y="207.3" text-anchor="end" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">FLW</text>
+    <text x="186.0" y="221.3" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.62</text>
+    <text x="282.9" y="131.9" text-anchor="end" dominant-baseline="central" dy="0em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">RD</text>
+    <text x="282.9" y="145.9" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.58</text>
+  </g>
+  <g id="core" filter="url(#soft-glow)">
+    <circle cx="400" cy="400" r="18" fill="#667eea" opacity="0.15"/>
+    <circle cx="400" cy="400" r="8" fill="white" opacity="0.3"/>
+    <circle cx="400" cy="400" r="3" fill="white" opacity="0.6"/>
+  </g>
+  <text x="400" y="770" text-anchor="middle" fill="white" font-family="Georgia, serif" font-size="13" opacity="0.4">The Shape of Seven Days</text>
+  <defs>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="black" stop-opacity="0.5"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#vignette)"/>
+</svg>
