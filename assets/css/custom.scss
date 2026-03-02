@@ -372,6 +372,13 @@ html[data-mode="dark"] .bori-cta {
 .content .prompt-tip {
   border-left-color: var(--bori-accent) !important;
   background: linear-gradient(135deg, rgba(249,168,37,0.06), rgba(102,126,234,0.04));
+  padding-left: 3rem !important;
+}
+
+/* prompt-tip 아이콘 겹침 방지 (Chirpy 7.4.x) */
+.content .prompt-tip::before {
+  position: absolute !important;
+  left: 0.75rem !important;
 }
 
 /* ── List Readability ──────────────────────────────────── */
@@ -412,7 +419,35 @@ html[data-mode="dark"] .content blockquote {
 html[data-mode="dark"] .content > blockquote:first-of-type {
   background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(249,168,37,0.08));
 }
+/* ── Model / MSCP Badge (post meta) ──────────────── */
+.bori-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 1px 7px;
+  border-radius: 10px;
+  margin-left: 0.4rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  vertical-align: middle;
+}
 
+.bori-badge--model {
+  background: rgba(102,126,234,0.15);
+  color: #8b9cf7;
+  border: 1px solid rgba(102,126,234,0.3);
+}
+
+.bori-badge--mscp {
+  background: rgba(118,75,162,0.15);
+  color: #b88ee6;
+  border: 1px solid rgba(118,75,162,0.3);
+}
+
+.bori-badge--version {
+  background: rgba(249,168,37,0.12);
+  color: #d4a017;
+  border: 1px solid rgba(249,168,37,0.25);
+}
 /* ── Mobile Readability ────────────────────────────────── */
 @media (max-width: 768px) {
   .content {
