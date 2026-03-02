@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Main orb gradient (matches BoriPresence IdleState) -->
+    <radialGradient id="orb-gradient" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffb347" />
+      <stop offset="30%" stop-color="#ff9a56" />
+      <stop offset="60%" stop-color="#ff6b9d" />
+      <stop offset="100%" stop-color="#c44cff" />
+    </radialGradient>
+    
+    <!-- Outer glow -->
+    <radialGradient id="outer-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="transparent" />
+      <stop offset="80%" stop-color="rgba(255, 155, 86, 0.15)" />
+      <stop offset="100%" stop-color="rgba(255, 107, 157, 0.08)" />
+    </radialGradient>
+    
+    <!-- Inner highlight -->
+    <radialGradient id="inner-highlight" cx="35%" cy="30%" r="40%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.35)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+    </radialGradient>
+    
+    <!-- Background soft glow -->
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0e8ff" />
+      <stop offset="50%" stop-color="#f5f0ff" />
+      <stop offset="100%" stop-color="#fafafe" />
+    </radialGradient>
+    
+    <!-- Glow ring gradient -->
+    <linearGradient id="glow-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 155, 86, 0.35)" />
+      <stop offset="50%" stop-color="rgba(255, 107, 157, 0.35)" />
+      <stop offset="100%" stop-color="rgba(196, 76, 255, 0.35)" />
+    </linearGradient>
+    
+    <!-- Sparkle glow filters -->
+    <filter id="sparkle-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    
+    <!-- Orb shadow/glow -->
+    <filter id="orb-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Clip to circle for avatar usage -->
+    <clipPath id="circle-clip">
+      <circle cx="256" cy="256" r="256" />
+    </clipPath>
+  </defs>
+  
+  <g clip-path="url(#circle-clip)">
+    <!-- Background -->
+    <rect width="512" height="512" fill="url(#bg-glow)" />
+    
+    <!-- Outer glow aura -->
+    <circle cx="256" cy="256" r="200" fill="url(#outer-glow)" opacity="0.8" />
+    
+    <!-- Glow ring -->
+    <circle cx="256" cy="256" r="155" fill="none" stroke="url(#glow-ring)" stroke-width="2.5" opacity="0.7" />
+    
+    <!-- Main orb with glow -->
+    <circle cx="256" cy="256" r="120" fill="url(#orb-gradient)" filter="url(#orb-glow)" opacity="0.95" />
+    
+    <!-- Inner highlight (glass effect) -->
+    <circle cx="256" cy="256" r="120" fill="url(#inner-highlight)" />
+    
+    <!-- Sparkles -->
+    <!-- Top-left sparkle -->
+    <circle cx="150" cy="100" r="5" fill="#ff9a56" filter="url(#sparkle-glow)" opacity="0.8" />
+    
+    <!-- Top-right sparkle -->
+    <circle cx="375" cy="145" r="4.5" fill="#ff6b9d" filter="url(#sparkle-glow)" opacity="0.7" />
+    
+    <!-- Bottom-left sparkle -->
+    <circle cx="120" cy="340" r="6" fill="#ffb347" filter="url(#sparkle-glow)" opacity="0.85" />
+    
+    <!-- Bottom-right sparkle -->
+    <circle cx="380" cy="360" r="4.5" fill="#c44cff" filter="url(#sparkle-glow)" opacity="0.7" />
+    
+    <!-- Extra floating sparkles (smaller) -->
+    <circle cx="105" cy="195" r="3.5" fill="#ffe4e4" filter="url(#sparkle-glow)" opacity="0.6" />
+    <circle cx="385" cy="240" r="4" fill="#fff0d4" filter="url(#sparkle-glow)" opacity="0.65" />
+    <circle cx="350" cy="410" r="3.5" fill="#e4f0ff" filter="url(#sparkle-glow)" opacity="0.6" />
+    
+    <!-- Tiny accent sparkles -->
+    <circle cx="200" cy="80" r="2.5" fill="#f0e4ff" opacity="0.5" />
+    <circle cx="420" cy="300" r="2" fill="#ffe4e4" opacity="0.45" />
+    <circle cx="90" cy="270" r="2.5" fill="#fff0d4" opacity="0.5" />
+  </g>
+</svg>
