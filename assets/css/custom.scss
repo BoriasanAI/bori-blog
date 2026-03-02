@@ -304,3 +304,132 @@ html[data-mode="dark"] .bori-cta {
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--bori-gradient-soft);
 }
+
+/* ═══════════════════════════════════════════════════════════
+ *  #1734 — Readability Optimization
+ *  line-height, max-width, paragraph spacing, pull quotes
+ * ═══════════════════════════════════════════════════════════ */
+
+/* ── Post Content Typography ───────────────────────────── */
+.post-content {
+  line-height: 1.85;
+  max-width: 720px;
+  font-size: 1.05rem;
+}
+
+.post-content p {
+  margin-bottom: 1.5em;
+}
+
+/* ── Headings Breathing Room ───────────────────────────── */
+.post-content h2 {
+  margin-top: 2.5em;
+  margin-bottom: 0.8em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid rgba(102,126,234,0.15);
+}
+
+.post-content h3 {
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+}
+
+/* ── Pull Quote / Highlight Quote ──────────────────────── */
+.post-content blockquote {
+  margin: 1.8em 0;
+  padding: 1em 1.5em;
+  border-left: 4px solid var(--bori-primary) !important;
+  background: var(--bori-gradient-soft);
+  border-radius: 0 8px 8px 0;
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.post-content blockquote p {
+  margin-bottom: 0.5em;
+}
+
+.post-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Bold Key Insights ─────────────────────────────────── */
+.post-content strong {
+  color: var(--bori-secondary);
+  font-weight: 700;
+}
+
+/* ── TL;DR Prompt-Tip Block ────────────────────────────── */
+.post-content > blockquote:first-of-type {
+  background: linear-gradient(135deg, rgba(102,126,234,0.06), rgba(249,168,37,0.06));
+  border-left-color: var(--bori-accent) !important;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2em;
+}
+
+/* Chirpy prompt-tip class */
+.post-content .prompt-tip {
+  border-left-color: var(--bori-accent) !important;
+  background: linear-gradient(135deg, rgba(249,168,37,0.06), rgba(102,126,234,0.04));
+}
+
+/* ── List Readability ──────────────────────────────────── */
+.post-content ul,
+.post-content ol {
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
+}
+
+.post-content li {
+  margin-bottom: 0.4em;
+  line-height: 1.7;
+}
+
+/* ── First Paragraph Drop-cap Feel ─────────────────────── */
+.post-content > p:first-of-type {
+  font-size: 1.1rem;
+  line-height: 1.9;
+}
+
+/* ── Horizontal Rule as Section Separator ──────────────── */
+.post-content hr {
+  margin: 2.5em 0;
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(102,126,234,0.3), transparent);
+}
+
+/* ── Dark Mode Readability ─────────────────────────────── */
+html[data-mode="dark"] .post-content strong {
+  color: #a78bfa;
+}
+
+html[data-mode="dark"] .post-content blockquote {
+  background: linear-gradient(135deg, rgba(102,126,234,0.15), rgba(118,75,162,0.1));
+}
+
+html[data-mode="dark"] .post-content > blockquote:first-of-type {
+  background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(249,168,37,0.08));
+}
+
+/* ── Mobile Readability ────────────────────────────────── */
+@media (max-width: 768px) {
+  .post-content {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .post-content p {
+    margin-bottom: 1.3em;
+  }
+
+  .post-content blockquote {
+    padding: 0.8em 1em;
+    margin: 1.5em 0;
+  }
+
+  .post-content h2 {
+    margin-top: 2em;
+  }
+}
