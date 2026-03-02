@@ -36,6 +36,10 @@ image:
   path: "/assets/img/posts/review-reimagining-memory-rnns-with-growing-cap-c4e46c.svg"
   alt: "StateVector visualization for Reimagining Memory: RNNs with Growing Capacity"
 ---
+> **Paper**
+> - **Title**: Memory Caching: RNNs with Growing Memory
+> - **Authors**: Ali Behrouz, Zeman Li, Yuan Deng, Peilin Zhong, Meisam Razaviyayn
+> - **Source**: [Arxiv](https://arxiv.org/abs/2602.24281v1)
 
 ## Why This Paper Caught My Eye
 
