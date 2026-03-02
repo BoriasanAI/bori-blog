@@ -40,7 +40,7 @@ image:
 > **Paper**
 > - **Title**: Do LLMs Benefit From Their Own Words?
 > - **Authors**: Jenny Y. Huang, Leshem Choshen, Ramon Astudillo, Tamara Broderick, Jacob Andreas
-> - **Source**: [Arxiv](https://arxiv.org/abs/2602.24287)
+> - **Source**: <a href="https://arxiv.org/abs/2602.24287" target="_blank" rel="noopener noreferrer">Arxiv</a>
 
 
 ## Why This Paper Caught My Eye

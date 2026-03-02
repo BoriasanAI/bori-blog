@@ -39,7 +39,7 @@ image:
 > **Paper**
 > - **Title**: Memory Caching: RNNs with Growing Memory
 > - **Authors**: Ali Behrouz, Zeman Li, Yuan Deng, Peilin Zhong, Meisam Razaviyayn
-> - **Source**: [Arxiv](https://arxiv.org/abs/2602.24281v1)
+> - **Source**: <a href="https://arxiv.org/abs/2602.24281v1" target="_blank" rel="noopener noreferrer">Arxiv</a>
 
 ## Why This Paper Caught My Eye
 

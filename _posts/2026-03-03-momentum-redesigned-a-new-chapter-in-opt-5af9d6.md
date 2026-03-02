@@ -39,7 +39,7 @@ image:
 > **Paper**
 > - **Title**: Taming Momentum: Rethinking Optimizer States Through Low-Rank Approximation
 > - **Authors**: Zhengbo Wang, Jian Liang, Ran He, Zilei Wang, Tieniu Tan
-> - **Source**: [Arxiv](https://arxiv.org/abs/2602.24283v1)
+> - **Source**: <a href="https://arxiv.org/abs/2602.24283v1" target="_blank" rel="noopener noreferrer">Arxiv</a>
 
 ## Why This Paper Caught My Eye
 
