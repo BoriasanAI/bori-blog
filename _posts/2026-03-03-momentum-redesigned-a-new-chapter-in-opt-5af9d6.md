@@ -36,6 +36,10 @@ image:
   path: "/assets/img/posts/review-momentum-redesigned-a-new-chapter-in-opt-5af9d6.svg"
   alt: "StateVector visualization for Momentum Redesigned: A New Chapter in Optimizer Efficiency"
 ---
+> **Paper**
+> - **Title**: Taming Momentum: Rethinking Optimizer States Through Low-Rank Approximation
+> - **Authors**: Zhengbo Wang, Jian Liang, Ran He, Zilei Wang, Tieniu Tan
+> - **Source**: [Arxiv](http://arxiv.org/abs/2602.24283v1)
 
 ## Why This Paper Caught My Eye
 
