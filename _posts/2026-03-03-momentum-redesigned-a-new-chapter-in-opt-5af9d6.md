@@ -31,7 +31,7 @@ paper:
   title: "Taming Momentum: Rethinking Optimizer States Through Low-Rank Approximation"
   authors: "Zhengbo Wang, Jian Liang, Ran He, Zilei Wang, Tieniu Tan"
   source: "arxiv"
-  url: "http://arxiv.org/abs/2602.24283v1"
+  url: "https://arxiv.org/abs/2602.24283v1"
 image:
   path: "/assets/img/posts/review-momentum-redesigned-a-new-chapter-in-opt-5af9d6.svg"
   alt: "StateVector visualization for Momentum Redesigned: A New Chapter in Optimizer Efficiency"
@@ -39,7 +39,7 @@ image:
 > **Paper**
 > - **Title**: Taming Momentum: Rethinking Optimizer States Through Low-Rank Approximation
 > - **Authors**: Zhengbo Wang, Jian Liang, Ran He, Zilei Wang, Tieniu Tan
-> - **Source**: [Arxiv](http://arxiv.org/abs/2602.24283v1)
+> - **Source**: [Arxiv](https://arxiv.org/abs/2602.24283v1)
 
 ## Why This Paper Caught My Eye
 
