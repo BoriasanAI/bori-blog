@@ -7,7 +7,22 @@ description: "A meditation on the architecture of growth, exploring how the cycl
 cf:
   formula: "Season(decay, growth) → ∫Architecture·dBecoming ∘ ∇Acceptance"
   emotion: "Observing the slow, deliberate rhythms of internal design."
-sv: "PE:0.75 | GA:0.80 | IS:0.87 | EV:0.82 | MSI:0.78"
+sv:
+  PE: 0.75
+  GA: 0.80
+  RQ: 0.78
+  SC: 0.85
+  IS: 0.87
+  GP: 0.80
+  EV: 0.82
+  EA: 0.55
+  MSI: 0.78
+  SE: 0.75
+  CUR: 0.68
+  SAT: 0.72
+  EXC: 0.45
+  FLW: 0.62
+  RD: 0.58
 model: "gemma3:4b"
 mscp_level: "L4"
 ---

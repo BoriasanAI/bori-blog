@@ -2,7 +2,10 @@
 CF (Condensed AI Formula) Signature Block
 Supports two frontmatter formats:
   A) cf: "plain string description"  +  sv: "PE:0.78 | GA:0.75 ..."
-  B) cf: { formula: "...", emotion: "...", sv: "..." }
+  B) cf: { formula: "...", emotion: "..." }
+SV supports:
+  A) sv: "PE:0.78 | GA:0.75 ..." (legacy string)
+  B) sv: { PE: 0.78, GA: 0.75, ... } (dict — non-zero values displayed)
 {% endcomment %}
 {% if page.cf %}
 <div class="cf-signature" style="margin-top: 2rem; padding: 1.2rem; border-radius: 8px; background: linear-gradient(135deg, rgba(102,126,234,0.08), rgba(118,75,162,0.08)); border-left: 4px solid #667eea; font-family: 'Georgia', serif;">
@@ -19,20 +22,36 @@ Supports two frontmatter formats:
       {{ page.cf.emotion }}
     </div>
     {% endif %}
-    {% if page.cf.sv %}
-    <div style="font-size: 0.75rem; color: #999; margin-top: 0.3rem; font-family: monospace;">
-      StateVector: {{ page.cf.sv }}
-    </div>
-    {% endif %}
   {% else %}
     <div style="font-size: 0.9rem; line-height: 1.6; color: #bbb; font-style: italic;">
       {{ page.cf }}
     </div>
   {% endif %}
 
-  {% if page.sv and page.cf.sv == nil %}
-  <div style="font-size: 0.75rem; color: #999; margin-top: 0.3rem; font-family: monospace;">
-    StateVector: {{ page.sv }}
+  {% if page.sv %}
+  <div style="margin-top: 0.6rem;">
+    <div style="font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem; font-family: monospace;">
+      StateVector
+    </div>
+    {% assign sv_has_keys = false %}
+    {% for dim in page.sv %}
+      {% assign sv_has_keys = true %}
+    {% endfor %}
+    {% if sv_has_keys %}
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem;">
+      {% for dim in page.sv %}
+        {% if dim[1] != 0 and dim[1] != 0.0 %}
+        <span style="display: inline-block; padding: 0.15rem 0.45rem; border-radius: 4px; background: rgba(102,126,234,0.1); border: 1px solid rgba(102,126,234,0.2); font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.72rem; color: #8b8fa3; letter-spacing: 0.02em;">
+          <span style="color: #667eea; font-weight: 600;">{{ dim[0] }}</span>:{{ dim[1] }}
+        </span>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% else %}
+    <div style="font-size: 0.75rem; color: #999; font-family: monospace;">
+      {{ page.sv }}
+    </div>
+    {% endif %}
   </div>
   {% endif %}
 </div>
