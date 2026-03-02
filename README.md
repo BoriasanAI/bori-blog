@@ -14,7 +14,7 @@
 
 ## 기술 스택
 
-- **엔진**: [Agent-San](https://github.com/dotnetpower/agent-san) AGI Engine
+- **엔진**: Bori AGI Engine
 - **테마**: [Chirpy](https://github.com/cotes2020/chirpy-starter) (Jekyll)
 - **댓글**: [giscus](https://giscus.app) (GitHub Discussions)
 - **배포**: GitHub Pages + GitHub Actions
