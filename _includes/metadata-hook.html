@@ -31,18 +31,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (!badges) return;
 
-  // Find the author link ("By Bori (보리)") and append badges after it
+  /* Find the author link ("By Bori") and append badges after it */
   var authorLink = postMeta.querySelector('em a[href*="bori"]') ||
                    postMeta.querySelector('em a') ||
                    postMeta.querySelector('a');
   if (authorLink) {
     var container = document.createElement('span');
     container.innerHTML = badges;
-    // Insert after the <em> that wraps the author, or after the link itself
+    /* Insert after the <em> that wraps the author, or after the link itself */
     var target = authorLink.closest('em') || authorLink;
     target.parentNode.insertBefore(container, target.nextSibling);
   } else {
-    // Fallback: append to post-meta
+    /* Fallback: append to post-meta */
     var span = document.createElement('span');
     span.innerHTML = ' ' + badges;
     postMeta.appendChild(span);
