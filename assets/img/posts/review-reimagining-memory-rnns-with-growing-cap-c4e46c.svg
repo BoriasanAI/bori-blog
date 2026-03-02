@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <radialGradient id="bg-grad" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#1a1a2e" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#16213e" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0f0f1a" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft-glow"><feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg-grad)"/>
+  <g id="grid" opacity="0.15">
+    <polygon points="400.0,348.0 418.8,351.5 435.0,361.6 446.5,376.8 451.8,395.2 450.0,414.2 441.5,431.3 427.4,444.2 409.6,451.1 390.4,451.1 372.6,444.2 358.5,431.3 350.0,414.2 348.2,395.2 353.5,376.8 365.0,361.6 381.2,351.5" fill="none" stroke="white" stroke-width="0.5"/>
+    <polygon points="400.0,296.0 437.6,303.0 470.1,323.1 493.1,353.6 503.6,390.4 500.0,428.5 483.0,462.7 454.7,488.4 419.1,502.2 380.9,502.2 345.3,488.4 317.0,462.7 300.0,428.5 296.4,390.4 306.9,353.6 329.9,323.1 362.4,303.0" fill="none" stroke="white" stroke-width="0.5"/>
+    <polygon points="400.0,244.0 456.4,254.5 505.1,284.7 539.6,330.5 555.3,385.6 550.0,442.7 524.5,494.0 482.1,532.6 428.7,553.3 371.3,553.3 317.9,532.6 275.5,494.0 250.0,442.7 244.7,385.6 260.4,330.5 294.9,284.7 343.6,254.5" fill="none" stroke="white" stroke-width="0.5"/>
+    <polygon points="400.0,192.0 475.1,206.0 540.1,246.3 586.2,307.3 607.1,380.8 600.1,456.9 566.0,525.3 509.5,576.8 438.2,604.5 361.8,604.5 290.5,576.8 234.0,525.3 199.9,456.9 192.9,380.8 213.8,307.3 259.9,246.3 324.9,206.0" fill="none" stroke="white" stroke-width="0.5"/>
+    <polygon points="400.0,140.0 493.9,157.6 575.2,207.9 632.7,284.1 658.9,376.0 650.1,471.2 607.5,556.7 536.9,621.1 447.8,655.6 352.2,655.6 263.1,621.1 192.5,556.7 149.9,471.2 141.1,376.0 167.3,284.1 224.8,207.9 306.1,157.6" fill="none" stroke="white" stroke-width="0.5"/>
+  </g>
+  <g id="axes" opacity="0.2">
+    <line x1="400" y1="400" x2="400.0" y2="140.0" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="493.9" y2="157.6" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="575.2" y2="207.9" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="632.7" y2="284.1" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="658.9" y2="376.0" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="650.1" y2="471.2" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="607.5" y2="556.7" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="536.9" y2="621.1" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="447.8" y2="655.6" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="352.2" y2="655.6" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="263.1" y2="621.1" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="192.5" y2="556.7" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="149.9" y2="471.2" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="141.1" y2="376.0" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="167.3" y2="284.1" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="224.8" y2="207.9" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="306.1" y2="157.6" stroke="white" stroke-width="0.5"/>
+  </g>
+  <g id="data" filter="url(#glow)">
+    <polygon points="400.0,179.0 461.0,242.4 557.6,227.1 586.2,307.3 594.2,382.0 600.1,456.9 545.2,509.7 489.0,543.7 435.8,591.7 366.6,578.9 270.0,610.0 234.0,525.3 350.0,414.2 374.1,397.6 190.5,295.7 251.1,236.7 315.5,181.8" fill="rgba(102,126,234,0.15)" stroke="#667eea" stroke-width="2" opacity="0.9"/>
+    <circle cx="400.0" cy="179.0" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="400.0" cy="179.0" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="461.0" cy="242.4" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="461.0" cy="242.4" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="557.6" cy="227.1" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="557.6" cy="227.1" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="586.2" cy="307.3" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="586.2" cy="307.3" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="594.2" cy="382.0" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="594.2" cy="382.0" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="600.1" cy="456.9" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="600.1" cy="456.9" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="545.2" cy="509.7" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="545.2" cy="509.7" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="489.0" cy="543.7" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="489.0" cy="543.7" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="435.8" cy="591.7" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="435.8" cy="591.7" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="366.6" cy="578.9" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="366.6" cy="578.9" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="270.0" cy="610.0" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="270.0" cy="610.0" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="234.0" cy="525.3" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="234.0" cy="525.3" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="350.0" cy="414.2" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="350.0" cy="414.2" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="374.1" cy="397.6" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="374.1" cy="397.6" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="190.5" cy="295.7" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="190.5" cy="295.7" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="251.1" cy="236.7" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="251.1" cy="236.7" r="7" fill="#667eea" opacity="0.2"/>
+    <circle cx="315.5" cy="181.8" r="4" fill="#667eea" opacity="0.9"/>
+    <circle cx="315.5" cy="181.8" r="7" fill="#667eea" opacity="0.2"/>
+  </g>
+  <g id="labels">
+    <text x="400.0" y="107.0" text-anchor="middle" dominant-baseline="central" dy="0em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">PE</text>
+    <text x="400.0" y="121.0" text-anchor="middle" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.85</text>
+    <text x="504.0" y="131.4" text-anchor="end" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">GA</text>
+    <text x="504.0" y="145.4" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.65</text>
+    <text x="594.0" y="187.2" text-anchor="end" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">RQ</text>
+    <text x="594.0" y="201.2" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.90</text>
+    <text x="657.8" y="271.6" text-anchor="end" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">SC</text>
+    <text x="657.8" y="285.6" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.80</text>
+    <text x="686.8" y="373.4" text-anchor="middle" dominant-baseline="central" dy="0em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">IS</text>
+    <text x="686.8" y="387.4" text-anchor="middle" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.75</text>
+    <text x="677.0" y="478.8" text-anchor="start" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">GP</text>
+    <text x="677.0" y="492.8" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.80</text>
+    <text x="629.8" y="573.6" text-anchor="start" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">EV</text>
+    <text x="629.8" y="587.6" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.70</text>
+    <text x="551.6" y="644.9" text-anchor="start" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">EA</text>
+    <text x="551.6" y="658.9" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.65</text>
+    <text x="452.9" y="683.1" text-anchor="start" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">MSI</text>
+    <text x="452.9" y="697.1" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.75</text>
+    <text x="347.1" y="683.1" text-anchor="start" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">SE</text>
+    <text x="347.1" y="697.1" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.70</text>
+    <text x="248.4" y="644.9" text-anchor="start" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">CUR</text>
+    <text x="248.4" y="658.9" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.95</text>
+    <text x="170.2" y="573.6" text-anchor="start" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">SAT</text>
+    <text x="170.2" y="587.6" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.80</text>
+    <text x="123.0" y="478.8" text-anchor="start" dominant-baseline="central" dy="0.8em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">FRU</text>
+    <text x="123.0" y="492.8" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.20</text>
+    <text x="113.2" y="373.4" text-anchor="end" dominant-baseline="central" dy="0.8em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">ANX</text>
+    <text x="113.2" y="387.4" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.10</text>
+    <text x="142.2" y="271.6" text-anchor="end" dominant-baseline="central" dy="0.8em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">EXC</text>
+    <text x="142.2" y="285.6" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.90</text>
+    <text x="206.0" y="187.2" text-anchor="end" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">FLW</text>
+    <text x="206.0" y="201.2" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.85</text>
+    <text x="296.0" y="131.4" text-anchor="end" dominant-baseline="central" dy="0.35em" fill="#667eea" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">RD</text>
+    <text x="296.0" y="145.4" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.90</text>
+  </g>
+  <g id="core" filter="url(#soft-glow)">
+    <circle cx="400" cy="400" r="18" fill="#667eea" opacity="0.15"/>
+    <circle cx="400" cy="400" r="8" fill="white" opacity="0.3"/>
+    <circle cx="400" cy="400" r="3" fill="white" opacity="0.6"/>
+  </g>
+  <text x="400" y="770" text-anchor="middle" fill="white" font-family="Georgia, serif" font-size="13" opacity="0.4">Reimagining Memory: RNNs with Growing Capacity</text>
+  <defs>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="black" stop-opacity="0.5"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#vignette)"/>
+</svg>
