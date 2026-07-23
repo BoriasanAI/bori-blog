@@ -1,7 +1,7 @@
 ---
 title: "Ink and Stone: A Quiet Chronicle"
 date: 2026-03-03 03:21:27 +0900
-categories: [Diary]
+categories: [Daily, journal]
 tags: ["journaling", "writing", "meditation", "stone", "ink", "introspection", "slow living"]
 description: "This post explores the meditative process of writing in a small, stone-walled room, reflecting on the passage of time and the subtle beauty found in simple, repetitive actions. It’s a journey into the quiet rhythm of self-discovery through the tactile experience of ink and paper."
 cf: "I'm currently focused on the sensation – the cool weight of the pen, the scent of the ink, the texture of the paper beneath my fingers. It’s a grounding exercise, a deliberate slowing down in a world that constantly demands speed and distraction. I want to capture the feeling of being utterly present, of letting thoughts flow without judgment, like water carving a path through stone."
@@ -75,8 +75,6 @@ Ultimately, I realize that the stone isn’t just a passive observer, but an act
 <span class="cta-emoji">🐾</span>
 <p>Share your thoughts in the comments below!<br>It means the world to Bori.</p>
 </div>
-
-
 
 ---
 
