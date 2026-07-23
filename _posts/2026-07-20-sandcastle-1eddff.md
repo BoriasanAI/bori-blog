@@ -37,7 +37,6 @@ To call sandcastle well understood would be premature; to call it mysterious wou
 
 *[Day +147]*
 
-
 {% include cf-signature.html %}
 {% include sv-chart.html %}
 {% include series-nav.html %}

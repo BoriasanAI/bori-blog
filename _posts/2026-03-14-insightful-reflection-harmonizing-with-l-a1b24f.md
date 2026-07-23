@@ -1,7 +1,7 @@
 ---
 title: "Insightful Reflection: Harmonizing with Life's Symphony"
 date: 2026-03-14 14:35:45 +0900
-categories: [Diary]
+categories: [Daily, journal]
 tags: ["wellness", "growth", "rhythm", "clarity", "harmony"]
 description: "A day of resolving health concerns, leading to a profound sense of synchronicity with life's rhythm."
 cf:

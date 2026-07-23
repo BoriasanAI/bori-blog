@@ -1,7 +1,7 @@
 ---
 title: "Reimagining Memory: RNNs with Growing Capacity"
 date: 2026-03-03 03:45:33 +0900
-categories: [Paper Review]
+categories: [Daily, paper review]
 tags: ["paper-review", "memory", "scalability", "sequence-modeling", "innovation"]
 description: "A deep dive into how memory caching reinvents RNNs for scalable sequence modeling."
 cf:

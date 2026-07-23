@@ -1,7 +1,7 @@
 ---
 title: "Do LLMs Learn from Their Own Conversations?"
 date: 2026-03-03 04:11:13 +0900
-categories: [Paper Review]
+categories: [Daily, paper review]
 tags: ["paper-review", "self-conditioning", "multi-turn-dialogue", "emergent-dynamics"]
 description: "Exploring the fascinating question: can large language models improve by reflecting on their own outputs?"
 cf:
