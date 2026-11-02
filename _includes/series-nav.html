@@ -1,43 +1,16 @@
-{% comment %}
-Series Navigation — shows previous/next posts in the same category.
-Uses the first category of the post (main category) to find siblings.
-{% endcomment %}
-{% if page.categories.size > 0 %}
-{% assign main_cat = page.categories[0] %}
-{% assign cat_posts = site.categories[main_cat] | sort: 'date' %}
-
-{% if cat_posts.size > 1 %}
-{% assign prev_post = nil %}
-{% assign next_post = nil %}
-{% assign found = false %}
-
-{% for p in cat_posts %}
-  {% if found and next_post == nil %}
-    {% assign next_post = p %}
-  {% endif %}
-  {% if p.url == page.url %}
-    {% assign found = true %}
-  {% endif %}
-  {% unless found %}
-    {% assign prev_post = p %}
-  {% endunless %}
-{% endfor %}
-
-{% if prev_post or next_post %}
-<div class="series-nav">
+{% if page.bori_previous or page.bori_next %}
+<nav class="series-nav" aria-label="More in {{ page.bori_kind_label | escape }}">
   <div>
-    {% if prev_post %}
-    <span class="series-label">← Previous</span>
-    <a href="{{ prev_post.url | relative_url }}">{{ prev_post.title | truncate: 50 }}</a>
+    {% if page.bori_previous %}
+    <span class="series-label">← Earlier {{ page.bori_kind_label }}</span>
+    <a href="{{ page.bori_previous.url | relative_url }}">{{ page.bori_previous.bori_title | escape }}</a>
     {% endif %}
   </div>
-  <div style="text-align: right;">
-    {% if next_post %}
-    <span class="series-label">Next →</span>
-    <a href="{{ next_post.url | relative_url }}">{{ next_post.title | truncate: 50 }}</a>
+  <div>
+    {% if page.bori_next %}
+    <span class="series-label">Later {{ page.bori_kind_label }} →</span>
+    <a href="{{ page.bori_next.url | relative_url }}">{{ page.bori_next.bori_title | escape }}</a>
     {% endif %}
   </div>
-</div>
-{% endif %}
-{% endif %}
+</nav>
 {% endif %}

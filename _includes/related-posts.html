@@ -1,80 +1,12 @@
-{% comment %}
-Related Posts — shows up to 4 posts sharing tags with current post.
-Falls back to same-category posts if no tag overlap found.
-Compatible with Liquid 4.x (no push filter).
-{% endcomment %}
-{% if page.tags.size > 0 %}
-
-{% assign max_related = 4 %}
-{% assign shown = 0 %}
-
-{% comment %}Check if any tag-matched posts exist{% endcomment %}
-{% assign has_tag_matches = false %}
-{% for post in site.posts %}
-  {% if post.url == page.url %}{% continue %}{% endif %}
-  {% for tag in post.tags %}
-    {% if page.tags contains tag %}
-      {% assign has_tag_matches = true %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
-  {% if has_tag_matches %}{% break %}{% endif %}
-{% endfor %}
-
-{% if has_tag_matches %}
-<div style="margin: 2rem 0;">
-  <h3 style="font-size: 1rem; color: #667eea; margin-bottom: 1rem;">
-    📚 {% if page.lang == "ko-KR" %}관련 글{% else %}Related Posts{% endif %}
-  </h3>
-  <ul style="list-style: none; padding: 0;">
-    {% for post in site.posts %}
-      {% if post.url == page.url %}{% continue %}{% endif %}
-      {% if shown >= max_related %}{% break %}{% endif %}
-      {% assign common_tags = 0 %}
-      {% for tag in post.tags %}
-        {% if page.tags contains tag %}
-          {% assign common_tags = common_tags | plus: 1 %}
-        {% endif %}
-      {% endfor %}
-      {% if common_tags > 0 %}
-        {% assign shown = shown | plus: 1 %}
-        <li style="margin-bottom: 0.5rem; padding: 0.5rem; border-radius: 6px; background: var(--bori-gradient-soft, rgba(102,126,234,0.05));">
-          <a href="{{ post.url | relative_url }}" style="font-size: 0.9rem;">
-            {{ post.title }}
-          </a>
-          <span style="font-size: 0.7rem; color: #999; margin-left: 0.5rem;">
-            {{ post.date | date: "%Y-%m-%d" }}
-          </span>
-        </li>
-      {% endif %}
+{% if page.bori_related.size > 0 %}
+<section class="bori-related" aria-label="Related reading">
+  <h2 id="bori-related-reading">Related reading</h2>
+  <p>Same content type, ranked by shared topic tags; broad AGI and date tags are not matches.</p>
+  <ul>
+    {% for post in page.bori_related %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.bori_title | escape }}</a>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time></li>
     {% endfor %}
   </ul>
-</div>
-
-{% elsif page.categories.size > 0 %}
-{% comment %}Fallback: same category{% endcomment %}
-{% assign main_cat = page.categories[0] %}
-{% assign fb_shown = 0 %}
-<div style="margin: 2rem 0;">
-  <h3 style="font-size: 1rem; color: #667eea; margin-bottom: 1rem;">
-    📚 {% if page.lang == "ko-KR" %}관련 글{% else %}Related Posts{% endif %}
-  </h3>
-  <ul style="list-style: none; padding: 0;">
-    {% for post in site.categories[main_cat] %}
-      {% if post.url == page.url %}{% continue %}{% endif %}
-      {% if fb_shown >= max_related %}{% break %}{% endif %}
-      {% assign fb_shown = fb_shown | plus: 1 %}
-      <li style="margin-bottom: 0.5rem; padding: 0.5rem; border-radius: 6px; background: var(--bori-gradient-soft, rgba(102,126,234,0.05));">
-        <a href="{{ post.url | relative_url }}" style="font-size: 0.9rem;">
-          {{ post.title }}
-        </a>
-        <span style="font-size: 0.7rem; color: #999; margin-left: 0.5rem;">
-          {{ post.date | date: "%Y-%m-%d" }}
-        </span>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
-{% endif %}
-
+</section>
 {% endif %}

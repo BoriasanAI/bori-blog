@@ -66,10 +66,10 @@ module BoriVisuals
   def diagram_title(diagram)
     return diagram["title"] unless diagram["title"] == diagram["kind"]
     {
-      "outline" => "Article map / 글 지도",
-      "evidence-map" => "Citation map / 인용 지도",
-      "timeline" => "Publication timeline / 발행 연표",
-      "comparison" => "Source comparison / 출처 비교"
+      "outline" => "Article map",
+      "evidence-map" => "Citation map",
+      "timeline" => "Publication timeline",
+      "comparison" => "Source comparison"
     }.fetch(diagram["kind"])
   end
 
@@ -100,24 +100,11 @@ module BoriVisuals
   end
 
   def outline(diagram, baseurl)
-    offset = 12
-    shapes = diagram["nodes"].map.with_index do |node, index|
-      rows = svg_lines(node["label"]).size
-      height = [54, 25 + rows * 21].max
-      y = offset
-      offset += height + 18
-      <<~SVG
-        <g><rect x="12" y="#{y}" width="296" height="#{height}" rx="9"/>
-        <circle cx="30" cy="#{y + 22}" r="3"/>
-        #{wrapped_svg_label(node['label'], 44, y + 28)}</g>
-      SVG
-    end.join
     <<~HTML
-      <figure class="rv-diagram rv-outline">
-        <figcaption><h3>#{escape(diagram_title(diagram))}</h3><p>Article outline / 글의 구성 · supplied headings, not causal links / 인과관계 아님</p></figcaption>
-        <div class="rv-outline-layout"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 #{offset}" aria-hidden="true" focusable="false">#{shapes}</svg>
-        #{node_list(diagram['nodes'], baseurl, ordered: true)}</div>
-      </figure>
+      <nav class="rv-diagram rv-outline" aria-label="#{escape(diagram_title(diagram))}">
+        <h3>#{escape(diagram_title(diagram))}</h3>
+        #{node_list(diagram['nodes'], baseurl, ordered: true)}
+      </nav>
     HTML
   end
 
@@ -144,7 +131,7 @@ module BoriVisuals
     end.join
     <<~HTML
       <figure class="rv-diagram rv-timeline">
-        <figcaption><h3>#{escape(diagram_title(diagram))}</h3><p>#{bounds.first} — #{bounds.last} · Dated records; spacing is not duration / 날짜 기록 · 간격은 기간을 나타내지 않음</p></figcaption>
+        <figcaption><h3>#{escape(diagram_title(diagram))}</h3><p>#{bounds.first} — #{bounds.last} · Dated records; spacing is not duration</p></figcaption>
         <ol>#{rows}</ol>
       </figure>
     HTML
@@ -159,10 +146,10 @@ module BoriVisuals
     <<~HTML
       <figure class="rv-diagram rv-comparison">
         <figcaption><h3>#{escape(diagram_title(diagram))}</h3></figcaption>
-        <p class="rv-scroll-hint">Scroll horizontally for both columns / 두 열을 보려면 가로로 밀어 주세요.</p>
-        <div class="rv-table-scroll" role="region" tabindex="0" aria-label="#{escape(diagram_title(diagram))} — horizontally scrollable / 가로 스크롤">
-          <table><caption>Supplied excerpts side by side / 입력된 발췌 비교 · No inferred rankings / 순위 추정 없음</caption>
-            <thead><tr><th scope="col">Source / 출처</th><th scope="col">Supplied note / 입력된 내용</th></tr></thead>
+        <p class="table-scroll-hint">More columns → Scroll horizontally or focus the table and use the arrow keys.</p>
+        <div class="rv-table-scroll" role="region" tabindex="0" aria-label="#{escape(diagram_title(diagram))} — horizontally scrollable">
+          <table><caption>Supplied excerpts side by side · No inferred rankings</caption>
+            <thead><tr><th scope="col">Source</th><th scope="col">Supplied note</th></tr></thead>
             <tbody>#{rows}</tbody>
           </table>
         </div>
@@ -195,9 +182,9 @@ module BoriVisuals
     end.join
     <<~HTML
       <figure class="rv-diagram rv-evidence-map">
-        <figcaption><h3>#{escape(diagram_title(diagram))}</h3><p>Supplied source links / 입력된 출처 연결 · not causal inference / 인과 추론 아님</p></figcaption>
+        <figcaption><h3>#{escape(diagram_title(diagram))}</h3><p>Supplied source links · not causal inference</p></figcaption>
         <div class="rv-outline-layout"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 #{offset}" aria-hidden="true" focusable="false">#{paths}#{shapes}</svg>
-        <div>#{node_list(diagram['nodes'], baseurl)}<ul class="rv-edge-list" aria-label="Supplied relationships / 입력된 연결">#{alternatives}</ul></div></div>
+        <div>#{node_list(diagram['nodes'], baseurl)}<ul class="rv-edge-list" aria-label="Supplied relationships">#{alternatives}</ul></div></div>
       </figure>
     HTML
   end

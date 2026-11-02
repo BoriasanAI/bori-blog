@@ -1,0 +1,8 @@
+<section aria-label="Popular topics">
+  <h2 class="panel-heading">Popular topics</h2>
+  <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+    {% for name in site.data.bori_reader.popular_tags %}
+    <a class="post-tag btn btn-outline-primary" href="{{ name | slugify | url_encode | prepend: '/tags/' | append: '/' | relative_url }}">{{ name | escape }}</a>
+    {% endfor %}
+  </div>
+</section>

@@ -5,8 +5,8 @@
     const main = document.querySelector('main');
     if (!main) return;
     document.querySelector('#back-to-top')?.setAttribute('aria-label', 'Back to top');
-    document.querySelector('#toc-solo-trigger')?.setAttribute('aria-label', 'Open table of contents / 목차');
-    document.querySelector('#search-input')?.setAttribute('aria-label', 'Search posts by title or topic / 글 검색');
+    document.querySelector('#toc-solo-trigger')?.setAttribute('aria-label', 'Open table of contents');
+    document.querySelector('#search-input')?.setAttribute('aria-label', 'Search posts by title or topic');
     const results = document.querySelector('#search-results');
     results?.setAttribute('aria-live', 'polite');
     results?.setAttribute('aria-label', 'Search results');
@@ -17,10 +17,15 @@
     const meta = document.querySelector('.post-meta');
     if (!dataNode || !meta) return;
     const data = JSON.parse(dataNode.textContent);
+    const details = document.createElement('details');
+    details.className = 'generation-metadata';
+    const summary = document.createElement('summary');
+    summary.textContent = 'Generation metadata';
+    details.append(summary);
     const guide = document.createElement('a');
     guide.href = `${document.querySelector('link[rel="canonical"]').href.split('/posts/')[0]}/about/#reading-the-metadata`;
     guide.className = 'badge-guide';
-    guide.textContent = 'Metadata guide / 표기 안내';
+    guide.textContent = 'Metadata guide';
     const items = [
       [data.model, 'Recorded generation tool/model label, not a quality score'],
       [data.mscp ? `MSCP ${data.mscp}` : null, 'Recorded processing-level label; see the metadata guide'],
@@ -33,9 +38,10 @@
       badge.textContent = text;
       badge.title = meaning;
       badge.setAttribute('aria-label', `${text}: ${meaning}`);
-      meta.append(badge);
+      details.append(badge);
     });
-    meta.append(guide);
+    details.append(guide);
+    meta.append(details);
   }
 
   function charts() {
@@ -90,10 +96,10 @@
     const label = document.createElement('label');
     label.htmlFor = 'theme-choice';
     label.className = 'theme-choice-label';
-    label.textContent = 'Theme / 화면 테마';
+    label.textContent = 'Theme';
     const select = document.createElement('select');
     select.id = 'theme-choice';
-    [['system', 'System / 시스템'], ['light', 'Light / 밝게'], ['dark', 'Dark / 어둡게']].forEach(([value, text]) => {
+    [['system', 'System'], ['light', 'Light'], ['dark', 'Dark']].forEach(([value, text]) => {
       select.add(new Option(text, value));
     });
     select.value = Theme.isSystemTheme ? 'system' : Theme.resolvedTheme;
@@ -118,10 +124,26 @@
     title.after(timeline);
   }
 
+  function tables() {
+    document.querySelectorAll('.table-wrapper, .rv-table-scroll, .table-scroll').forEach(wrapper => {
+      const hint = wrapper.previousElementSibling;
+      const update = () => {
+        const overflowing = wrapper.scrollWidth > wrapper.clientWidth + 1;
+        wrapper.classList.toggle('is-overflowing', overflowing);
+        if (hint?.classList.contains('table-scroll-hint')) hint.hidden = !overflowing;
+      };
+      update();
+      if (typeof ResizeObserver !== 'undefined') new ResizeObserver(update).observe(wrapper);
+      else window.addEventListener('resize', update);
+      document.fonts?.ready.then(update);
+    });
+  }
+
   navigation();
   badges();
   charts();
   dashboard();
   themeChoice();
   titles();
+  tables();
 })();

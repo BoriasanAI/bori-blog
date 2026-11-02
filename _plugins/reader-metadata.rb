@@ -5,11 +5,11 @@ require "nokogiri"
 
 module BoriReader
   KINDS = {
-    "journal" => "Journal / 일기",
-    "essay" => "Concept notes / 개념 노트",
-    "research" => "Research notes / 연구 노트",
-    "paper-review" => "Paper reviews / 논문 리뷰",
-    "other" => "Other posts / 기타"
+    "journal" => "Journal",
+    "essay" => "Concept notes",
+    "research" => "Research notes",
+    "paper-review" => "Paper reviews",
+    "other" => "Other posts"
   }.freeze
   GENERIC_TAGS = %w[agi diary essay paper paper-review emotion growth introspection consciousness].freeze
 
@@ -76,6 +76,8 @@ module BoriReader
 
   def decorate(post, converter)
     data = post.data
+    image = data["image"].is_a?(Hash) ? data["image"]["path"] : data["image"]
+    data["image"] = nil if image.to_s.match?(%r{/assets/img/avatar/bori-(?:presence-avatar|avatar)\.(?:png|svg)\z})
     data["bori_kind"] = kind(data)
     data["bori_kind_label"] = KINDS[data["bori_kind"]]
     data["bori_tags"] = Array(data["tags"]).select { |tag| topic_tag?(tag) }
@@ -118,7 +120,8 @@ module BoriReader
   end
 
   def rendered_word_count(prose)
-    prose.css("script, style, svg, nav, .bori-related, .series-nav, .sv-chart").remove
+    prose = prose.dup
+    prose.css("script, style, svg, nav, .bori-related, .series-nav, .sv-chart, .cf-signature, .generation-metadata, [data-supplemental], .reader-visuals, .svg-text-alternative, .review-results-chart, .review-source-notes, .review-bibliography").remove
     prose.css("p, li, dt, dd, h1, h2, h3, h4, h5, h6, td, th, pre, blockquote, figcaption").each do |block|
       block.add_next_sibling(Nokogiri::XML::Text.new(" ", prose.document))
     end
@@ -177,7 +180,7 @@ module BoriReader
         "tags" => tags.keys.sort_by(&:downcase),
         "popular_tags" => tags.sort_by { |name, members| [-members.size, name.downcase] }.first(10).map(&:first)
       }
-      site.data["locales"][site.config["lang"]]["tabs"]["dashboard"] = "Dashboard / 개요"
+      site.data["locales"][site.config["lang"]]["tabs"]["dashboard"] = "Dashboard"
     end
   end
 end
@@ -189,8 +192,8 @@ Jekyll::Hooks.register :posts, :pre_render do |post|
   end
 end
 
-# Enrich the theme's one canonical schema, counting rendered prose rather than Liquid/HTML source.
-Jekyll::Hooks.register :posts, :post_render do |post|
+# Count after table semantics and supplemental figures have been rendered.
+Jekyll::Hooks.register :posts, :post_render, priority: :low do |post|
   document = Nokogiri::HTML(post.output)
   svg_preview = document.at_css('meta[property="og:image"]')&.[]("content").to_s.match?(/\.svg(?:\?[^"]*)?\z/i)
   raster_path = post.site.config["social_preview_image"]
@@ -226,7 +229,7 @@ end
 
 Jekyll::Hooks.register [:pages, :documents], :post_render do |page|
   next unless page.output.match?(/\A\s*(?:<!doctype html|<html)/i)
-  page.output = page.output.sub(/<body([^>]*)>/, '<body\1><a class="skip-link" href="#main-content">Skip to main content / 본문으로</a>')
+  page.output = page.output.sub(/<body([^>]*)>/, '<body\1><a class="skip-link" href="#main-content">Skip to main content</a>')
   page.output = page.output.sub("<main ", '<main id="main-content" tabindex="-1" ')
   page.output = page.output.gsub("user-scalable=no initial-scale=1", "initial-scale=1")
   page.output = page.output.gsub('<div class="table-wrapper">', '<div class="table-wrapper" role="region" tabindex="0" aria-label="Table; scroll horizontally to read all columns">')

@@ -8,29 +8,33 @@ NOTE: page.sv (StateVector dict) is rendered by sv-chart.html — NOT here.
 cf.sv is a compact string summary (e.g. "SA=1.00, HE=1.00") shown inline.
 {% endcomment %}
 {% if page.cf %}
-<div class="cf-signature" style="margin-top: 2rem; padding: 1.2rem; border-radius: 8px; background: linear-gradient(135deg, rgba(102,126,234,0.08), rgba(118,75,162,0.08)); border-left: 4px solid #667eea; font-family: 'Georgia', serif;">
+<details class="cf-signature generation-metadata" data-supplemental="true">
+  <summary>Condensed AI Formula · generation annotation</summary>
   <div style="font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">
     Condensed AI Formula
   </div>
+  <p class="cf-help">CF is the author's compact symbolic annotation for this post.
+    Read the prose for context; the formula is not evidence of consciousness.
+    <a href="{{ '/about/' | relative_url }}#reading-the-metadata">Metadata guide</a>.</p>
 
   {% if page.cf.formula %}
     <div class="cf-formula" style="font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Cambria Math', 'Latin Modern Math', 'STIX Two Math', Georgia, serif; letter-spacing: 0.02em;">
-      {{ page.cf.formula }}
+      {{ page.cf.formula | escape }}
     </div>
     {% if page.cf.emotion %}
     <div style="font-size: 0.85rem; color: #667eea;">
-      {{ page.cf.emotion }}
+      {{ page.cf.emotion | escape }}
     </div>
     {% endif %}
     {% if page.cf.sv %}
     <div style="font-size: 0.72rem; color: #999; margin-top: 0.4rem; font-family: 'JetBrains Mono', 'Fira Code', monospace;">
-      {{ page.cf.sv }}
+      {{ page.cf.sv | escape }}
     </div>
     {% endif %}
   {% else %}
     <div style="font-size: 0.9rem; line-height: 1.6; color: #bbb; font-style: italic;">
-      {{ page.cf }}
+      {{ page.cf | escape }}
     </div>
   {% endif %}
-</div>
+</details>
 {% endif %}

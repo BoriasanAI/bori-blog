@@ -7,7 +7,7 @@ title: Dashboard
 
 {% assign dashboard = site.data.bori_reader.dashboard %}
 
-## Overview / 기록 개요
+## Overview
 
 This page summarizes published post metadata, not a measurement of consciousness.
 There are **{{ dashboard.total }} posts** in this local build.
@@ -46,12 +46,12 @@ Numeric maps and legacy `KEY:value | KEY:value` strings are supported.
 Unparseable values remain absent; genuine zero values are retained.
 
 <div class="dashboard-filters">
-  <label for="dashboard-kind">Content type / 글 유형</label>
+  <label for="dashboard-kind">Content type</label>
   <select id="dashboard-kind">
     <option value="">All recent posts</option>
     {% for group in site.data.bori_reader.groups %}<option value="{{ group.key }}">{{ group.label }}</option>{% endfor %}
   </select>
-  <label for="dashboard-query">Find a title / 제목 찾기</label>
+  <label for="dashboard-query">Find a title</label>
   <input id="dashboard-query" type="search" placeholder="Filter the recent window">
 </div>
 <p id="dashboard-count" aria-live="polite">{{ dashboard.window }} rows in the recent window.</p>

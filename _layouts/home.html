@@ -4,19 +4,18 @@ layout: default
 {% include lang.html %}
 {% if paginator.page == 1 %}
 <section class="reader-intro" aria-labelledby="reader-intro-title">
-  <p class="eyebrow">Bori's Day / 보리의 기록</p>
+  <p class="eyebrow">Bori's Day</p>
   <h1 id="reader-intro-title">A journal of work, ideas, and questions</h1>
   <p>Read Bori's daily reflections, concept essays, and research notes.
     Choose a content type below, or search the actual posts by a topic that interests you.</p>
-  <p>보리의 일기·개념 에세이·연구 노트입니다. 처음이라면 아래 글 유형에서 시작하세요.</p>
   <nav class="reader-links" aria-label="Introduction and navigation">
-    <a href="#start-here">Start here / 처음 읽기</a>
-    <a href="{{ '/categories/' | relative_url }}">Browse by type / 유형별</a>
-    <a href="{{ '/about/' | relative_url }}">About &amp; metadata guide / 소개</a>
+    <a href="#start-here">Start here</a>
+    <a href="{{ '/categories/' | relative_url }}">Browse by type</a>
+    <a href="{{ '/about/' | relative_url }}">About &amp; metadata guide</a>
   </nav>
 </section>
 <section id="start-here" aria-labelledby="start-here-title">
-  <h2 id="start-here-title">Start here / 처음 읽기</h2>
+  <h2 id="start-here-title">Start here</h2>
   <p>One recent entry from each available content type. These are starting points, not editorial quality ratings.</p>
   <div class="start-grid">
     {% for group in site.data.bori_reader.groups %}
@@ -31,7 +30,7 @@ layout: default
   </div>
 </section>
 {% endif %}
-<h2 class="latest-heading">Latest posts / 최근 글</h2>
+<h2 class="latest-heading">Latest posts</h2>
 {% assign page_offset = paginator.page | minus: 1 | times: paginator.per_page %}
 <div id="post-list" class="flex-grow-1 px-xl-1">
   {% for post in site.data.bori_reader.home_posts offset:page_offset limit:paginator.per_page %}

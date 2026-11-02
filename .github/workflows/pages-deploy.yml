@@ -56,6 +56,19 @@ jobs:
             \-\-disable-external \
             \-\-ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
 
+      - name: Reader regression gates
+        run: |
+          bundle exec ruby tools/reader-check.rb
+          bundle exec ruby tools/reader-tables-check.rb
+          bundle exec ruby tools/visual-reader-check.rb
+          bundle exec ruby tools/reader-republication-static.rb "_site${{ steps.pages.outputs.base_path }}"
+          bundle exec ruby tools/visual-render-check.rb "_site${{ steps.pages.outputs.base_path }}"
+          node --check assets/js/reader.js
+          node --check assets/js/reader-visuals.js
+          node --check tools/reader-republication-check.js
+          node tools/visual-reader-js-check.cjs
+          bash -n tools/reader-republication.sh
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -5,10 +5,11 @@ require "nokogiri"
 module BoriVisuals
   module_function
 
-  def local_image(image, root, at)
-    object(image, %w[path alt caption credit license url], at)
+  def local_image(image, root, at, section: false)
+    object(image, %w[path alt caption credit license url] + (section ? ["section"] : []), at)
     %w[path alt credit license].each { |key| text(image[key], "#{at}.#{key}", 500) }
     text(image["caption"], "#{at}.caption") if image.key?("caption")
+    text(image["section"], "#{at}.section", 200) if image.key?("section")
     url(image["url"], "#{at}.url") if image.key?("url")
     path = image["path"]
     raise Invalid, "#{at}.path: expected a local /assets/ image path" unless path.start_with?("/assets/") &&

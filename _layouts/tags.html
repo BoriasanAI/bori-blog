@@ -1,0 +1,9 @@
+---
+layout: page
+---
+<p>Topic tags. Day-number and date tags are omitted here; every post remains accessible through <a href="{{ '/archives/' | relative_url }}">Archives</a>.</p>
+<div id="tags" class="d-flex flex-wrap mx-xl-2">
+  {% for tag in site.data.bori_reader.tags %}
+  <a class="tag" href="{{ tag | slugify | url_encode | prepend: '/tags/' | append: '/' | relative_url }}">{{ tag | escape }} <span class="text-muted">{{ site.tags[tag].size }}</span></a>
+  {% endfor %}
+</div>

@@ -1,0 +1,9 @@
+{% assign visible_posts = site.posts | where_exp: 'post', 'post.hidden != true' %}
+<section id="access-lastmod">
+  <h2 class="panel-heading">Latest reading</h2>
+  <ul class="content list-unstyled">
+    {% for post in visible_posts limit:5 %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.bori_title | escape }}</a></li>
+    {% endfor %}
+  </ul>
+</section>

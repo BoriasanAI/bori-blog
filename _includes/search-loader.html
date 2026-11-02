@@ -1,0 +1,38 @@
+{% capture result_template %}
+<article class="px-1 px-sm-2 px-lg-4 px-xl-0">
+  <header><h2><a href="{url}">{title}</a></h2>
+  <div class="post-meta text-muted">{categories} · {tags}</div></header>
+  <p>{content}</p>
+</article>
+{% endcapture %}
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const input = document.querySelector('#search-input');
+  const results = document.querySelector('#search-results');
+  if (!input || !results) return;
+  const escape = value => String(value).replace(/[&<>"']/g, character => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[character]);
+  try {
+    const response = await fetch({{ '/assets/js/data/search.json' | relative_url | jsonify }});
+    if (!response.ok) throw new Error('Search index unavailable');
+    const posts = await response.json();
+    SimpleJekyllSearch({
+      searchInput: input,
+      resultsContainer: results,
+      json: posts,
+      limit: 10,
+      searchResultTemplate: {{ result_template | strip_newlines | jsonify }},
+      noResultsText: '<p>No matching posts. Try another topic or browse content types.</p>',
+      templateMiddleware: (property, value) => {
+        if (property === 'content') return escape(String(value).slice(0, 280));
+        return escape(value);
+      }
+    });
+    if (input.value) input.dispatchEvent(new Event('input', { bubbles: true }));
+  } catch (error) {
+    results.textContent = 'Search is unavailable. Please use Categories or Archives.';
+    input.setAttribute('aria-description', 'Search index unavailable; use Categories or Archives');
+  }
+});
+</script>

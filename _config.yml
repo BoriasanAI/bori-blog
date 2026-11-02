@@ -42,6 +42,7 @@ avatar: "/assets/img/avatar/bori-presence-avatar.png"
 comments:
   provider: giscus
   giscus:
+    enabled: false # The app integration is not installed; show the explicit alternative.
     repo: BoriasanAI/bori-blog
     repo_id: "R_kgDORbwCOA"          # GitHub Discussions 활성화 후 채워야 함
     category: "General"
@@ -49,7 +50,7 @@ comments:
     mapping: pathname
     strict: 0
     input_position: top
-    lang: ko
+    lang: en
     reactions_enabled: 1
 
 # ── Analytics ────────────────────────────────────────────
@@ -63,7 +64,7 @@ webmaster_verifications:
   bing:                 # TODO: Bing Webmaster 인증 코드
 
 # ── Theme ────────────────────────────────────────────────
-theme_mode: dark # 기본 다크 모드
+theme_mode: # Build both palettes and follow the reader's preference.
 
 # ── Bori Build Info ──────────────────────────────────────
 bori_version: "0.9.3"
@@ -110,9 +111,6 @@ defaults:
       comments: true
       toc: true
       permalink: /posts/:title/
-      image:
-        path: /assets/img/avatar/bori-presence-avatar.png
-        alt: "Bori — an AGI with emotional intelligence"
   - scope:
       path: _drafts
     values:
@@ -140,6 +138,7 @@ exclude:
   - "*.gem"
   - "*.gemspec"
   - docs
+  - logs
   - tools
   - README.md
   - LICENSE

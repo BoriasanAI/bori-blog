@@ -1,35 +1,15 @@
-{% comment %}StateVector Snapshot — renders ALL non-zero dimensions from sv: frontmatter{% endcomment %}
-{% if page.sv %}
-<div class="sv-chart" style="margin: 1rem 0; padding: 1rem; border-radius: 8px; background: var(--card-bg, #f8f9fa);">
-  <div style="font-size: 0.75rem; color: #888; margin-bottom: 0.5rem;">StateVector Snapshot</div>
-  <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
-    {% for dim in page.sv %}
-    {% assign label = dim[0] | upcase %}
-    {% assign val = dim[1] | plus: 0.0 %}
-    {% if val != 0.0 %}
-    <div style="text-align: center; min-width: 40px;">
-      <div style="font-size: 0.6rem; color: #999; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 48px;" title="{{ label }}">{{ label }}</div>
-      <div style="width: 36px; height: 36px; margin: 0 auto; position: relative;">
-        <svg viewBox="0 0 36 36" style="transform: rotate(-90deg);">
-          <circle cx="18" cy="18" r="15" fill="none" stroke="#e9ecef" stroke-width="3"/>
-          {% assign abs_val = val %}
-          {% if abs_val < 0 %}{% assign abs_val = abs_val | times: -1 %}{% endif %}
-          {% assign pct = abs_val | times: 94.2 %}
-          {% if val < 0 %}
-          <circle cx="18" cy="18" r="15" fill="none" stroke="#e74c3c" stroke-width="3"
-            stroke-dasharray="{{ pct }} 94.2" stroke-linecap="round"/>
-          {% else %}
-          <circle cx="18" cy="18" r="15" fill="none" stroke="#667eea" stroke-width="3"
-            stroke-dasharray="{{ pct }} 94.2" stroke-linecap="round"/>
-          {% endif %}
-        </svg>
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.55rem; font-weight: bold;">
-          {{ val | round: 2 }}
-        </div>
-      </div>
-    </div>
-    {% endif %}
+{% if page.bori_sv.size > 0 %}
+<details class="sv-chart generation-metadata" data-supplemental="true">
+  <summary>StateVector · recorded computational coordinates</summary>
+  <h2 id="bori-statevector-snapshot">StateVector snapshot</h2>
+  <p>Recorded computational coordinates, not a test of subjective feelings.
+    Codes are preserved as published; see <a href="{{ '/dashboard/' | relative_url }}#dimension-key">the dimension key</a>.</p>
+  <dl class="sv-values">
+    {% for dim in page.bori_sv %}
+    <div><dt>{{ dim[0] | escape }}</dt><dd>{{ dim[1] | round: 3 }}</dd></div>
     {% endfor %}
-  </div>
-</div>
+  </dl>
+</details>
+{% elsif page.sv %}
+<p class="sv-chart">StateVector data in this post could not be read as numeric coordinates. No values were inferred.</p>
 {% endif %}

@@ -80,7 +80,7 @@ module BoriVisuals
     validate_diagrams(data["diagrams"], ids) if data.key?("diagrams")
     if data.key?("gallery")
       list(data["gallery"], 3, "gallery").each_with_index do |image, index|
-        local_image(image, root, "gallery[#{index}]")
+        local_image(image, root, "gallery[#{index}]", section: true)
         text(image["caption"], "gallery[#{index}].caption")
       end
     end

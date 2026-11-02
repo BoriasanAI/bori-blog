@@ -25,7 +25,7 @@
 .reader-visuals .rv-kicker { margin-bottom: .3rem; letter-spacing: .03em; }
 .reader-visuals .rv-heading h2 { margin: 0 0 1.2rem; font-size: 1.35rem; }
 .reader-visuals .rv-sources { display: grid; gap: 1rem; }
-.reader-visuals .rv-source { padding: 1rem; border: 1px solid var(--rv-line); border-radius: .6rem; background: var(--main-bg); }
+.reader-visuals .rv-source { padding: 1rem; border: 1px solid var(--rv-line); border-radius: .6rem; background: var(--main-bg, var(--rv-panel)); }
 .reader-visuals .rv-source h3 { margin: .4rem 0; font-size: 1.1rem; line-height: 1.5; }
 .reader-visuals .rv-source p { margin: .5rem 0 0; line-height: 1.7; }
 .reader-visuals a { color: var(--rv-accent) !important; }
@@ -44,7 +44,7 @@
 .reader-visuals .rv-diagram figcaption > p { font-size: .85rem; color: var(--rv-muted); }
 .reader-visuals .rv-outline-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: 1rem; }
 .reader-visuals .rv-diagram svg { display: block; width: 100%; max-height: none; overflow: visible; }
-.reader-visuals .rv-diagram svg rect { fill: var(--main-bg); stroke: var(--rv-line); }
+.reader-visuals .rv-diagram svg rect { fill: var(--main-bg, var(--rv-panel)); stroke: var(--rv-line); }
 .reader-visuals .rv-diagram svg circle { fill: var(--rv-accent); }
 .reader-visuals .rv-svg-label {
   fill: var(--rv-ink);
@@ -84,7 +84,6 @@
 .reader-visuals.rv-journal .rv-diagram:first-of-type, .reader-visuals.rv-essay .rv-diagram:first-of-type { border-top: 0; padding-top: 0; }
 @media (max-width: 600px) {
   .reader-visuals.rv-paper .rv-has-image, .reader-visuals.rv-journal .rv-has-image { grid-template-columns: minmax(0, 1fr); }
-  .reader-visuals .rv-scroll-hint { display: block; }
 }
 .reader-visuals a { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; }
 .reader-visuals, .reader-visuals * { box-sizing: border-box; }
@@ -121,6 +120,25 @@
 .reader-visuals .rv-node-list li { padding: .3rem 0 .7rem; }
 .reader-visuals .rv-node-list p { font-size: .9rem; margin: .4rem 0 0; line-height: 1.7; }
 .reader-visuals .rv-node-list p, .reader-visuals .rv-comparison td { white-space: pre-wrap; }
+.rv-image { margin: 1.5rem 0; }
+.rv-image .rv-original { display: block; position: relative; width: 100%; min-height: 44px; }
+.rv-image img { display: block; width: 100%; height: auto; max-width: 100%; }
+.rv-image figcaption { margin-top: .6rem; text-align: start; font-style: normal; line-height: 1.6; }
+.rv-image .rv-caption, .rv-image .rv-credit { display: block; color: var(--reader-muted); font-size: .9rem; }
+.rv-zoom-hint { display: block; padding-block: .5rem; font-size: .9rem; text-decoration: underline; }
+.rv-zoom-dialog { width: 96vw; max-width: 96vw; max-height: 92vh; padding: .75rem; border: 1px solid var(--reader-muted); border-radius: .5rem; color: var(--text-color, #263445); background: var(--main-bg, var(--reader-surface)); }
+.rv-zoom-dialog::backdrop { background: rgb(0 0 0 / 75%); }
+.rv-zoom-toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; margin-bottom: .75rem; }
+.rv-zoom-toolbar button, .rv-zoom-toolbar a { min-height: 44px; padding: .5rem; }
+.rv-zoom-scroll { max-height: 72vh; overflow: auto; overscroll-behavior: contain; }
+.rv-zoom-scroll img { display: block; max-width: none; height: auto; }
+@media (prefers-reduced-motion: reduce) {
+  .rv-zoom-scroll { scroll-behavior: auto; }
+}
+@media print {
+  .rv-image .rv-original { min-height: 0; }
+  .rv-image img { max-width: 100%; }
+}
 @media (max-width: 600px) {
   .reader-visuals .rv-outline-layout { grid-template-columns: minmax(0, 1fr); }
 }
