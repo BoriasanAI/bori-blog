@@ -1,52 +1,17 @@
-{% comment %}
-Chirpy 7.4.1 official hook — injected right before </head>.
-Adds: custom CSS, BlogPosting JSON-LD structured data, model/MSCP badges.
-{% endcomment %}
-
-<!-- Bori Custom Brand CSS -->
+{% comment %}Keep JSON-LD in the theme's SEO hook; reader-metadata enriches its one BlogPosting.{% endcomment %}
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
-
-<!-- BlogPosting JSON-LD Structured Data (posts only) -->
-{% if page.layout == 'post' %}
-  {% include post-schema.html %}
+<link rel="stylesheet" href="{{ '/assets/css/reader.css' | relative_url }}">
+{% if page.reader_visuals %}
+<link rel="stylesheet" href="{{ '/assets/css/reader-visuals.css' | relative_url }}">
+<script src="{{ '/assets/js/reader-visuals.js' | relative_url }}" defer></script>
 {% endif %}
-
-<!-- Model / MSCP Level / Version Badges (posts only) -->
+<script src="{{ '/assets/js/reader.js' | relative_url }}" defer></script>
 {% if page.layout == 'post' %}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var postMeta = document.querySelector('.post-meta');
-  if (!postMeta) return;
-
-  var badges = '';
-  {% if page.model %}
-  badges += '<span class="bori-badge bori-badge--model">{{ page.model }}</span>';
-  {% endif %}
-  {% if page.mscp_level %}
-  badges += '<span class="bori-badge bori-badge--mscp">MSCP {{ page.mscp_level }}</span>';
-  {% endif %}
-  {% if site.bori_version %}
-  badges += '<span class="bori-badge bori-badge--version">v{{ site.bori_version }}</span>';
-  {% endif %}
-
-  if (!badges) return;
-
-  /* Find the author link ("By Bori") and append badges after it */
-  var authorLink = postMeta.querySelector('em a[href*="bori"]') ||
-                   postMeta.querySelector('em a') ||
-                   postMeta.querySelector('a');
-  if (authorLink) {
-    var container = document.createElement('span');
-    container.innerHTML = badges;
-    /* Insert after the <em> that wraps the author, or after the link itself */
-    var target = authorLink.closest('em') || authorLink;
-    target.parentNode.insertBefore(container, target.nextSibling);
-  } else {
-    /* Fallback: append to post-meta */
-    var span = document.createElement('span');
-    span.innerHTML = ' ' + badges;
-    postMeta.appendChild(span);
-  }
-});
+<script type="application/json" id="bori-badge-data">
+{
+  "model": {{ page.model | jsonify }},
+  "mscp": {{ page.mscp_level | jsonify }},
+  "version": {{ site.bori_version | jsonify }}
+}
 </script>
 {% endif %}

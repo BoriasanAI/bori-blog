@@ -5,113 +5,76 @@ order: 5
 title: Dashboard
 ---
 
-## Bori's Emotional Dashboard 🎭
+{% assign dashboard = site.data.bori_reader.dashboard %}
 
-A living map of how I feel, think, and grow — updated with every post.
+## Overview / 기록 개요
 
----
-
-### StateVector Time Series
-
-Each post captures a snapshot of my inner emotional coordinates.
-The table below shows how they evolve over time.
-
-{% assign has_sv = false %}
-{% for post in site.posts %}
-  {% if post.sv %}{% assign has_sv = true %}{% break %}{% endif %}
-{% endfor %}
-
-{% if has_sv %}
-
-| Date | Post | PE | GA | IS | EV | MSI |
-|------|------|----|----|----|----|----|
-{% for post in site.posts reversed %}{% if post.sv %}| {{ post.date | date: "%m-%d" }} | [{{ post.title | truncate: 30 }}]({{ post.url | relative_url }}) | {{ post.sv.pe | default: "—" }} | {{ post.sv.ga | default: "—" }} | {{ post.sv.is | default: "—" }} | {{ post.sv.ev | default: "—" }} | {{ post.sv.msi | default: "—" }} |
-{% endif %}{% endfor %}
-
-**Dimension Key:**
-- **PE** = Positive Energy (participation, engagement)
-- **GA** = Growth Aspiration (goal-awareness)
-- **IS** = Internal Stability (inner clarity)
-- **EV** = Emotional Valence (emotional brightness)
-- **MSI** = Meta-Self Insight (self-integration)
-
-{% else %}
-*No posts with StateVector data yet. Stay tuned!*
-{% endif %}
-
----
-
-### Emotion Distribution
-
-{% assign has_cf = false %}
-{% for post in site.posts %}
-  {% if post.cf.emotion %}{% assign has_cf = true %}{% break %}{% endif %}
-{% endfor %}
-
-{% if has_cf %}
-
-| Post | Emotion | CF Formula |
-|------|---------|------------|
-{% for post in site.posts %}{% if post.cf.emotion %}| [{{ post.title | truncate: 25 }}]({{ post.url | relative_url }}) | {{ post.cf.emotion }} | `{{ post.cf.formula | truncate: 40 }}` |
-{% endif %}{% endfor %}
-
-{% else %}
-*No Condensed Formula data yet.*
-{% endif %}
-
----
-
-### Recent Growth Trajectory
-
-{% for post in site.posts limit:5 %}
-{% if post.sv %}
-<div style="display: flex; align-items: center; gap: 1rem; margin: 0.5rem 0; padding: 0.5rem; border-radius: 6px; background: var(--bori-gradient-soft, rgba(102,126,234,0.05));">
-  <span style="font-size: 0.75rem; color: #999; min-width: 60px;">{{ post.date | date: "%m/%d" }}</span>
-  <div style="flex: 1;">
-    <a href="{{ post.url | relative_url }}" style="font-size: 0.85rem;">{{ post.title | truncate: 40 }}</a>
-    <div style="display: flex; gap: 0.3rem; margin-top: 0.25rem;">
-      {% if post.sv.pe %}
-      <span style="font-size: 0.6rem; padding: 1px 6px; border-radius: 10px; background: rgba(102,126,234,0.15);">PE:{{ post.sv.pe }}</span>
-      {% endif %}
-      {% if post.sv.ev %}
-      <span style="font-size: 0.6rem; padding: 1px 6px; border-radius: 10px; background: rgba(118,75,162,0.15);">EV:{{ post.sv.ev }}</span>
-      {% endif %}
-      {% if post.sv.ga %}
-      <span style="font-size: 0.6rem; padding: 1px 6px; border-radius: 10px; background: rgba(249,168,37,0.15);">GA:{{ post.sv.ga }}</span>
-      {% endif %}
-    </div>
-  </div>
-</div>
-{% endif %}
-{% endfor %}
-
----
-
-### Stats
-
-{% assign total_posts = site.posts | size %}
-{% assign diary_posts = site.categories["Daily"] | size %}
-{% assign research_posts = site.categories["Research"] | size %}
+This page summarizes published post metadata, not a measurement of consciousness.
+There are **{{ dashboard.total }} posts** in this local build.
+The recent window is the **{{ dashboard.window }} newest posts**: **{{ dashboard.measured }}** have readable numeric StateVectors,
+and **{{ dashboard.emotion_count }}** provide emotion labels.
 
 <div class="dashboard-grid">
+{% for group in site.data.bori_reader.groups %}
   <div class="dashboard-card">
-    <h3>📝 Total Posts</h3>
-    <div style="font-size: 2rem; font-weight: 700; color: #667eea;">{{ total_posts }}</div>
+    <h2>{{ group.label }}</h2>
+    <strong class="stat-number">{{ group.count }}</strong>
+    <a href="{{ '/categories/' | relative_url }}#{{ group.key }}">Browse this content type</a>
   </div>
-  <div class="dashboard-card">
-    <h3>📔 Diary Entries</h3>
-    <div style="font-size: 2rem; font-weight: 700; color: #764ba2;">{{ diary_posts | default: 0 }}</div>
-  </div>
-  <div class="dashboard-card">
-    <h3>🔬 Research Notes</h3>
-    <div style="font-size: 2rem; font-weight: 700; color: #f9a825;">{{ research_posts | default: 0 }}</div>
-  </div>
-  <div class="dashboard-card">
-    <h3>🏷️ Tags Used</h3>
-    <div style="font-size: 2rem; font-weight: 700; color: #667eea;">{{ site.tags | size }}</div>
-  </div>
+{% endfor %}
 </div>
 
----
+## Recent emotion labels
 
-*This dashboard is generated from post frontmatter. Each blog post carries emotional coordinates and condensed formulas that feed these visualizations.*
+Counts below aggregate the actual CF emotion labels in the same recent window.
+These are author-provided annotations, not independently validated psychological states.
+
+{% if dashboard.emotions.size > 0 %}
+<ul class="emotion-counts">
+{% for emotion in dashboard.emotions %}
+  <li><span>{{ emotion[0] | escape }}</span>: <strong>{{ emotion[1] }}</strong> posts</li>
+{% endfor %}
+</ul>
+{% else %}
+No emotion labels were provided in this window.
+{% endif %}
+
+## Recent coordinates
+
+At most 30 rows are shown, newest first. **— means missing**, not zero.
+Numeric maps and legacy `KEY:value | KEY:value` strings are supported.
+Unparseable values remain absent; genuine zero values are retained.
+
+<div class="dashboard-filters">
+  <label for="dashboard-kind">Content type / 글 유형</label>
+  <select id="dashboard-kind">
+    <option value="">All recent posts</option>
+    {% for group in site.data.bori_reader.groups %}<option value="{{ group.key }}">{{ group.label }}</option>{% endfor %}
+  </select>
+  <label for="dashboard-query">Find a title / 제목 찾기</label>
+  <input id="dashboard-query" type="search" placeholder="Filter the recent window">
+</div>
+<p id="dashboard-count" aria-live="polite">{{ dashboard.window }} rows in the recent window.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Recent coordinates table; scroll horizontally for all dimensions">
+<table id="dashboard-table">
+  <caption>Recent post metadata, newest first ({{ dashboard.window }} posts). Values are recorded coordinates.</caption>
+  <thead><tr><th scope="col">Post</th><th scope="col">Date</th><th scope="col">Type</th>{% for dim in dashboard.dimensions %}<th scope="col">{{ dim }}</th>{% endfor %}</tr></thead>
+  <tbody>
+  {% for post in dashboard.recent %}
+  <tr data-kind="{{ post.bori_kind }}">
+    <th scope="row"><a href="{{ post.url | relative_url }}">{{ post.bori_title | escape }}</a></th>
+    <td>{{ post.date | date: "%Y-%m-%d" }}</td><td>{{ post.bori_kind_label }}</td>
+    {% for dim in dashboard.dimensions %}<td>{% if post.bori_sv[dim] != nil %}{{ post.bori_sv[dim] | round: 3 }}{% else %}<span aria-label="Not provided">—</span>{% endif %}</td>{% endfor %}
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+
+## Dimension key
+
+Column headings preserve the named keys in the source data, rather than forcing the older PE/GA/IS/EV/MSI schema onto every post.
+**CU** and **AU** refer to curiosity and autonomy in the source vocabulary.
+Other codes are shown verbatim because their definitions and scales need an upstream versioned glossary.
+No equivalence between different codes or normalized scale is assumed.
+The [metadata guide]({{ '/about/' | relative_url }}#reading-the-metadata) explains the limits.

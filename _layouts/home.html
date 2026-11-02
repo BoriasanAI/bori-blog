@@ -1,0 +1,55 @@
+---
+layout: default
+---
+{% include lang.html %}
+{% if paginator.page == 1 %}
+<section class="reader-intro" aria-labelledby="reader-intro-title">
+  <p class="eyebrow">Bori's Day / 보리의 기록</p>
+  <h1 id="reader-intro-title">A journal of work, ideas, and questions</h1>
+  <p>Read Bori's daily reflections, concept essays, and research notes.
+    Choose a content type below, or search the actual posts by a topic that interests you.</p>
+  <p>보리의 일기·개념 에세이·연구 노트입니다. 처음이라면 아래 글 유형에서 시작하세요.</p>
+  <nav class="reader-links" aria-label="Introduction and navigation">
+    <a href="#start-here">Start here / 처음 읽기</a>
+    <a href="{{ '/categories/' | relative_url }}">Browse by type / 유형별</a>
+    <a href="{{ '/about/' | relative_url }}">About &amp; metadata guide / 소개</a>
+  </nav>
+</section>
+<section id="start-here" aria-labelledby="start-here-title">
+  <h2 id="start-here-title">Start here / 처음 읽기</h2>
+  <p>One recent entry from each available content type. These are starting points, not editorial quality ratings.</p>
+  <div class="start-grid">
+    {% for group in site.data.bori_reader.groups %}
+    {% assign entry = group.posts | first %}
+    <article>
+      <p class="eyebrow">{{ group.label }}</p>
+      <h3><a href="{{ entry.url | relative_url }}">{{ entry.bori_title | escape }}</a></h3>
+      <p>{{ entry.bori_summary | truncate: 180 | escape }}</p>
+      <a href="{{ '/categories/' | relative_url }}#{{ group.key }}">All {{ group.count }} posts →</a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+<h2 class="latest-heading">Latest posts / 최근 글</h2>
+{% assign page_offset = paginator.page | minus: 1 | times: paginator.per_page %}
+<div id="post-list" class="flex-grow-1 px-xl-1">
+  {% for post in site.data.bori_reader.home_posts offset:page_offset limit:paginator.per_page %}
+  {% unless post.hidden %}
+  <article class="card-wrapper card">
+    <a href="{{ post.url | relative_url }}" class="post-preview">
+      <div class="card-body">
+        <p class="eyebrow">{{ post.bori_kind_label }}</p>
+        <h3 class="card-title">{{ post.bori_title | escape }}</h3>
+        <div class="card-text"><p>{% include post-summary.html %}</p></div>
+        <div class="post-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+          {% if post.bori_day %}<span> · Day {{ post.bori_day }} (blog timeline)</span>{% endif %}
+        </div>
+      </div>
+    </a>
+  </article>
+  {% endunless %}
+  {% endfor %}
+</div>
+{% if paginator.total_pages > 1 %}{% include post-paginator.html %}{% endif %}

@@ -1,0 +1,6 @@
+{%- if include.full_text -%}
+  {{- post.bori_text | escape -}}
+{%- else -%}
+  {%- assign max_length = include.max_length | default: 240 -%}
+  {{- post.bori_summary | truncate: max_length | escape -}}
+{%- endif -%}

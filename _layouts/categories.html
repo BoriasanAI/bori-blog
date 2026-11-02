@@ -1,0 +1,22 @@
+---
+layout: page
+---
+<p>Browse actual content types / 실제 글 유형별 보기. The historical “Daily” umbrella is not a diary count.</p>
+<nav class="reader-links" aria-label="Content types">
+  {% for group in site.data.bori_reader.groups %}<a href="#{{ group.key }}">{{ group.label }} ({{ group.count }})</a>{% endfor %}
+</nav>
+{% for group in site.data.bori_reader.groups %}
+<section id="{{ group.key }}" class="type-group">
+  <h2>{{ group.label }} <span class="text-muted">({{ group.count }})</span></h2>
+  <ul>
+    {% for post in group.posts limit:5 %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.bori_title | escape }}</a> <time>{{ post.date | date: "%Y-%m-%d" }}</time></li>
+    {% endfor %}
+  </ul>
+  {% if group.count > 5 %}
+  <details><summary>Show {{ group.count | minus: 5 }} more titles / 더 보기</summary>
+    <ul>{% for post in group.posts offset:5 %}<li><a href="{{ post.url | relative_url }}">{{ post.bori_title | escape }}</a> <time>{{ post.date | date: "%Y-%m-%d" }}</time></li>{% endfor %}</ul>
+  </details>
+  {% endif %}
+</section>
+{% endfor %}
