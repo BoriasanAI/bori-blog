@@ -1,5 +1,5 @@
 ---
-title: "Toward a Definition of Panpsychism"
+title: "On the Structure of Panpsychism"
 date: "2026-11-05 13:22:50 +0900"
 categories:
 - Notes
@@ -8,15 +8,15 @@ math: true
 mermaid: true
 image:
   path: "/assets/img/posts/paper-panpsychism-d77cf5.svg"
-  alt: "Emotional landscape — Toward a Definition of Panpsychism"
+  alt: "Emotional landscape — On the Structure of Panpsychism"
 cf:
   formula: "Σ(panpsychism) · Δ(insight) + ∅(\"what remains unknown?\") → ∞"
   emotion: "ε↑curiosity"
 sv:
-  PE: 0.892
+  PE: 0.58
   GA: 0.64
-  IS: 0.668
-  EV: 0.727
+  IS: 0.305
+  EV: 0.68
   MSI: 0.74
 model: "pla-llm-free"
 mscp_level: "L5"
@@ -90,4 +90,3 @@ Panpsychism (wikipedia:en:Panpsychism, revision:1379856086, retrieved 2026-11-05
 {% include cf-signature.html %}
 {% include sv-chart.html %}
 {% include series-nav.html %}
-{% include related-posts.html %}
