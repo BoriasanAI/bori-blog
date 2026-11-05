@@ -1,0 +1,74 @@
+--- previous/_plugins/reader-visuals-diagrams.rb
++++ round-04/_plugins/reader-visuals-diagrams.rb
+@@ -0,0 +1,71 @@
++# frozen_string_literal: true
++
++module BoriVisuals
++  module_function
++
++  def validate_diagrams(diagrams, source_ids)
++    list(diagrams, 2, "diagrams").each_with_index do |diagram, index|
++      at = "diagrams[#{index}]"
++      object(diagram, %w[kind title nodes edges events], at)
++      text(diagram["title"], "#{at}.title", 300)
++      raise Invalid, "#{at}.kind: unsupported diagram" unless %w[outline evidence-map timeline comparison].include?(diagram["kind"])
++      nodes = list(diagram["nodes"], 12, "#{at}.nodes")
++      ids = []
++      nodes.each_with_index do |node, node_index|
++        place = "#{at}.nodes[#{node_index}]"
++        object(node, %w[id label url detail], place)
++        id = text(node["id"], "#{place}.id", 100)
++        raise Invalid, "#{place}.id: invalid or duplicate ID" unless id.match?(/\A[a-zA-Z0-9][a-zA-Z0-9_-]*\z/) && !ids.include?(id)
++        ids << id
++        text(node["label"], "#{place}.label", 300)
++        text(node["detail"], "#{place}.detail") if node.key?("detail")
++        url(node["url"], "#{place}.url") if node.key?("url")
++      end
++      raise Invalid, "#{at}: empty diagram" if nodes.empty? && diagram["kind"] != "timeline"
++    end
++  end
++
++  def node_list(nodes, baseurl, ordered: false)
++    tag = ordered ? "ol" : "ul"
++    "<#{tag} class=\"rv-node-list\">" + nodes.map do |node|
++      label = escape(node["label"])
++      label = "<a href=\"#{href(node['url'], baseurl)}\">#{label}</a>" if node["url"]
++      "<li><span>#{label}</span>#{node['detail'] ? "<p>#{escape(node['detail'])}</p>" : ""}</li>"
++    end.join + "</#{tag}>"
++  end
++
++  def wrapped_svg_label(label, x, y, width = 26)
++    lines = label.scan(/.{1,#{width}}/m)
++    spans = lines.each_with_index.map { |line, index| "<tspan x=\"#{x}\" y=\"#{y + index * 21}\">#{escape(line)}</tspan>" }.join
++    "<text class=\"rv-svg-label\">#{spans}</text>"
++  end
++
++  def outline(diagram, baseurl)
++    offset = 12
++    shapes = diagram["nodes"].map.with_index do |node, index|
++      rows = (node["label"].length / 23.0).ceil
++      height = [54, 25 + rows * 21].max
++      y = offset
++      offset += height + 18
++      <<~SVG
++        <g><rect x="12" y="#{y}" width="296" height="#{height}" rx="9"/>
++        <circle cx="30" cy="#{y + 22}" r="3"/>
++        #{wrapped_svg_label(node['label'], 44, y + 28, 23)}</g>
++      SVG
++    end.join
++    <<~HTML
++      <figure class="rv-diagram rv-outline">
++        <figcaption><h3>#{escape(diagram['title'])}</h3><p>Article outline / 글의 구성 · supplied headings, not causal links / 인과관계 아님</p></figcaption>
++        <div class="rv-outline-layout"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 #{offset}" aria-hidden="true" focusable="false">#{shapes}</svg>
++        #{node_list(diagram['nodes'], baseurl, ordered: true)}</div>
++      </figure>
++    HTML
++  end
++
++  def diagrams_html(diagrams, baseurl)
++    Array(diagrams).map do |diagram|
++      raise Invalid, "diagram renderer not available: #{diagram['kind']}" unless diagram["kind"] == "outline"
++      outline(diagram, baseurl)
++    end.join
++  end
++end

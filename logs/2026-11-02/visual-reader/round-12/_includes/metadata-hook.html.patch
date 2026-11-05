@@ -1,0 +1,10 @@
+--- previous/_includes/metadata-hook.html
++++ round-12/_includes/metadata-hook.html
+@@ -3,6 +3,7 @@
+ <link rel="stylesheet" href="{{ '/assets/css/reader.css' | relative_url }}">
+ {% if page.reader_visuals %}
+ <link rel="stylesheet" href="{{ '/assets/css/reader-visuals.css' | relative_url }}">
++<script src="{{ '/assets/js/reader-visuals.js' | relative_url }}" defer></script>
+ {% endif %}
+ <script src="{{ '/assets/js/reader.js' | relative_url }}" defer></script>
+ {% if page.layout == 'post' %}

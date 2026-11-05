@@ -1,0 +1,16 @@
+--- previous/tools/visual-reader-check.rb
++++ round-09/tools/visual-reader-check.rb
+@@ -110,4 +110,13 @@
+ check(gallery_doc.at_css(".rv-gallery img")["alt"] == gallery["gallery"][0]["alt"], "gallery alternative text")
+ gallery["gallery"] *= 4
+ invalid(gallery, "unbounded gallery")
++%w[paper essay journal].each do |style|
++  styled = Marshal.load(Marshal.dump(fixture))
++  styled["style"] = style
++  styled_doc = Nokogiri::HTML.fragment(BoriVisuals.render(styled, root: root))
++  section = styled_doc.at_css(".reader-visuals")
++  check(section["class"].split.include?("rv-#{style}"), "genre style derives from explicit #{style} metadata")
++  first = section.element_children[1]
++  check(first["class"].include?(style == "paper" ? "rv-sources" : "rv-diagram"), "#{style} arranges sources and reading maps by genre")
++end
+ puts "visual-reader: #{@checks} checks passed"

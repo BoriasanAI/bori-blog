@@ -1,0 +1,10 @@
+--- previous/_plugins/reader-visuals.rb
++++ round-04/_plugins/reader-visuals.rb
+@@ -51,6 +51,7 @@
+       <section class="reader-visuals rv-#{escape(data.fetch('style', 'essay'))}" aria-label="Sources and article maps / 출처와 글 지도" data-visuals-version="1">
+         <header class="rv-heading"><p class="rv-kicker">Reading companion / 함께 읽기</p><h2>Sources &amp; maps / 출처와 지도</h2></header>
+         <div class="rv-sources">#{data['sources'].map { |source| source_card(source, root, baseurl) }.join}</div>
++        #{diagrams_html(data['diagrams'], baseurl)}
+       </section>
+     HTML
+   end

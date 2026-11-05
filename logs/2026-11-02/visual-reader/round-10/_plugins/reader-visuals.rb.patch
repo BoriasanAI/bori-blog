@@ -1,0 +1,61 @@
+--- previous/_plugins/reader-visuals.rb
++++ round-10/_plugins/reader-visuals.rb
+@@ -14,10 +14,17 @@
+     escape(value.start_with?("/") ? "#{baseurl.to_s.sub(%r{/\z}, '')}#{value}" : value)
+   end
+ 
++  def link(label, value, baseurl)
++    external = value.start_with?("https://")
++    host = external && URI.parse(value).host
++    attributes = external ? " rel=\"external noopener noreferrer\" aria-label=\"#{escape(label)} — external source at #{escape(host)} / 외부 출처\"" : ""
++    "<a href=\"#{href(value, baseurl)}\"#{attributes}>#{escape(label)}</a>"
++  end
++
+   def image_figure(image, root, baseurl, css = "")
+     width, height = local_image(image, root, "image")
+     credit = escape(image["credit"])
+-    credit = "<a href=\"#{href(image['url'], baseurl)}\">#{credit}</a>" if image["url"]
++    credit = link(image["credit"], image["url"], baseurl) if image["url"]
+     title_preview = image["path"].match?(%r{\A/assets/img/posts/visual-reference-[a-zA-Z0-9_-]+\.svg\z})
+     <<~HTML
+       <figure class="rv-image #{css}">
+@@ -37,7 +44,7 @@
+         #{source['image'] ? image_figure(source['image'], root, baseurl, 'rv-source-image') : '<p class="rv-no-image">Text source / 텍스트 출처 · No licensed preview supplied / 허가된 미리보기 없음</p>'}
+         <div class="rv-source-body">
+           <div class="rv-source-meta"><span class="rv-host">#{escape(host)}</span><span class="rv-kind">#{bibliographic ? 'Paper / 논문' : 'Reference / 참고'}#{archive ? " · #{archive}" : ""}</span></div>
+-          <h3><a href="#{href(source['url'], baseurl)}">#{escape(source['title'])}</a></h3>
++          <h3>#{link(source['title'], source['url'], baseurl)}</h3>
+           #{source['authors']&.any? ? "<p class=\"rv-authors\">#{escape(source['authors'].join(', '))}</p>" : ""}
+           #{publication ? "<time class=\"rv-published\" datetime=\"#{publication}\">#{publication}</time>" : ""}
+           #{source['description'] ? "<p>#{escape(source['description'])}</p>" : ""}
+@@ -54,6 +61,20 @@
+         <div class="rv-gallery-grid rv-gallery-count-#{images.size}">#{images.map { |image| image_figure(image, root, baseurl) }.join}</div>
+       </section>
+     HTML
++  end
++
++  def outline_targets(data, output, post_url)
++    copy = Marshal.load(Marshal.dump(data))
++    document = Nokogiri::HTML(output)
++    headings = document.css("article .content h2[id], article .content h3[id]").to_h do |heading|
++      [heading.text.strip, "#{post_url}##{heading['id']}"]
++    end
++    Array(copy["diagrams"]).select { |diagram| diagram["kind"] == "outline" }.each do |diagram|
++      Array(diagram["nodes"]).each do |node|
++        node["url"] ||= headings[node["label"]] if node.is_a?(Hash) && headings.key?(node["label"])
++      end
++    end
++    copy
+   end
+ 
+   def render(data, root:, baseurl: "")
+@@ -75,7 +96,8 @@
+ 
+ Jekyll::Hooks.register :posts, :post_render do |post|
+   next unless post.data.key?("reader_visuals")
+-  html = BoriVisuals.render(post.data["reader_visuals"], root: post.site.source, baseurl: post.site.baseurl)
++  data = BoriVisuals.outline_targets(post.data["reader_visuals"], post.output, post.url)
++  html = BoriVisuals.render(data, root: post.site.source, baseurl: post.site.baseurl)
+   marker = /(<div\b[^>]*class=["']content["'][^>]*>)/
+   raise BoriVisuals::Invalid, "#{post.relative_path}: article content container is missing" unless post.output.match?(marker)
+   post.output = post.output.sub(marker) { "#{html}\n#{Regexp.last_match(1)}" }

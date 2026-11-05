@@ -1,0 +1,61 @@
+--- previous/_plugins/reader-visuals-diagrams.rb
++++ round-11/_plugins/reader-visuals-diagrams.rb
+@@ -63,8 +63,26 @@
+     end.join + "</#{tag}>"
+   end
+ 
+-  def wrapped_svg_label(label, x, y, width = 26)
+-    lines = label.scan(/.{1,#{width}}/m)
++  def svg_lines(label, width = 30)
++    remaining = label.dup
++    lines = []
++    until remaining.empty?
++      units = 0
++      count = remaining.each_char.take_while do |character|
++        units += character.ord >= 0x2e80 ? 2 : 1
++        units <= width
++      end.size
++      count = 1 if count.zero?
++      part = remaining[0, count]
++      boundary = part.rindex(/\s/)
++      count = boundary + 1 if count < remaining.length && boundary && boundary.positive?
++      lines << remaining.slice!(0, count).strip
++    end
++    lines
++  end
++
++  def wrapped_svg_label(label, x, y, width = 30)
++    lines = svg_lines(label, width)
+     spans = lines.each_with_index.map { |line, index| "<tspan x=\"#{x}\" y=\"#{y + index * 21}\">#{escape(line)}</tspan>" }.join
+     "<text class=\"rv-svg-label\">#{spans}</text>"
+   end
+@@ -72,14 +90,14 @@
+   def outline(diagram, baseurl)
+     offset = 12
+     shapes = diagram["nodes"].map.with_index do |node, index|
+-      rows = (node["label"].length / 23.0).ceil
++      rows = svg_lines(node["label"]).size
+       height = [54, 25 + rows * 21].max
+       y = offset
+       offset += height + 18
+       <<~SVG
+         <g><rect x="12" y="#{y}" width="296" height="#{height}" rx="9"/>
+         <circle cx="30" cy="#{y + 22}" r="3"/>
+-        #{wrapped_svg_label(node['label'], 44, y + 28, 23)}</g>
++        #{wrapped_svg_label(node['label'], 44, y + 28)}</g>
+       SVG
+     end.join
+     <<~HTML
+@@ -143,10 +161,10 @@
+     positions = {}
+     offset = 12
+     shapes = diagram["nodes"].map.with_index do |node, index|
+-      height = 28 + (node["label"].length / 24.0).ceil * 21
++      height = 28 + svg_lines(node["label"]).size * 21
+       positions[node["id"]] = [offset, height]
+       shape = "<g><rect x=\"42\" y=\"#{offset}\" width=\"266\" height=\"#{height}\" rx=\"3\"/>" \
+-        "#{wrapped_svg_label(node['label'], 54, offset + 27, 24)}</g>"
++        "#{wrapped_svg_label(node['label'], 54, offset + 27)}</g>"
+       offset += height + 42
+       shape
+     end.join

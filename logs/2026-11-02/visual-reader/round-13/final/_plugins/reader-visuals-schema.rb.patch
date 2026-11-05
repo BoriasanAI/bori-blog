@@ -1,0 +1,11 @@
+--- round-13-initial/_plugins/reader-visuals-schema.rb
++++ round-13-final/_plugins/reader-visuals-schema.rb
+@@ -56,7 +56,7 @@
+ 
+   def validate(data, root:)
+     object(data, %w[version sources diagrams gallery style], "reader_visuals")
+-    raise Invalid, "reader_visuals.version: expected integer 1" unless data["version"] == 1
++    raise Invalid, "reader_visuals.version: expected integer 1" unless data["version"].is_a?(Integer) && data["version"] == 1
+     if data["style"] && !%w[paper essay journal].include?(data["style"])
+       raise Invalid, "reader_visuals.style: expected paper, essay, or journal"
+     end

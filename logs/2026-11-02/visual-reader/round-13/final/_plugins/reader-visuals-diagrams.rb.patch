@@ -1,0 +1,58 @@
+--- round-13-initial/_plugins/reader-visuals-diagrams.rb
++++ round-13-final/_plugins/reader-visuals-diagrams.rb
+@@ -63,6 +63,16 @@
+     end.join + "</#{tag}>"
+   end
+ 
++  def diagram_title(diagram)
++    return diagram["title"] unless diagram["title"] == diagram["kind"]
++    {
++      "outline" => "Article map / 글 지도",
++      "evidence-map" => "Citation map / 인용 지도",
++      "timeline" => "Publication timeline / 발행 연표",
++      "comparison" => "Source comparison / 출처 비교"
++    }.fetch(diagram["kind"])
++  end
++
+   SVG_LINE_UNITS = 28
+ 
+   def svg_lines(label, width = SVG_LINE_UNITS)
+@@ -104,7 +114,7 @@
+     end.join
+     <<~HTML
+       <figure class="rv-diagram rv-outline">
+-        <figcaption><h3>#{escape(diagram['title'])}</h3><p>Article outline / 글의 구성 · supplied headings, not causal links / 인과관계 아님</p></figcaption>
++        <figcaption><h3>#{escape(diagram_title(diagram))}</h3><p>Article outline / 글의 구성 · supplied headings, not causal links / 인과관계 아님</p></figcaption>
+         <div class="rv-outline-layout"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 #{offset}" aria-hidden="true" focusable="false">#{shapes}</svg>
+         #{node_list(diagram['nodes'], baseurl, ordered: true)}</div>
+       </figure>
+@@ -134,7 +144,7 @@
+     end.join
+     <<~HTML
+       <figure class="rv-diagram rv-timeline">
+-        <figcaption><h3>#{escape(diagram['title'])}</h3><p>#{bounds.first} — #{bounds.last} · Dated records; spacing is not duration / 날짜 기록 · 간격은 기간을 나타내지 않음</p></figcaption>
++        <figcaption><h3>#{escape(diagram_title(diagram))}</h3><p>#{bounds.first} — #{bounds.last} · Dated records; spacing is not duration / 날짜 기록 · 간격은 기간을 나타내지 않음</p></figcaption>
+         <ol>#{rows}</ol>
+       </figure>
+     HTML
+@@ -148,8 +158,9 @@
+     end.join
+     <<~HTML
+       <figure class="rv-diagram rv-comparison">
+-        <figcaption><h3>#{escape(diagram['title'])}</h3></figcaption>
+-        <div class="rv-table-scroll" role="region" tabindex="0" aria-label="#{escape(diagram['title'])} — horizontally scrollable / 가로 스크롤">
++        <figcaption><h3>#{escape(diagram_title(diagram))}</h3></figcaption>
++        <p class="rv-scroll-hint">Scroll horizontally for both columns / 두 열을 보려면 가로로 밀어 주세요.</p>
++        <div class="rv-table-scroll" role="region" tabindex="0" aria-label="#{escape(diagram_title(diagram))} — horizontally scrollable / 가로 스크롤">
+           <table><caption>Supplied excerpts side by side / 입력된 발췌 비교 · No inferred rankings / 순위 추정 없음</caption>
+             <thead><tr><th scope="col">Source / 출처</th><th scope="col">Supplied note / 입력된 내용</th></tr></thead>
+             <tbody>#{rows}</tbody>
+@@ -184,7 +195,7 @@
+     end.join
+     <<~HTML
+       <figure class="rv-diagram rv-evidence-map">
+-        <figcaption><h3>#{escape(diagram['title'])}</h3><p>Supplied source links / 입력된 출처 연결 · not causal inference / 인과 추론 아님</p></figcaption>
++        <figcaption><h3>#{escape(diagram_title(diagram))}</h3><p>Supplied source links / 입력된 출처 연결 · not causal inference / 인과 추론 아님</p></figcaption>
+         <div class="rv-outline-layout"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 #{offset}" aria-hidden="true" focusable="false">#{paths}#{shapes}</svg>
+         <div>#{node_list(diagram['nodes'], baseurl)}<ul class="rv-edge-list" aria-label="Supplied relationships / 입력된 연결">#{alternatives}</ul></div></div>
+       </figure>

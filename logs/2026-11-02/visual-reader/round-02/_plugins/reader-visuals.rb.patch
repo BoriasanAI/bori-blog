@@ -1,0 +1,21 @@
+--- previous/_plugins/reader-visuals.rb
++++ round-02/_plugins/reader-visuals.rb
+@@ -16,11 +16,16 @@
+ 
+   def source_card(source, baseurl)
+     host = URI.parse(source["url"]).host || "This site / 이 블로그"
++    bibliographic = source["kind"] == "paper"
++    publication = source["published"] && date(source["published"], "published").iso8601
++    archive = { "arxiv.org" => "arXiv", "doi.org" => "DOI", "dx.doi.org" => "DOI" }[host]
+     <<~HTML
+-      <article class="rv-source" id="rv-source-#{escape(source['id'])}">
++      <article class="rv-source#{bibliographic ? ' rv-paper-source' : ''}" id="rv-source-#{escape(source['id'])}">
+         <div class="rv-source-body">
+-          <span class="rv-host">#{escape(host)}</span>
++          <div class="rv-source-meta"><span class="rv-host">#{escape(host)}</span><span class="rv-kind">#{bibliographic ? 'Paper / 논문' : 'Reference / 참고'}#{archive ? " · #{archive}" : ""}</span></div>
+           <h3><a href="#{href(source['url'], baseurl)}">#{escape(source['title'])}</a></h3>
++          #{source['authors']&.any? ? "<p class=\"rv-authors\">#{escape(source['authors'].join(', '))}</p>" : ""}
++          #{publication ? "<time class=\"rv-published\" datetime=\"#{publication}\">#{publication}</time>" : ""}
+           #{source['description'] ? "<p>#{escape(source['description'])}</p>" : ""}
+         </div>
+       </article>

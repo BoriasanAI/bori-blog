@@ -1,0 +1,65 @@
+--- previous/tools/visual-reader-check.rb
++++ round-13/tools/visual-reader-check.rb
+@@ -129,7 +129,7 @@
+ wide_label = "반응형 글 지도의 실제 제목과 정확한 출처 연결을 표시합니다"
+ wide_lines = BoriVisuals.svg_lines(wide_label)
+ check(wide_lines.join.delete(" ") == wide_label.delete(" "), "CJK SVG wrapping retains every input character")
+-check(wide_lines.all? { |line| line.each_char.sum { |char| char.ord >= 0x2e80 ? 2 : 1 } <= 30 }, "CJK labels respect actual approximate glyph width")
++check(wide_lines.all? { |line| line.each_char.sum { |char| char.ord >= 0x2e80 ? 2 : 1 } <= BoriVisuals::SVG_LINE_UNITS }, "CJK labels respect the explicit monospace glyph-width contract")
+ long_data = Marshal.load(Marshal.dump(fixture))
+ long_data["diagrams"][0]["nodes"][0]["label"] = wide_label * 3
+ long_doc = Nokogiri::HTML.fragment(BoriVisuals.render(long_data, root: root))
+@@ -160,4 +160,53 @@
+ missing = Marshal.load(Marshal.dump(fixture))
+ missing["sources"][0]["image"] = { "path" => "/assets/absent.png", "alt" => "Missing", "credit" => "Bori", "license" => "CC-BY-4.0" }
+ invalid(missing, "missing local image fails loudly during build")
++strict = Marshal.load(Marshal.dump(fixture))
++strict["version"] = 1.0
++invalid(strict, "noninteger schema version")
++strict = Marshal.load(Marshal.dump(fixture))
++strict["sources"] *= 7
++invalid(strict, "source cap")
++strict = Marshal.load(Marshal.dump(fixture))
++strict["diagrams"] *= 3
++invalid(strict, "diagram cap")
++strict = Marshal.load(Marshal.dump(fixture))
++strict["unexpected"] = "value"
++invalid(strict, "unknown field")
++strict = Marshal.load(Marshal.dump(fixture))
++strict["diagrams"][0]["nodes"][1]["id"] = strict["diagrams"][0]["nodes"][0]["id"]
++invalid(strict, "duplicate diagram node IDs")
++bad = post_type.new({ "reader_visuals" => false }, site, original.dup, "/posts/example/")
++begin
++  BoriVisuals.enhance_post(bad)
++  raise "malformed metadata was silently ignored"
++rescue BoriVisuals::Invalid
++  @checks += 1
++end
++quoted = Marshal.load(Marshal.dump(fixture))
++quoted["diagrams"][0]["nodes"][0]["label"] = "What I'm Taking Away"
++quoted_target = BoriVisuals.outline_targets(quoted, '<article><div class="content"><h2 id="actual">What I’m Taking Away</h2></div></article>', "/posts/example/")
++check(quoted_target["diagrams"][0]["nodes"][0]["url"] == "/posts/example/#actual", "rendered smart quotes preserve real heading navigation without changing labels")
++actual_labels = 0
++actual_posts = 0
++Dir["_posts/*.md"].each do |path|
++  frontmatter = File.read(path).match(/\A---\s*\n(.*?)\n---/m)
++  next unless frontmatter
++  data = YAML.safe_load(frontmatter[1], permitted_classes: [Date, Time], aliases: true)
++  next unless data["reader_visuals"]
++  actual_posts += 1
++  BoriVisuals.validate(data["reader_visuals"], root: Dir.pwd)
++  Array(data["reader_visuals"]["diagrams"]).each do |diagram|
++    next unless %w[outline evidence-map].include?(diagram["kind"])
++    diagram["nodes"].each do |node|
++      label = node["label"]
++      lines = BoriVisuals.svg_lines(label)
++      actual_labels += 1
++      if label.scan(/[A-Za-z]+/).all? { |word| word.length <= BoriVisuals::SVG_LINE_UNITS }
++        check(lines.flat_map { |line| line.scan(/[A-Za-z]+/) } == label.scan(/[A-Za-z]+/), "real heading/source words split mid-token: #{path}: #{label}")
++      end
++      check(lines.all? { |line| line.each_char.sum { |char| char.ord >= 0x2e80 ? 2 : 1 } <= BoriVisuals::SVG_LINE_UNITS }, "real SVG heading exceeds width contract: #{path}")
++    end
++  end
++end
++puts "actual-inputs: #{actual_posts} posts; #{actual_labels} SVG labels validated"
+ puts "visual-reader: #{@checks} checks passed"

@@ -1,0 +1,20 @@
+--- previous/tools/visual-reader-check.rb
++++ round-03/tools/visual-reader-check.rb
+@@ -44,4 +44,17 @@
+ check(safe.css("script").empty? && safe.at_css("h3").text.include?("<script>"), "plain text is escaped, not interpreted")
+ copy["version"] = 2
+ invalid(copy, "schema version")
++check(doc.css("img").empty? && doc.at_css(".rv-no-image"), "missing metadata never fabricates a preview image")
++image_data = Marshal.load(Marshal.dump(fixture))
++image_data["sources"][0]["image"] = {
++  "path" => "/assets/reader-visuals/geometry.svg", "alt" => "Original geometric test shapes",
++  "credit" => "Copilot test fixture", "license" => "CC0-1.0"
++}
++image_doc = Nokogiri::HTML.fragment(BoriVisuals.render(image_data, root: root, baseurl: "/bori-blog"))
++image = image_doc.at_css("img")
++check(image["width"] == "640" && image["height"] == "360" && image["loading"] == "lazy", "intrinsic local dimensions and lazy loading")
++check(image["src"] == "/bori-blog/assets/reader-visuals/geometry.svg", "image baseurl")
++check(image_doc.at_css("figcaption").text.include?("CC0-1.0"), "license and credit visible")
++image_data["sources"][0]["image"].delete("license")
++invalid(image_data, "unlicensed image")
+ puts "visual-reader: #{@checks} checks passed"

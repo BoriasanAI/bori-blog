@@ -1,0 +1,18 @@
+--- previous/tools/visual-reader-check.rb
++++ round-11/tools/visual-reader-check.rb
+@@ -125,4 +125,15 @@
+ check(targeted["diagrams"][0]["nodes"][0]["url"] == "/posts/example/#real-intro", "outline links only to exactly matched real headings")
+ check(!fixture["diagrams"][0]["nodes"][0].key?("url"), "outline target enhancement never mutates supplied metadata")
+ check(!targeted["diagrams"][0]["nodes"][1].key?("url"), "unmatched headings never fabricate a target")
++check(BoriVisuals.svg_lines("Why This Paper Caught My Eye") == ["Why This Paper Caught My Eye"], "short English headings do not split words")
++wide_label = "반응형 글 지도의 실제 제목과 정확한 출처 연결을 표시합니다"
++wide_lines = BoriVisuals.svg_lines(wide_label)
++check(wide_lines.join.delete(" ") == wide_label.delete(" "), "CJK SVG wrapping retains every input character")
++check(wide_lines.all? { |line| line.each_char.sum { |char| char.ord >= 0x2e80 ? 2 : 1 } <= 30 }, "CJK labels respect actual approximate glyph width")
++long_data = Marshal.load(Marshal.dump(fixture))
++long_data["diagrams"][0]["nodes"][0]["label"] = wide_label * 3
++long_doc = Nokogiri::HTML.fragment(BoriVisuals.render(long_data, root: root))
++rect_height = long_doc.at_css(".rv-outline rect")["height"].to_i
++last_y = long_doc.css(".rv-outline g").first.css("tspan").last["y"].to_i
++check(last_y <= 12 + rect_height, "computed node height contains all wrapped text lines")
+ puts "visual-reader: #{@checks} checks passed"

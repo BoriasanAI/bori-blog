@@ -1,0 +1,25 @@
+--- previous/_plugins/reader-visuals-schema.rb
++++ round-12/_plugins/reader-visuals-schema.rb
+@@ -39,8 +39,10 @@
+     end
+     host = uri.host.to_s.downcase
+     raise Invalid, "#{at}: expected public HTTPS or a site-relative URL" unless uri.scheme == "https" &&
+-      !uri.userinfo && !uri.port.nil? && host.include?(".") &&
+-      !host.match?(/(?:\A|\.)(?:localhost|local|internal|test|invalid)\z/)
++      !uri.userinfo && uri.port == 443 && host.include?(".") && !host.end_with?(".") &&
++      host.split(".").all? { |part| part.match?(/\A[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\z/) } &&
++      !host.match?(/(?:\A|\.)(?:localhost|local|internal|test|invalid|lan|home|onion)\z/) &&
++      !host.match?(/\A(?:0x[0-9a-f]+|\d+)(?:\.(?:0x[0-9a-f]+|\d+))*\z/)
+     begin
+       address = IPAddr.new(host.delete_prefix("[").delete_suffix("]"))
+       raise Invalid, "#{at}: IP literals are not public source names" if address
+@@ -82,6 +84,9 @@
+         text(image["caption"], "gallery[#{index}].caption")
+       end
+     end
++    unless [data["sources"], data["diagrams"], data["gallery"]].any? { |items| items.is_a?(Array) && items.any? }
++      raise Invalid, "reader_visuals: at least one source, diagram, or gallery image is required"
++    end
+     data
+   end
+ 

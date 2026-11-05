@@ -1,0 +1,29 @@
+--- previous/_plugins/reader-visuals-diagrams.rb
++++ round-10/_plugins/reader-visuals-diagrams.rb
+@@ -58,7 +58,7 @@
+     tag = ordered ? "ol" : "ul"
+     "<#{tag} class=\"rv-node-list\">" + nodes.map do |node|
+       label = escape(node["label"])
+-      label = "<a href=\"#{href(node['url'], baseurl)}\">#{label}</a>" if node["url"]
++      label = link(node["label"], node["url"], baseurl) if node["url"]
+       "<li><span>#{label}</span>#{node['detail'] ? "<p>#{escape(node['detail'])}</p>" : ""}</li>"
+     end.join + "</#{tag}>"
+   end
+@@ -109,7 +109,7 @@
+     rows = events.map do |event|
+       day = date(event["date"], "event date").iso8601
+       label = escape(event["label"])
+-      label = "<a href=\"#{href(event['url'], baseurl)}\">#{label}</a>" if event["url"]
++      label = link(event["label"], event["url"], baseurl) if event["url"]
+       "<li><time datetime=\"#{day}\">#{day}</time><div>#{label}</div></li>"
+     end.join
+     <<~HTML
+@@ -123,7 +123,7 @@
+   def comparison(diagram, baseurl)
+     rows = diagram["nodes"].map do |node|
+       label = escape(node["label"])
+-      label = "<a href=\"#{href(node['url'], baseurl)}\">#{label}</a>" if node["url"]
++      label = link(node["label"], node["url"], baseurl) if node["url"]
+       "<tr><th scope=\"row\">#{label}</th><td>#{escape(node['detail'])}</td></tr>"
+     end.join
+     <<~HTML

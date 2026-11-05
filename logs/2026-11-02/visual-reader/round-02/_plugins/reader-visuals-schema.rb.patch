@@ -1,0 +1,22 @@
+--- previous/_plugins/reader-visuals-schema.rb
++++ round-02/_plugins/reader-visuals-schema.rb
+@@ -67,7 +67,19 @@
+       url(source["url"], "#{at}.url")
+       text(source["description"], "#{at}.description") if source.key?("description")
+       raise Invalid, "#{at}.kind: expected paper or reference" unless %w[paper reference].include?(source["kind"])
++      if source.key?("authors")
++        list(source["authors"], 30, "#{at}.authors").each { |author| text(author, "#{at}.authors[]", 200) }
++      end
++      date(source["published"], "#{at}.published") if source.key?("published")
+     end
+     data
+   end
++
++  def date(value, at)
++    candidate = value.is_a?(Date) ? value.iso8601 : text(value, at, 10)
++    raise Invalid, "#{at}: expected YYYY-MM-DD" unless candidate.match?(/\A\d{4}-\d{2}-\d{2}\z/)
++    Date.iso8601(candidate)
++  rescue Date::Error
++    raise Invalid, "#{at}: invalid calendar date"
++  end
+ end

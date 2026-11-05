@@ -1,0 +1,67 @@
+--- previous/_plugins/reader-visuals-diagrams.rb
++++ round-05/_plugins/reader-visuals-diagrams.rb
+@@ -22,6 +22,18 @@
+         url(node["url"], "#{place}.url") if node.key?("url")
+       end
+       raise Invalid, "#{at}: empty diagram" if nodes.empty? && diagram["kind"] != "timeline"
++      if diagram.key?("edges")
++        list(diagram["edges"], 18, "#{at}.edges").each do |edge|
++          object(edge, %w[from to label], "#{at}.edges[]")
++          %w[from to].each do |key|
++            raise Invalid, "#{at}.edges[].#{key}: unknown node" unless ids.include?(edge[key])
++          end
++          text(edge["label"], "#{at}.edges[].label", 200) if edge.key?("label")
++        end
++        if diagram["kind"] != "evidence-map" && !diagram["edges"].empty?
++          raise Invalid, "#{at}.edges: only evidence-map accepts explicit relationships"
++        end
++      end
+     end
+   end
+ 
+@@ -64,8 +76,43 @@
+ 
+   def diagrams_html(diagrams, baseurl)
+     Array(diagrams).map do |diagram|
+-      raise Invalid, "diagram renderer not available: #{diagram['kind']}" unless diagram["kind"] == "outline"
+-      outline(diagram, baseurl)
++      case diagram["kind"]
++      when "outline" then outline(diagram, baseurl)
++      when "evidence-map" then evidence_map(diagram, baseurl)
++      else raise Invalid, "diagram renderer not available: #{diagram['kind']}"
++      end
+     end.join
+   end
++
++  def evidence_map(diagram, baseurl)
++    positions = {}
++    offset = 12
++    shapes = diagram["nodes"].map.with_index do |node, index|
++      height = 28 + (node["label"].length / 24.0).ceil * 21
++      positions[node["id"]] = [offset, height]
++      shape = "<g><rect x=\"42\" y=\"#{offset}\" width=\"266\" height=\"#{height}\" rx=\"3\"/>" \
++        "#{wrapped_svg_label(node['label'], 54, offset + 27, 24)}</g>"
++      offset += height + 42
++      shape
++    end.join
++    labels = diagram["nodes"].to_h { |node| [node["id"], node["label"]] }
++    edges = Array(diagram["edges"])
++    paths = edges.map.with_index do |edge, index|
++      from_y, from_height = positions.fetch(edge["from"])
++      to_y, to_height = positions.fetch(edge["to"])
++      track = 10 + (index % 4) * 7
++      "<path d=\"M42 #{from_y + from_height / 2} H#{track} V#{to_y + to_height / 2} H42\"/>"
++    end.join
++    alternatives = edges.map do |edge|
++      "<li>#{escape(labels.fetch(edge['from']))} → #{escape(labels.fetch(edge['to']))}" \
++        "#{edge['label'] ? " — <strong>#{escape(edge['label'])}</strong>" : ""}</li>"
++    end.join
++    <<~HTML
++      <figure class="rv-diagram rv-evidence-map">
++        <figcaption><h3>#{escape(diagram['title'])}</h3><p>Supplied source links / 입력된 출처 연결 · not causal inference / 인과 추론 아님</p></figcaption>
++        <div class="rv-outline-layout"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 #{offset}" aria-hidden="true" focusable="false">#{paths}#{shapes}</svg>
++        <div>#{node_list(diagram['nodes'], baseurl)}<ul class="rv-edge-list" aria-label="Supplied relationships / 입력된 연결">#{alternatives}</ul></div></div>
++      </figure>
++    HTML
++  end
+ end

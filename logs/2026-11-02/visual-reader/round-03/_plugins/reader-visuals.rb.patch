@@ -1,0 +1,39 @@
+--- previous/_plugins/reader-visuals.rb
++++ round-03/_plugins/reader-visuals.rb
+@@ -14,13 +14,26 @@
+     escape(value.start_with?("/") ? "#{baseurl.to_s.sub(%r{/\z}, '')}#{value}" : value)
+   end
+ 
+-  def source_card(source, baseurl)
++  def image_figure(image, root, baseurl, css = "")
++    width, height = local_image(image, root, "image")
++    credit = escape(image["credit"])
++    credit = "<a href=\"#{href(image['url'], baseurl)}\">#{credit}</a>" if image["url"]
++    <<~HTML
++      <figure class="rv-image #{css}">
++        <img src="#{href(image['path'], baseurl)}" alt="#{escape(image['alt'])}" width="#{width}" height="#{height}" loading="lazy" decoding="async">
++        <figcaption>#{image['caption'] ? "<span class=\"rv-caption\">#{escape(image['caption'])}</span>" : ""}<span class="rv-credit">#{credit} · #{escape(image['license'])}</span></figcaption>
++      </figure>
++    HTML
++  end
++
++  def source_card(source, root, baseurl)
+     host = URI.parse(source["url"]).host || "This site / 이 블로그"
+     bibliographic = source["kind"] == "paper"
+     publication = source["published"] && date(source["published"], "published").iso8601
+     archive = { "arxiv.org" => "arXiv", "doi.org" => "DOI", "dx.doi.org" => "DOI" }[host]
+     <<~HTML
+       <article class="rv-source#{bibliographic ? ' rv-paper-source' : ''}" id="rv-source-#{escape(source['id'])}">
++        #{source['image'] ? image_figure(source['image'], root, baseurl, 'rv-source-image') : '<p class="rv-no-image">Text source / 텍스트 출처 · No licensed preview supplied / 허가된 미리보기 없음</p>'}
+         <div class="rv-source-body">
+           <div class="rv-source-meta"><span class="rv-host">#{escape(host)}</span><span class="rv-kind">#{bibliographic ? 'Paper / 논문' : 'Reference / 참고'}#{archive ? " · #{archive}" : ""}</span></div>
+           <h3><a href="#{href(source['url'], baseurl)}">#{escape(source['title'])}</a></h3>
+@@ -37,7 +50,7 @@
+     <<~HTML
+       <section class="reader-visuals rv-#{escape(data.fetch('style', 'essay'))}" aria-label="Sources and article maps / 출처와 글 지도" data-visuals-version="1">
+         <header class="rv-heading"><p class="rv-kicker">Reading companion / 함께 읽기</p><h2>Sources &amp; maps / 출처와 지도</h2></header>
+-        <div class="rv-sources">#{data['sources'].map { |source| source_card(source, baseurl) }.join}</div>
++        <div class="rv-sources">#{data['sources'].map { |source| source_card(source, root, baseurl) }.join}</div>
+       </section>
+     HTML
+   end

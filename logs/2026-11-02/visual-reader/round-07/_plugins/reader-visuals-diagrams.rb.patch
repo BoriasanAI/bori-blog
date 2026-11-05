@@ -1,0 +1,47 @@
+--- previous/_plugins/reader-visuals-diagrams.rb
++++ round-07/_plugins/reader-visuals-diagrams.rb
+@@ -22,6 +22,10 @@
+         url(node["url"], "#{place}.url") if node.key?("url")
+       end
+       raise Invalid, "#{at}: empty diagram" if nodes.empty? && diagram["kind"] != "timeline"
++      if diagram["kind"] == "comparison"
++        raise Invalid, "#{at}: comparison needs at least two supplied rows" if nodes.size < 2
++        nodes.each { |node| text(node["detail"], "#{at}.nodes[].detail") }
++      end
+       if diagram["kind"] == "timeline"
+         raise Invalid, "#{at}.nodes: use dated events for timelines" unless nodes.empty?
+         events = list(diagram["events"], 12, "#{at}.events")
+@@ -93,6 +97,7 @@
+       when "outline" then outline(diagram, baseurl)
+       when "evidence-map" then evidence_map(diagram, baseurl)
+       when "timeline" then timeline(diagram, baseurl)
++      when "comparison" then comparison(diagram, baseurl)
+       else raise Invalid, "diagram renderer not available: #{diagram['kind']}"
+       end
+     end.join
+@@ -111,6 +116,25 @@
+       <figure class="rv-diagram rv-timeline">
+         <figcaption><h3>#{escape(diagram['title'])}</h3><p>#{bounds.first} — #{bounds.last} · Dated records; spacing is not duration / 날짜 기록 · 간격은 기간을 나타내지 않음</p></figcaption>
+         <ol>#{rows}</ol>
++      </figure>
++    HTML
++  end
++
++  def comparison(diagram, baseurl)
++    rows = diagram["nodes"].map do |node|
++      label = escape(node["label"])
++      label = "<a href=\"#{href(node['url'], baseurl)}\">#{label}</a>" if node["url"]
++      "<tr><th scope=\"row\">#{label}</th><td>#{escape(node['detail'])}</td></tr>"
++    end.join
++    <<~HTML
++      <figure class="rv-diagram rv-comparison">
++        <figcaption><h3>#{escape(diagram['title'])}</h3></figcaption>
++        <div class="rv-table-scroll" role="region" tabindex="0" aria-label="#{escape(diagram['title'])} — horizontally scrollable / 가로 스크롤">
++          <table><caption>Supplied excerpts side by side / 입력된 발췌 비교 · No inferred rankings / 순위 추정 없음</caption>
++            <thead><tr><th scope="col">Source / 출처</th><th scope="col">Supplied note / 입력된 내용</th></tr></thead>
++            <tbody>#{rows}</tbody>
++          </table>
++        </div>
+       </figure>
+     HTML
+   end

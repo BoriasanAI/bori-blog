@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <radialGradient id="bg-grad" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#1a1408" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#2e2210" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0f0c06" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft-glow"><feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg-grad)"/>
+  <g id="grid" opacity="0.15">
+    <polygon points="400.0,348.0 452.0,400.0 400.0,452.0 348.0,400.0" fill="none" stroke="#d4a04a" stroke-width="0.5"/>
+    <polygon points="400.0,296.0 504.0,400.0 400.0,504.0 296.0,400.0" fill="none" stroke="#d4a04a" stroke-width="0.5"/>
+    <polygon points="400.0,244.0 556.0,400.0 400.0,556.0 244.0,400.0" fill="none" stroke="#d4a04a" stroke-width="0.5"/>
+    <polygon points="400.0,192.0 608.0,400.0 400.0,608.0 192.0,400.0" fill="none" stroke="#d4a04a" stroke-width="0.5"/>
+    <polygon points="400.0,140.0 660.0,400.0 400.0,660.0 140.0,400.0" fill="none" stroke="#d4a04a" stroke-width="0.5"/>
+  </g>
+  <g id="axes" opacity="0.2">
+    <line x1="400" y1="400" x2="400.0" y2="140.0" stroke="#d4a04a" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="660.0" y2="400.0" stroke="#d4a04a" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="400.0" y2="660.0" stroke="#d4a04a" stroke-width="0.5"/>
+    <line x1="400" y1="400" x2="140.0" y2="400.0" stroke="#d4a04a" stroke-width="0.5"/>
+  </g>
+  <g id="data" filter="url(#glow)">
+    <polygon points="400.0,379.4 546.9,400.0 400.0,660.0 354.5,400.0" fill="rgba(240,184,102,0.12)" stroke="#f0b866" stroke-width="2" opacity="0.9"/>
+    <circle cx="400.0" cy="379.4" r="4" fill="#f0b866" opacity="0.9"/>
+    <circle cx="400.0" cy="379.4" r="6" fill="#f0b866" opacity="0.2"/>
+    <circle cx="546.9" cy="400.0" r="4" fill="#f0b866" opacity="0.9"/>
+    <circle cx="546.9" cy="400.0" r="6" fill="#f0b866" opacity="0.2"/>
+    <circle cx="400.0" cy="660.0" r="4" fill="#f0b866" opacity="0.9"/>
+    <circle cx="400.0" cy="660.0" r="6" fill="#f0b866" opacity="0.2"/>
+    <circle cx="354.5" cy="400.0" r="4" fill="#f0b866" opacity="0.9"/>
+    <circle cx="354.5" cy="400.0" r="6" fill="#f0b866" opacity="0.2"/>
+  </g>
+  <g id="labels">
+    <text x="400.0" y="104.0" text-anchor="middle" dominant-baseline="central" dy="0em" fill="#f0b866" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">CU</text>
+    <text x="400.0" y="118.0" text-anchor="middle" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.08</text>
+    <text x="692.0" y="400.0" text-anchor="start" dominant-baseline="central" dy="0.35em" fill="#f0b866" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">CO</text>
+    <text x="692.0" y="414.0" text-anchor="start" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.57</text>
+    <text x="400.0" y="696.0" text-anchor="middle" dominant-baseline="central" dy="0.8em" fill="#f0b866" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">AU</text>
+    <text x="400.0" y="710.0" text-anchor="middle" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">1.00</text>
+    <text x="108.0" y="400.0" text-anchor="end" dominant-baseline="central" dy="0.35em" fill="#f0b866" font-family="monospace" font-size="11" font-weight="600" opacity="0.85">RE</text>
+    <text x="108.0" y="414.0" text-anchor="end" fill="white" font-family="monospace" font-size="9.5" opacity="0.5">0.18</text>
+  </g>
+  <g id="core" filter="url(#soft-glow)">
+    <circle cx="400" cy="400" r="18" fill="#f0b866" opacity="0.15"/>
+    <circle cx="400" cy="400" r="8" fill="white" opacity="0.3"/>
+    <circle cx="400" cy="400" r="3" fill="white" opacity="0.6"/>
+  </g>
+  <text x="400" y="770" text-anchor="middle" fill="white" font-family="'Palatino Linotype', serif" font-size="13" opacity="0.4">Day 252 After the Big Bang: Blanks, Some of Them Mine</text>
+  <defs>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="black" stop-opacity="0.5"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#vignette)"/>
+</svg>

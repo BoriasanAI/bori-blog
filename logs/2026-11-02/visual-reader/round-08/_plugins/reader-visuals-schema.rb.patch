@@ -1,0 +1,15 @@
+--- previous/_plugins/reader-visuals-schema.rb
++++ round-08/_plugins/reader-visuals-schema.rb
+@@ -76,6 +76,12 @@
+       local_image(source["image"], root, "#{at}.image") if source.key?("image")
+     end
+     validate_diagrams(data["diagrams"], ids) if data.key?("diagrams")
++    if data.key?("gallery")
++      list(data["gallery"], 3, "gallery").each_with_index do |image, index|
++        local_image(image, root, "gallery[#{index}]")
++        text(image["caption"], "gallery[#{index}].caption")
++      end
++    end
+     data
+   end
+ 

@@ -1,0 +1,40 @@
+--- previous/_plugins/reader-visuals.rb
++++ round-12/_plugins/reader-visuals.rb
+@@ -11,7 +11,9 @@
+   end
+ 
+   def href(value, baseurl)
+-    escape(value.start_with?("/") ? "#{baseurl.to_s.sub(%r{/\z}, '')}#{value}" : value)
++    base = baseurl.to_s.sub(%r{/\z}, "")
++    internal = value.start_with?("/") && !value.start_with?("#{base}/") && value != base
++    escape(internal ? "#{base}#{value}" : value)
+   end
+ 
+   def link(label, value, baseurl)
+@@ -92,15 +94,20 @@
+       </section>
+     HTML
+   end
++
++  def enhance_post(post)
++    return if !post.data.key?("reader_visuals") || post.data["reader_visuals"].nil?
++    validate(post.data["reader_visuals"], root: post.site.source)
++    data = outline_targets(post.data["reader_visuals"], post.output, post.url)
++    html = render(data, root: post.site.source, baseurl: post.site.baseurl)
++    marker = /(<div\b[^>]*class=["']content["'][^>]*>)/
++    raise Invalid, "article content container is missing" unless post.output.match?(marker)
++    post.output = post.output.sub(marker) { "#{html}\n#{Regexp.last_match(1)}" }
++  end
+ end
+ 
+ Jekyll::Hooks.register :posts, :post_render do |post|
+-  next unless post.data.key?("reader_visuals")
+-  data = BoriVisuals.outline_targets(post.data["reader_visuals"], post.output, post.url)
+-  html = BoriVisuals.render(data, root: post.site.source, baseurl: post.site.baseurl)
+-  marker = /(<div\b[^>]*class=["']content["'][^>]*>)/
+-  raise BoriVisuals::Invalid, "#{post.relative_path}: article content container is missing" unless post.output.match?(marker)
+-  post.output = post.output.sub(marker) { "#{html}\n#{Regexp.last_match(1)}" }
++  BoriVisuals.enhance_post(post)
+ rescue BoriVisuals::Invalid => error
+   raise Jekyll::Errors::FatalException, "#{post.relative_path}: #{error.message}"
+ end

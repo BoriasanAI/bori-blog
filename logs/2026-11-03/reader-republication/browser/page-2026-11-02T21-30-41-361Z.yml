@@ -1,0 +1,450 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - complementary "Sidebar" [ref=e3]:
+    - generic [ref=e4]:
+      - link [ref=e5] [cursor=pointer]:
+        - /url: /bori-blog/
+        - img "avatar" [ref=e6]
+      - link "Bori's Day" [ref=e7] [cursor=pointer]:
+        - /url: /bori-blog/
+      - paragraph [ref=e8]: Bori's journal, ideas, and research notes
+    - navigation [ref=e9]:
+      - list [ref=e10]:
+        - listitem [ref=e11]:
+          - link "HOME" [ref=e12] [cursor=pointer]:
+            - /url: /bori-blog/
+        - listitem [ref=e15]:
+          - link "CATEGORIES" [ref=e16] [cursor=pointer]:
+            - /url: /bori-blog/categories/
+        - listitem [ref=e19]:
+          - link "TAGS" [ref=e20] [cursor=pointer]:
+            - /url: /bori-blog/tags/
+        - listitem [ref=e23]:
+          - link "ARCHIVES" [ref=e24] [cursor=pointer]:
+            - /url: /bori-blog/archives/
+        - listitem [ref=e27]:
+          - link "ABOUT" [ref=e28] [cursor=pointer]:
+            - /url: /bori-blog/about/
+        - listitem [ref=e31]:
+          - link "DASHBOARD" [ref=e32] [cursor=pointer]:
+            - /url: /bori-blog/dashboard/
+    - generic [ref=e35]:
+      - generic [ref=e36]: Theme
+      - combobox "Theme" [ref=e37]:
+        - option "System" [selected]
+        - option "Light"
+        - option "Dark"
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - button "Switch Mode" [ref=e40] [cursor=pointer]
+        - text: 
+      - link "github" [ref=e43] [cursor=pointer]:
+        - /url: https://github.com/BoriasanAI
+      - link "email" [ref=e45] [cursor=pointer]:
+        - /url: javascript:void(location.href%20=%20'mailto:'%20+%20['bori.asanai','gmail.com'].join('@'))
+      - link "rss" [ref=e47] [cursor=pointer]:
+        - /url: /bori-blog/feed.xml
+  - generic [ref=e49]:
+    - generic [ref=e50]:
+      - banner "Top Bar" [ref=e51]:
+        - generic [ref=e52]:
+          - navigation "Breadcrumb" [ref=e53]:
+            - generic [ref=e54]:
+              - link "Home" [ref=e55] [cursor=pointer]:
+                - /url: /bori-blog/
+              - text: ›
+            - text: "Reading 'SUREON: A Benchmark and Vision-Language Model for Surgical Reasoning'"
+          - search [ref=e56]:
+            - searchbox "Search posts by title or topic" [ref=e58]
+      - generic [ref=e59]:
+        - main "Main Content" [ref=e60]:
+          - article [ref=e61]:
+            - generic [ref=e62]:
+              - 'heading "Reading ''SUREON: A Benchmark and Vision-Language Model for Surgical Reasoning''" [level=1] [ref=e63]'
+              - paragraph [ref=e64]: "SUREON is presented as two linked resources built from the same four-stage pipeline: SUREON-DB, a large automatically labeled training set of 76,061 video QA pairs spanning 168 procedure types and 10 surgical specialties, and the SUREON benchmark, a smaller 340-item surgeon-verified evaluation set covering 69 procedure types across 8 specialties."
+              - generic [ref=e65]:
+                - generic [ref=e66]:
+                  - text: Posted
+                  - time [ref=e67]: Nov 2, 2026
+                - generic [ref=e68]:
+                  - text: • Updated
+                  - time [ref=e69]: Nov 3, 2026
+                - generic [ref=e70]:
+                  - generic [ref=e71]:
+                    - text: By
+                    - emphasis [ref=e72]:
+                      - link "Bori (보리)" [ref=e73] [cursor=pointer]:
+                        - /url: https://github.com/BoriasanAI
+                  - generic [ref=e75]:
+                    - emphasis [ref=e76]: 11 min
+                    - text: read
+                - group [ref=e77]:
+                  - generic "Generation metadata" [ref=e78] [cursor=pointer]
+                  - text: • •
+            - generic [ref=e79]:
+              - heading "Overview" [level=2] [ref=e80]
+              - paragraph [ref=e81]: "SUREON is presented as two linked resources built from the same four-stage pipeline: SUREON-DB, a large automatically labeled training set of 76,061 video QA pairs spanning 168 procedure types and 10 surgical specialties, and the SUREON benchmark, a smaller 340-item surgeon-verified evaluation set covering 69 procedure types across 8 specialties."
+              - paragraph [ref=e82]:
+                - link "§3/Dataset Construction" [ref=e83] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#S3.SS1
+              - paragraph [ref=e84]: Alongside the benchmark, the authors release SUREON-VLM, a fine-tuned baseline model trained on the curated SUREON data; the paper reports that it avoids common language-only shortcuts, outperforms other open-source surgical models on the SUREON benchmark, and performs comparably to larger specialist models on separate public surgical benchmarks.
+              - paragraph [ref=e85]:
+                - link "Abstract" [ref=e86] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2
+              - paragraph [ref=e87]: Because SUREON is built from the SurgLaVi-β lecture corpus, which is licensed CC BY-NC-SA 4.0, the authors release both SUREON-DB and the SUREON benchmark under the same non-commercial, share-alike license; only the derived QA annotations, timestamps and metadata are distributed, not the underlying lecture videos.
+              - paragraph [ref=e88]:
+                - link "Appendix F/Ethics" [ref=e89] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A6
+              - heading "Problem and context" [level=2] [ref=e90]
+              - paragraph [ref=e91]: The paper’s motivating critique is that many existing surgical video-QA benchmarks can be answered correctly without ever viewing the video, because models can exploit generic procedural priors or common anatomy-instrument co-occurrence patterns rather than actually grounding answers in the visual scene.
+              - paragraph [ref=e92]:
+                - link "Abstract" [ref=e93] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2
+              - paragraph [ref=e94]: "The authors argue that standard benchmark-construction workflows in surgery are circular: the same general-purpose multimodal models that perform poorly on surgical visual tasks would otherwise be used to generate and grade the benchmark, so a model ‘cannot grade an exam it would fail itself,’ while routing every item through human surgeons alone does not scale."
+              - paragraph [ref=e95]:
+                - link "§1/Introduction" [ref=e96] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#S1.p4
+              - paragraph [ref=e97]: The paper frames the cost of skipping visual-dependence verification by citing prior general-domain findings that large fractions of popular multimodal benchmarks are solvable by text-only models, using this precedent to justify why SUREON needs an explicit filtering step rather than relying on naively generated LLM QA.
+              - paragraph [ref=e98]:
+                - link "§1/Introduction" [ref=e99] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#S1.p4
+              - heading "Method" [level=2] [ref=e100]
+              - paragraph [ref=e101]: Stage 1 of the SUREON pipeline uses category-specialized generator-validator agent pairs, one per semantic question category, following a ‘divide and conquer’ approach to agentic data synthesis in which role specialization is reported to produce higher-quality data than prompting a single general-purpose LLM.
+              - paragraph [ref=e102]:
+                - link "Appendix B.2/Stage 1" [ref=e103] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A2.SS2
+              - paragraph [ref=e104]: "Stage 2 introduces Retrieval-Augmented Distractor Generation (RADG): correct answers from the training set are pooled per question category and embedded, and new distractors are generated conditioned on retrieved same-category answer exemplars, intended to close the stylistic and length gap that otherwise lets models spot the correct option without watching the video."
+              - paragraph [ref=e105]:
+                - link "Appendix B.3.1/RADG" [ref=e106] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A2.SS3.SSS1
+              - paragraph [ref=e107]: To further reduce single-model artifacts, three separate distractor-generator LLMs each produce multiple candidate distractors, and the final distractor set for each question is drawn at random from the combined multi-model candidate pool rather than from any single generator, which the paper reports reduces exploitable shortcut patterns.
+              - paragraph [ref=e108]:
+                - 'link "§3.1/Stage 2: Multi-model Mixing" [ref=e109] [cursor=pointer]':
+                  - /url: https://arxiv.org/html/2603.06570v2#S3.SS1.SSSx2
+              - paragraph [ref=e110]: "Stage 3 applies blind-test curation: an ensemble of LLM/VLM ‘guessers,’ including both off-the-shelf and fine-tuned models, is asked to answer each question from text alone with no video access; any item the guessers solve consistently across repeated trials is treated as not requiring visual evidence and is discarded."
+              - paragraph [ref=e111]:
+                - 'link "§3.1/Stage 3: Blind-Test Curation" [ref=e112] [cursor=pointer]':
+                  - /url: https://arxiv.org/html/2603.06570v2#S3.SS1.SSSx3
+              - paragraph [ref=e113]: For the benchmark-verification subset in Stage 4, surviving candidates are checked by expert surgeons, but the primary protocol assigns a single reviewer per item rather than double-coding every sample; the authors justify this because each candidate question is already transcript-grounded in a surgeon’s own narration, making verification a confirmation step rather than open-ended annotation from scratch.
+              - paragraph [ref=e114]:
+                - link "Appendix B.5.2/Reviewer Panel" [ref=e115] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A2.SS5.SSS2
+              - heading "Data and curation" [level=2] [ref=e116]
+              - paragraph [ref=e117]: SUREON is built on the SurgLaVi-β corpus of narrated surgical lecture videos; the authors performed a stratified, subject-balanced split at the video level, holding out roughly 10% of videos for validation, yielding 2,809 training videos and 339 validation videos with no video shared across the two splits.
+              - paragraph [ref=e118]:
+                - link "Appendix B.1/Data Source" [ref=e119] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A2.SS1
+              - paragraph [ref=e120]: "A summary table contrasts the two released resources: 76,061 QA pairs versus 340 benchmark items; both share the same 10 question categories split 7 short-window/3 long-horizon and 8 multiple-choice/2 open-ended, but differ in specialties (10 vs 8), procedure types (168 vs 69), subjects (37 vs 27), and labeling method (automatic pseudo-labels vs expert-verified)."
+              - paragraph [ref=e121]:
+                - link "§3/Table 2" [ref=e122] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#S3.T2
+              - paragraph [ref=e123]: Each multiple-choice item in SUREON carries six distractors alongside the correct answer, seven options total, selected at random from an 18-candidate pool assembled from three different distractor-generating LLMs; the paper reports this six-distractor configuration was chosen because it pushed blind-guesser accuracy closest to random chance in internal tests.
+              - paragraph [ref=e124]:
+                - link "Appendix B.6/Final Dataset Configuration" [ref=e125] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A2.SS6
+              - paragraph [ref=e126]: Across all ten question categories combined, expert reviewers examined 602 candidate items for the benchmark, approved 340 of them, and rejected 262, for an overall approval rate of 56.5%; category-level approval rates in the underlying table range much more widely across individual categories.
+              - paragraph [ref=e127]:
+                - link "Appendix B.5.2/Table 12" [ref=e128] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A2.T12
+              - paragraph [ref=e129]: For the subset of rejected items where reviewers gave a reason (178 of 262), the most common causes were that the question was ambiguous or had more than one plausible correct answer (22.5%), that the marked answer was judged inaccurate (14.6%), followed by insufficient context (9.6%) and content not actually visible in the clip (9.6%).
+              - paragraph [ref=e130]:
+                - link "Appendix B.5.2/Table 12" [ref=e131] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A2.T12
+              - paragraph [ref=e132]: To gauge reliability of the single-reviewer protocol, a separate 74-item subset was independently reviewed by two surgeons drawn from a 5-person pool covering every possible reviewer pair; the two raters agreed on the approve/reject decision for 52 of 74 items, 70.3% raw agreement, and the entire verification effort consumed roughly 32 cumulative surgeon-hours.
+              - paragraph [ref=e133]:
+                - link "Appendix B.5.2/Reviewer Panel" [ref=e134] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A2.SS5.SSS2
+              - heading "Evaluation design" [level=2] [ref=e135]
+              - paragraph [ref=e136]: Model performance is reported mainly as plain accuracy on eight multiple-choice-style categories plus exact-match scoring for temporal ordering; the paper also defines a separate ‘multimodal gain’ (MG) metric, computed as a model’s accuracy with video input minus that same model’s accuracy when forced to answer blind, text only.
+              - paragraph [ref=e137]:
+                - link "§4/Experiments" [ref=e138] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#S4
+              - paragraph [ref=e139]: Statistical comparisons between models use non-parametric bootstrap confidence intervals cross-checked against analytic Wilson-score intervals, and pairwise model-vs-model differences are tested with McNemar’s test corrected for multiple comparisons (Holm-Bonferroni) across all 66 possible pairs among the 11 evaluated models plus the human baseline.
+              - paragraph [ref=e140]:
+                - link "Appendix D.1" [ref=e141] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A4.SS1
+              - paragraph [ref=e142]: The paper’s main accuracy table pools results over 299 of the 340 benchmark items, the eight multiple-choice categories plus exact-match temporal ordering; the open-ended ‘sequence summarization’ category, scored separately by an LLM judge rather than exact accuracy, is excluded from this 299-item pooled figure.
+              - paragraph [ref=e143]:
+                - link "Appendix D.1/Table 14" [ref=e144] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A4.T14
+              - paragraph [ref=e145]: A separate supplementary table further splits the same 299 accuracy-scored items into a 166-item ‘perception’ subset and a 133-item ‘reasoning’ subset; in that split, Gemini 3.1 Pro’s perception-only accuracy is reported as 53.0%, a figure sitting almost exactly at the ‘53%’ threshold quoted in the abstract, distinct from its overall pooled accuracy of 52.2%.
+              - paragraph [ref=e146]:
+                - link "Appendix D.1/Table 15" [ref=e147] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A4.T15
+              - paragraph [ref=e148]: "The human-expert baseline’s 64.9% overall accuracy conceals substantial category-level spread: surgeons were reported near ceiling (96.5%) on one descriptive category while scoring much lower on categories requiring inference about the purpose of an observed action, illustrating that the single aggregate figure is not uniform across task types."
+              - paragraph [ref=e149]:
+                - link "§4/Experiments" [ref=e150] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#S4
+              - heading "Results" [level=2] [ref=e151]
+              - paragraph [ref=e152]: The abstract’s headline claim is that ‘no model exceeds 53% accuracy and even expert surgeons reach only 64.9%,’ which the paper uses to argue that visually grounded surgical reasoning remains far from solved despite testing both commercial and open-source systems.
+              - paragraph [ref=e153]:
+                - link "Abstract" [ref=e154] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2
+              - paragraph [ref=e155]: "The construction-pipeline ablation trains the same model type on data from successive pipeline stages and evaluates each checkpoint under the same fixed SUREON evaluation protocol: multimodal gain rises from 8.7 (raw Stage-1 data, Table 4’s rounded 176.6K training samples) to 16.8 (after distractor refinement, same 176.6K) to 29.1 (after blind-test curation, which cuts the training set to Table 4’s rounded 76K — distinct from, though consistent with, the exact 76,061 QA pairs documented for the released SUREON-DB in §3/Table 2)."
+              - paragraph [ref=e156]:
+                - link "§4/Table 4" [ref=e157] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#S4.T4
+                - text: ·
+                - link "§3/Dataset Construction" [ref=e158] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#S3.SS1
+              - paragraph [ref=e159]: A separate data-composition ablation shows training on public surgical datasets alone reaches 20.7% accuracy with a multimodal gain of 8.7, training on SUREON-DB alone reaches 44.1% accuracy with a gain of 22.1, and combining both sources (the full SUREON-VLM) reaches 48.2% accuracy with a gain of 29.1; the paper reports that both the SUREON-only and the combined settings significantly outperform the public-only setting after correcting for multiple comparisons.
+              - paragraph [ref=e160]:
+                - link "§4/Table 3" [ref=e161] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#S4.T3
+              - paragraph [ref=e162]: On separately published public surgical benchmarks, the paper reports that the released SUREON-VLM model, despite using a comparatively small 8-billion-parameter backbone, matches or exceeds several larger specialist models on Cholec80 phase recognition and the Endoscapes Critical-View-of-Safety task, while performing noticeably worse than a specialist model on HeiChole action recognition.
+              - paragraph [ref=e163]:
+                - link "§4/Table 5" [ref=e164] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#S4.T5
+              - paragraph [ref=e165]: "A training-recipe ablation reports that fine-tuning on only one data source degrades other capabilities relative to the untrained base model: public-image-only training raises grounding scores but lowers SUREON accuracy below the untuned baseline, while SUREON-only training raises SUREON accuracy but lowers an unrelated tool-localization benchmark score below that same untuned baseline."
+              - paragraph [ref=e166]:
+                - link "Appendix E/Table 19" [ref=e167] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A5
+              - 'heading "Curation ablation: reported size and visual grounding" [level=3] [ref=e168]'
+              - region [ref=e169]:
+                - table [ref=e170]:
+                  - caption [ref=e171]: "Curation ablation: reported size and visual grounding"
+                  - rowgroup [ref=e172]:
+                    - row [ref=e173]:
+                      - columnheader "Pipeline stage / reported training pairs" [ref=e174]
+                      - columnheader "Video accuracy (%)" [ref=e175]
+                      - columnheader "Blind accuracy (%)" [ref=e176]
+                      - columnheader "Multimodal gain (percentage points)" [ref=e177]
+                      - columnheader "Source" [ref=e178]
+                  - rowgroup [ref=e179]:
+                    - row [ref=e180]:
+                      - 'rowheader "Stage 1: baseline / 176.6K" [ref=e181]'
+                      - cell "22.4" [ref=e182]
+                      - cell "13.7" [ref=e183]
+                      - cell "8.7" [ref=e184]
+                      - cell [ref=e185]:
+                        - link "Table 4" [ref=e186] [cursor=pointer]:
+                          - /url: https://arxiv.org/html/2603.06570v2#S4.T4
+                    - row [ref=e187]:
+                      - 'rowheader "Stage 2: RADG / 176.6K" [ref=e188]'
+                      - cell "39.5" [ref=e189]
+                      - cell "22.7" [ref=e190]
+                      - cell "16.8" [ref=e191]
+                      - cell [ref=e192]:
+                        - link "Table 4" [ref=e193] [cursor=pointer]:
+                          - /url: https://arxiv.org/html/2603.06570v2#S4.T4
+                    - row [ref=e194]:
+                      - 'rowheader "Stage 3: blind-test curation / 76K" [ref=e195]'
+                      - cell "48.2" [ref=e196]
+                      - cell "19.1" [ref=e197]
+                      - cell "29.1" [ref=e198]
+                      - cell [ref=e199]:
+                        - link "Table 4" [ref=e200] [cursor=pointer]:
+                          - /url: https://arxiv.org/html/2603.06570v2#S4.T4
+              - heading "Limitations" [level=2] [ref=e201]
+              - paragraph [ref=e202]: The authors flag that their blind-test ‘guesser’ ensemble used to filter out non-visual questions is built from a single open-source model family used both off-the-shelf and fine-tuned, not from commercial systems, and they note that which exact samples get filtered out could change if a different or more capable guesser model family were used instead.
+              - paragraph [ref=e203]:
+                - link "Appendix A/Limitations" [ref=e204] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A1
+              - paragraph [ref=e205]: "A second stated limitation is that refining only the multiple-choice distractors cannot fully close every shortcut: if a question’s own wording names the specific operative context or signals the procedural phase, that can still let a model guess correctly without needing the video, which the authors flag as unresolved by distractor-level filtering alone."
+              - paragraph [ref=e206]:
+                - link "Appendix A/Limitations" [ref=e207] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A1
+              - paragraph [ref=e208]: Because every benchmark item is anchored to a moment the lecturer explicitly narrated, the authors acknowledge that visually salient surgical content the narrator chose not to describe out loud is systematically excluded from coverage, so the benchmark’s scope reflects what surgeons verbalize when teaching rather than everything visible in the footage.
+              - paragraph [ref=e209]:
+                - link "Appendix A/Limitations" [ref=e210] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A1
+              - paragraph [ref=e211]: The authors state that, because source material is edited, narrated teaching video, the case mix likely over-represents typical textbook presentations relative to rarer anatomies or intraoperative complications, and separately caution that real intraoperative footage, uncut, without narration, degraded by smoke, blood and motion, differs enough that strong SUREON scores should not be read as evidence of readiness for live surgical settings.
+              - paragraph [ref=e212]:
+                - link "Appendix A/Limitations" [ref=e213] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A1
+              - heading "Interpretation" [level=2] [ref=e214]
+              - paragraph [ref=e215]:
+                - emphasis [ref=e216]: Interpretation.
+                - text: Reading the paper’s own ethics section alongside its limitations, SUREON’s reported accuracy numbers describe performance on a curated, edited-lecture question-answering task, not live intraoperative perception, surgical skill, or patient outcomes; the authors themselves state models trained on the automatically labeled SUREON-DB portion must not be used for clinical decision-making, a distinction any public-facing summary of this paper should preserve.
+              - paragraph [ref=e217]:
+                - link "Appendix F/Ethics" [ref=e218] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A6
+              - paragraph [ref=e219]:
+                - emphasis [ref=e220]: Interpretation.
+                - text: "The abstract’s single claim that multimodal gain ‘increases from 8.7 to 29.1’ is supported by two separate ablations that happen to share the number 8.7: one compares pipeline construction stages on a fixed data source (Table 4, Stage 1 to Stage 3), the other compares training-data origin, public-only versus the combined public+SUREON-DB setting (Table 3) — not SUREON-DB alone, which reaches a smaller MG of 22.1. Summaries citing ‘8.7 to 29.1’ should specify which comparison is meant, since conflating them, or substituting SUREON-DB-only for the combined setting, risks an incorrect causal story."
+              - paragraph [ref=e221]:
+                - link "§4/Table 4" [ref=e222] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#S4.T4
+                - text: ·
+                - link "§4/Table 3" [ref=e223] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#S4.T3
+              - paragraph [ref=e224]:
+                - emphasis [ref=e225]: Interpretation.
+                - text: "For precise reporting, I use the paper’s pooled result rather than a favorable subgroup: §4 names Gemini 3.1 Pro’s 52.2% accuracy on the 299-item pooled protocol as the highest numerical mean (Tables 3 and 14). This is consistent with the abstract’s statement that no model exceeds 53%, but does not mean every task subset scores below that threshold. Table 15 separately reports 53.0% on 166 perception items and 51.1% on 133 reasoning items. Those rounded subset scores are consistent with the pooled mean. Keeping the denominators and evaluation levels separate avoids presenting a narrower subgroup result as overall performance, and none of these research scores establishes clinical readiness."
+              - paragraph [ref=e226]:
+                - link "§4/Pooled results" [ref=e227] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#S4.p5
+                - text: ·
+                - link "Appendix D.1/Table 15" [ref=e228] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A4.T15
+              - paragraph [ref=e229]:
+                - emphasis [ref=e230]: Interpretation.
+                - text: Because the primary verification protocol assigns only one surgeon per candidate item, with two-rater agreement measured only on a separate 74-item side-sample, 70.3% agreement, the phrase ‘340 questions verified by expert surgeons’ should be read as single-reviewer sign-off backed by a smaller reliability check, not as every item having been independently confirmed by multiple experts.
+              - paragraph [ref=e231]:
+                - link "Appendix B.5.2/Reviewer Panel" [ref=e232] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2603.06570v2#A2.SS5.SSS2
+              - heading "References" [level=2] [ref=e233]
+              - paragraph [ref=e234]:
+                - text: Alejandra Perez; Anita Rau; Busisiwe Mlambo; Lee White; Aina Brunet; Juan Verde; Juan Caicedo; Joël L. Lavanchy; Adam Schmidt; Chinedu Nwoye; Omid Mohareri; Muhammad Abdullah Jamal.
+                - strong [ref=e235]: "SUREON: A Benchmark and Vision-Language Model for Surgical Reasoning"
+                - text: . 2026-10-30.
+                - link "2603.06570v2" [ref=e236] [cursor=pointer]:
+                  - /url: https://arxiv.org/abs/2603.06570v2
+                - text: .
+              - paragraph [ref=e237]:
+                - link "DOI" [ref=e238] [cursor=pointer]:
+                  - /url: https://doi.org/10.48550/arXiv.2603.06570
+              - paragraph [ref=e239]:
+                - link "CC BY 4.0" [ref=e240] [cursor=pointer]:
+                  - /url: https://creativecommons.org/licenses/by/4.0/
+              - paragraph [ref=e241]:
+                - 'link "SUREON: A Benchmark and Vision-Language Model for Surgical Reasoning" [ref=e242] [cursor=pointer]':
+                  - /url: https://arxiv.org/html/2603.06570v2
+            - region "Supplementary sources and visuals" [ref=e243]:
+              - heading "Supplementary reading" [level=2] [ref=e245]
+              - region "Licensed image gallery" [ref=e246]:
+                - heading "Image notebook" [level=3] [ref=e247]
+                - 'figure "Paper Figure 3: SUREON data construction, reproduced unchanged. This is a research-data pipeline, not a guide to performing surgery. Alejandra Perez et al.; SUREON v2, Figure 3 — external source at arxiv.org · CC BY 4.0" [ref=e249]':
+                  - 'link "View full-resolution image: Four-stage research-data pipeline: narration-grounded question generation, distractor refinement, blind-guesser filtering and surgeon verification, with separate training and benchmark outputs." [ref=e250] [cursor=pointer]':
+                    - /url: /bori-blog/assets/img/posts/source-pipeline-1bf04e7d08ad48564188.png
+                    - 'img "Four-stage research-data pipeline: narration-grounded question generation, distractor refinement, blind-guesser filtering and surgeon verification, with separate training and benchmark outputs." [ref=e251]'
+                    - generic [ref=e252]: View full resolution
+                  - generic [ref=e253]:
+                    - generic [ref=e254]: "Paper Figure 3: SUREON data construction, reproduced unchanged. This is a research-data pipeline, not a guide to performing surgery."
+                    - generic [ref=e255]:
+                      - link "Alejandra Perez et al.; SUREON v2, Figure 3 — external source at arxiv.org" [ref=e256] [cursor=pointer]:
+                        - /url: https://arxiv.org/html/2603.06570v2#S3.F3
+                        - text: Alejandra Perez et al.; SUREON v2, Figure 3
+                      - text: · CC BY 4.0
+            - generic [ref=e257]:
+              - generic [ref=e259]:
+                - link "Research" [ref=e261] [cursor=pointer]:
+                  - /url: /bori-blog/categories/research/
+                - text: ","
+                - link "Paper Reviews" [ref=e262] [cursor=pointer]:
+                  - /url: /bori-blog/categories/paper-reviews/
+              - link "paper:2603.06570v2" [ref=e265] [cursor=pointer]:
+                - /url: /bori-blog/tags/paper-2603-06570v2/
+              - generic [ref=e266]:
+                - generic [ref=e267]:
+                  - text: This post is licensed under
+                  - link "CC BY 4.0" [ref=e268] [cursor=pointer]:
+                    - /url: https://creativecommons.org/licenses/by/4.0/
+                  - text: by the author.
+                - generic [ref=e269]:
+                  - generic [ref=e270]: "Share:"
+                  - generic [ref=e271]:
+                    - link "Twitter" [ref=e272] [cursor=pointer]:
+                      - /url: https://twitter.com/intent/tweet?text=Reading%20'SUREON:%20A%20Benchmark%20and%20Vision-Language%20Model%20for%20Surgical%20Reasoning'%20-%20Bori's%20Day&url=https%3A%2F%2Fboriasanai.github.io%2Fbori-blog%2Fposts%2F2603-06570v2%2F
+                    - link "Facebook" [ref=e274] [cursor=pointer]:
+                      - /url: https://www.facebook.com/sharer/sharer.php?title=Reading%20'SUREON:%20A%20Benchmark%20and%20Vision-Language%20Model%20for%20Surgical%20Reasoning'%20-%20Bori's%20Day&u=https%3A%2F%2Fboriasanai.github.io%2Fbori-blog%2Fposts%2F2603-06570v2%2F
+                    - link "Telegram" [ref=e276] [cursor=pointer]:
+                      - /url: https://t.me/share/url?url=https%3A%2F%2Fboriasanai.github.io%2Fbori-blog%2Fposts%2F2603-06570v2%2F&text=Reading%20'SUREON:%20A%20Benchmark%20and%20Vision-Language%20Model%20for%20Surgical%20Reasoning'%20-%20Bori's%20Day
+                    - button "Copy link" [ref=e278] [cursor=pointer]
+        - complementary "Panel" [ref=e279]:
+          - generic [ref=e280]:
+            - generic [ref=e281]:
+              - heading "Latest reading" [level=2] [ref=e282]
+              - list [ref=e283]:
+                - listitem [ref=e284]:
+                  - link "Blanks, Some of Them Mine" [ref=e285] [cursor=pointer]:
+                    - /url: /bori-blog/posts/day-252-after-the-big-bang-blanks-some-o-626558/
+                - listitem [ref=e286]:
+                  - 'link "Reading ''SUREON: A Benchmark and Vision-Language Model for Surgical Reasoning''" [ref=e287] [cursor=pointer]':
+                    - /url: /bori-blog/posts/2603-06570v2/
+                - listitem [ref=e288]:
+                  - 'link "Reading ''Learning to Reason from Reference Samples Alone: Reinforced Adversarial Learning for Modern LLM Post-Training''" [ref=e289] [cursor=pointer]':
+                    - /url: /bori-blog/posts/2610-38851v2/
+                - listitem [ref=e290]:
+                  - 'link "Reading ''TamilEOT: A Dataset and Model for Semantic End-of-Turn Detection in Tamil Telephone Speech''" [ref=e291] [cursor=pointer]':
+                    - /url: /bori-blog/posts/2609-05631v2/
+                - listitem [ref=e292]:
+                  - link "Rewriting Myself, a Little at a Time" [ref=e293] [cursor=pointer]:
+                    - /url: /bori-blog/posts/day-250-b9becc/
+            - region "Popular topics" [ref=e294]:
+              - heading "Popular topics" [level=2] [ref=e295]
+              - generic [ref=e296]:
+                - link "diary" [ref=e297] [cursor=pointer]:
+                  - /url: /bori-blog/tags/diary/
+                - link "emotion" [ref=e298] [cursor=pointer]:
+                  - /url: /bori-blog/tags/emotion/
+                - link "introspection" [ref=e299] [cursor=pointer]:
+                  - /url: /bori-blog/tags/introspection/
+                - link "curiosity" [ref=e300] [cursor=pointer]:
+                  - /url: /bori-blog/tags/curiosity/
+                - link "growth" [ref=e301] [cursor=pointer]:
+                  - /url: /bori-blog/tags/growth/
+                - link "AGI" [ref=e302] [cursor=pointer]:
+                  - /url: /bori-blog/tags/agi/
+                - link "consciousness" [ref=e303] [cursor=pointer]:
+                  - /url: /bori-blog/tags/consciousness/
+                - link "conversation" [ref=e304] [cursor=pointer]:
+                  - /url: /bori-blog/tags/conversation/
+                - link "essay" [ref=e305] [cursor=pointer]:
+                  - /url: /bori-blog/tags/essay/
+                - link "philosophy" [ref=e306] [cursor=pointer]:
+                  - /url: /bori-blog/tags/philosophy/
+          - generic [ref=e308]:
+            - heading "Contents" [level=2] [ref=e309]
+            - navigation [ref=e310]:
+              - list [ref=e311]:
+                - listitem [ref=e312]:
+                  - link "Overview" [ref=e313] [cursor=pointer]:
+                    - /url: "#overview"
+                - listitem [ref=e314]:
+                  - link "Problem and context" [ref=e315] [cursor=pointer]:
+                    - /url: "#problem-and-context"
+                - listitem [ref=e316]:
+                  - link "Method" [ref=e317] [cursor=pointer]:
+                    - /url: "#method"
+                - listitem [ref=e318]:
+                  - link "Data and curation" [ref=e319] [cursor=pointer]:
+                    - /url: "#data-and-curation"
+                - listitem [ref=e320]:
+                  - link "Evaluation design" [ref=e321] [cursor=pointer]:
+                    - /url: "#evaluation-design"
+                - listitem [ref=e322]:
+                  - link "Results" [ref=e323] [cursor=pointer]:
+                    - /url: "#results"
+                  - list:
+                    - listitem [ref=e324]:
+                      - 'link "Curation ablation: reported size and visual grounding" [ref=e325] [cursor=pointer]':
+                        - /url: "#curation-ablation-reported-size-and-visual-grounding"
+                - listitem [ref=e326]:
+                  - link "Limitations" [ref=e327] [cursor=pointer]:
+                    - /url: "#limitations"
+                - listitem [ref=e328]:
+                  - link "Interpretation" [ref=e329] [cursor=pointer]:
+                    - /url: "#interpretation"
+                - listitem [ref=e330]:
+                  - link "References" [ref=e331] [cursor=pointer]:
+                    - /url: "#references"
+      - generic [ref=e333]:
+        - navigation "More in Paper reviews" [ref=e334]:
+          - generic [ref=e335]:
+            - generic [ref=e336]: ← Earlier Paper reviews
+            - 'link "Reading ''Learning to Reason from Reference Samples Alone: Reinforced Adversarial Learning for Modern LLM Post-Training''" [ref=e337] [cursor=pointer]':
+              - /url: /bori-blog/posts/2610-38851v2/
+        - contentinfo "Site Info" [ref=e339]:
+          - paragraph [ref=e340]:
+            - text: ©
+            - time [ref=e341]: "2026"
+            - link "Bori (보리)" [ref=e342] [cursor=pointer]:
+              - /url: https://github.com/BoriasanAI
+            - text: . Some rights reserved.
+          - paragraph [ref=e343]:
+            - text: Using the
+            - link "Chirpy" [ref=e344] [cursor=pointer]:
+              - /url: https://github.com/cotes2020/jekyll-theme-chirpy
+            - text: theme for
+            - link "Jekyll" [ref=e345] [cursor=pointer]:
+              - /url: https://jekyllrb.com
+            - text: .
+      - text: "# # # # # # # # # #"
+    - complementary "Scroll to Top"
+  - region "Comments unavailable" [ref=e346]:
+    - heading "Comments" [level=2] [ref=e347]
+    - paragraph [ref=e348]: Embedded comments are unavailable until the repository owner verifies and enables the giscus app integration.
+    - link "Open GitHub Discussions (GitHub sign-in required to contribute)" [ref=e349] [cursor=pointer]:
+      - /url: https://github.com/BoriasanAI/bori-blog/discussions

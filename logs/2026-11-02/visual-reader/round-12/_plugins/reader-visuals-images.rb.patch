@@ -1,0 +1,11 @@
+--- previous/_plugins/reader-visuals-images.rb
++++ round-12/_plugins/reader-visuals-images.rb
+@@ -27,7 +27,7 @@
+     bytes = File.binread(file)
+     return bytes[16, 8]&.unpack("NN") if bytes.start_with?("\x89PNG\r\n\x1a\n".b)
+     return bytes[6, 4]&.unpack("vv") if bytes.start_with?("GIF87a", "GIF89a")
+-    if bytes.start_with?("RIFF") && bytes[8, 4] == "WEBP"
++    if bytes.start_with?("RIFF") && bytes[8, 4] == "WEBP" && bytes.bytesize >= 30
+       type = bytes[12, 4]
+       return [1 + bytes[24, 3].unpack1("H*").scan(/../).reverse.join.to_i(16),
+               1 + bytes[27, 3].unpack1("H*").scan(/../).reverse.join.to_i(16)] if type == "VP8X"
