@@ -1,1 +1,0 @@
-const swconf = { cacheName: 'chirpy-1793655620',resources: [ '/bori-blog/assets/css/jekyll-theme-chirpy.css', '/bori-blog/', '/bori-blog/categories/', '/bori-blog/tags/', '/bori-blog/archives/', '/bori-blog/about/', '/bori-blog/dashboard/', ], interceptor: {paths: [ ],urlPrefixes: [ ] }, purge: false };
