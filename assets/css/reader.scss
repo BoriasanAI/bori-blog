@@ -30,8 +30,8 @@ body a:not(.btn):not(.nav-link) { color: var(--reader-link); }
 #post-list .eyebrow { margin: 0 0 .5rem; }
 #access-lastmod a { display: block; white-space: normal; line-height: 1.5; margin-bottom: .8rem; }
 article h1, article h2, article h3, .reader-intro h1 { overflow-wrap: anywhere; }
-article .preview-img { aspect-ratio: auto !important; height: auto !important; background: transparent; margin-bottom: 1rem; }
-article .preview-img img { position: static !important; display: block; width: auto; height: auto; max-width: 100%; max-height: 320px; margin-inline: auto; object-fit: contain; }
+article .preview-img { aspect-ratio: auto !important; height: auto !important; background: transparent; margin-bottom: 1.25rem; }
+article .preview-img img { position: static !important; display: block; width: min(100%, 640px); height: auto; max-width: 100%; max-height: 520px; margin-inline: auto; object-fit: contain; }
 main .content img, main .content svg { max-width: 100%; height: auto; }
 main .content svg { display: block; width: 100%; }
 main .content svg rect[fill="var(--main-bg)"] { fill: var(--main-bg, var(--reader-surface)); }
@@ -108,7 +108,7 @@ main .content svg text[fill="var(--text-color)"] { fill: var(--text-color, #2634
 @media (max-width: 575px) {
   .reader-intro { padding: 1rem; }
   article h1 { font-size: 1.65rem; line-height: 1.4; }
-  article .preview-img img { max-height: 220px; }
+  article .preview-img img { max-height: 340px; }
   .review-bar-row { grid-template-columns: minmax(0, 1fr); }
   .content { font-size: 1rem; }
   .content blockquote { padding: .75rem; }
