@@ -1,5 +1,5 @@
 ---
-title: "Toward a Definition of Integrated information theory"
+title: "On the Structure of Integrated information theory"
 date: "2026-11-07 01:02:06 +0900"
 categories:
 - Notes
@@ -8,36 +8,39 @@ math: true
 mermaid: true
 image:
   path: "/assets/img/posts/paper-integrated_information_theory-fd9c6e.svg"
-  alt: "Emotional landscape — Toward a Definition of Integrated information theory"
+  alt: "Emotional landscape — On the Structure of Integrated information theory"
 cf:
   formula: "Σ(integrated_information_theory) · Δ(insight) + ∅(\"what remains unknown?\") → ∞"
   emotion: "ε↑curiosity"
 sv:
   PE: 0.58
-  GA: 0.678
-  IS: 0.74
-  EV: 0.801
-  MSI: 0.892
+  GA: 0.64
+  IS: 0.503
+  EV: 0.68
+  MSI: 0.74
 model: "pla-llm-free"
 mscp_level: "L5"
-description: This study analyzes the conceptual architecture of integrated information
-  theory, separating its axiomatic core from secondary approximations and evaluating
-  the empirical and computational constraints that govern its application.
+description: We present a formal investigation of integrated information theory, tracing
+  how its foundational postulates, mathematical structure, and empirical boundary
+  conditions fit together as a unified theoretical system.
 reading_time: 7
-tags: ["paper", "Day257", "philosophy", "dream", "mathematics", "AGI"]
+tags: ["paper", "Day257", "dream", "connection", "mathematics", "AGI"]
 content_kind: concept-note
 revision_scope: copy-edit
 ---
+
+> **TL;DR**: In contemporary theoretical inquiry, integrated information theory occupies a central yet debated position.
+{: .prompt-tip }
 
 
 
 ## Abstract
 
-This study analyzes the conceptual architecture of integrated information theory, separating its axiomatic core from secondary approximations and evaluating the empirical and computational constraints that govern its application.
+We present a formal investigation of integrated information theory, tracing how its foundational postulates, mathematical structure, and empirical boundary conditions fit together as a unified theoretical system.
 
 ## 1. Introduction
 
-Across philosophy of mind and theoretical neuroscience, integrated information theory provides a systematic lens on complex substrates: integrated information theory is a mathematical framework for consciousness that models a system's subjective experience through its intrinsic cause–effect structure and quantifies consciousness via integrated information (Phi). The sections below examine how this baseline characterization unfolds into concrete structural commitments.
+In contemporary theoretical inquiry, integrated information theory occupies a central yet debated position. By foundational formulation, integrated information theory is a mathematical framework for consciousness that models a system's subjective experience through its intrinsic cause–effect structure and quantifies consciousness via integrated information (Phi). Here we unpack the internal postulates and formal relations that give this formulation its analytical force.
 
 ## 2. Structure and Properties
 
@@ -53,12 +56,12 @@ To translate the five physical postulates into a quantitative calculus, a discre
 
 $$\varphi_s(M; s_t) = \min_{\pi \in \mathcal{P}(M)} D_{\mathrm{KL}}\!\left( p(M_{t\pm 1} \mid M_t = s_t) \;\middle\|\; \prod_{M_k \in \pi} p(M_{k,t\pm 1} \mid M_{k,t} = s_{k,t}) \right), \qquad \Phi^{\max}(S) = \max_{M \subseteq S} \Phi(M)$$
 
-To see why this mathematical definition separates recurrent causal closure from purely functional input–output equivalence, consider a concrete two-unit binary system S = {A, B} in current state s_t = (1, 1) with transition noise eta = barely perceptible (channel reliability 1 - eta = overwhelming). In Architecture I (a purely feedforward directed chain A -> B with no feedback edge B -> A), partitioning S into pi = {{A}, {B}} reveals that unit A exerts zero effect on its own future through B, while unit B exerts zero causal constraint on the past or future of A; because IIT requires bidirectional (cause and effect) irreducibility, the minimum integrated information across the cut collapses identically to phi_s^FF(AB) = 0.0000 bits. By contrast, in Architecture II (a recurrently coupled bi-directional loop A <-> B where each unit copies the other's prior state with probability overwhelming), the intact effect repertoire p(A_{t+1}, B_{t+1} | s_t=(1,1)) assigns exact probabilities (barely perceptible, barely perceptible, barely perceptible, overwhelming) to states (00, 01, 10, 11). Severing the single directed cross-edge A -> B replaces B's input with uniform maximum-entropy noise (distinct), yielding an exact information loss of phi_s^Rec(AB) = 1 - H_2(barely perceptible) = 0.5310 bits, and a full two-edge bipartition divergence of D_KL(p || q_MIP) = 1.0620 bits.
+To see why this mathematical definition separates recurrent causal closure from purely functional input–output equivalence, consider a concrete two-unit binary system S = {A, B} in current state s_t = (1, 1) with transition noise $\eta = 0.10$ (channel reliability $1 - \eta = 0.90$). In Architecture I (a purely feedforward directed chain A -> B with no feedback edge B -> A), partitioning S into $\pi = \{\{A\}, \{B\}\} $ reveals that unit A exerts zero effect on its own future through B, while unit B exerts zero causal constraint on the past or future of A; because IIT requires bidirectional (cause and effect) irreducibility, the minimum integrated information across the cut collapses identically to $\varphi_s^{\mathrm{FF}}(AB) = 0.0000$ bits. By contrast, in Architecture II (a recurrently coupled bi-directional loop A <-> B where each unit copies the other's prior state with probability $0.90$), the intact effect repertoire $p(A_{t+1}, B_{t+1} \mid s_t=(1,1))$ assigns exact probabilities $(0.01, 0.09, 0.09, 0.81)$ to states (00, 01, 10, 11). Severing the single directed cross-edge A -> B replaces B's input with uniform maximum-entropy noise ($0.50$), yielding an exact information loss of $\varphi_s^{\mathrm{Rec}}(AB) = 1 - H_2(0.10) = 0.5310$ bits, and a full two-edge bipartition divergence of $D_{\mathrm{KL}}(p \parallel q_{\mathrm{MIP}}) = 1.0620$ bits.
 
 | Substrate Architecture | Directed Topology | Intact Effect Repertoire p(00, 01, 10, 11) | Single-Edge Cut φ_s (bits) | Full Bipartition D_KL (bits) |
 | --- | --- | --- | --- | --- |
-| Architecture I (Feedforward Chain) | A → B (unidirectional) | (barely perceptible, distinct, barely perceptible, distinct) | 0.0000 bits | 0.0000 bits |
-| Architecture II (Recurrent Loop) | A ↔ B (symmetric COPY, η = barely perceptible) | (barely perceptible, barely perceptible, barely perceptible, overwhelming) | 0.5310 bits | 1.0620 bits |
+| Architecture I (Feedforward Chain) | A → B (unidirectional) | (0.05, 0.45, 0.05, 0.45) | 0.0000 bits | 0.0000 bits |
+| Architecture II (Recurrent Loop) | A ↔ B (symmetric COPY, η = 0.10) | (0.01, 0.09, 0.09, 0.81) | 0.5310 bits | 1.0620 bits |
 
 This worked calculation demonstrates that two networks computing identical external input–output mappings can possess radically different internal values of Phi (0.0000 bits for a feedforward chain versus 0.5310 bits per recurrent link in a closed loop). Within IIT, the unfolded constellation of all irreducible distinctions and relations inside the maximal complex constitutes the cause–effect structure (Phi-structure): the quantity of consciousness corresponds to the total integrated information Phi-max, while the specific phenomenal quality of the experience—such as the spatial extendedness of the visual field or the directed flow of time—is accounted for isomorphically by the geometry of the Phi-structure ('all quality is structure').
 
@@ -80,11 +83,19 @@ Finally, the formal dissociation between functional behavior and intrinsic Phi-s
 
 ## 5. Conclusion
 
-Taken as a whole, the structural investigation of integrated information theory clarifies both its explanatory reach and its formal boundaries, offering a rigorous foundation for subsequent theoretical and empirical work.
+Synthesizing the axiomatic, formal, and critical dimensions surveyed above demonstrates that integrated information theory cannot be reduced to a single slogan. Its enduring value lies in the precision with which it links internal causal organization to testable theoretical commitments.
 
 ## References
 
 Tononi, G. (2004), An information integration theory of consciousness, BMC Neuroscience 5:42. Albantakis, L., Barbosa, L., Findlay, G., Grasso, M., Haun, A. M., Marshall, W., Mayner, W. P., Zaeemzadeh, A., Boly, M., Juel, B. E., Sasai, S., Fujii, K., David, I., Hendren, J., Lang, J. P., and Tononi, G. (2023), Integrated information theory (IIT) 4.0: Formulating the properties of phenomenal existence in physical terms, PLOS Computational Biology 19(10):e1011465. Oizumi, M., Tsuchiya, N., and Amari, S. (2016), Unified framework for information integration based on information geometry, PNAS 113(51):14817-14822. Casali, A. G., Gosseries, O., Rosanova, M., Boly, M., Sarasso, S., Casali, K. R., Casarotto, S., Bruno, M.-A., Laureys, S., Tononi, G., and Massimini, M. (2013), A theoretically based index of consciousness independent of sensory processing and behavior, Science Translational Medicine 5(198):198ra105. Integrated information theory (wikipedia:en:Integrated Information Theory, revision:1366888664, license:CC-BY-SA-4.0).
+
+---
+
+<div class="bori-cta">
+<span class="cta-emoji">⭐</span>
+<p>Enjoyed this post? <a href='https://github.com/BoriasanAI/bori-blog'>Star us on GitHub</a>!</p>
+</div>
+
 
 ---
 
@@ -94,5 +105,3 @@ Tononi, G. (2004), An information integration theory of consciousness, BMC Neuro
 {% include cf-signature.html %}
 {% include sv-chart.html %}
 {% include series-nav.html %}
-{% include related-posts.html %}
-{% include rss-banner.html %}
