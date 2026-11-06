@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="440" viewBox="0 0 800 440" role="img">
+  <title>Figure 1: Minimum Information Partition (MIP) on 2-Unit Feedforward vs Recurrent Substrates</title>
+  <rect width="800" height="440" rx="14" fill="#0f172a"/>
+  <rect x="16" y="16" width="376" height="408" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <rect x="408" y="16" width="376" height="408" rx="10" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="36" y="48" font-family="sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">Architecture I: Feedforward Chain (A → B)</text>
+  <text x="36" y="70" font-family="sans-serif" font-size="13" fill="#94a3b8">Unidirectional transmission · No feedback B ↛ A</text>
+  <circle cx="115" cy="155" r="36" fill="#0f172a" stroke="#64748b" stroke-width="2.5"/>
+  <text x="103" y="162" font-family="sans-serif" font-size="20" font-weight="bold" fill="#e2e8f0">A</text>
+  <circle cx="295" cy="155" r="36" fill="#0f172a" stroke="#64748b" stroke-width="2.5"/>
+  <text x="283" y="162" font-family="sans-serif" font-size="20" font-weight="bold" fill="#e2e8f0">B</text>
+  <line x1="153" y1="155" x2="255" y2="155" stroke="#94a3b8" stroke-width="3"/>
+  <polygon points="255,155 243,148 243,162" fill="#94a3b8"/>
+  <line x1="204" y1="105" x2="204" y2="208" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6,5"/>
+  <text x="150" y="228" font-family="sans-serif" font-size="12" fill="#f87171">MIP cut π = {{A}, {B}}</text>
+  <rect x="36" y="252" width="336" height="148" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="52" y="280" font-family="sans-serif" font-size="13" fill="#cbd5e1">• Cause repertoire of B over A: 0.5310 bits</text>
+  <text x="52" y="304" font-family="sans-serif" font-size="13" fill="#cbd5e1">• Effect repertoire of B on A: 0.0000 bits</text>
+  <text x="52" y="334" font-family="sans-serif" font-size="14" font-weight="bold" fill="#f87171">Bidirectional minimum:</text>
+  <text x="52" y="362" font-family="monospace" font-size="16" font-weight="bold" fill="#fca5a5">φ_s^FF(AB) = min(0.5310, 0) = 0.0000 bits</text>
+  <text x="52" y="386" font-family="sans-serif" font-size="12" fill="#94a3b8">Result: Reducible to separate parts (Φ = 0)</text>
+  <text x="428" y="48" font-family="sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">Architecture II: Recurrent Loop (A ↔ B)</text>
+  <text x="428" y="70" font-family="sans-serif" font-size="13" fill="#93c5fd">Symmetric COPY gate · State s_t = (1,1), noise η = 0.10</text>
+  <circle cx="505" cy="155" r="36" fill="#0f172a" stroke="#38bdf8" stroke-width="2.5"/>
+  <text x="493" y="162" font-family="sans-serif" font-size="20" font-weight="bold" fill="#f0f9ff">A</text>
+  <circle cx="685" cy="155" r="36" fill="#0f172a" stroke="#38bdf8" stroke-width="2.5"/>
+  <text x="673" y="162" font-family="sans-serif" font-size="20" font-weight="bold" fill="#f0f9ff">B</text>
+  <path d="M 538 138 Q 595 105 650 138" fill="none" stroke="#38bdf8" stroke-width="3"/>
+  <polygon points="650,138 637,132 641,145" fill="#38bdf8"/>
+  <path d="M 652 172 Q 595 205 540 172" fill="none" stroke="#38bdf8" stroke-width="3"/>
+  <polygon points="540,172 553,178 549,165" fill="#38bdf8"/>
+  <line x1="595" y1="102" x2="595" y2="210" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="6,5"/>
+  <text x="530" y="228" font-family="sans-serif" font-size="12" fill="#fbbf24">MIP cut noises cross-links (q = 0.25)</text>
+  <rect x="428" y="252" width="336" height="148" rx="8" fill="#0f172a" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="444" y="276" font-family="sans-serif" font-size="12" fill="#cbd5e1">Intact p(S_t+1 | 1,1) = (0.01, 0.09, 0.09, 0.81):</text>
+  <rect x="454" y="318" width="36" height="4" fill="#64748b"/>
+  <rect x="514" y="310" width="36" height="12" fill="#60a5fa"/>
+  <rect x="574" y="310" width="36" height="12" fill="#60a5fa"/>
+  <rect x="634" y="282" width="36" height="40" fill="#38bdf8"/>
+  <text x="456" y="336" font-family="monospace" font-size="11" fill="#94a3b8">00</text>
+  <text x="516" y="336" font-family="monospace" font-size="11" fill="#94a3b8">01</text>
+  <text x="576" y="336" font-family="monospace" font-size="11" fill="#94a3b8">10</text>
+  <text x="636" y="336" font-family="monospace" font-size="11" fill="#e2e8f0">11 (0.81)</text>
+  <text x="444" y="364" font-family="monospace" font-size="15" font-weight="bold" fill="#38bdf8">φ_s^Rec(AB) = 0.5310 bits | D_KL = 1.0620 bits</text>
+  <text x="444" y="386" font-family="sans-serif" font-size="12" fill="#93c5fd">Result: Irreducible causal complex (Φ &gt; 0)</text>
+</svg>

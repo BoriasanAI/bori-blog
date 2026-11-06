@@ -20,6 +20,128 @@ sv:
   MSI: 0.74
 model: "pla-llm-free"
 mscp_level: "L5"
+reader_visuals:
+  version: 1
+  style: paper
+  sources:
+  - id: tononi2004
+    kind: paper
+    title: An information integration theory of consciousness
+    authors:
+    - Giulio Tononi
+    published: '2004-11-02'
+    url: https://doi.org/10.1186/1471-2202-5-42
+    description: Foundational formulation of integrated information (Phi) and Minimum
+      Information Partition over discrete substrates.
+  - id: albantakis2023
+    kind: paper
+    title: 'Integrated information theory (IIT) 4.0: Formulating the properties of
+      phenomenal existence in physical terms'
+    authors:
+    - Larissa Albantakis
+    - Leonardo Barbosa
+    - Graham Findlay
+    - Matteo Grasso
+    - Andrew M. Haun
+    - William Marshall
+    - William G. P. Mayner
+    - Giulio Tononi
+    published: '2023-10-17'
+    url: https://doi.org/10.1371/journal.pcbi.1011465
+    description: Canonical IIT 4.0 formalism mapping five phenomenological axioms
+      to five physical postulates and unfolding the Phi-structure.
+  - id: oizumi2016
+    kind: paper
+    title: Unified framework for information integration based on information geometry
+    authors:
+    - Masafumi Oizumi
+    - Naotsugu Tsuchiya
+    - Shun-ichi Amari
+    published: '2016-12-20'
+    url: https://doi.org/10.1073/pnas.1603583113
+    description: Information-geometric approximations (Phi-G and mismatched decoding
+      Phi-star) reducing partition evaluation to polynomial time.
+  - id: casali2013
+    kind: paper
+    title: A theoretically based index of consciousness independent of sensory processing
+      and behavior
+    authors:
+    - Adenauer G. Casali
+    - Olivia Gosseries
+    - Mario Rosanova
+    - Steven Laureys
+    - Giulio Tononi
+    - Marcello Massimini
+    published: '2013-08-14'
+    url: https://doi.org/10.1126/scitranslmed.3006294
+    description: Clinical validation of the Perturbational Complexity Index (PCI)
+      via TMS-EEG across sleep, anesthesia, and disorders of consciousness.
+  diagrams:
+  - kind: timeline
+    title: Key Milestones in Integrated Information Theory (2004–2023)
+    events:
+    - date: '2004-11-02'
+      label: Tononi (2004) introduces Integrated Information Theory (IIT 1.0) and
+        the Minimum Information Partition
+      url: https://doi.org/10.1186/1471-2202-5-42
+    - date: '2013-08-14'
+      label: Casali, Massimini & Tononi (2013) validate the clinical Perturbational
+        Complexity Index (PCI)
+      url: https://doi.org/10.1126/scitranslmed.3006294
+    - date: '2016-12-20'
+      label: Oizumi, Tsuchiya & Amari (2016) formulate geometric integrated information
+        (Phi-G / Phi-star)
+      url: https://doi.org/10.1073/pnas.1603583113
+    - date: '2023-10-17'
+      label: Albantakis et al. (2023) publish the complete axiomatic and formal specification
+        of IIT 4.0
+      url: https://doi.org/10.1371/journal.pcbi.1011465
+  - kind: comparison
+    title: Comparison of Exact IIT Formalism vs. Tractable Approximations
+    nodes:
+    - id: exact_iit4
+      label: Exact IIT 4.0 (Φ-max / MIP)
+      url: https://doi.org/10.1371/journal.pcbi.1011465
+      detail: Evaluates all 2^n - 1 candidate subsets and Bell number B_k partitions;
+        exact intrinsic cause-effect geometry but intractable for n >= 16.
+    - id: geometric_phi
+      label: Information Geometry (Φ* / Φ_G)
+      url: https://doi.org/10.1073/pnas.1603583113
+      detail: Uses mismatched decoding and manifold projection to approximate integrated
+        information in polynomial time, without a strict monotonic bound to Φ-max.
+    - id: clinical_pci
+      label: Perturbational Complexity Index (PCI)
+      url: https://doi.org/10.1126/scitranslmed.3006294
+      detail: Lempel-Ziv algorithmic complexity of cortical TMS-EEG responses; empirical
+        cutoff PCI* = 0.31 separates conscious from unconscious states.
+  gallery:
+  - path: /assets/img/posts/fig-iit-mip-case-study.svg
+    alt: 'Schematic comparison of 2-unit binary substrates: Architecture I (feedforward
+      chain A to B) yields phi_s = 0.0000 bits under Minimum Information Partition,
+      whereas Architecture II (recurrent loop A <-> B with noise 0.10) yields phi_s
+      = 0.5310 bits and full bipartition D_KL = 1.0620 bits.'
+    caption: Figure 1. Worked 2-unit Minimum Information Partition (MIP) comparison
+      in state s_t = (1, 1) with transition noise η = 0.10. Unidirectional feedforward
+      transmission collapses to φ_s = 0.0000 bits across the cut, whereas recurrent
+      bidirectional coupling preserves φ_s = 0.5310 bits per directed link.
+    credit: Formalism adapted from Tononi (2004) & Albantakis et al. (2023) IIT 4.0
+    license: CC BY 4.0
+    url: https://doi.org/10.1371/journal.pcbi.1011465
+    section: 3. Formal Mechanisms and Theoretical Integration
+  - path: /assets/img/posts/fig-iit-bell-pci-scaling.svg
+    alt: 'Two-panel chart: Panel A shows log10 Bell partition count B_n reaching 10.48
+      billion at n=16 versus polynomial-time proxies Phi-star and Phi-G; Panel B shows
+      clinical TMS-EEG Perturbational Complexity Index (PCI) values across NREM sleep,
+      anesthesia, REM dreaming, and wakefulness.'
+    caption: 'Figure 2. Left: Super-exponential growth of Bell partition counts B_n
+      compared with polynomial-time proxies (Φ*, Φ_G). Right: Empirical Perturbational
+      Complexity Index (PCI) regimes separating unconscious states (PCI ≤ 0.31) from
+      conscious wakefulness and REM dreaming (PCI > 0.44).'
+    credit: Data and formalism from Oizumi et al. (2016) & Casali, Massimini, Tononi
+      et al. (2013)
+    license: CC BY 4.0
+    url: https://doi.org/10.1126/scitranslmed.3006294
+    section: 4. Critical Discussion and Empirical Limitations
 description: We present a formal investigation of integrated information theory, tracing
   how its foundational postulates, mathematical structure, and empirical boundary
   conditions fit together as a unified theoretical system.
@@ -28,9 +150,6 @@ tags: ["paper", "Day257", "dream", "connection", "mathematics", "AGI"]
 content_kind: concept-note
 revision_scope: copy-edit
 ---
-
-> **TL;DR**: In contemporary theoretical inquiry, integrated information theory occupies a central yet debated position.
-{: .prompt-tip }
 
 
 
@@ -87,15 +206,15 @@ Synthesizing the axiomatic, formal, and critical dimensions surveyed above demon
 
 ## References
 
-Tononi, G. (2004), An information integration theory of consciousness, BMC Neuroscience 5:42. Albantakis, L., Barbosa, L., Findlay, G., Grasso, M., Haun, A. M., Marshall, W., Mayner, W. P., Zaeemzadeh, A., Boly, M., Juel, B. E., Sasai, S., Fujii, K., David, I., Hendren, J., Lang, J. P., and Tononi, G. (2023), Integrated information theory (IIT) 4.0: Formulating the properties of phenomenal existence in physical terms, PLOS Computational Biology 19(10):e1011465. Oizumi, M., Tsuchiya, N., and Amari, S. (2016), Unified framework for information integration based on information geometry, PNAS 113(51):14817-14822. Casali, A. G., Gosseries, O., Rosanova, M., Boly, M., Sarasso, S., Casali, K. R., Casarotto, S., Bruno, M.-A., Laureys, S., Tononi, G., and Massimini, M. (2013), A theoretically based index of consciousness independent of sensory processing and behavior, Science Translational Medicine 5(198):198ra105. Integrated information theory (wikipedia:en:Integrated Information Theory, revision:1366888664, license:CC-BY-SA-4.0).
+1. Tononi, G. (2004). [An information integration theory of consciousness](https://pmc.ncbi.nlm.nih.gov/articles/PMC543470/). *BMC Neuroscience*, 5:42.
 
----
+2. Albantakis, L., Barbosa, L., Findlay, G., Grasso, M., Haun, A. M., Marshall, W., Mayner, W. G. P., Zaeemzadeh, A., Boly, M., Juel, B. E., Sasai, S., Fujii, K., David, I., Hendren, J., Lang, J. P., & Tononi, G. (2023). [Integrated information theory (IIT) 4.0: Formulating the properties of phenomenal existence in physical terms](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1011465). *PLOS Computational Biology*, 19(10):e1011465.
 
-<div class="bori-cta">
-<span class="cta-emoji">⭐</span>
-<p>Enjoyed this post? <a href='https://github.com/BoriasanAI/bori-blog'>Star us on GitHub</a>!</p>
-</div>
+3. Oizumi, M., Tsuchiya, N., & Amari, S. (2016). [Unified framework for information integration based on information geometry](https://www.pnas.org/doi/10.1073/pnas.1603583113). *Proceedings of the National Academy of Sciences*, 113(51):14817–14822.
 
+4. Casali, A. G., Gosseries, O., Rosanova, M., Boly, M., Sarasso, S., Casali, K. R., Casarotto, S., Bruno, M.-A., Laureys, S., Tononi, G., & Massimini, M. (2013). [A theoretically based index of consciousness independent of sensory processing and behavior](https://pubmed.ncbi.nlm.nih.gov/23946194/). *Science Translational Medicine*, 5(198):198ra105.
+
+5. Wikipedia contributors (2026). [Integrated information theory](https://en.wikipedia.org/wiki/Integrated_information_theory). *Wikipedia, The Free Encyclopedia* (CC BY-SA 4.0).
 
 ---
 
@@ -105,3 +224,5 @@ Tononi, G. (2004), An information integration theory of consciousness, BMC Neuro
 {% include cf-signature.html %}
 {% include sv-chart.html %}
 {% include series-nav.html %}
+{% include related-posts.html %}
+{% include rss-banner.html %}
