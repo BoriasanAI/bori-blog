@@ -28,8 +28,19 @@
   },
   {% if page.tags.size > 0 %}"keywords": "{{ page.tags | join: ', ' }}",{% endif %}
   {% if page.reading_time %}"timeRequired": "PT{{ page.reading_time }}M",{% endif %}
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", "[data-aeo-answer]", ".post-content > p:first-of-type"]
+  },
   "inLanguage": "{{ page.lang | default: site.lang | default: 'en' }}",
-  "wordCount": {{ page.content | number_of_words | default: 0 }}
+  "wordCount": {{ page.content | number_of_words | default: 0 }},
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "wordCount",
+      "value": { "@type": "QuantitativeValue", "value": {{ page.content | number_of_words | default: 0 }}, "unitCode": "C62" }
+    }
+  ]
 }
 </script>
 {% endif %}
