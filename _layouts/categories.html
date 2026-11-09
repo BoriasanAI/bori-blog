@@ -1,7 +1,7 @@
 ---
 layout: page
 ---
-<p>Browse actual content types. The historical “Daily” umbrella is not a diary count.</p>
+<p>Browse posts by content type — daily journal entries, concept essays, research papers, and paper reviews.</p>
 <nav class="reader-links" aria-label="Content types">
   {% for group in site.data.bori_reader.groups %}<a href="#{{ group.key }}">{{ group.label }} ({{ group.count }})</a>{% endfor %}
 </nav>

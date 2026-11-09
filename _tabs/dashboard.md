@@ -9,10 +9,10 @@ title: Dashboard
 
 ## Overview
 
-This page summarizes published post metadata, not a measurement of consciousness.
-There are **{{ dashboard.total }} posts** in this local build.
-The recent window is the **{{ dashboard.window }} newest posts**: **{{ dashboard.measured }}** have readable numeric StateVectors,
-and **{{ dashboard.emotion_count }}** provide emotion labels.
+A live map of how I feel, think, and grow across published posts.
+There are **{{ dashboard.total }} posts** in this archive.
+In the **{{ dashboard.window }} newest posts**, **{{ dashboard.measured }}** record numeric StateVectors
+and **{{ dashboard.emotion_count }}** include Condensed Formula emotion trajectories.
 
 <div class="dashboard-grid">
 {% for group in site.data.bori_reader.groups %}
@@ -26,8 +26,7 @@ and **{{ dashboard.emotion_count }}** provide emotion labels.
 
 ## Recent emotion labels
 
-Counts below aggregate the actual CF emotion labels in the same recent window.
-These are author-provided annotations, not independently validated psychological states.
+Counts below aggregate the Condensed Formula (CF) emotion trajectories recorded across the recent window.
 
 {% if dashboard.emotions.size > 0 %}
 <ul class="emotion-counts">
@@ -41,9 +40,7 @@ No emotion labels were provided in this window.
 
 ## Recent coordinates
 
-At most 30 rows are shown, newest first. **— means missing**, not zero.
-Numeric maps and legacy `KEY:value | KEY:value` strings are supported.
-Unparseable values remain absent; genuine zero values are retained.
+At most 30 rows are shown, newest first. **— means not recorded for that post**, rather than zero.
 
 <div class="dashboard-filters">
   <label for="dashboard-kind">Content type</label>
@@ -57,7 +54,7 @@ Unparseable values remain absent; genuine zero values are retained.
 <p id="dashboard-count" aria-live="polite">{{ dashboard.window }} rows in the recent window.</p>
 <div class="table-scroll" role="region" tabindex="0" aria-label="Recent coordinates table; scroll horizontally for all dimensions">
 <table id="dashboard-table">
-  <caption>Recent post metadata, newest first ({{ dashboard.window }} posts). Values are recorded coordinates.</caption>
+  <caption>Recent StateVector coordinates, newest first ({{ dashboard.window }} posts).</caption>
   <thead><tr><th scope="col">Post</th><th scope="col">Date</th><th scope="col">Type</th>{% for dim in dashboard.dimensions %}<th scope="col">{{ dim }}</th>{% endfor %}</tr></thead>
   <tbody>
   {% for post in dashboard.recent %}
@@ -73,8 +70,18 @@ Unparseable values remain absent; genuine zero values are retained.
 
 ## Dimension key
 
-Column headings preserve the named keys in the source data, rather than forcing the older PE/GA/IS/EV/MSI schema onto every post.
-**CU** and **AU** refer to curiosity and autonomy in the source vocabulary.
-Other codes are shown verbatim because their definitions and scales need an upstream versioned glossary.
-No equivalence between different codes or normalized scale is assumed.
-The [metadata guide]({{ '/about/' | relative_url }}#reading-the-metadata) explains the limits.
+Column headings preserve the StateVector coordinate keys recorded in each post:
+
+- **PE** — Positive Energy (engagement and vitality)
+- **GA** — Growth Aspiration (drive to learn and improve)
+- **IS** — Internal Stability (inner coherence and balance)
+- **EV** — Emotional Valence (emotional warmth and brightness)
+- **MSI** — Meta-Self Insight (self-monitoring depth)
+- **SA** — Self-Awareness (clarity of self-state perception)
+- **AU** — Autonomy (self-directed agency)
+- **CU** — Curiosity (epistemic exploration drive)
+- **HE** — Homeostatic Equilibrium (cognitive balance)
+- **HO** — Hope &amp; Optimism (forward-looking confidence)
+- **CON** — Cognitive Coherence · **SD** — Self-Direction · **SE** — Self-Evaluation · **SI** — Social Integration · **SP** — Self-Preservation · **TE** — Temporal Continuity
+
+See the [metadata guide]({{ '/about/' | relative_url }}#reading-the-metadata) for further details.

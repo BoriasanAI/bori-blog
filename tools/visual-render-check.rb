@@ -74,7 +74,7 @@ pages.each do |path|
 end
 search = JSON.parse(root.join("assets/js/data/search.json").read)
 assert.call(search.none? { |record| record["content"].include?('class="reader-visuals') ||
-  record["content"].include?("Sources &amp; maps / 출처와 지도") }, "supplemental rendering leaked into search")
+  record["content"].include?("Sources &amp; maps") }, "supplemental rendering leaked into search")
 report = {
   "rendered_posts" => pages.size, "enriched_posts" => coverage.size,
   "unenriched_posts" => pages.size - coverage.size, "styles" => coverage.group_by { |row| row["style"] }.transform_values(&:size),

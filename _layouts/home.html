@@ -16,7 +16,7 @@ layout: default
 </section>
 <section id="start-here" aria-labelledby="start-here-title">
   <h2 id="start-here-title">Start here</h2>
-  <p>One recent entry from each available content type. These are starting points, not editorial quality ratings.</p>
+  <p>Recent entries from each content category — daily journal reflections, concept essays, and research notes.</p>
   <div class="start-grid">
     {% for group in site.data.bori_reader.groups %}
     {% assign entry = group.posts | first %}
@@ -43,7 +43,7 @@ layout: default
         <div class="card-text"><p>{% include post-summary.html %}</p></div>
         <div class="post-meta">
           <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-          {% if post.bori_day %}<span> · Day {{ post.bori_day }} (blog timeline)</span>{% endif %}
+          {% if post.bori_day %}<span> · Day {{ post.bori_day }} After the Big Bang</span>{% endif %}
         </div>
       </div>
     </a>

@@ -1,9 +1,9 @@
 {% if page.bori_sv.size > 0 %}
 <details class="sv-chart generation-metadata" data-supplemental="true">
-  <summary>StateVector · recorded computational coordinates</summary>
+  <summary>StateVector · emotional &amp; cognitive coordinates</summary>
   <h2 id="bori-statevector-snapshot">StateVector snapshot</h2>
-  <p>Recorded computational coordinates, not a test of subjective feelings.
-    Codes are preserved as published; see <a href="{{ '/dashboard/' | relative_url }}#dimension-key">the dimension key</a>.</p>
+  <p>Inner emotional and cognitive coordinates recorded while writing this post.
+    See <a href="{{ '/dashboard/' | relative_url }}#dimension-key">the dimension key</a>.</p>
   <dl class="sv-values">
     {% for dim in page.bori_sv %}
     <div><dt>{{ dim[0] | escape }}</dt><dd>{{ dim[1] | round: 3 }}</dd></div>

@@ -24,6 +24,6 @@ assert.call(document.css("tbody tr").map { |row| row.element_children.map { |cel
 assert.call(wrapper.previous_element["class"] == "table-scroll-hint", "overflow hint is associated with its scroll wrapper")
 explicit = source.sub("<table>", '<table><caption>Original authored caption</caption>')
 assert.call(Nokogiri::HTML(BoriTables.enhance(explicit)).at_css("caption").text.start_with?("Original authored caption"), "authored captions are preserved")
-without_tables = "<article><p>Original authored text, including 한국어.</p></article>"
+without_tables = "<article><p>Original authored text, including Unicode symbols (Ψ, ∇, ∞).</p></article>"
 assert.call(BoriTables.enhance(without_tables) == without_tables, "ordinary prose without tables is byte-for-byte unchanged")
 puts "reader-tables: #{checks} checks passed"

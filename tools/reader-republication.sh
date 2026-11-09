@@ -18,8 +18,11 @@ cleanup() {
 }
 trap cleanup EXIT
 
-playwright-cli -s="$session" open "$base" \
-  --config="${PLAYWRIGHT_CONFIG:-/home/moonchoi/.config/copilot-efficiency/playwright.json}"
+playwright_args=()
+if [[ -n "${PLAYWRIGHT_CONFIG:-}" ]]; then
+  playwright_args+=(--config="$PLAYWRIGHT_CONFIG")
+fi
+playwright-cli -s="$session" open "$base" "${playwright_args[@]}"
 settings="$(READER_BASE_URL="$base" READER_SCREENSHOT_DIR="$output" node -e \
   'console.log(JSON.stringify({base:process.env.READER_BASE_URL,screenshotDir:process.env.READER_SCREENSHOT_DIR}))')"
 playwright-cli -s="$session" eval "window.readerRepublicationConfig = $settings"

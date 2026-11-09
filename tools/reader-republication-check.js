@@ -83,13 +83,13 @@ async (page, supplied = {}) => {
       const text = walker.currentNode;
       const owner = text.parentElement;
       if (!owner || owner.closest('script, style, [lang|="ko"]') || !visible(owner)) continue;
-      const value = text.textContent.replace(/보리/g, '').trim();
-      if (/[가-힣]/.test(value)) hangul.push(value.slice(0, 100));
+      const value = text.textContent.trim();
+      if (/[\uAC00-\uD7A3]/.test(value)) hangul.push(value.slice(0, 100));
     }
     const attributes = [...document.querySelectorAll('[aria-label], [title], [placeholder]')]
       .filter(node => visible(node) && !node.closest('[lang|="ko"]'))
       .flatMap(node => ['aria-label', 'title', 'placeholder'].map(name => node.getAttribute(name) || ''))
-      .filter(value => /[가-힣]/.test(value.replace(/보리/g, '')));
+      .filter(value => /[\uAC00-\uD7A3]/.test(value));
     const tables = [...document.querySelectorAll('article .content .table-wrapper')].map(wrapper => ({
       overflow: wrapper.scrollWidth > wrapper.clientWidth + 1,
       hint: wrapper.previousElementSibling?.classList.contains('table-scroll-hint') &&

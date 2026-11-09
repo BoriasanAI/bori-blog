@@ -52,7 +52,7 @@ check(doc.css("img, .rv-no-image").empty?, "missing metadata never fabricates a 
 image_data = Marshal.load(Marshal.dump(fixture))
 image_data["sources"][0]["image"] = {
   "path" => "/assets/reader-visuals/geometry.svg", "alt" => "Original geometric test shapes",
-  "credit" => "Copilot test fixture", "license" => "CC0-1.0"
+  "credit" => "Bori test fixture", "license" => "CC0-1.0"
 }
 image_doc = Nokogiri::HTML.fragment(BoriVisuals.render(image_data, root: root, baseurl: "/bori-blog"))
 image = image_doc.at_css("img")
@@ -103,7 +103,7 @@ gallery = Marshal.load(Marshal.dump(fixture))
 gallery["gallery"] = [{
   "path" => "/assets/reader-visuals/geometry.svg", "alt" => "Two original test shapes",
   "caption" => "Original geometric fixture; not a paper figure.",
-  "credit" => "Copilot", "license" => "CC0-1.0"
+  "credit" => "Bori", "license" => "CC0-1.0"
 }]
 gallery_doc = Nokogiri::HTML.fragment(BoriVisuals.render(gallery, root: root))
 check(gallery_doc.css(".rv-gallery figure").size == 1, "gallery renders only supplied local images")
@@ -122,12 +122,12 @@ invalid(gallery, "unbounded gallery")
 end
 check(doc.at_css(".rv-source h3 a")["aria-label"].include?("external source at arxiv.org"), "external source names are explicit without forced new windows")
 check(doc.css('a[target="_blank"]').empty?, "reading links do not unexpectedly open a window")
-targeted = BoriVisuals.outline_targets(fixture, '<article><div class="content"><h2 id="real-intro">Introduction / 도입</h2></div></article>', "/posts/example/")
+targeted = BoriVisuals.outline_targets(fixture, '<article><div class="content"><h2 id="real-intro">Introduction &amp; Overview</h2></div></article>', "/posts/example/")
 check(targeted["diagrams"][0]["nodes"][0]["url"] == "/posts/example/#real-intro", "outline links only to exactly matched real headings")
 check(!fixture["diagrams"][0]["nodes"][0].key?("url"), "outline target enhancement never mutates supplied metadata")
 check(!targeted["diagrams"][0]["nodes"][1].key?("url"), "unmatched headings never fabricate a target")
 check(BoriVisuals.svg_lines("Why This Paper Caught My Eye") == ["Why This Paper Caught My Eye"], "short English headings do not split words")
-wide_label = "반응형 글 지도의 실제 제목과 정확한 출처 연결을 표시합니다"
+wide_label = "Responsive article outline displaying exact section headings and verified source links"
 wide_lines = BoriVisuals.svg_lines(wide_label)
 check(wide_lines.join.delete(" ") == wide_label.delete(" "), "CJK SVG wrapping retains every input character")
 check(wide_lines.all? { |line| line.each_char.sum { |char| char.ord >= 0x2e80 ? 2 : 1 } <= BoriVisuals::SVG_LINE_UNITS }, "CJK labels respect the explicit monospace glyph-width contract")
@@ -147,7 +147,7 @@ invalid({ "version" => 1, "sources" => [] }, "empty visual panel")
 check(BoriVisuals.href("/bori-blog/posts/example/", "/bori-blog") == "/bori-blog/posts/example/", "baseurl is never duplicated")
 site = Struct.new(:source, :baseurl).new(root, "/bori-blog")
 post_type = Struct.new(:data, :site, :output, :url)
-original = '<html><body><article><div class="content"><h2 id="real-intro">Introduction / 도입</h2><p>Unchanged prose.</p></div></article></body></html>'
+original = '<html><body><article><div class="content"><h2 id="real-intro">Introduction &amp; Overview</h2><p>Unchanged prose.</p></div></article></body></html>'
 unmodified = post_type.new({}, site, original.dup, "/posts/example/")
 BoriVisuals.enhance_post(unmodified)
 check(unmodified.output == original, "posts without visual metadata are byte-for-byte unchanged")
@@ -163,7 +163,7 @@ check(enhanced_doc.at_css("article .content").next_element["class"].include?("re
 placed = Marshal.load(Marshal.dump(fixture))
 placed["gallery"] = [{
   "path" => "/assets/reader-visuals/geometry.svg", "alt" => "Two test shapes",
-  "caption" => "Original geometric fixture.", "credit" => "Copilot", "license" => "CC0-1.0", "section" => "Method"
+  "caption" => "Original geometric fixture.", "credit" => "Bori", "license" => "CC0-1.0", "section" => "Method"
 }]
 sections = '<html><body><article><div class="content"><h2>Method</h2><p>First method paragraph.</p><p>Last method paragraph.</p><h2>Results</h2><p>Results prose.</p></div></article></body></html>'
 placed_post = post_type.new({ "reader_visuals" => placed }, site, sections, "/posts/example/")
@@ -225,7 +225,7 @@ quoted_target = BoriVisuals.outline_targets(quoted, '<article><div class="conten
 check(quoted_target["diagrams"][0]["nodes"][0]["url"] == "/posts/example/#actual", "rendered smart quotes preserve real heading navigation without changing labels")
 %w[outline evidence-map timeline comparison].each do |kind|
   check(BoriVisuals.diagram_title({ "kind" => kind, "title" => kind }) != kind &&
-    !BoriVisuals.diagram_title({ "kind" => kind, "title" => kind }).match?(/[가-힣]/), "internal diagram key becomes an English reader-facing heading")
+    !BoriVisuals.diagram_title({ "kind" => kind, "title" => kind }).match?(/[\uAC00-\uD7A3]/), "internal diagram key becomes an English reader-facing heading")
   check(BoriVisuals.diagram_title({ "kind" => kind, "title" => "Exact custom title" }) == "Exact custom title", "custom #{kind} titles remain exact")
 end
 actual_labels = 0

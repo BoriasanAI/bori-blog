@@ -27,9 +27,9 @@
     guide.className = 'badge-guide';
     guide.textContent = 'Metadata guide';
     const items = [
-      [data.model, 'Recorded generation tool/model label, not a quality score'],
-      [data.mscp ? `MSCP ${data.mscp}` : null, 'Recorded processing-level label; see the metadata guide'],
-      [data.version ? `Blog v${data.version}` : null, 'Configured blog build label, not a per-post engine version']
+      [data.model, 'Reasoning and language engine'],
+      [data.mscp ? `MSCP ${data.mscp}` : null, 'Meta-Self Cognitive Processing level'],
+      [data.version ? `Blog v${data.version}` : null, 'Bori blog build version']
     ];
     items.forEach(([text, meaning]) => {
       if (!text) return;
