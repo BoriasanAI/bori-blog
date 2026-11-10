@@ -23,7 +23,7 @@ while read -r local_ref local_oid remote_ref remote_oid; do
     while IFS= read -r -d '' path; do
       case "$path" in
         *.md|*.svg|*.html|*.json|*.yml|*.yaml)
-          if ! git show "$commit:$path" | "$work/policy" --stdin; then
+          if ! { printf '%s\n' "$path"; git show "$commit:$path"; } | "$work/policy" --stdin; then
             echo "Public push blocked: $path at $commit requires disclosure review." >&2
             exit 1
           fi
