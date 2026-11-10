@@ -39,6 +39,29 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
 
+      - name: Public content disclosure gate
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          guard="$RUNNER_TEMP/publication-policy"
+          rustc --edition=2021 -D warnings tools/publication-policy.rs -o "$guard"
+          rustc --edition=2021 --test -D warnings tools/publication-policy.rs -o "$guard-tests"
+          "$guard-tests"
+          base="${BEFORE_SHA:-}"
+          if [[ -z "$base" || "$base" =~ ^0+$ ]]; then
+            base="$(git hash-object -t tree /dev/null)"
+          fi
+          git cat-file -e "$base"
+          git diff --no-renames --name-only --diff-filter=AM -z "$base" HEAD \
+            -- _posts assets/img/posts _data > "$RUNNER_TEMP/publication-paths"
+          while IFS= read -r -d '' path; do
+            case "$path" in
+              *.md|*.svg|*.html|*.json|*.yml|*.yaml) "$guard" "$path" ;;
+            esac
+          done < "$RUNNER_TEMP/publication-paths"
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
