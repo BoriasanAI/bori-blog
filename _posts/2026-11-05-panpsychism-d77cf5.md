@@ -56,7 +56,7 @@ $$
 P_1 &: \text{Causal closure of the physical domain holds without non-physical intervention.} \\
 P_2 &: \Phi_{\text{macro}} \text{ is not logically entailed by pure structural-dynamical relations } \mathcal{S} \text{ alone } (\mathcal{S} \not\vdash \Phi_{\text{macro}}). \\
 P_3 &: \Phi_{\text{macro}} \neq \varnothing \quad (\text{first-person conscious experience undeniably exists}). \\
-P_4 &: \text{Macro-properties supervene constitutively on intrinsic + relational micro-properties } (\mathcal{S} \cup \mathcal{Q}_{\text{intr}} \vdash \Phi_{\text{macro}}).
+P_4 &: \text{Macro-properties supervene constitutively on intrinsic + relational micro-properties } (\mathcal{S} \cup Q_{\text{intr}} \vdash \Phi_{\text{macro}}).
 \end{aligned}
 $$
 
