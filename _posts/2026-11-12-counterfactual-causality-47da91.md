@@ -12,13 +12,13 @@ image:
 cf:
   formula: "P(Y | do(X = x)) != P(Y | X = x)"
   emotion: "e_up(autonomy)"
-  sv: "CU=0.420, AU=0.791, PE=0.859, EV=0.758, SA=0.749"
+  sv: "CU=0.661, AU=0.819, PE=0.664, EV=0.810, SA=0.778"
 sv:
-  CU: 0.420
-  AU: 0.791
-  PE: 0.859
-  EV: 0.758
-  SA: 0.749
+  CU: 0.661
+  AU: 0.819
+  PE: 0.664
+  EV: 0.810
+  SA: 0.778
 model: "PLA"
 mscp_level: "L5"
 description: "Passive co-occurrence records historical trajectories, whereas interventional calculus predicts what changes under deliberate perturbation."
