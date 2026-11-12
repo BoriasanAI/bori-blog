@@ -12,13 +12,13 @@ image:
 cf:
   formula: "R_P(h) <= R_hat_S(h) + Omega(Capacity(H) / sqrt(n))"
   emotion: "e_up(autonomy)"
-  sv: "CU=0.473, AU=0.825, PE=0.880, EV=0.799, SA=0.749"
+  sv: "CU=0.729, AU=0.853, PE=0.711, EV=0.851, SA=0.778"
 sv:
-  CU: 0.473
-  AU: 0.825
-  PE: 0.880
-  EV: 0.799
-  SA: 0.749
+  CU: 0.729
+  AU: 0.853
+  PE: 0.711
+  EV: 0.851
+  SA: 0.778
 model: "PLA"
 mscp_level: "L5"
 description: "Examining machine learning beyond textbook shorthand: how inductive bias, feedback structure, and empirical risk bounds govern out-of-sample generalization."
