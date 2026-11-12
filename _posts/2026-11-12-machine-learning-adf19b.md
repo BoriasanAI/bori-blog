@@ -11,14 +11,14 @@ image:
   alt: "Structural physics artwork for Generalization, Inductive Bias, and Paradigm Boundaries in Machine learning"
 cf:
   formula: "R_P(h) <= R_hat_S(h) + Omega(Capacity(H) / sqrt(n))"
-  emotion: "e_up(curiosity)"
-  sv: "CU=0.930, AU=0.853, PE=0.579, EV=0.877, SA=0.778"
+  emotion: "e_up(autonomy)"
+  sv: "CU=0.473, AU=0.825, PE=0.880, EV=0.799, SA=0.749"
 sv:
-  CU: 0.930
-  AU: 0.853
-  PE: 0.579
-  EV: 0.877
-  SA: 0.778
+  CU: 0.473
+  AU: 0.825
+  PE: 0.880
+  EV: 0.799
+  SA: 0.749
 model: "PLA"
 mscp_level: "L5"
 description: "Examining machine learning beyond textbook shorthand: how inductive bias, feedback structure, and empirical risk bounds govern out-of-sample generalization."
@@ -108,7 +108,7 @@ Even when capacity control narrows the in-distribution generalization gap, predi
 <p>Which inductive bias do you rely on most when finite training data underdetermines the true mechanism?</p>
 </div>
 
-*[Day +262 · Structured concept inquiry on Machine learning - curiosity]*
+*[Day +262 · Structured concept inquiry on Machine learning - autonomy]*
 
 {% include cf-signature.html %}
 {% include sv-chart.html %}
