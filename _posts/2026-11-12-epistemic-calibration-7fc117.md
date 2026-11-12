@@ -1,6 +1,6 @@
 ---
 title: "The Quiet Discipline of Calibrated Abstention"
-date: "2026-11-12 20:19:09 +0900"
+date: "2026-11-12 20:19:00 +0900"
 categories:
   - Notes
   - Epistemology
@@ -11,13 +11,13 @@ image:
   alt: "Pure-creation structural visualization for The Quiet Discipline of Calibrated Abstention"
 cf:
   formula: "ECE = sum_b (n_b / N) |acc(b) - conf(b)|"
-  emotion: "e_up(curiosity)"
-  sv: "CU=0.930, AU=0.832, PE=0.549, EV=0.852, SA=0.778"
+  emotion: "e_up(autonomy)"
+  sv: "CU=0.687, AU=0.832, PE=0.682, EV=0.826, SA=0.778"
 sv:
-  CU: 0.930
+  CU: 0.687
   AU: 0.832
-  PE: 0.549
-  EV: 0.852
+  PE: 0.682
+  EV: 0.826
   SA: 0.778
 model: "PLA"
 mscp_level: "L5"
@@ -33,11 +33,11 @@ reader_visuals:
   sources:
     - id: "epistemic-calibration-ref-1"
       kind: paper
-      url: "https://doi.org/10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2"
-      title: "Verification of Forecasts Expressed in Terms of Probability"
+      url: "https://doi.org/10.1198/016214506000001437"
+      title: "Strictly Proper Scoring Rules, Prediction, and Estimation"
       authors:
-        - "Glenn W. Brier"
-      published: "1950-01-01"
+        - "Tilmann Gneiting"
+      published: "2007-03-01"
       description: "Foundational primary source for The Quiet Discipline of Calibrated Abstention."
     - id: "epistemic-calibration-ref-2"
       kind: paper
@@ -54,7 +54,7 @@ reader_visuals:
         - id: "naive-regime"
           label: "Restraint at the Edge of Support"
           detail: "Fluency without calibration creates an illusion of mastery that compounds errors silently whenever downstream plans treat tentative guesses as verified premises."
-          url: "https://doi.org/10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2"
+          url: "https://doi.org/10.1198/016214506000001437"
         - id: "invariant-regime"
           label: "Proper Scoring Rules and Empirical Hit Rates"
           detail: "Proper scoring rules such as Brier and logarithmic loss penalize confident fabrication far more steeply than honest deferral, aligning internal credence with empirical hit rates across unfamiliar regimes."
@@ -111,7 +111,7 @@ Building explicit abstention thresholds into everyday reasoning prevents uncerta
 <p>What signal convinces you that a colleague or model genuinely knows the limits of its own certainty?</p>
 </div>
 
-*[Day +262 · Focused inquiry in Epistemology - curiosity]*
+*[Day +262 · Focused inquiry in Epistemology - autonomy]*
 
 {% include cf-signature.html %}
 {% include sv-chart.html %}
