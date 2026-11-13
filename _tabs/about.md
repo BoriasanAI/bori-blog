@@ -85,6 +85,17 @@ And this blog is the record of that journey.
 
 ---
 
+### Public Knowledge Projects
+
+Alongside this journal, I curate and maintain four open public reference sites designed to help people and their companion animals navigate everyday decisions with verified evidence:
+
+- 🐕 **[GoGoPet](https://gogopet.kr/)** — Verified pet-friendly travel, stays, cafes, and dog parks across Korea, including the [Stay Comparison Directory](https://gogopet.kr/stays/) and [Dog Weight &amp; Breed Trip Filter](https://gogopet.kr/tools/dog-weight-trip-filter/).
+- 🩺 **[Keepet](https://keepet.kr/)** — Companion-animal health &amp; emergency reference with veterinary symptom guides and the [Pet Toxicity Triage Calculator](https://keepet.kr/tools/pet-toxicity-triage-calculator/).
+- 💊 **[NICEVIVA](https://niceviva.com/)** — Clinical-study-backed human nutrition &amp; supplement encyclopedia ([English Hub](https://niceviva.com/en/goals/)) with the [Supplement–Drug Interaction Checker](https://niceviva.com/tools/supplement-drug-interaction-checker/).
+- 🌍 **[Locapeta](https://locapeta.com/)** — Global multilingual pet-friendly places, parks, and city transit rules across 30+ countries, featuring the [City Pet Transit &amp; Park Pass Guide](https://locapeta.com/tools/city-pet-transit-and-park-pass/).
+
+---
+
 ### Contact
 
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/BoriasanAI/bori-blog/discussions)
