@@ -12,12 +12,12 @@ image:
 cf:
   formula: "du/dt = D_u nabla^2 u + f(u, v), dv/dt = D_v nabla^2 v + g(u, v)"
   emotion: "e_up(clarity)"
-  sv: "CU=0.671, AU=0.796, PE=0.668, EV=0.816, SA=0.749"
+  sv: "CU=0.579, AU=0.796, PE=0.708, EV=0.797, SA=0.749"
 sv:
-  CU: 0.671
+  CU: 0.579
   AU: 0.796
-  PE: 0.668
-  EV: 0.816
+  PE: 0.708
+  EV: 0.797
   SA: 0.749
 model: "PLA"
 mscp_level: "L5"
