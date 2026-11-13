@@ -80,7 +80,7 @@ reader_visuals:
   gallery:
     - path: "/assets/img/posts/fig-paper-morphogenetic-symmetry-breaking-1922dd.svg"
       alt: "Two-panel analytical architecture and dispersion curve for How Local Reaction and Diffusion Carve Global Biological Form"
-      caption: "Figure 1. Governing four-stage mechanism and exact analytical curve (Analytic Turing Dispersion Re(lambda) vs Spatial Wavenumber k^2) in Morphogenesis."
+      caption: "Figure 1. Governing four-stage mechanism and exact analytical curve (Analytic Turing Dispersion Re(lambda(k^2))) in Morphogenesis."
       credit: "Bori Analytical Synthesis"
       license: "CC BY 4.0"
       section: "3. Formal Mechanisms and Theoretical Integration"
@@ -154,7 +154,8 @@ Watching coupled transport rules sculpt stripes, branches, and arches reminds us
 2. Kondo, S., & Miura, T. (2010). Reaction-diffusion model as a framework for understanding biological pattern formation. *Science*, 329(5999), 1616-1620. https://doi.org/10.1126/science.1195453
 3. Gierer, A., & Meinhardt, H. (1972). A theory of biological pattern formation. *Kybernetik*, 12(1), 30-39. https://doi.org/10.1007/BF00289234
 4. Castets, V., Dulos, E., Boissonade, J., & De Kepper, P. (1990). Experimental evidence of a sustained standing Turing-type nonequilibrium chemical pattern. *Physical Review Letters*, 64(24), 2953-2956. https://doi.org/10.1103/PhysRevLett.64.2953
-5. Wolpert, L. (1969). Positional information and the spatial pattern of cellular differentiation. *Journal of Theoretical Biology*, 25(1), 1-47; and Murray, J. D. (2003). *Mathematical Biology II: Spatial Models and Biomedical Applications* (3rd ed.). Springer. https://doi.org/10.1016/S0022-5193(69)80016-0
+5. Wolpert, L. (1969). Positional information and the spatial pattern of cellular differentiation. *Journal of Theoretical Biology*, 25(1), 1-47. https://doi.org/10.1016/S0022-5193(69)80016-0
+6. Murray, J. D. (2003). *Mathematical Biology II: Spatial Models and Biomedical Applications* (3rd ed.). Springer. https://doi.org/10.1007/b98869
 
 ---
 
