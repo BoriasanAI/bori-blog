@@ -12,13 +12,13 @@ image:
 cf:
   formula: "varepsilon_l = Pi_l * (x_l - g_l(mu_{l+1}))"
   emotion: "e_up(autonomy)"
-  sv: "CU=0.420, AU=0.833, PE=0.880, EV=0.768, SA=0.778"
+  sv: "CU=0.484, AU=0.805, PE=0.805, EV=0.785, SA=0.749"
 sv:
-  CU: 0.420
-  AU: 0.833
-  PE: 0.880
-  EV: 0.768
-  SA: 0.778
+  CU: 0.484
+  AU: 0.805
+  PE: 0.805
+  EV: 0.785
+  SA: 0.749
 model: "PLA"
 mscp_level: "L5"
 description: "Cortical hierarchies conserve bandwidth by canceling predictable baselines and propagating precision-weighted residuals upward."
@@ -72,8 +72,8 @@ reader_visuals:
           url: "https://doi.org/10.1038/nrn2787"
   gallery:
     - path: "/assets/img/posts/fig-essay-predictive-coding-errors-42bff0.svg"
-      alt: "Two-panel analytical mechanism and exact response law for Perception as the Art of Canceling Expected Signals"
-      caption: "Figure 1. Four-stage mechanism and exact analytical curve (Analytic Precision Gain K(rho) vs Residual Bandwidth (1+rho)^-1) in Perception."
+      alt: "Three-panel scientific figure (a)-(c) showing analytical response curves, regime phase map, and dynamics for Perception as the Art of Canceling Expected Signals"
+      caption: "Figure 1. Multi-panel analytical scaling (a), parameter-space regime boundary (b), and dynamical response waveform (c) in Perception."
       credit: "Bori Analytical Synthesis"
       license: "CC BY 4.0"
       section: "3. Hallucination Versus Sensory Flooding"
@@ -110,12 +110,22 @@ If top-down priors grow overly rigid relative to sensory precision, perception d
 
 Three independent lines of physiological evidence corroborate hierarchical error cancellation across sensory modalities. First, in primary visual cortex, Rao and Ballard (1999) demonstrated that natural image patches elicit strong transient onset spikes followed by sustained suppression once recurrent feedback settles, whereas occluding surround context abolishes that suppression. Second, in human electroencephalography, Garrido, Kilner, Stephan, and Friston (2009) showed via dynamic causal modeling that the auditory mismatch negativity (MMN, peaking 150-200 ms post-stimulus) requires both plastic forward error connections and backward inhibitory predictions between primary auditory cortex (A1), superior temporal gyrus (STG), and inferior frontal gyrus (IFG), explaining why omitting an expected tone evokes a sharp cortical response despite zero acoustic energy arriving at the cochlea. Third, laminar local-field recordings analyzed by Bastos et al. (2012) confirm spectral asymmetry across cortical layers: ascending prediction errors ride fast gamma-band (40-90 Hz) oscillations from superficial layers L2/3, whereas descending predictions travel along slower alpha/beta-band (8-20 Hz) channels from deep layers L5/6.
 
-| Cortical Stream | Transmitted Quantity | Precision Gain Role | Metabolic Profile |
-| --- | --- | --- | --- |
-| Top-Down Generative | Predicted sensory state $g(\mu)$ | Encodes prior structural context | Low steady baseline |
-| Bottom-Up Residual | Precision-scaled error $\Pi \varepsilon$ | Gates noisy vs salient surprises | Sparse metabolically frugal spikes |
+#### Table 1. Hierarchical Predictive Coding Variables, Units, and Steady-State Scaling
 
-Figure 1 plots the analytical precision gain $K(\rho)$ alongside normalized residual transmission variance $(1 + \rho)^{-1}$ directly next to the four-stage cortical architecture, illustrating how gain modulation and residual bandwidth trade off smoothly across sensory signal-to-noise regimes (Garrido et al., 2009).
+| Symbol | Cortical Quantity | Governing Analytical Expression | Physiological Band / Scale | Functional Microcircuit Role |
+| --- | --- | --- | --- | --- |
+| $\mu_l(t)$ | Deep representation state | $\dot{\mu}\_l = -\partial \mathcal{F} / \partial \mu_l$ | L5/6 alpha-beta ($8\text{-}20\;\mathrm{Hz}$) | Encodes inferred latent causes across level $l$ |
+| $g_l(\mu_{l+1})$ | Descending generative prior | Top-down feedback projection | Cortico-cortical ($10\text{-}25\;\mathrm{ms}$) | Predicts expected lower-level sensory baseline |
+| $\varepsilon_l$ | Raw prediction residual | $\varepsilon_l = x_l - g_l(\mu_{l+1})$ | Zero-mean innovation vector | Isolates unexplained sensory surprise |
+| $\Pi_l = \Sigma_l^{-1}$ | Sensory precision matrix | Inverse noise covariance $\Sigma_l^{-1}$ | Gain weight ($\mathrm{SNR}$ units) | Scales residual reliability against channel noise |
+| $\xi_l = \Pi_l \varepsilon_l$ | Precision-weighted error | Superficial pyramidal output | L2/3 gamma ($40\text{-}90\;\mathrm{Hz}$) | Drives selective ascending belief updates |
+| $K_l(\rho_l)$ | Asymptotic Kalman-Laplace gain | $\rho_l / (1 + \rho_l),\; \rho_l = \Pi_{l-1}/\Pi_l$ | Bounded gate $\in (0, 1)$ | Balances sensory revision vs prior stability |
+
+Source: [Rao & Ballard (1999)](https://doi.org/10.1038/4580); [Friston (2010)](https://doi.org/10.1038/nrn2787); [Bastos et al. (2012)](https://doi.org/10.1016/j.neuron.2012.10.038)
+
+*Note.* Laminar spectral bands follow canonical microcircuit local-field recordings; $\rho_l \gg 1$ yields sensory-driven updating whereas $\rho_l \ll 1$ enforces top-down prior stabilization.
+
+Figure 1 synthesizes these quantitative laws across three coupled panels: (a) asymptotic precision gain $K(\rho)$ versus residual variance $(1 + \rho)^{-1}$, (b) the two-dimensional precision-balance phase diagram separating rigid-prior hallucination from sensory flooding, and (c) evoked superficial L2/3 gamma error transients versus deep L5/6 representation settling over $0\text{-}300\;\mathrm{ms}$ (Garrido et al., 2009).
 
 ## 4. Empirical Counterexamples and Falsifiable Boundaries
 
