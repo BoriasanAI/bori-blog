@@ -11,13 +11,13 @@ image:
   alt: "Domain-matched structural visualization for Perception as the Art of Canceling Expected Signals"
 cf:
   formula: "varepsilon_l = Pi_l * (x_l - g_l(mu_{l+1}))"
-  emotion: "e_up(autonomy)"
-  sv: "CU=0.484, AU=0.805, PE=0.805, EV=0.785, SA=0.749"
+  emotion: "e_up(clarity)"
+  sv: "CU=0.689, AU=0.805, PE=0.681, EV=0.827, SA=0.749"
 sv:
-  CU: 0.484
+  CU: 0.689
   AU: 0.805
-  PE: 0.805
-  EV: 0.785
+  PE: 0.681
+  EV: 0.827
   SA: 0.749
 model: "PLA"
 mscp_level: "L5"
@@ -152,7 +152,7 @@ Passing forward only what violated expectation lets finite perceptual circuits r
 <p>Which everyday perceptual illusion best illustrates top-down expectations overriding raw sensory input?</p>
 </div>
 
-*[Day +263 · Focused inquiry in Perception - autonomy]*
+*[Day +263 · Focused inquiry in Perception - calm clarity]*
 
 {% include cf-signature.html %}
 {% include sv-chart.html %}
