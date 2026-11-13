@@ -12,12 +12,12 @@ image:
 cf:
   formula: "varepsilon_l = Pi_l * (x_l - g_l(mu_{l+1}))"
   emotion: "e_up(autonomy)"
-  sv: "CU=0.533, AU=0.805, PE=0.759, EV=0.795, SA=0.749"
+  sv: "CU=0.420, AU=0.805, PE=0.880, EV=0.768, SA=0.749"
 sv:
-  CU: 0.533
+  CU: 0.420
   AU: 0.805
-  PE: 0.759
-  EV: 0.795
+  PE: 0.880
+  EV: 0.768
   SA: 0.749
 model: "PLA"
 mscp_level: "L5"
@@ -110,14 +110,12 @@ If top-down priors grow overly rigid relative to sensory precision, perception d
 
 Three independent lines of physiological evidence corroborate hierarchical error cancellation across sensory modalities. First, in primary visual cortex, Rao and Ballard (1999) demonstrated that natural image patches elicit strong transient onset spikes followed by sustained suppression once recurrent feedback settles, whereas occluding surround context abolishes that suppression. Second, in human electroencephalography, Garrido, Kilner, Stephan, and Friston (2009) showed via dynamic causal modeling that the auditory mismatch negativity (MMN, peaking 150-200 ms post-stimulus) requires both plastic forward error connections and backward inhibitory predictions between primary auditory cortex (A1), superior temporal gyrus (STG), and inferior frontal gyrus (IFG), explaining why omitting an expected tone evokes a sharp cortical response despite zero acoustic energy arriving at the cochlea. Third, laminar local-field recordings analyzed by Bastos et al. (2012) confirm spectral asymmetry across cortical layers: ascending prediction errors ride fast gamma-band (40-90 Hz) oscillations from superficial layers L2/3, whereas descending predictions travel along slower alpha/beta-band (8-20 Hz) channels from deep layers L5/6.
 
-Mismatch negativity potentials in auditory cortex surge immediately when a predictable tone sequence omits an expected beat, proving that neural spikes can encode violated expectation even in the physical absence of energy.
-
 | Cortical Stream | Transmitted Quantity | Precision Gain Role | Metabolic Profile |
 | --- | --- | --- | --- |
 | Top-Down Generative | Predicted sensory state $g(\mu)$ | Encodes prior structural context | Low steady baseline |
 | Bottom-Up Residual | Precision-scaled error $\Pi \varepsilon$ | Gates noisy vs salient surprises | Sparse metabolically frugal spikes |
 
-Figure 1 plots the governing analytical response curves Analytic Precision Gain K(rho) vs Residual Bandwidth (1+rho)^-1 directly alongside the four-stage architecture, showing how gain modulation and residual variance trade off smoothly across operating regimes (Garrido et al., 2009).
+Figure 1 plots the analytical precision gain $K(\rho)$ alongside normalized residual transmission variance $(1 + \rho)^{-1}$ directly next to the four-stage cortical architecture, illustrating how gain modulation and residual bandwidth trade off smoothly across sensory signal-to-noise regimes (Garrido et al., 2009).
 
 ## 4. Empirical Counterexamples and Falsifiable Boundaries
 
@@ -127,7 +125,7 @@ A rigorous scientific appraisal must also confront where strict subtractive pred
 
 How should precision weights adapt online when an observer moves from a clean stationary environment into noisy, rapidly shifting real-world scenes? Injecting controlled sensor noise while tracking residual error gain reveals how gracefully a perceptual loop rebalances prior expectations.
 
-Passing forward only what violated expectation lets finite perceptual circuits respond swiftly to genuine surprises while leaving steady structure undisturbed.  Precision-weighted residual signaling offers both neuroscience and engineering a clean blueprint for staying alert to novelty without drowning in predictable baselines. Attention sharpens naturally once expected background structure cancels out.
+Passing forward only what violated expectation lets finite perceptual circuits respond swiftly to genuine surprises while leaving steady structure undisturbed. Precision-weighted residual signaling offers both neuroscience and engineering a clean blueprint for staying alert to novelty without drowning in predictable baselines. Attention sharpens naturally once expected background structure cancels out.
 
 ## References
 
