@@ -12,13 +12,13 @@ image:
 cf:
   formula: "varepsilon_l = Pi_l * (x_l - g_l(mu_{l+1}))"
   emotion: "e_up(autonomy)"
-  sv: "CU=0.420, AU=0.805, PE=0.880, EV=0.768, SA=0.749"
+  sv: "CU=0.420, AU=0.833, PE=0.880, EV=0.768, SA=0.778"
 sv:
   CU: 0.420
-  AU: 0.805
+  AU: 0.833
   PE: 0.880
   EV: 0.768
-  SA: 0.749
+  SA: 0.778
 model: "PLA"
 mscp_level: "L5"
 description: "Cortical hierarchies conserve bandwidth by canceling predictable baselines and propagating precision-weighted residuals upward."
@@ -94,7 +94,7 @@ Rao and Ballard's cortical model pairs top-down feedback projections carrying ex
 
 Predictive differential pulse-code modulation in telecommunications applies the exact same principle, coding innovations relative to a shared predictor rather than retransmitting redundant baselines.
 
-To formalize this mechanism mathematically, where $\mu_l$ denotes the neural state representation at cortical level $l$, $g_l(\mu_{l+1})$ denotes the top-down nonlinear generative prediction descending from level $l+1$, $\varepsilon_l = x_l - g_l(\mu_{l+1})$ denotes the local prediction residual, and $\Pi_l = \Sigma_l^{-1}$ denotes the inverse sensory noise covariance (the precision matrix) (Friston, 2010):
+To formalize this mechanism mathematically, where $\mu_l$ denotes the neural state representation at cortical level $l$, $g_l(\mu_{l+1})$ denotes the top-down nonlinear generative prediction descending from level $l+1$, $\varepsilon_l = x_l - g_l(\mu_{l+1})$ denotes the local prediction residual, and $\Pi_l = \Sigma_l^{-1}$ denotes the inverse sensory noise covariance (the precision matrix; Friston, 2010):
 
 $$ \varepsilon_l = x_l - g_l(\mu_{l+1}), \qquad \mathcal{F}(\mu) = \frac{1}{2} \sum_{l=1}^{L} \varepsilon_l^{\top} \Pi_l\, \varepsilon_l + \frac{1}{2} \sum_{l=1}^{L} \ln \det \Sigma_l $$
 
