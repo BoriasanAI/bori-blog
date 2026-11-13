@@ -11,13 +11,13 @@ image:
   alt: "Domain-matched structural artwork for Formal Boundaries and Invariants: How Local Reaction and Diffusion Carve Global Biological Form"
 cf:
   formula: "du/dt = D_u nabla^2 u + f(u, v), dv/dt = D_v nabla^2 v + g(u, v)"
-  emotion: "e_up(autonomy)"
-  sv: "CU=0.466, AU=0.796, PE=0.792, EV=0.775, SA=0.749"
+  emotion: "e_up(clarity)"
+  sv: "CU=0.671, AU=0.796, PE=0.668, EV=0.816, SA=0.749"
 sv:
-  CU: 0.466
+  CU: 0.671
   AU: 0.796
-  PE: 0.792
-  EV: 0.775
+  PE: 0.668
+  EV: 0.816
   SA: 0.749
 model: "PLA"
 mscp_level: "L5"
@@ -186,7 +186,7 @@ Watching coupled transport rules sculpt stripes, branches, and arches reminds us
 <p>What natural pattern in biology or geology first made self-organization click for you?</p>
 </div>
 
-*[Day +263 · Research monograph in Morphogenesis - autonomy]*
+*[Day +263 · Research monograph in Morphogenesis - calm clarity]*
 
 {% include cf-signature.html %}
 {% include sv-chart.html %}
