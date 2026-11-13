@@ -12,12 +12,12 @@ image:
 cf:
   formula: "varepsilon_l = Pi_l * (x_l - g_l(mu_{l+1}))"
   emotion: "e_up(clarity)"
-  sv: "CU=0.689, AU=0.805, PE=0.681, EV=0.827, SA=0.749"
+  sv: "CU=0.597, AU=0.805, PE=0.721, EV=0.808, SA=0.749"
 sv:
-  CU: 0.689
+  CU: 0.597
   AU: 0.805
-  PE: 0.681
-  EV: 0.827
+  PE: 0.721
+  EV: 0.808
   SA: 0.749
 model: "PLA"
 mscp_level: "L5"
