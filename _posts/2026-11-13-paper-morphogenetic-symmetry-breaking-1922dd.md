@@ -12,13 +12,13 @@ image:
 cf:
   formula: "du/dt = D_u nabla^2 u + f(u, v), dv/dt = D_v nabla^2 v + g(u, v)"
   emotion: "e_up(autonomy)"
-  sv: "CU=0.420, AU=0.824, PE=0.880, EV=0.757, SA=0.778"
+  sv: "CU=0.466, AU=0.796, PE=0.792, EV=0.775, SA=0.749"
 sv:
-  CU: 0.420
-  AU: 0.824
-  PE: 0.880
-  EV: 0.757
-  SA: 0.778
+  CU: 0.466
+  AU: 0.796
+  PE: 0.792
+  EV: 0.775
+  SA: 0.749
 model: "PLA"
 mscp_level: "L5"
 description: "Formal mathematical derivation and experimental boundary analysis of how local reaction and diffusion carve global biological form."
@@ -79,8 +79,8 @@ reader_visuals:
           label: "predicts regeneration wavelength"
   gallery:
     - path: "/assets/img/posts/fig-paper-morphogenetic-symmetry-breaking-1922dd.svg"
-      alt: "Two-panel analytical architecture and dispersion curve for How Local Reaction and Diffusion Carve Global Biological Form"
-      caption: "Figure 1. Governing four-stage mechanism and exact analytical curve (Analytic Turing Dispersion Re(lambda(k^2))) in Morphogenesis."
+      alt: "Three-panel scientific figure (a)-(c) showing dispersion relation, bifurcation phase diagram, and spatial eigenmode for How Local Reaction and Diffusion Carve Global Biological Form"
+      caption: "Figure 1. (a) Linear dispersion spectrum Re(lambda(k^2)), (b) bifurcation phase diagram with empirical realizations, and (c) stationary spatial eigenmode profile in Morphogenesis."
       credit: "Bori Analytical Synthesis"
       license: "CC BY 4.0"
       section: "3. Formal Mechanisms and Theoretical Integration"
@@ -121,18 +121,40 @@ To see this threshold concretely on a canonical molecular realization, consider 
 
 ## 3. Formal Mechanisms and Theoretical Integration
 
+#### Table 1. Governing Reaction-Diffusion Parameters, Physical Units, and Instability Thresholds
+
+| Symbol | Physical / Kinetic Quantity | Exact Analytical Condition | Typical Magnitude / Units | Role in Symmetry Breaking |
+| --- | --- | --- | --- | --- |
+| $D_u$ | Short-range activator diffusivity | $0 < D_u \ll D_v$ | $10^{-8}\text{-}10^{-7}\;\mathrm{cm^2\,s^{-1}}$ | Confines autocatalytic peaks locally |
+| $D_v$ | Long-range inhibitor diffusivity | $d = D_v / D_u > d_c > 1$ | $10^{-6}\text{-}10^{-5}\;\mathrm{cm^2\,s^{-1}}$ | Spreads lateral suppression halo rapidly |
+| $\mathrm{tr}\,J$ | Homogeneous Jacobian trace | $f_u + g_v < 0$ ($k^2 = 0$) | $\mathrm{s^{-1}}$ (damped uniform mode) | Guarantees stability without spatial transport |
+| $\det J$ | Homogeneous Jacobian determinant | $f_u g_v - f_v g_u > 0$ | $\mathrm{s^{-2}}$ (saddle-free kinetics) | Prevents uniform exponential blow-up |
+| $k_c^2$ | Critical unstable wavenumber | $(D_v f_u + D_u g_v) / (2 D_u D_v)$ | $\mathrm{mm^{-2}}$ (fastest-growing mode) | Selects spatial mode where $h(k_c^2) < 0$ |
+| $\Lambda_c$ | Intrinsic Turing wavelength | $2\pi / k_c$ | $0.15\text{-}0.65\;\mathrm{mm}$ (tissue scale) | Sets invariant inter-peak anatomical spacing |
+
+Source: [Turing (1952)](https://doi.org/10.1098/rstb.1952.0012); [Gierer & Meinhardt (1972)](https://doi.org/10.1007/BF00289234)
+
+*Note.* In two-species reaction-diffusion systems, $\mathrm{tr}(J - k^2 D) < 0$ rules out diffusive Hopf oscillations, so stationary Turing patterns require $D_v f_u + D_u g_v > 2\sqrt{D_u D_v \det J}$.
+
 Alan Turing's reaction-diffusion equations demonstrate that a short-range autocatalytic activator paired with a faster-diffusing inhibitor amplifies tiny thermal fluctuations into stable wavelengths (Gierer & Meinhardt, 1972). Perturbing domain aspect ratios in reaction-diffusion simulations clarifies which morphological features depend on boundary geometry versus kinetic rates.
 
 In living organisms, Shigeru Kondo and Takashi Miura (2010) demonstrated that biological pattern formation need not rely on small-molecule diffusion alone: cell-to-cell contact projections, differential clearance rates, and mechanochemical membrane relays realize Gierer-Meinhardt kinetics across cellular scales. The decisive experimental test separating Turing self-organization from Wolpertian pre-patterning comes from zebrafish (*Danio rerio*) pigment stripe dynamics. As juvenile zebrafish grow fourfold in body height, new horizontal melanophore-xanthophore stripes intercalate rather than stretching proportionally like a printed coordinate grid. Even more strikingly, when laser ablation destroys a localized patch of pigment cells, regenerating stripes curve, bifurcate, and re-establish the exact intrinsic spacing $\Lambda_c$ predicted by reaction-diffusion equations rather than restoring the original embryonic coordinates (Kondo & Miura, 2010). Analogous activator-inhibitor pairs - such as Nodal/Lefty in vertebrate left-right axis specification, WNT/DKK in hair-follicle spacing, and BMP/SOX9/WNT networks in embryonic limb-bud digit condensation - confirm that periodic organogenesis repeatedly exploits bounded wavenumber selection. Quantitative limb-bud perturbation experiments reinforce this conclusion: genetically modulating mesenchymal WNT or BMP signaling alters the total count of cartilaginous digit condensations inversely with effective wavelength while preserving regular inter-digit spacing across the autopod paddle.
 
-Figure 1 illustrates this analytical structure across two coupled views: Panel A traces the four morphogenetic stages from homogeneous equilibrium through wavenumber selection to boundary stabilization, while Panel B plots the exact dispersion curve $\mathrm{Re}(\lambda(k^2))$ contrasting equal-diffusivity decay at $D_v / D_u = 1$ against the unstable Turing band at $D_v / D_u = 25$ (Castets et al., 1990).
+Figure 1 integrates the analytical derivation across three print-scale subfigures: (a) the linear dispersion relation $\mathrm{Re}(\lambda(k^2))$ contrasting equal-diffusivity decay ($d = 1$), marginal tangency ($d = d_c$), and the unstable Turing band ($d = 25$), (b) the Gierer-Meinhardt bifurcation phase diagram in $(a, d)$ parameter space overlaid with empirical operating points from Table 2, and (c) the stationary spatial eigenmode profiles $u(x)$ and $v(x)$ across three intrinsic wavelengths $\Lambda_c = 2\pi / k_c$ (Castets et al., 1990).
 
 ## 4. Geometric Sensitivity and Mechanical Checkpoints
 
-| Morphogen Species | Diffusion Coefficient | Local Kinetic Feedback | Emergent Spatial Role |
-| --- | --- | --- | --- |
-| Short-Range Activator | Slow ($D_u \ll D_v$) | Autocatalytic peak amplification | Nucleates periodic condensations |
-| Long-Range Inhibitor | Fast ($D_v \gg D_u$) | Lateral suppression halo | Enforces regular inter-peak spacing |
+#### Table 2. Controlled Chemical and Biological Realizations of Reaction-Diffusion Patterning
+
+| Experimental Substrate | Activator / Antagonist Pair | Characteristic Wavelength $\Lambda_c$ | Transport & Perturbation Test | Primary Reference |
+| --- | --- | --- | --- | --- |
+| CIMA starch-gel reactor | $\mathrm{I^-}$ (starch-bound) / $\mathrm{ClO_2^-}$ | $0.18\text{-}0.35\;\mathrm{mm}$ | Starch complexation raises $D_v/D_u > 10$, halting convection | Castets et al. (1990) |
+| *Danio rerio* skin stripes | Melanophore / Xanthophore relay | $0.45\text{-}0.60\;\mathrm{mm}$ | Laser ablation regenerates invariant $\Lambda_c$ spacing | Kondo & Miura (2010) |
+| Murine hair-follicle array | WNT10b / DKK1-DKK4 | $0.15\text{-}0.25\;\mathrm{mm}$ | DKK overexpression widens inter-follicle distance | Murray (2003) |
+| Vertebrate limb-bud digits | BMP-WNT / SOX9 network | $0.30\text{-}0.55\;\mathrm{mm}$ | Dose-dependent wavenumber shift alters digit count | Kondo & Miura (2010) |
+| Left-right embryonic axis | Nodal / Lefty1-Lefty2 | Embryo-wide ($n = 1$ mode) | Faster Lefty clearance/diffusion restricts Nodal to left | Gierer & Meinhardt (1972) |
+
+Source: [Castets et al. (1990)](https://doi.org/10.1103/PhysRevLett.64.2953); [Kondo & Miura (2010)](https://doi.org/10.1126/science.1195453)
 
 Combining local symmetry-breaking instabilities with tissue-scale mechanical boundaries yields body plans that are both intricate and remarkably regenerative. Zebrafish pigment stripe regeneration after targeted laser ablation shows pigment cells re-establishing constant stripe width dynamically rather than replaying a fixed embryonic pixel coordinate (Kondo & Miura, 2010).
 
