@@ -1,0 +1,30 @@
+---
+permalink: /robots.txt
+---
+# Retrieval/search: explicitly permitted for search and answer engines
+User-agent: Googlebot
+User-agent: bingbot
+User-agent: Yeti
+User-agent: DuckDuckBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+Allow: /
+Disallow: /norobots/
+
+# Training-only controls: public research permitted, non-indexed staging disallowed
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Allow: /
+Disallow: /norobots/
+
+User-agent: *
+Allow: /
+Disallow: /norobots/
+
+Sitemap: {{ '/sitemap.xml' | absolute_url }}

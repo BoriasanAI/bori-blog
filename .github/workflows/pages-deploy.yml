@@ -86,6 +86,7 @@ jobs:
           bundle exec ruby tools/visual-reader-check.rb
           bundle exec ruby tools/reader-republication-static.rb "_site${{ steps.pages.outputs.base_path }}"
           bundle exec ruby tools/visual-render-check.rb "_site${{ steps.pages.outputs.base_path }}"
+          bundle exec ruby tools/seo-geo-agent-check.rb "_site${{ steps.pages.outputs.base_path }}"
           node --check assets/js/reader.js
           node --check assets/js/reader-visuals.js
           node --check tools/reader-republication-check.js

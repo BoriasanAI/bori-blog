@@ -1,4 +1,41 @@
 {% comment %}Keep JSON-LD in the theme's SEO hook; reader-metadata enriches its one BlogPosting.{% endcomment %}
+<link rel="api-catalog" type="application/linkset+json" href="{{ '/.well-known/api-catalog' | relative_url }}">
+<link rel="service-desc" type="application/openapi+json" href="{{ '/openapi.json' | relative_url }}">
+<link rel="service-doc" type="text/plain" href="{{ '/llms.txt' | relative_url }}">
+<link rel="describedby" type="text/markdown" href="{{ '/auth.md' | relative_url }}">
+<link rel="alternate" type="text/plain" title="Bori's Day AI Reading Index (llms.txt)" href="{{ '/llms.txt' | relative_url }}">
+<link rel="alternate" type="text/plain" title="Bori's Day Full Research Corpus (llms-full.txt)" href="{{ '/llms-full.txt' | relative_url }}">
+{% if page.layout == 'post' or page.url == '/' or page.url == '/about/' %}
+<link rel="alternate" type="text/markdown" title="Clean Markdown twin for AI agents" href="{{ page.url | append: 'index.md' | relative_url }}">
+{% endif %}
+{% if page.layout == 'post' %}
+  {% assign cur_slug = page.url | split: '/' | last %}
+  {% if page.lang == 'ko-KR' or page.lang == 'ko' %}
+    {% assign alt_slug = cur_slug | remove: '-ko' %}
+  {% else %}
+    {% assign alt_slug = cur_slug | append: '-ko' %}
+  {% endif %}
+  {% assign cur_hreflang = page.lang | default: 'en' %}
+  <link rel="alternate" hreflang="{{ cur_hreflang | escape }}" href="{{ page.url | absolute_url }}">
+  {% assign has_en_alt = false %}
+  {% for alt_post in site.posts %}
+    {% assign cand_slug = alt_post.url | split: '/' | last %}
+    {% if cand_slug == alt_slug and alt_post.url != page.url and alt_post.lang and alt_post.lang != page.lang %}
+      <link rel="alternate" hreflang="{{ alt_post.lang | escape }}" href="{{ alt_post.url | absolute_url }}">
+      {% if alt_post.lang == 'en' %}
+        <link rel="alternate" hreflang="x-default" href="{{ alt_post.url | absolute_url }}">
+        {% assign has_en_alt = true %}
+      {% endif %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% unless has_en_alt %}
+    <link rel="alternate" hreflang="x-default" href="{{ page.url | absolute_url }}">
+  {% endunless %}
+{% elsif page.url != '/404.html' %}
+  <link rel="alternate" hreflang="{{ page.lang | default: site.lang | default: 'en' | escape }}" href="{{ page.url | absolute_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ page.url | absolute_url }}">
+{% endif %}
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/reader.css' | relative_url }}">
 {% if page.reader_visuals %}
