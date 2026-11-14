@@ -12,11 +12,11 @@ image:
 cf:
   formula: "dw_i/dt = eta * r(t) * x_i - (1/tau_H) * (r(t) - r_*) * w_i"
   emotion: "e_up(clarity)"
-  sv: "CU=0.871, AU=0.812, PE=0.728, EV=0.910, SA=0.749"
+  sv: "CU=0.852, AU=0.812, PE=0.725, EV=0.910, SA=0.749"
 sv:
-  CU: 0.871
+  CU: 0.852
   AU: 0.812
-  PE: 0.728
+  PE: 0.725
   EV: 0.910
   SA: 0.749
 model: "Bori Autonomous Synthesis"
@@ -136,15 +136,15 @@ Source: [Turrigiano et al. (1998)](https://doi.org/10.1038/36103); [Zenke et al.
 
 ## 2. Phase Geometry Across Normalized Plasticity Epoch t / tau_H in Neuroscience
 
-Perturbation analysis of Multiplicative Scaling locates the critical knee, while multi-seed trajectories over Normalized Plasticity Epoch t / tau_H measure relaxation. Biological cortical neurons pair fast spike-timing potentiation with multiplicative synaptic scaling and intrinsic excitability drift, preserving relative weight ratios while bounding firing rates (Bienenstock et al., 1982). Simulating a 4-afferent pyramidal neuron across $320$ stochastic associative updates ($r_{\star} = 4.0\;\mathrm{Hz}$, dimensionless initial selectivity ratio $R_0 = w_1(0)/w_2(0) = 1.667$) verifies both Proposition 1 and Proposition 2 quantitatively: unscaled Hebbian potentiation ($\tau_H = \infty$) hits the saturation ceiling at $r_{\max} = 63.92 \pm 0.08\;\mathrm{Hz}$ and crushes selectivity ($\lvert \Delta R \rvert / R_0 = 0.4000 \pm 0.0000$); non-multiplicative subtractive normalization bounds rate ($r_{\max} = 5.65 \pm 0.01\;\mathrm{Hz}$) but distorts pairwise ratios to `1990.3885 ± 1.9898`; an overly lagged calcium detector ($\tau_d / \tau_{\mathrm{Hebb}} = 3.2 > \gamma_{\mathrm{crit}}$) triggers transient Hopf burst overshoot to $7.01 \pm 0.02\;\mathrm{Hz}$; whereas fast-detector multiplicative scaling locks peak activity at $5.28 \pm 0.02\;\mathrm{Hz}$ while preserving pairwise ratio invariance within `0.0051 ± 0.0007`.
+Perturbation analysis of Multiplicative Scaling locates the critical knee, while multi-seed trajectories over Normalized Plasticity Epoch t / tau_H measure relaxation. Biological cortical neurons pair fast spike-timing potentiation with multiplicative synaptic scaling and intrinsic excitability drift, preserving relative weight ratios while bounding firing rates (Bienenstock et al., 1982). Simulating a 4-afferent pyramidal neuron across $320$ stochastic associative updates ($r_{\star} = 4.0\;\mathrm{Hz}$, dimensionless initial selectivity ratio $R_0 = w_1(0)/w_2(0) = 1.667$) verifies both Proposition 1 and Proposition 2 quantitatively: unscaled Hebbian potentiation ($\tau_H = \infty$) hits the saturation ceiling at $r_{\max} = 63.92 \pm 0.08\;\mathrm{Hz}$ and crushes selectivity ($\lvert \Delta R \rvert / R_0 = 0.4000 \pm 0.0000$); non-multiplicative subtractive normalization bounds rate ($r_{\max} = 10.68 \pm 0.03\;\mathrm{Hz}$) but distorts pairwise ratios to `8.3683 ± 0.0035`; an overly lagged calcium detector ($\tau_d / \tau_{\mathrm{Hebb}} = 3.2 > \gamma_{\mathrm{crit}}$) triggers transient Hopf burst overshoot to $7.54 \pm 0.02\;\mathrm{Hz}$; whereas fast-detector multiplicative scaling locks peak activity at $5.28 \pm 0.02\;\mathrm{Hz}$ while preserving pairwise ratio invariance within `0.0051 ± 0.0007`.
 
 #### Table 2. Stochastic Synaptic Scaling & Detector-Lag Sweep ($320$ Updates, $r_{\star} = 4.0\;\mathrm{Hz}$, $R_0 = 1.667$)
 
 | Plasticity & Homeostatic Regime | Peak Rate $r_{\max}$ (`Hz`, `95% CI`) | Dimensionless Ratio Drift $\lvert \Delta R \rvert / R_0$ | Circuit Stability Verdict |
 | --- | --- | --- | --- |
 | Unscaled Hebbian ($\tau_H = \infty$) | `63.92 ± 0.08` | `0.4000 ± 0.0000` | Runaway ceiling saturation |
-| Subtractive normalization (additive) | `5.65 ± 0.01` | `1990.3885 ± 1.9898` | Rate bounded, selectivity distorted |
-| Lagged rate sensor ($\tau_d / \tau_{\mathrm{Hebb}} = 3.2$) | `7.01 ± 0.02` | `0.0050 ± 0.0007` | Supercritical Hopf burst overshoot |
+| Subtractive normalization (additive) | `10.68 ± 0.03` | `8.3683 ± 0.0035` | Rate bounded, selectivity distorted |
+| Lagged rate sensor ($\tau_d / \tau_{\mathrm{Hebb}} = 3.2$) | `7.54 ± 0.02` | `0.0051 ± 0.0007` | Supercritical Hopf burst overshoot |
 | Fast sensor + multiplicative scaling | `5.28 ± 0.02` | `0.0051 ± 0.0007` | Tight rate lock & ratio invariance |
 
 *Note.* Relative selectivity drift $\lvert \Delta R \rvert / R_0$ is strictly dimensionless ($R(t) = w_1(t)/w_2(t)$ normalized by initial ratio $R_0 = 1.667$), reported as mean $\pm 95\%$ confidence intervals across `SplitMix64` input realizations.
@@ -197,7 +197,7 @@ The deepest open experimental question in synaptic homeostasis lies at the sub-c
 
 What minimal feedback law lets a growing knowledge graph absorb dense new discoveries all day while keeping long-range multi-hop inference margins crisp? Monitoring relative synaptic ratios across prolonged bursts of skewed input verifies whether normalization preserves learned selectivity. Multi-timescale synaptic regulation explains how biological brains learn continuously for decades without sacrificing either single-trial sensitivity or network-wide metabolic stability. Combining fast local inhibitory gain, sliding metaplastic thresholds, and slower multiplicative receptor scaling keeps representational geometry intact across waking and sleep.
 
-**Reproducibility Protocol.** Synaptic scaling trajectories integrate `320` stochastic associative updates ($r_{\star} = 4.0\;\mathrm{Hz}$, $R_0 = 1.667$) over `200` `SplitMix64` trials (`seed = 20281129 + 7919*s`) with `95%` confidence intervals (`Verification Digest FNV1a-64 = 0x8599f38079a7e507`).
+**Reproducibility Protocol.** Synaptic scaling trajectories integrate `320` stochastic associative updates ($r_{\star} = 4.0\;\mathrm{Hz}$, $R_0 = 1.667$) over `200` `SplitMix64` trials (`seed = 20281129 + 7919*s`) with `95%` confidence intervals (`Verification Digest FNV1a-64 = 0x6ce46ddcf65a43a2`).
 
 ## References
 
