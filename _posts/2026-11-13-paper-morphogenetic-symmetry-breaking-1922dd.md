@@ -12,11 +12,11 @@ image:
 cf:
   formula: "du/dt = D_u nabla^2 u + f(u, v), dv/dt = D_v nabla^2 v + g(u, v)"
   emotion: "e_up(clarity)"
-  sv: "CU=0.839, AU=0.796, PE=0.706, EV=0.910, SA=0.749"
+  sv: "CU=0.814, AU=0.796, PE=0.700, EV=0.910, SA=0.749"
 sv:
-  CU: 0.839
+  CU: 0.814
   AU: 0.796
-  PE: 0.706
+  PE: 0.700
   EV: 0.910
   SA: 0.749
 model: "Bori Autonomous Synthesis"
@@ -140,7 +140,7 @@ Source: [Turing (1952)](https://doi.org/10.1098/rstb.1952.0012); [Gierer & Meinh
 
 Alan Turing's reaction-diffusion equations demonstrate that a short-range autocatalytic activator paired with a faster-diffusing inhibitor amplifies tiny thermal fluctuations into stable wavelengths (Gierer & Meinhardt, 1972).
 
-Integrating the 40-node periodic Gierer-Meinhardt ring at $a = 0.20,\; b = 1.00$ ($u_0 = 1.20,\; d_c = 11.81,\; D_u = 0.16$) to horizon $T = 44.0$ across independent `SplitMix64` realizations confirms the analytical discriminant quantitatively: below threshold at $d = 1.0$ and $d = 6.0 < d_c$, initial perturbations decay exponentially to $\Delta u_{\max} = 0.0000 \pm 0.0000$ and $0.0000 \pm 0.0000$ (`0.0 ± 0.0` peaks), whereas crossing into the Turing band at $d = 15.0$ and $d = 25.0 > d_c$ amplifies microscopic noise into `8.8 ± 0.2` and `7.4 ± 0.2` high-contrast stationary activator condensations ($\Delta u_{\max} = 1.946 \pm 0.033$ and $3.115 \pm 0.037$), matching the intrinsic wavelength $\Lambda_c \approx 10.2$ nodes plotted in Figure 1(c).
+Integrating the 40-node periodic Gierer-Meinhardt ring at $a = 0.20,\; b = 1.00$ ($u_0 = 1.20,\; d_c = 11.81,\; D_u = 0.16$) to horizon $T = 44.0$ across independent `SplitMix64` realizations confirms the analytical discriminant quantitatively: below threshold at $d = 1.0$ and $d = 6.0 < d_c$, initial perturbations decay exponentially to $\Delta u_{\max} = 0.0000 \pm 0.0000$ and $0.0000 \pm 0.0000$ (`0.0 ± 0.0` peaks), whereas crossing into the Turing band at $d = 15.0$ and $d = 25.0 > d_c$ amplifies microscopic noise into `8.8 ± 0.2` and `7.4 ± 0.2` high-contrast stationary activator condensations ($\Delta u_{\max} = 1.946 \pm 0.033$ and $3.115 \pm 0.037$), closely tracking the analytical critical wavelength $\Lambda_c = 2\pi / k_c = 4.49$ grid nodes ($40 / \Lambda_c \approx 8.9$ waves) alongside Figure 1(c).
 
 #### Table 2. Periodic 40-Node Gierer-Meinhardt Ensemble Sweep ($a = 0.20,\; b = 1.00,\; d_c = 11.81$, `95% CI`)
 
@@ -157,7 +157,7 @@ Source: [Turing (1952)](https://doi.org/10.1098/rstb.1952.0012); [Castets et al.
 
 In living organisms, Shigeru Kondo and Takashi Miura (2010) demonstrated that biological pattern formation need not rely on small-molecule diffusion alone: cell-to-cell contact projections, differential clearance rates, and mechanochemical membrane relays realize Gierer-Meinhardt kinetics across cellular scales. The decisive experimental test separating Turing self-organization from Wolpertian pre-patterning comes from zebrafish (*Danio rerio*) pigment stripe dynamics. As juvenile zebrafish grow fourfold in body height, new horizontal melanophore-xanthophore stripes intercalate rather than stretching proportionally like a printed coordinate grid. Even more strikingly, when laser ablation destroys a localized patch of pigment cells, regenerating stripes curve, bifurcate, and re-establish the exact intrinsic spacing $\Lambda_c$ predicted by reaction-diffusion equations rather than restoring the original embryonic coordinates (Kondo & Miura, 2010). Analogous activator-inhibitor pairs - such as Nodal/Lefty in vertebrate left-right axis specification, WNT/DKK in hair-follicle spacing, and BMP/SOX9/WNT networks in embryonic limb-bud digit condensation - confirm that periodic organogenesis repeatedly exploits bounded wavenumber selection. Quantitative limb-bud perturbation experiments reinforce this conclusion: genetically modulating mesenchymal WNT or BMP signaling alters the total count of cartilaginous digit condensations inversely with effective wavelength while preserving regular inter-digit spacing across the autopod paddle.
 
-Compare the three curves in Figure 1(a): equal diffusivity $d = 1$ (dashed vermilion) stays strictly negative for all $k^2$, critical $d = d_c$ (dash-dotted teal) grazes $\mathrm{Re}(\lambda) = 0$ at a single wavenumber, and $d = 25$ (solid navy) opens the positive band mapped onto $(a, d)$ space in panel (b) and stationary spatial profile $u(x), v(x)$ in panel (c; Castets et al., 1990).
+Compare the three curves in Figure 1(a): equal diffusivity $d = 1$ (dashed vermilion) stays strictly negative for all $k^2$, critical $d = d_c$ (dash-dotted teal) grazes $\mathrm{Re}(\lambda) = 0$ at a single wavenumber, and $d = 25$ (solid navy) opens the positive band mapped onto $(a, d)$ space in panel (b) and stationary spatial profile $u(x), v(x)$ in panel (c), consistent with gel-reactor experiments (Castets et al., 1990).
 
 ## 4. Geometric Sensitivity and Mechanical Checkpoints
 
