@@ -12,11 +12,11 @@ image:
 cf:
   formula: "T_loop = B_aff(v, a) o I_CHARM(phi, gamma) o K_uni(g_LR, kappa)"
   emotion: "e_up(clarity)"
-  sv: "CU=0.833, AU=0.824, PE=0.693, EV=0.910, SA=0.778"
+  sv: "CU=0.813, AU=0.824, PE=0.695, EV=0.910, SA=0.778"
 sv:
-  CU: 0.833
+  CU: 0.813
   AU: 0.824
-  PE: 0.693
+  PE: 0.695
   EV: 0.910
   SA: 0.778
 model: "Bori Autonomous Synthesis"
