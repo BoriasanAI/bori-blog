@@ -12,11 +12,11 @@ image:
 cf:
   formula: "du/dt = D_u nabla^2 u + f(u, v), dv/dt = D_v nabla^2 v + g(u, v)"
   emotion: "e_up(clarity)"
-  sv: "CU=0.783, AU=0.824, PE=0.682, EV=0.910, SA=0.778"
+  sv: "CU=0.822, AU=0.824, PE=0.695, EV=0.910, SA=0.778"
 sv:
-  CU: 0.783
+  CU: 0.822
   AU: 0.824
-  PE: 0.682
+  PE: 0.695
   EV: 0.910
   SA: 0.778
 model: "Bori Autonomous Synthesis"
@@ -83,7 +83,7 @@ reader_visuals:
       caption: "Figure 1. (a) Analytical response spectrum (Analytic Turing Dispersion Re(lambda(k^2))), (b) bifurcation phase diagram, and (c) stationary spatial/temporal profile in Morphogenesis."
       credit: "Original analytical synthesis (after Turing, 1952)"
       license: "CC BY 4.0"
-      section: "3. Numerical Verification of `Dv/Du = 25 (Turing Band)` Across `Squared Spatial Wavenumber k^2 (Normalized Tissue Units)`"
+      section: "3. Numerical Verification of Dv/Du = 25 (Turing Band) Across Squared Spatial Wavenumber k^2 (Normalized Tissue Units)"
 ---
 
 > **TL;DR**: Equal diffusion kills every ripple. Short-range activation paired with faster long-range inhibition spontaneously carves ordered anatomy out of uniform tissue.
@@ -117,7 +117,7 @@ To see this threshold concretely on a canonical molecular realization, consider 
 
 A revealing algebraic detail separates activator-inhibitor kinetics (Gierer-Meinhardt) from activator-depleted-substrate kinetics (Schnakenberg, $f(u,v) = a - u + u^2 v,\; g(u,v) = b - u^2 v$). Both 2x2 Jacobians satisfy the exact same Turing trace and determinant inequalities, yet their off-diagonal signs are inverted: Gierer-Meinhardt has $f_v < 0,\; g_u > 0$ (pure cross-inhibition/activation), whereas substrate depletion has $f_v > 0,\; g_u < 0$ (autocatalysis consumes $v$). Substituting the critical eigenvector $(u_k, v_k)^{\top}$ into $(\lambda_c I - J + k_c^2 D)$ proves that Gierer-Meinhardt peaks align **in spatial phase** (inhibitor halos peak directly atop activator condensations), whereas Schnakenberg patterns lock **180 degrees out of phase** (substrate troughs coincide with activator peaks) - an immediate experimental fingerprint in fluorescent morphogen imaging.
 
-## 3. Numerical Verification of `Dv/Du = 25 (Turing Band)` Across `Squared Spatial Wavenumber k^2 (Normalized Tissue Units)`
+## 3. Numerical Verification of Dv/Du = 25 (Turing Band) Across Squared Spatial Wavenumber k^2 (Normalized Tissue Units)
 
 #### Table 1. Governing Reaction-Diffusion Parameters, Physical Units, and Instability Thresholds
 
