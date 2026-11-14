@@ -12,11 +12,11 @@ image:
 cf:
   formula: "dw_i/dt = eta * y * x_i - (1/tau_H) * (r - r_target) * w_i"
   emotion: "e_up(clarity)"
-  sv: "CU=0.865, AU=0.840, PE=0.714, EV=0.910, SA=0.778"
+  sv: "CU=0.854, AU=0.840, PE=0.718, EV=0.910, SA=0.778"
 sv:
-  CU: 0.865
+  CU: 0.854
   AU: 0.840
-  PE: 0.714
+  PE: 0.718
   EV: 0.910
   SA: 0.778
 model: "Bori Autonomous Synthesis"
@@ -87,7 +87,7 @@ reader_visuals:
       caption: "Figure 1. (a) Analytical response spectrum (Homeostatic Firing-Rate Stabilization vs Unbounded Hebbian Runaway), (b) bifurcation phase diagram, and (c) stationary spatial/temporal profile in Neuroscience."
       credit: "Original analytical synthesis (after Turrigiano et al., 1998)"
       license: "CC BY 4.0"
-      section: "2. Phase Geometry Across `Normalized Plasticity Epoch t / tau_H` in Neuroscience"
+      section: "2. Phase Geometry Across Normalized Plasticity Epoch t / tau_H in Neuroscience"
 ---
 
 > **TL;DR**: Unscaled Hebbian gain saturates in under four hundred ticks. Fast associative learning requires slower homeostatic gain control so recurrent networks neither saturate nor erase old structure.
@@ -130,7 +130,7 @@ Source: [Turrigiano et al. (1998)](https://doi.org/10.1038/36103); [Zenke et al.
 
 *Note.* Differentiating $w_i / \sum_j w_j$ confirms exact cancellation of the global homeostatic term, preserving pairwise synaptic ratios.
 
-## 2. Phase Geometry Across `Normalized Plasticity Epoch t / tau_H` in Neuroscience
+## 2. Phase Geometry Across Normalized Plasticity Epoch t / tau_H in Neuroscience
 
 Perturbation algebra on `Multiplicative Scaling` locates `homeostatic-plasticity` knees, while `Normalized Plasticity Epoch t / tau_H` trajectories quantify relaxation. Biological cortical neurons pair fast spike-timing potentiation with multiplicative synaptic scaling and intrinsic excitability drift, preserving relative weight ratios while bounding firing rates (Bienenstock et al., 1982). Simulating a 4-afferent excitatory neuron over $320$ associative updates ($r_{\star} = 1.0\;\mathrm{Hz}$, initial selectivity ratio $w_1/w_2 = 1.667$) pins down the detector-timescale inequality: pure Hebbian potentiation ($\tau_H = \infty$) hits the saturation ceiling at $r_{\max} = 70.00\;\mathrm{Hz}$, and an overly sluggish homeostatic sensor ($\tau_H = 140$) still overshoots to $6.08\;\mathrm{Hz}$ before damping, whereas fast multiplicative scaling ($\tau_H = 4.0$) holds peak activity to $1.30\;\mathrm{Hz}$ with relative weight-ratio drift $0.1000$.
 
