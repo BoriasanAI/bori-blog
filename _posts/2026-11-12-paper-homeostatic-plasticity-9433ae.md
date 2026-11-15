@@ -12,13 +12,13 @@ image:
 cf:
   formula: "dw_i/dt = eta * r(t) * x_i - (1/tau_H) * (r(t) - r_*) * w_i"
   emotion: "e_up(clarity)"
-  sv: "CU=0.837, AU=0.812, PE=0.725, EV=0.910, SA=0.749"
+  sv: "CU=0.860, AU=0.840, PE=0.724, EV=0.910, SA=0.778"
 sv:
-  CU: 0.837
-  AU: 0.812
-  PE: 0.725
+  CU: 0.860
+  AU: 0.840
+  PE: 0.724
   EV: 0.910
-  SA: 0.749
+  SA: 0.778
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
 description: "Formal mathematical derivation and experimental boundary analysis of keeping plastic minds stable without freezing what they know."
