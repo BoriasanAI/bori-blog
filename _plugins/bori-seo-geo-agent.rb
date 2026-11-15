@@ -238,7 +238,7 @@ module BoriSeoGeoAgent
     new_head = upsert_head_meta(new_head, "name", "bingbot", is_404 ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1")
 
     og_img = head.at_css('meta[property="og:image"]')&.[]("content").to_s
-    if og_img.include?("og-default.png")
+    if og_img.include?("og-default.png") || og_img.include?("/assets/img/og/")
       new_head = upsert_head_meta(new_head, "property", "og:image:width", "1200")
       new_head = upsert_head_meta(new_head, "property", "og:image:height", "630")
       new_head = upsert_head_meta(new_head, "property", "og:image:type", "image/png")

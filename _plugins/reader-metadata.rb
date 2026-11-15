@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "digest"
 require "json"
 require "nokogiri"
 
@@ -128,13 +129,7 @@ module BoriReader
     prose.text.scan(/[\p{L}\p{N}]+(?:['’][\p{L}\p{N}]+)*/).size
   end
 
-  def raster_social_preview(output, image_url)
-    label = "Bori's Day logo — shared brand fallback, not a unique article thumbnail"
-    replacements = {
-      "og:image" => image_url, "twitter:image" => image_url, "twitter:image:src" => image_url,
-      "og:image:width" => "512", "og:image:height" => "512", "og:image:type" => "image/png",
-      "og:image:alt" => label, "twitter:image:alt" => label, "twitter:card" => "summary"
-    }
+  def apply_social_meta_replacements(output, replacements)
     present = []
     output = output.gsub(/<meta\b[^>]*>/i) do |tag|
       node = Nokogiri::HTML.fragment(tag).at_css("meta")
@@ -144,14 +139,38 @@ module BoriReader
       node["content"] = replacements[key]
       node.to_html
     end
-    missing = %w[og:image:alt twitter:image:alt og:image:type].reject { |key| present.include?(key) }
+    missing = %w[og:image:alt twitter:image:alt og:image:type og:image:width og:image:height].reject { |key| present.include?(key) }
     additions = missing.map do |key|
       node = Nokogiri::XML::Node.new("meta", Nokogiri::HTML::Document.new)
-      node["property"] = key
+      attr = key.start_with?("twitter:") ? "name" : "property"
+      node[attr] = key
       node["content"] = replacements[key]
       node.to_html
     end.join
     output.sub(/<body\b/i, "#{additions}<body")
+  end
+
+  def raster_social_preview(output, image_url)
+    label = "Bori's Day logo — shared brand fallback, not a unique article thumbnail"
+    apply_social_meta_replacements(
+      output,
+      {
+        "og:image" => image_url, "twitter:image" => image_url, "twitter:image:src" => image_url,
+        "og:image:width" => "1200", "og:image:height" => "630", "og:image:type" => "image/png",
+        "og:image:alt" => label, "twitter:image:alt" => label, "twitter:card" => "summary_large_image"
+      }
+    )
+  end
+
+  def article_card_social_preview(output, image_url, alt_label)
+    apply_social_meta_replacements(
+      output,
+      {
+        "og:image" => image_url, "twitter:image" => image_url, "twitter:image:src" => image_url,
+        "og:image:width" => "1200", "og:image:height" => "630", "og:image:type" => "image/png",
+        "og:image:alt" => alt_label, "twitter:image:alt" => alt_label, "twitter:card" => "summary_large_image"
+      }
+    )
   end
 
   class Metadata < Jekyll::Generator
@@ -196,12 +215,26 @@ end
 Jekyll::Hooks.register :posts, :post_render, priority: :low do |post|
   document = Nokogiri::HTML(post.output)
   svg_preview = document.at_css('meta[property="og:image"]')&.[]("content").to_s.match?(/\.svg(?:\?[^"]*)?\z/i)
-  raster_path = post.site.config["social_preview_image"]
-  raster_path = nil unless raster_path && File.file?(post.site.in_source_dir(raster_path.sub(%r{\A/}, "")))
   url_filters = Object.new.extend(Jekyll::Filters::URLFilters)
   url_filters.instance_variable_set(:@context, Liquid::Context.new({}, {}, { site: post.site }))
+
+  slug = post.url.to_s.split("/").reject(&:empty?).last.to_s
+  card_rel = post.data["social_image"].to_s.strip
+  card_rel = "/assets/img/og/#{slug}.png" if card_rel.empty? && !slug.empty?
+  card_disk = !card_rel.empty? ? post.site.in_source_dir(card_rel.sub(%r{\A/}, "")) : nil
+  has_post_card = card_disk && File.file?(card_disk)
+  card_url = if has_post_card
+               ver = Digest::SHA256.file(card_disk).hexdigest[0, 8]
+               "#{url_filters.absolute_url(card_rel)}?v=#{ver}"
+             end
+  card_alt = "#{post.data['bori_kind_label'] || 'Entry'}: #{post.data['title']} - #{post.data['bori_summary'].to_s[0, 140]}"
+
+  raster_path = post.site.config["social_preview_image"]
+  raster_path = nil unless raster_path && File.file?(post.site.in_source_dir(raster_path.sub(%r{\A/}, "")))
   raster_url = raster_path && url_filters.absolute_url(raster_path)
-  if svg_preview && raster_url
+  if has_post_card && card_url
+    post.output = BoriReader.article_card_social_preview(post.output, card_url, card_alt)
+  elsif svg_preview && raster_url
     post.output = BoriReader.raster_social_preview(post.output, raster_url)
   end
   prose = document.at_css("article .content")
@@ -216,10 +249,15 @@ Jekyll::Hooks.register :posts, :post_render, priority: :low do |post|
       data["wordCount"] = words
       data["description"] = post.data["bori_summary"]
       data["keywords"] = post.data["bori_tags"].join(", ")
-      if svg_preview && raster_url
+      if has_post_card && card_url
         data["image"] = {
-          "@type" => "ImageObject", "url" => raster_url, "width" => 512, "height" => 512,
-          "caption" => "Shared Bori's Day brand logo fallback, not a unique article thumbnail"
+          "@type" => "ImageObject", "url" => card_url, "width" => 1200, "height" => 630,
+          "caption" => card_alt
+        }
+      elsif svg_preview && raster_url
+        data["image"] = {
+          "@type" => "ImageObject", "url" => raster_url, "width" => 1200, "height" => 630,
+          "caption" => "Shared Bori's Day brand card fallback, not a unique article thumbnail"
         }
       end
       "<script type=\"application/ld+json\">#{JSON.generate(data).gsub('<', '\\u003c')}</script>"

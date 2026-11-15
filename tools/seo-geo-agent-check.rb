@@ -45,6 +45,7 @@ end
 if root.join("assets/img/banner/og-default.png").file?
   sig = root.join("assets/img/banner/og-default.png").binread(8).unpack1("H*")
   failures << "og_default_invalid_png_magic" unless sig == "89504e470d0a1a0a"
+  failures << "og_default_blank_tiny_card" unless root.join("assets/img/banner/og-default.png").size >= 10_000
 end
 
 titles = {}
@@ -95,6 +96,14 @@ post_htmls = root.join("posts").glob("*/index.html")
 post_htmls.each do |ph|
   md_twin = ph.dirname.join("index.md")
   failures << "#{ph}:missing_markdown_twin" unless md_twin.file?
+  slug = ph.dirname.basename.to_s
+  if root.join("assets/img/og/#{slug}.png").file?
+    pdoc = Nokogiri::HTML(File.read(ph, encoding: "UTF-8"))
+    og_u = pdoc.at_css('meta[property="og:image"]')&.[]("content").to_s
+    tw_c = pdoc.at_css('meta[name="twitter:card"]')&.[]("content").to_s
+    failures << "#{slug}:post_card_not_bound:#{og_u}" unless og_u.include?("/assets/img/og/#{slug}.png")
+    failures << "#{slug}:twitter_card_not_large:#{tw_c}" unless tw_c == "summary_large_image"
+  end
 end
 
 if failures.any?

@@ -64,4 +64,7 @@ check(BoriReader.cleaned_text(code_post, converter) == "In parser.py, keep x <= 
 preview = BoriReader.raster_social_preview('<html><head><meta property="og:image" content="/original.svg"><meta name="twitter:card" content="summary_large_image"></head><body><img src="/original.svg"></body></html>', "https://example.test/logo.png")
 preview_doc = Nokogiri::HTML(preview)
 check(preview_doc.at_css('meta[property="og:image"]')["content"] == "https://example.test/logo.png" && preview_doc.at_css('meta[property="og:image:alt"]')["content"].include?("shared brand fallback") && preview_doc.at_css("img")["src"] == "/original.svg", "Social fallback must be honestly labeled without replacing visible article images")
+card_preview = BoriReader.article_card_social_preview('<html><head><meta property="og:image" content="/original.svg"><meta name="twitter:card" content="summary"></head><body><img src="/original.svg"></body></html>', "https://example.test/assets/img/og/post-1.png?v=12345678", "Concept notes: Post 1 - Summary")
+card_doc = Nokogiri::HTML(card_preview)
+check(card_doc.at_css('meta[property="og:image"]')["content"].start_with?("https://example.test/assets/img/og/post-1.png") && card_doc.at_css('meta[name="twitter:card"]')["content"] == "summary_large_image" && card_doc.at_css('meta[property="og:image:width"]')["content"] == "1200" && card_doc.at_css("img")["src"] == "/original.svg", "Per-post 1200x630 PNG card must bind summary_large_image while keeping article SVG untouched")
 puts "reader-check: #{@checks} assertions passed"
