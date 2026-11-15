@@ -12,13 +12,13 @@ image:
 cf:
   formula: "du/dt = D_u nabla^2 u + f(u, v), dv/dt = D_v nabla^2 v + g(u, v)"
   emotion: "e_up(clarity)"
-  sv: "CU=0.814, AU=0.796, PE=0.700, EV=0.910, SA=0.749"
+  sv: "CU=0.815, AU=0.824, PE=0.695, EV=0.910, SA=0.778"
 sv:
-  CU: 0.814
-  AU: 0.796
-  PE: 0.700
+  CU: 0.815
+  AU: 0.824
+  PE: 0.695
   EV: 0.910
-  SA: 0.749
+  SA: 0.778
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
 description: "Formal mathematical derivation and experimental boundary analysis of how local reaction and diffusion carve global biological form."
