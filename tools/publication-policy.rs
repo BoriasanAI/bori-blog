@@ -3,6 +3,53 @@
 use std::io::{self, Read};
 use std::process::ExitCode;
 
+#[inline]
+fn fnv1a_token_u64(bytes: &[u8]) -> u64 {
+    let mut h = 0xcbf2_9ce4_8422_2325_u64;
+    for &b in bytes {
+        h ^= u64::from(b);
+        h = h.wrapping_mul(0x0100_0000_01b3);
+    }
+    h
+}
+
+#[inline]
+fn has_blocked_owner_token(normalized: &str) -> bool {
+    const BLOCKED_HASHES: [u64; 5] = [
+        0x2253_d0eb_a99e_fabc_u64,
+        0x4ade_2688_91d5_9a17_u64,
+        0xea3d_87b1_f87c_687b_u64,
+        0x4b87_44c1_f2b6_387c_u64,
+        0xd45f_61b7_9a7f_c348_u64,
+    ];
+    let mut prev2 = "";
+    let mut prev1 = "";
+    for tok in normalized.split(|c: char| !c.is_ascii_alphanumeric()) {
+        if tok.is_empty() {
+            continue;
+        }
+        if BLOCKED_HASHES.contains(&fnv1a_token_u64(tok.as_bytes())) {
+            return true;
+        }
+        if !prev1.is_empty() {
+            let joined2 = format!("{prev1}{tok}");
+            if BLOCKED_HASHES.contains(&fnv1a_token_u64(joined2.as_bytes())) {
+                return true;
+            }
+            if !prev2.is_empty() {
+                let joined3 = format!("{prev2}{prev1}{tok}");
+                if BLOCKED_HASHES.contains(&fnv1a_token_u64(joined3.as_bytes())) {
+                    return true;
+                }
+            }
+        }
+        prev2 = prev1;
+        prev1 = tok;
+    }
+    false
+}
+
+#[inline]
 pub fn disclosure_reason(text: &str) -> Option<&'static str> {
     let normalized = text
         .to_lowercase()
@@ -12,6 +59,9 @@ pub fn disclosure_reason(text: &str) -> Option<&'static str> {
         .replace("&#x2f;", "/")
         .replace("%2f", "/");
     let normalized = normalized.split_whitespace().collect::<Vec<_>>().join(" ");
+    if has_blocked_owner_token(&normalized) {
+        return Some("owner-identity-isolation");
+    }
     const RULES: &[(&str, &[&str])] = &[
         (
             "private-source-or-state",

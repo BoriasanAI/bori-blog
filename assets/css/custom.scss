@@ -124,7 +124,7 @@ a:not(.btn):not(.nav-link):hover {
   padding: 1.2rem;
   border-radius: 8px;
   background: var(--bori-gradient-soft);
-  border-left: 4px solid var(--bori-primary);
+  border: 1px solid rgba(148, 163, 184, 0.24);
   font-family: 'Georgia', serif;
 }
 
@@ -140,15 +140,16 @@ a:not(.btn):not(.nav-link):hover {
   top: 0;
   left: 0;
   width: 0%;
-  height: 3px;
-  background: var(--bori-gradient);
+  height: 0;
+  display: none;
   z-index: 9999;
   transition: width 0.1s ease;
 }
 
 /* ── Tag Pill Styling ──────────────────────────────────── */
 .post-tag,
-a[href*="/tags/"] {
+.post-tags a[href*="/tags/"],
+main .content a[href*="/tags/"] {
   border-radius: 20px !important;
   padding: 2px 10px !important;
   font-size: 0.75rem;
@@ -157,7 +158,9 @@ a[href*="/tags/"] {
 
 /* ── Blockquote Accent ─────────────────────────────────── */
 blockquote {
-  border-left-color: var(--bori-primary) !important;
+  border: 1px solid rgba(148, 163, 184, 0.26) !important;
+  border-left-width: 1px !important;
+  border-radius: 8px;
   background: var(--bori-gradient-soft);
 }
 
@@ -338,9 +341,10 @@ html[data-mode="dark"] .bori-cta {
 .content blockquote {
   margin: 1.8em 0;
   padding: 1em 1.5em;
-  border-left: 4px solid var(--bori-primary) !important;
+  border: 1px solid rgba(148, 163, 184, 0.26) !important;
+  border-left-width: 1px !important;
   background: var(--bori-gradient-soft);
-  border-radius: 0 8px 8px 0;
+  border-radius: 8px;
   font-size: 1.02rem;
   line-height: 1.75;
 }
@@ -362,7 +366,8 @@ html[data-mode="dark"] .bori-cta {
 /* ── TL;DR Prompt-Tip Block ────────────────────────────── */
 .content > blockquote:first-of-type {
   background: linear-gradient(135deg, rgba(102,126,234,0.06), rgba(249,168,37,0.06));
-  border-left-color: var(--bori-accent) !important;
+  border: 1px solid rgba(148, 163, 184, 0.26) !important;
+  border-left-width: 1px !important;
   border-radius: 8px;
   padding: 1rem 1.5rem;
   margin-bottom: 2em;
@@ -370,7 +375,8 @@ html[data-mode="dark"] .bori-cta {
 
 /* Chirpy prompt-tip class */
 .content .prompt-tip {
-  border-left-color: var(--bori-accent) !important;
+  border: 1px solid rgba(148, 163, 184, 0.26) !important;
+  border-left-width: 1px !important;
   background: linear-gradient(135deg, rgba(249,168,37,0.06), rgba(102,126,234,0.04));
   padding-left: 3rem !important;
 }
@@ -467,4 +473,24 @@ html[data-mode="dark"] .content > blockquote:first-of-type {
   .content h2 {
     margin-top: 2em;
   }
+}
+
+/* [BORI-STYLE-HEAL-SIDEBAR-CONTRAST-V1] */
+#sidebar .sidebar-bottom a,
+#sidebar .sidebar-bottom button,
+#sidebar #mode-toggle {
+background: rgba(255, 255, 255, 0.16) !important;
+border: 1px solid rgba(255, 255, 255, 0.32) !important;
+color: #ffffff !important;
+box-shadow: none !important;
+}
+#sidebar .sidebar-bottom a:hover,
+#sidebar .sidebar-bottom button:hover,
+#sidebar #mode-toggle:hover {
+background: rgba(255, 255, 255, 0.28) !important;
+border-color: rgba(255, 255, 255, 0.55) !important;
+}
+#sidebar .sidebar-bottom i,
+#sidebar #mode-toggle i {
+color: #ffffff !important;
 }

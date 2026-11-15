@@ -93,6 +93,7 @@
     const host = document.querySelector('#sidebar .sidebar-bottom');
     if (!host || typeof Theme === 'undefined') return;
     const container = document.createElement('div');
+    container.className = 'sidebar-theme-switcher';
     const label = document.createElement('label');
     label.htmlFor = 'theme-choice';
     label.className = 'theme-choice-label';
@@ -139,6 +140,16 @@
     });
   }
 
+  function commentsLayout() {
+    const unavail = document.querySelector('body > .comments-unavailable');
+    if (!unavail) return;
+    const tail = document.querySelector('.post-tail-wrapper');
+    const main = document.querySelector('#main-wrapper main, main');
+    if (tail) tail.append(unavail);
+    else if (main) main.append(unavail);
+  }
+
+  commentsLayout();
   navigation();
   badges();
   charts();
