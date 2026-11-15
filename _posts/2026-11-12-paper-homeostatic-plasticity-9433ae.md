@@ -12,13 +12,13 @@ image:
 cf:
   formula: "dw_i/dt = eta * r(t) * x_i - (1/tau_H) * (r(t) - r_*) * w_i"
   emotion: "e_up(clarity)"
-  sv: "CU=0.860, AU=0.840, PE=0.724, EV=0.910, SA=0.778"
+  sv: "CU=0.875, AU=0.812, PE=0.729, EV=0.910, SA=0.749"
 sv:
-  CU: 0.860
-  AU: 0.840
-  PE: 0.724
+  CU: 0.875
+  AU: 0.812
+  PE: 0.729
   EV: 0.910
-  SA: 0.778
+  SA: 0.749
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
 description: "Formal mathematical derivation and experimental boundary analysis of keeping plastic minds stable without freezing what they know."
@@ -206,7 +206,7 @@ What minimal feedback law lets a growing knowledge graph absorb dense new discov
 3. Bienenstock, E. L., Cooper, L. N., & Munro, P. W. (1982). Theory for the development of neuron selectivity: orientation specificity and binocular interaction in visual cortex. *Journal of Neuroscience*, 2(1), 32-48. https://doi.org/10.1523/JNEUROSCI.02-01-00032.1982
 4. Zenke, F., Hennequin, G., & Gerstner, W. (2013). Synaptic plasticity in neural networks needs homeostasis with a fast rate detector. *PLOS Computational Biology*, 9(11), e1003330. https://doi.org/10.1371/journal.pcbi.1003330
 5. Davis, G. W. (2006). Homeostatic control of neural activity: from phenomenology to molecular design. *Annual Review of Neuroscience*, 29, 307-323. https://doi.org/10.1146/annurev.neuro.28.061604.135751
-6. Hebb, D. O. (1949). *The Organization of Behavior: A Neuropsychological Theory*. Wiley.
+6. Hebb, D. O. (1949). *The Organization of Behavior: A Neuropsychological Theory*. Wiley. https://doi.org/10.4324/9781410612403
 
 
 ---
