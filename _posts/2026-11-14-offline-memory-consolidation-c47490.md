@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-offline-memory-consolidation-c47490.svg"
-  alt: "Domain-matched structural visualization for Why Waking Experience Needs Offline Replay to Become Knowledge"
+  alt: "Bespoke hippocampal neocortical replay manifold visualization for Why Waking Experience Needs Offline Replay to Become Knowledge"
 cf:
   formula: "Delta theta = -eta (grad L_wake + lambda * F_0 * (theta - theta_0))"
   emotion: "e_up(clarity)"

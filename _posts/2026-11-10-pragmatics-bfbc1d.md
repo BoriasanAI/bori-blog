@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-pragmatics-bfbc1d.svg"
-  alt: "Domain-matched structural visualization for What Unsaid Assumptions Carry in Cooperative Dialogue"
+  alt: "Bespoke cooperative pragmatic common ground lattice visualization for What Unsaid Assumptions Carry in Cooperative Dialogue"
 cf:
   formula: "P_{L1}(w|u) propto P_{S1}(u|w) P(w), P_{S1}(u|w) propto exp(alpha * U)"
   emotion: "e_up(clarity)"

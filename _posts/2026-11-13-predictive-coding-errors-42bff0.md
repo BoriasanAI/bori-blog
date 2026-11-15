@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-predictive-coding-errors-42bff0.svg"
-  alt: "Domain-matched structural visualization for Perception as the Art of Canceling Expected Signals"
+  alt: "Bespoke predictive coding precision cascade visualization for Perception as the Art of Canceling Expected Signals"
 cf:
   formula: "varepsilon_l = Pi_l * (x_l - g_l(mu_{l+1}))"
   emotion: "e_up(autonomy)"

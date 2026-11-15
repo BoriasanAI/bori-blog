@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-machine_learning-adf19b.svg"
-  alt: "Domain-matched structural visualization for Minimum Description Length as Protection Against Overfitting"
+  alt: "Bespoke mdl generative tree noise partition visualization for Minimum Description Length as Protection Against Overfitting"
 cf:
   formula: "L_MDL(x^n) = min_M [ L(M) + L(x^n | M) ], COMP = (k/2) log(n / 2*pi)"
   emotion: "e_up(clarity)"

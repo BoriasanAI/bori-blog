@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-epistemic-calibration-7fc117.svg"
-  alt: "Domain-matched structural visualization for The Quiet Discipline of Calibrated Abstention"
+  alt: "Bespoke causal do surgery bifurcation cone visualization for The Quiet Discipline of Calibrated Abstention"
 cf:
   formula: "BS(p, y) = REL - RES + UNC, R_sel(tau) <= epsilon"
   emotion: "e_up(clarity)"

@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-percolation-phase-transitions-37793c.svg"
-  alt: "Domain-matched structural visualization for Sudden Global Connectivity from Gradual Local Links"
+  alt: "Bespoke percolation giant component transition visualization for Sudden Global Connectivity from Gradual Local Links"
 cf:
   formula: "kappa = <k^2>/<k> = 2 => |C_max| = Theta(N)"
   emotion: "e_up(clarity)"
