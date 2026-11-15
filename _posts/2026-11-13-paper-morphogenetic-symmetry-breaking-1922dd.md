@@ -12,13 +12,13 @@ image:
 cf:
   formula: "du/dt = D_u nabla^2 u + f(u, v), dv/dt = D_v nabla^2 v + g(u, v)"
   emotion: "e_up(clarity)"
-  sv: "CU=0.815, AU=0.824, PE=0.695, EV=0.910, SA=0.778"
+  sv: "CU=0.810, AU=0.796, PE=0.699, EV=0.910, SA=0.749"
 sv:
-  CU: 0.815
-  AU: 0.824
-  PE: 0.695
+  CU: 0.810
+  AU: 0.796
+  PE: 0.699
   EV: 0.910
-  SA: 0.778
+  SA: 0.749
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
 description: "Formal mathematical derivation and experimental boundary analysis of how local reaction and diffusion carve global biological form."
@@ -83,7 +83,7 @@ reader_visuals:
       caption: "Figure 1. (a) Linear dispersion growth rate Re(lambda(k^2)), (b) Turing instability domain in (a, D_v/D_u) parameter space, and (c) stationary periodic activator-inhibitor profile."
       credit: "Original analytical synthesis (after Turing, 1952)"
       license: "CC BY 4.0"
-      section: "3. Numerical Verification of Dv/Du = 25 (Turing Band) Across Squared Spatial Wavenumber k^2 (Normalized Tissue Units)"
+      section: "3. Numerical Verification and Ensemble Dynamics in Morphogenesis"
 ---
 
 > **TL;DR**: Equal diffusion kills every ripple. Short-range activation paired with faster long-range inhibition spontaneously carves ordered anatomy out of uniform tissue.
@@ -91,7 +91,7 @@ reader_visuals:
 
 ## Abstract
 
-Complex spatial anatomy need not be micromanaged coordinate by coordinate when coupled local feedback and differential transport spontaneously break homogeneous symmetry. Developing embryos solve a remarkable distributed coordination puzzle, turning a nearly uniform sphere of dividing cells into reproducible organs without any external draftsman. Coupling Morphogenesis perturbation theory (Turing, 1952; Kondo & Miura, 2010) with ensemble sweeps of *Analytic Turing Dispersion Re(lambda(k^2))*, we prove exact instability conditions for order without a global coordinate blueprint and bound sparse computational scalability.
+Complex spatial anatomy need not be micromanaged coordinate by coordinate when coupled local feedback and differential transport spontaneously break homogeneous symmetry. Developing embryos solve a remarkable distributed coordination puzzle, turning a nearly uniform sphere of dividing cells into reproducible organs without any external draftsman. Coupling Morphogenesis perturbation theory (Turing, 1952; Kondo & Miura, 2010) with ensemble sweeps of *Analytic Turing Dispersion $\mathrm{Re}\,\lambda(k^2)$*, we prove exact instability conditions for order without a global coordinate blueprint and bound sparse computational scalability.
 
 ## 1. Order Without a Global Coordinate Blueprint
 
@@ -103,7 +103,7 @@ Developmental biology spent decades debating two distinct paradigms of spatial o
 
 ## 2. Activator-Inhibitor Wavelengths in Living Tissue
 
-Coupling short-range autocatalytic activator $u$ with faster-diffusing inhibitor $v$ ($D_v > D_u$) destabilizes homogeneous steady states at finite spatial wavenumber $k_c$. Formalizing the Morphogenesis operator for *Analytic Turing Dispersion Re(lambda(k^2))*, where $u(\mathbf{x}, t)$ denotes the concentration of a short-range autocatalytic activator with diffusivity $D_u > 0$, $v(\mathbf{x}, t)$ denotes the concentration of a rapidly diffusing antagonist inhibitor with diffusivity $D_v > D_u$, and $f(u, v), g(u, v)$ denote local nonlinear reaction kinetics around a spatially uniform equilibrium $(u_0, v_0)$ (Turing, 1952):
+Coupling short-range autocatalytic activator $u$ with faster-diffusing inhibitor $v$ ($D_v > D_u$) destabilizes homogeneous steady states at finite spatial wavenumber $k_c$. Formalizing the Morphogenesis operator for *Analytic Turing Dispersion $\mathrm{Re}\,\lambda(k^2)$*, where $u(\mathbf{x}, t)$ denotes the concentration of a short-range autocatalytic activator with diffusivity $D_u > 0$, $v(\mathbf{x}, t)$ denotes the concentration of a rapidly diffusing antagonist inhibitor with diffusivity $D_v > D_u$, and $f(u, v), g(u, v)$ denote local nonlinear reaction kinetics around a spatially uniform equilibrium $(u_0, v_0)$ (Turing, 1952):
 
 $$ \frac{\partial u}{\partial t} = D_u \nabla^2 u + f(u, v), \qquad \frac{\partial v}{\partial t} = D_v \nabla^2 v + g(u, v) $$
 
@@ -119,9 +119,9 @@ To see this threshold concretely on a canonical molecular realization, consider 
 
 **Proposition 2 (Exact Critical Diffusivity Ratio and Wavenumber Selection).** *When activator-inhibitor signs satisfy $f_u > 0$, $g_v < 0$, and $f_v g_u < 0$, spatial instability $\mathrm{Re}\,\lambda(k_c^2) > 0$ emerges if and only if diffusivity ratio $d = D_v / D_u$ exceeds $d_c = \bigl(\sqrt{\det J} + \sqrt{\det J - f_u g_v}\bigr)^2 / f_u^2 > 1$, selecting intrinsic wavelength $\Lambda_c = 2\pi \sqrt{2 D_u D_v / (D_v f_u + D_u g_v)}$.*
 
-A revealing algebraic detail separates activator-inhibitor kinetics (Gierer-Meinhardt) from activator-depleted-substrate kinetics (Schnakenberg, $f(u,v) = a - u + u^2 v,\; g(u,v) = b - u^2 v$). Both 2x2 Jacobians satisfy the exact same Turing trace and determinant inequalities, yet their off-diagonal signs are inverted: Gierer-Meinhardt has $f_v < 0,\; g_u > 0$ (pure cross-inhibition/activation), whereas substrate depletion has $f_v > 0,\; g_u < 0$ (autocatalysis consumes $v$). Substituting the critical eigenvector $(u_k, v_k)^{\top}$ into $(\lambda_c I - J + k_c^2 D)$ proves that Gierer-Meinhardt peaks align **in spatial phase** (inhibitor halos peak directly atop activator condensations), whereas Schnakenberg patterns lock **180 degrees out of phase** (substrate troughs coincide with activator peaks) - an immediate experimental fingerprint in fluorescent morphogen imaging.
+A revealing algebraic detail separates activator-inhibitor kinetics (Gierer-Meinhardt) from activator-depleted-substrate kinetics (Schnakenberg, $f(u,v) = a - u + u^2 v,\; g(u,v) = b - u^2 v$). Both $2 \times 2$ Jacobians satisfy the exact same Turing trace and determinant inequalities, yet their off-diagonal signs are inverted: Gierer-Meinhardt has $f_v < 0,\; g_u > 0$ (pure cross-inhibition/activation), whereas substrate depletion has $f_v > 0,\; g_u < 0$ (autocatalysis consumes $v$). Substituting the critical eigenvector $(u_k, v_k)^{\top}$ into $(\lambda_c I - J + k_c^2 D)$ proves that Gierer-Meinhardt peaks align **in spatial phase** (inhibitor halos peak directly atop activator condensations), whereas Schnakenberg patterns lock **180 degrees out of phase** (substrate troughs coincide with activator peaks) - an immediate experimental fingerprint in fluorescent morphogen imaging.
 
-## 3. Numerical Verification of Dv/Du = 25 (Turing Band) Across Squared Spatial Wavenumber k^2 (Normalized Tissue Units)
+## 3. Numerical Verification and Ensemble Dynamics in Morphogenesis
 
 #### Table 1. Governing Reaction-Diffusion Parameters, Physical Units, and Instability Thresholds
 
@@ -157,7 +157,7 @@ Source: [Turing (1952)](https://doi.org/10.1098/rstb.1952.0012); [Castets et al.
 
 In living organisms, Shigeru Kondo and Takashi Miura (2010) demonstrated that biological pattern formation need not rely on small-molecule diffusion alone: cell-to-cell contact projections, differential clearance rates, and mechanochemical membrane relays realize Gierer-Meinhardt kinetics across cellular scales. The decisive experimental test separating Turing self-organization from Wolpertian pre-patterning comes from zebrafish (*Danio rerio*) pigment stripe dynamics. As juvenile zebrafish grow fourfold in body height, new horizontal melanophore-xanthophore stripes intercalate rather than stretching proportionally like a printed coordinate grid. Even more strikingly, when laser ablation destroys a localized patch of pigment cells, regenerating stripes curve, bifurcate, and re-establish the exact intrinsic spacing $\Lambda_c$ predicted by reaction-diffusion equations rather than restoring the original embryonic coordinates (Kondo & Miura, 2010). Analogous activator-inhibitor pairs - such as Nodal/Lefty in vertebrate left-right axis specification, WNT/DKK in hair-follicle spacing, and BMP/SOX9/WNT networks in embryonic limb-bud digit condensation - confirm that periodic organogenesis repeatedly exploits bounded wavenumber selection. Quantitative limb-bud perturbation experiments reinforce this conclusion: genetically modulating mesenchymal WNT or BMP signaling alters the total count of cartilaginous digit condensations inversely with effective wavelength while preserving regular inter-digit spacing across the autopod paddle.
 
-Compare the three curves in Figure 1(a): equal diffusivity $d = 1$ (dashed vermilion) stays strictly negative for all $k^2$, critical $d = d_c$ (dash-dotted teal) grazes $\mathrm{Re}(\lambda) = 0$ at a single wavenumber, and $d = 25$ (solid navy) opens the positive band mapped onto $(a, d)$ space in panel (b) and stationary spatial profile $u(x), v(x)$ in panel (c), consistent with gel-reactor experiments (Castets et al., 1990).
+Across the three dispersion regimes in Figure 1(a), equal diffusivity $d = 1$ stays strictly negative for all $k^2$, critical $d = d_c$ grazes $\mathrm{Re}\,\lambda = 0$ at a single wavenumber, and $d = 25$ opens the unstable Turing band mapped onto $(a, d)$ space in panel (b) and stationary spatial profile $u(x), v(x)$ in panel (c), matching starch-gel reactor measurements (Castets et al., 1990).
 
 ## 4. Geometric Sensitivity and Mechanical Checkpoints
 
@@ -189,7 +189,7 @@ Continuum developmental defense also distinguishes embryonic de-novo symmetry br
 
 ## 6. Self-Repairing Multi-Scale Body Plans
 
-Decoupling Squared Spatial Wavenumber k^2 (Normalized Tissue Units) from Dv/Du = 25 (Turing Band) during Morphogenesis stress tests verifies boundary predictions (Turing, 1952; Kondo & Miura, 2010).
+Decoupling Squared Spatial Wavenumber k^2 (Normalized Tissue Units) from $D_v / D_u = 25$ (Turing Band) during Morphogenesis stress tests verifies boundary predictions (Turing, 1952; Kondo & Miura, 2010).
 
 A sharp falsifiable experimental test distinguishes reaction-diffusion patterning from pre-patterned positional cues: double reactor gel viscosity or modulate antagonist diffusivity $D_v$ via macromolecular binding without altering local reaction rates $(f_u, g_v)$, and check whether emergent stripe wavelength $\Lambda_c$ rescales quantitatively as $(D_u D_v)^{1/4}$ while recovering after local laser ablation.
 
