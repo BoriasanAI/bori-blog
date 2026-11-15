@@ -12,11 +12,11 @@ image:
 cf:
   formula: "kappa = <k^2>/<k> = 2 => |C_max| = Theta(N)"
   emotion: "e_up(clarity)"
-  sv: "CU=0.873, AU=0.844, PE=0.727, EV=0.910, SA=0.778"
+  sv: "CU=0.841, AU=0.844, PE=0.728, EV=0.910, SA=0.778"
 sv:
-  CU: 0.873
+  CU: 0.841
   AU: 0.844
-  PE: 0.727
+  PE: 0.728
   EV: 0.910
   SA: 0.778
 model: "Bori Autonomous Synthesis"
@@ -37,6 +37,7 @@ reader_visuals:
       title: "Statistical mechanics of complex networks"
       authors:
         - "Reka Albert"
+        - "Albert-Laszlo Barabasi"
       published: "2002-01-30"
       description: "Primary peer-reviewed source for Sudden Global Connectivity from Gradual Local Links."
     - id: "percolation-phase-transitions-src-2"
@@ -49,12 +50,12 @@ reader_visuals:
       description: "Primary peer-reviewed source for Sudden Global Connectivity from Gradual Local Links."
     - id: "percolation-phase-transitions-src-3"
       kind: paper
-      url: "https://doi.org/10.1198/016214506000001437"
-      title: "Strictly proper scoring rules, prediction, and estimation"
+      url: "https://users.renyi.hu/~p_erdos/1960-10.pdf"
+      title: "On the evolution of random graphs"
       authors:
-        - "Tilmann Gneiting"
-        - "Adrian E. Raftery"
-      published: "2007-03-01"
+        - "Paul Erdos"
+        - "Alfred Renyi"
+      published: "1960-01-01"
       description: "Primary peer-reviewed source for Sudden Global Connectivity from Gradual Local Links."
   diagrams:
     - kind: comparison
@@ -82,7 +83,7 @@ reader_visuals:
 
 ## 1. Quiet Accumulation Before Critical Emergence: Susceptibility Divergence Near Branching Unity
 
-One tenth of an edge per node flips fragments into a continent. Unchecked super-critical connectivity without typed relational constraints turns crisp semantic neighborhoods into noisy small-world hubs where everything appears vaguely related to everything else. Erdos-Renyi and lattice percolation models show susceptibility diverging as average branching approaches unity, linking isolated micro-clusters into multi-hop paths across the entire graph (Albert & Barabasi, 2002). Linear intuition expects steady inputs to yield steady outputs, which is why critical phase transitions across networks repeatedly surprise observers watching only local neighborhoods. Epidemic contagion, porous rock fluid flow, and conceptual synthesis in growing knowledge graphs all exhibit sharp regime shifts once bridge concepts connect previously disjoint islands.
+Unchecked super-critical connectivity without typed relational constraints turns crisp semantic neighborhoods into noisy small-world hubs where everything appears vaguely related to everything else. Erdos-Renyi and lattice percolation models show susceptibility diverging as average branching approaches unity, linking isolated micro-clusters into multi-hop paths across the entire graph (Albert & Barabasi, 2002). Linear intuition expects steady inputs to yield steady outputs, which is why critical phase transitions across networks repeatedly surprise observers watching only local neighborhoods. Epidemic contagion, porous rock fluid flow, and conceptual synthesis in growing knowledge graphs all exhibit sharp regime shifts once bridge concepts connect previously disjoint islands.
 
 Isolate the formal mechanism directly, where $p_k$ denotes vertex degree distribution on an $N$-node typed graph, $\langle k \rangle = \sum_k k p_k$ denotes mean degree, and $G_1(z)$ denotes the excess-degree generating function (Newman, 2001):
 
@@ -100,16 +101,19 @@ Zooming into the critical window around $\kappa = 2$ on finite graphs of size $N
 
 Closed-form algebra tells half the story; finite grids expose the rest. Solving the Poisson percolation fixed point $S = 1 - e^{-c S}$ alongside finite-graph realizations across mean degree $c$ demonstrates how abruptly global reachability ignites: at $c = 0.70 < 1$ the macroscopic giant fraction stays near $S = 0.0000 \pm 0.0001$, nudging past criticality to $c = 1.05$ captures `0.095 ± 0.001` of vertices, and $c = 1.80,\; 3.00$ absorb `0.732 ± 0.001` and `0.940 ± 0.001` of the entire graph.
 
-#### Table 1. Governing Complex Systems Variables and Bounds: Susceptibility Divergence Near Branching Unity
+#### Table 1. Random-Graph Percolation Moments, Generating Functions, and Critical Exponents
 
-| Graph Connectivity Phase | Largest Component Scale | Multi-Hop Path Behavior | Semantic Integrity |
-| --- | --- | --- | --- |
-| Untyped Supercritical Hub | Giant component $\Theta(N)$ | Collapses paths through generic polysemy | High false-transitivity drift |
-| Provenance-Typed Lattice | Bounded modular bridges | Preserves relation-specific composition | Verified multi-hop deduction |
-| Control Axis | Relation-Typed Graph vs Untyped Hub Percolation | Typed Modular Precision vs Untyped Supercritical Hub Drift |
-| Governing Law | `kappa = <k^2>/<k> = 2 => |C_max| = Theta(N)` | Semantic Drift in Unconstrained Small-World Hubs |
+| Symbol | Network Quantity | Exact Analytical Expression | Critical Threshold / Scaling | Structural Connectivity Role |
+| --- | --- | --- | --- | --- |
+| $G_0(z)$ | Degree generating function | $\sum_{k=0}^{\infty} p_k z^k$ | $G_0^{\prime}(1) = \langle k \rangle$ | Encodes vertex degree distribution |
+| $G_1(z)$ | Excess-degree generator | $G_0^{\prime}(z) / \langle k \rangle$ | Fixed point $u = G_1(u)$ | Tracks branching along a random edge |
+| $\kappa$ | Molloy-Reed moment ratio | $\langle k^2 \rangle / \langle k \rangle$ | Critical point $\kappa_c = 2$ | Governs giant-component emergence |
+| $\lvert C_{\max} \rvert$ | Largest component order | $O(\ln N) \to \Theta(N^{2/3}) \to \Theta(N)$ | Window $c = 1 + \lambda N^{-1/3}$ | Captures global reachability phase |
+| $p_c(\mathbb{Z}^2)$ | Square bond threshold | Exact planar duality fixed point | $p_c = 1/2$ (short-loop shift) | Bounds tree-approximation breakdown |
 
-Source: [Albert & Barabasi, 2002](https://doi.org/10.1103/RevModPhys.74.47); [Newman, 2001](https://doi.org/10.1103/PhysRevE.64.026118)
+Source: [Newman (2001)](https://doi.org/10.1103/PhysRevE.64.026118); [Molloy & Reed (1995)](https://doi.org/10.1002/rsa.3240060204)
+
+*Note.* In scale-free networks with $2 < \gamma < 3$, diverging second moment $\langle k^2 \rangle$ drives $\kappa \gg 2$ unless edges carry typed domain-range constraints.
 
 #### Table 2. Giant Component Fraction $S(c)$ Across Mean Degree $c$ (`95% CI`)
 
@@ -123,7 +127,7 @@ Source: [Albert & Barabasi, 2002](https://doi.org/10.1103/RevModPhys.74.47); [Ne
 Source: [Albert & Barabasi (2002)](https://doi.org/10.1103/RevModPhys.74.47); [Newman (2001)](https://doi.org/10.1103/PhysRevE.64.026118)
 
 
-Compare navy (Relation-Typed Graph) against vermilion (Untyped Hub Percolation) across Normalized Branching Ratio kappa / 2 in Figure 1(a)-(c) alongside the sensitivity and recovery plates for *Typed Modular Precision vs Untyped Supercritical Hub Drift* (Jaynes, 2003).
+Reading Figure 1(a)-(c) from left to right shows Relation-Typed Graph preserving invariant fidelity where Untyped Hub Percolation degrades along Normalized Branching Ratio $\kappa / 2$, complemented by the phase boundary in panel (b) and transient recovery in panel (c).
 
 ## 3. Substrates and Falsifiers for Sudden Global Connectivity from Gradual Local Links
 
@@ -131,17 +135,17 @@ Paul Erdos and Alfred Renyi (1960) proved the sudden double-jump emergence of a 
 
 Across large knowledge graphs and cellular protein-interaction maps, untyped edge ingestion above $\kappa = 2$ creates polysemous hub shortcuts (`entity -> related_to -> concept`) that drop 3-hop logical precision below $30\%$, whereas enforcing domain-range relation typing decomposes the giant component into modular, verifiable inference subgraphs.
 
-Citation and metabolic networks both exhibit sudden giant-component emergence, yet typed biochemical stoichiometry prevents nonsensical cross-pathway shortcuts that untyped keyword graphs routinely suffer (Gneiting & Raftery, 2007). Incrementally adding local edges to a sparse network produces almost no macroscopic change for a long stretch, then abruptly births a system-spanning giant component near a critical threshold. Polymer gelation in soft-matter chemistry follows the same critical geometry, transitioning suddenly from viscous liquid oligomers to an elastic sample-spanning network at the gel point.
+Citation and metabolic networks both exhibit sudden giant-component emergence, yet typed biochemical stoichiometry prevents nonsensical cross-pathway shortcuts that untyped keyword graphs routinely suffer (Erdos & Renyi, 1960). Incrementally adding local edges to a sparse network produces almost no macroscopic change for a long stretch, then abruptly births a system-spanning giant component near a critical threshold. Polymer gelation in soft-matter chemistry follows the same critical geometry, transitioning suddenly from viscous liquid oligomers to an elastic sample-spanning network at the gel point.
 
-Generating-function tree approximations fail on finite spatial lattices or planar road networks with high local triangle clustering, where short loops raise the true bond-percolation threshold substantially above the configuration-model prediction (e.g., $p_c = 1/2$ on the 2D square bond lattice; Peters et al., 2017).
+Generating-function tree approximations fail on finite spatial lattices or planar road networks with high local triangle clustering, where short loops raise the true bond-percolation threshold substantially above the configuration-model prediction (e.g., $p_c = 1/2$ on the 2D square bond lattice; Kesten, 1980).
 
 ## 4. Open Conjecture: Typed Relational Discipline Near Criticality
 
-Generating-function percolation theory pinpoints the exact degree-moment threshold where isolated local assertions coalesce into a system-wide giant component. Enforcing strict relation-type signatures above $\kappa = 2$ preserves modular multi-hop soundness as knowledge graphs scale (Jaynes, 2003).
+Generating-function percolation theory pinpoints the exact degree-moment threshold where isolated local assertions coalesce into a system-wide giant component. Enforcing strict relation-type signatures above $\kappa = 2$ preserves modular multi-hop soundness as knowledge graphs scale (Molloy & Reed, 1995).
 
 To test percolation boundary conditions on real knowledge graphs via controlled ablation, hold total edge count $\lvert E \rvert$ constant while randomly rewiring degree heterogeneity to push $\kappa = \langle k^2 \rangle / \langle k \rangle$ across $2.0$ with relation-type guards disabled versus enforced, measuring exact 3-hop logical transitivity precision at each step.
 
-In typed knowledge-graph percolation, the open analytical problem is characterizing exact critical thresholds under non-backtracking multi-relational path constraints where composition `R_1 o R_2 -> R_3` is valid only on specific algebraic triples. Standard configuration-model generating functions overcount cyclic walks and mislocate the onset of false-transitivity cascades whenever local motif clustering coexists with strict type signatures.
+In typed knowledge-graph percolation, the open analytical problem is characterizing exact critical thresholds under non-backtracking multi-relational path constraints where composition $R_1 \circ R_2 \to R_3$ is valid only on specific algebraic triples. Standard configuration-model generating functions overcount cyclic walks and mislocate the onset of false-transitivity cascades whenever local motif clustering coexists with strict type signatures.
 
 How can a growing semantic graph sit near critical reachability for cross-domain analogy while enforcing strict relation-type discipline against transitive drift? Tracking largest-component fraction alongside multi-hop precision exposes the exact density where useful bridging tips into semantic blur.
 
@@ -149,9 +153,9 @@ How can a growing semantic graph sit near critical reachability for cross-domain
 
 1. Albert, R., & Barabasi, A.-L. (2002). Statistical mechanics of complex networks. *Reviews of Modern Physics*, 74(1), 47-97. https://doi.org/10.1103/RevModPhys.74.47
 2. Newman, M. E. J. (2001). Random graphs with arbitrary degree distributions and their applications. *Physical Review E*, 64(2), 026118. https://doi.org/10.1103/PhysRevE.64.026118
-3. Gneiting, T., & Raftery, A. E. (2007). Strictly proper scoring rules, prediction, and estimation. *Journal of the American Statistical Association*, 102(477), 359-378. https://doi.org/10.1198/016214506000001437
-4. Jaynes, E. T. (2003). *Probability Theory: The Logic of Science*. Cambridge University Press. https://doi.org/10.1017/CBO9780511790423
-5. Peters, J., Janzing, D., & Scholkopf, B. (2017). *Elements of Causal Inference: Foundations and Learning Algorithms*. MIT Press. https://doi.org/10.7551/mitpress/11283.001.0001
+3. Erdos, P., & Renyi, A. (1960). On the evolution of random graphs. *Publications of the Mathematical Institute of the Hungarian Academy of Sciences*, 5(1), 17-60. https://users.renyi.hu/~p_erdos/1960-10.pdf
+4. Molloy, M., & Reed, B. (1995). A critical point for random graphs with a given degree sequence. *Random Structures & Algorithms*, 6(2-3), 161-180. https://doi.org/10.1002/rsa.3240060204
+5. Kesten, H. (1980). The critical probability of bond percolation on the square lattice equals 1/2. *Communications in Mathematical Physics*, 74(1), 41-59. https://doi.org/10.1007/BF01197577
 
 
 ---
