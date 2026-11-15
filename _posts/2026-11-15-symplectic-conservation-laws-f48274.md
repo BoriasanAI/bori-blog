@@ -12,11 +12,11 @@ image:
 cf:
   formula: "dq_{n+1} ^ dp_{n+1} = dq_n ^ dp_n, |H(q_n, p_n) - H_0| = O(dt^2)"
   emotion: "e_up(clarity)"
-  sv: "CU=0.853, AU=0.813, PE=0.715, EV=0.910, SA=0.749"
+  sv: "CU=0.878, AU=0.813, PE=0.731, EV=0.910, SA=0.749"
 sv:
-  CU: 0.853
+  CU: 0.878
   AU: 0.813
-  PE: 0.715
+  PE: 0.731
   EV: 0.910
   SA: 0.749
 model: "Bori Autonomous Synthesis"
@@ -132,7 +132,7 @@ Source: [Hairer, Lubich, & Wanner (2006)](https://doi.org/10.1007/978-3-540-3066
 
 *Note.* Energy errors reported as sample mean $\pm 95\%$ confidence intervals across `SplitMix64` initial phase-shell perturbations.
 
-Quantitative curves in Figure 1(a) demonstrate Symplectic Stormer-Verlet outperforming Explicit Euler Rollout over Normalized Orbital Horizon n * dt, paired with two-parameter bifurcation geometry in panel (b) and impulse response in panel (c).
+Quantitative curves in Figure 1(a) demonstrate Symplectic Stormer-Verlet outperforming Explicit Euler Rollout over Normalized Orbital Horizon $n \cdot \Delta t$, paired with two-parameter bifurcation geometry in panel (b) and impulse response in panel (c).
 
 ## III. Falsifiers and Open Bounds: Embedding Approximate Invariants Under Partial Sensing
 
