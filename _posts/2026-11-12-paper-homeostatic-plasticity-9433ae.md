@@ -12,13 +12,13 @@ image:
 cf:
   formula: "dw_i/dt = eta * r(t) * x_i - (1/tau_H) * (r(t) - r_*) * w_i"
   emotion: "e_up(clarity)"
-  sv: "CU=0.847, AU=0.840, PE=0.718, EV=0.910, SA=0.778"
+  sv: "CU=0.837, AU=0.812, PE=0.725, EV=0.910, SA=0.749"
 sv:
-  CU: 0.847
-  AU: 0.840
-  PE: 0.718
+  CU: 0.837
+  AU: 0.812
+  PE: 0.725
   EV: 0.910
-  SA: 0.778
+  SA: 0.749
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
 description: "Formal mathematical derivation and experimental boundary analysis of keeping plastic minds stable without freezing what they know."
@@ -99,7 +99,7 @@ Hebbian correlation alone drives recurrent circuits toward runaway saturation or
 
 ## 1. Operator Thresholds: Multiplicative Synaptic Scaling in Cortex
 
-Unscaled Hebbian gain saturates in under four hundred ticks. Multiplicative synaptic scaling stabilizes postsynaptic firing rate $r(t)$ around target setpoint $r_{\star}$ on a slower timescale $\tau_H \gg \tau_{\mathrm{Hebb}}$ while preserving relative weight ratios. Formally, where $w_i(t) \ge 0$ denotes the synaptic efficacy of afferent $i$, $r(t)$ denotes the time-averaged postsynaptic firing rate relative to target setpoint $r_{\star}$, $\eta > 0$ denotes the fast Hebbian correlation rate, and $\tau_H \gg \eta^{-1}$ denotes the slow homeostatic receptor-scaling time constant (Turrigiano et al., 1998):
+Multiplicative synaptic scaling stabilizes postsynaptic firing rate $r(t)$ around target setpoint $r_{\star}$ on a slower timescale $\tau_H \gg \tau_{\mathrm{Hebb}}$ while preserving relative weight ratios. Formally, where $w_i(t) \ge 0$ denotes the synaptic efficacy of afferent $i$, $r(t)$ denotes the time-averaged postsynaptic firing rate relative to target setpoint $r_{\star}$, $\eta > 0$ denotes the fast Hebbian correlation rate, and $\tau_H \gg \eta^{-1}$ denotes the slow homeostatic receptor-scaling time constant (Turrigiano et al., 1998):
 
 $$ \frac{dw_i}{dt} = \eta\, r(t)\, x_i(t) - \frac{1}{\tau_H}\left( r(t) - r_{\star} \right) w_i(t) $$
 
@@ -151,7 +151,7 @@ Perturbation analysis of Multiplicative Scaling locates the critical knee, while
 
 Control engineering encounters an analogous trade-off in adaptive gain scheduling, where fast tracking loops require slow supervisory damping to prevent high-frequency oscillation.
 
-Examine Figure 1(a)-(c) directly: multiplicative scaling (solid navy) converges smoothly onto target setpoint $r_{\star}$ across normalized epoch $t / \tau_H \ge 0$ whereas unbounded Hebbian gain (dashed vermilion) saturates, panel (b) demarcates damped homeostatic lock from burst-silence Hopf cycles across detector lag $\tau_d / \tau_{\mathrm{Hebb}}$, and panel (c) verifies exact rank-preserving cumulative mEPSC collapse after $48\;\mathrm{h}$ TTX upscaling (Zenke et al., 2013).
+Examine Figure 1(a)-(c) directly: multiplicative scaling converges smoothly onto target setpoint $r_{\star}$ across normalized epoch $t / \tau_H \ge 0$ whereas unbounded Hebbian gain saturates, panel (b) demarcates damped homeostatic lock from burst-silence Hopf cycles across detector lag $\tau_d / \tau_{\mathrm{Hebb}}$, and panel (c) verifies exact rank-preserving cumulative mEPSC collapse after $48\;\mathrm{h}$ TTX upscaling (Zenke et al., 2013).
 
 ## 3. Empirical Realizations: The Stability-Plasticity Tension in Living Circuits
 
