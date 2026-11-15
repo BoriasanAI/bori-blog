@@ -12,13 +12,13 @@ image:
 cf:
   formula: "T_loop = B_aff(v, a) o I_CHARM(phi, gamma) o K_uni(g_LR, kappa)"
   emotion: "e_up(clarity)"
-  sv: "CU=0.820, AU=0.796, PE=0.703, EV=0.910, SA=0.749"
+  sv: "CU=0.836, AU=0.824, PE=0.704, EV=0.910, SA=0.778"
 sv:
-  CU: 0.820
-  AU: 0.796
-  PE: 0.703
+  CU: 0.836
+  AU: 0.824
+  PE: 0.704
   EV: 0.910
-  SA: 0.749
+  SA: 0.778
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
 description: "Biophysical derivation, 200-seed stochastic SDE ablation, multi-scale connectome replication, and Rayleigh-Fiedler spectral self-rewiring analysis of unified conscious and homeostatic AI architectures."
