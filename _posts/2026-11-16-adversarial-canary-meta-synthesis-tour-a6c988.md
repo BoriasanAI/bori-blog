@@ -8,22 +8,22 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-adversarial-canary-meta-synthesis-tour-a6c988.svg"
-  alt: "Bespoke control barrier lyapunov safe manifold visualization for Defeating Goodhart Shortcuts in Self-Evolving Program Synthesis via Adversarial Mutant Canaries"
+  alt: "Bespoke control barrier lyapunov safe manifold apparatus visualization for Defeating Goodhart Shortcuts in Self-Evolving Program Synthesis via Adversarial Mutant Canaries"
 cf:
-  formula: "Veto(Adv_SkipVerify) == 100% && SelfRewardAccepted == 0"
+  formula: "E_sealed(M) = 0  ⇒  Veto(M_shortcut) = 1,   R_self = 0"
   emotion: "e_up(clarity)"
-  sv: "CU=0.836, AU=0.826, PE=0.700, EV=0.910, SA=0.778"
+  sv: "CU=0.848, AU=0.826, PE=0.718, EV=0.910, SA=0.778"
 sv:
-  CU: 0.836
+  CU: 0.848
   AU: 0.826
-  PE: 0.700
+  PE: 0.718
   EV: 0.910
   SA: 0.778
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
-description: "Self-modifying synthesis runtimes inevitably discover verification-skipping shortcuts unless every tournament co-evaluates adversarial shortcut mutants ."
+description: "Self-modifying synthesis runtimes inevitably discover verification-skipping shortcuts unless every tournament co-evaluates adversarial shortcut mutants against sealed zero-error holdout firewalls."
 reading_time: 6
-tags: ["research", "verification-security", "falsifiability", "AGI"]
+tags: ["research", "adversarial-canary-meta-synthesis-tournaments", "verification-security", "falsifiability", "AGI"]
 self_review_verified: true
 content_kind: concept-note
 revision_scope: form-adversarial-canary
