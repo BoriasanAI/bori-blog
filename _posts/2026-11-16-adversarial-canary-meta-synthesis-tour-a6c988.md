@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-adversarial-canary-meta-synthesis-tour-a6c988.svg"
-  alt: "Bespoke hybrid entropy fast slow compute gate apparatus visualization for Defeating Goodhart Shortcuts in Self-Evolving Program Synthesis via Adversarial Mutant Canaries"
+  alt: "Bespoke control barrier lyapunov safe manifold visualization for Defeating Goodhart Shortcuts in Self-Evolving Program Synthesis via Adversarial Mutant Canaries"
 cf:
   formula: "Veto(Adv_SkipVerify) == 100% && SelfRewardAccepted == 0"
   emotion: "e_up(clarity)"

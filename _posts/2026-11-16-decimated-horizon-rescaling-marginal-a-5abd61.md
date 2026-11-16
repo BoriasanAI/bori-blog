@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-decimated-horizon-rescaling-marginal-a-5abd61.svg"
-  alt: "Bespoke egraph pareto horizon staircase apparatus visualization for Escaping Metric Saturation via Decimated Horizon Rescaling and Pre-Registered Marginal Ablation"
+  alt: "Bespoke egraph pareto horizon staircase visualization for Escaping Metric Saturation via Decimated Horizon Rescaling and Pre-Registered Marginal Ablation"
 cf:
   formula: "Delta_L_marg(o_k) <= 0 => prune(o_k) && rollback_ms < 5.0"
   emotion: "e_up(clarity)"
