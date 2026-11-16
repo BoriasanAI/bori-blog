@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-continuous-vocal-tract-pole-zero-strea-9583c7.svg"
-  alt: "Bespoke vocal tract pole zero resonator apparatus visualization for Why Waveform Splicing Plateaus: Continuous Pole-Zero Vocal-Tract Control in Streaming Speech"
+  alt: "Bespoke vocal tract pole zero resonator visualization for Why Waveform Splicing Plateaus: Continuous Pole-Zero Vocal-Tract Control in Streaming Speech"
 cf:
   formula: "omega_1(t) < omega_2(t) < ... < omega_P(t) => |p_k(t)| < 1"
   emotion: "e_up(clarity)"

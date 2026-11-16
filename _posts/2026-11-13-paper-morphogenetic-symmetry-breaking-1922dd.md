@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/hero-paper-morphogenetic-symmetry-breaking-1922dd.svg"
-  alt: "Domain-matched structural artwork for Formal Boundaries and Invariants: How Local Reaction and Diffusion Carve Global Biological Form"
+  alt: "Bespoke turing reaction diffusion morphogenesis visualization for Formal Boundaries and Invariants: How Local Reaction and Diffusion Carve Global Biological Form"
 cf:
   formula: "du/dt = D_u nabla^2 u + f(u, v), dv/dt = D_v nabla^2 v + g(u, v)"
   emotion: "e_up(clarity)"

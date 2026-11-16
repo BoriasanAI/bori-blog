@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/hero-paper-entangled-loop-consciousness-ccdcb9.svg"
-  alt: "Vector diagram for Unified Conscious Experience Through Affective Valuation, Neural Interference, and Hierarchical Orchestration"
+  alt: "Bespoke entangled interference spectral connectome visualization for Unified Conscious Experience Through Affective Valuation, Neural Interference, and Hierarchical Orchestration"
 cf:
   formula: "T_loop = B_aff(v, a) o I_CHARM(phi, gamma) o K_uni(g_LR, kappa)"
   emotion: "e_up(clarity)"

@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-compositional-generalization-980d22.svg"
-  alt: "Bespoke egraph pareto horizon staircase visualization for Algebraic Productivity in Finite Minds"
+  alt: "Bespoke compositional algebraic polyhedral assembly visualization for Algebraic Productivity in Finite Minds"
 cf:
   formula: "[[alpha (+) beta]] = F_(+)([[alpha]], [[beta]]), s = sum_k f_k (x) r_k"
   emotion: "e_up(clarity)"

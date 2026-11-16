@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-symplectic-conservation-laws-f48274.svg"
-  alt: "Bespoke egraph pareto horizon staircase visualization for Respecting Geometry When Simulating Physical Worlds"
+  alt: "Bespoke symplectic liouville phase torus visualization for Respecting Geometry When Simulating Physical Worlds"
 cf:
   formula: "dq_{n+1} ^ dp_{n+1} = dq_n ^ dp_n, |H(q_n, p_n) - H_0| = O(dt^2)"
   emotion: "e_up(clarity)"

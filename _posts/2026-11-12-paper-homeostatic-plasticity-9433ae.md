@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/hero-paper-homeostatic-plasticity-9433ae.svg"
-  alt: "Domain-matched structural artwork for Formal Boundaries and Invariants: Keeping Plastic Minds Stable Without Freezing What They Know"
+  alt: "Bespoke homeostatic synaptic scaling attractor visualization for Formal Boundaries and Invariants: Keeping Plastic Minds Stable Without Freezing What They Know"
 cf:
   formula: "dw_i/dt = eta * r(t) * x_i - (1/tau_H) * (r(t) - r_*) * w_i"
   emotion: "e_up(clarity)"

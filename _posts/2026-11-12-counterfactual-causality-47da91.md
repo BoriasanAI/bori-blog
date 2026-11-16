@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-counterfactual-causality-47da91.svg"
-  alt: "Bespoke egraph pareto horizon staircase visualization for Why Correlation Cannot Substitute for Counterfactual Intervention"
+  alt: "Bespoke causal do surgery bifurcation cone visualization for Why Correlation Cannot Substitute for Counterfactual Intervention"
 cf:
   formula: "P(Y | do(X=x)) = sum_z P(Y | X=x, Z=z) P(Z=z)"
   emotion: "e_up(clarity)"
