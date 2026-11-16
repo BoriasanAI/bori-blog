@@ -8,22 +8,22 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-decimated-horizon-rescaling-marginal-a-5abd61.svg"
-  alt: "Bespoke egraph pareto horizon staircase visualization for Escaping Metric Saturation via Decimated Horizon Rescaling and Pre-Registered Marginal Ablation"
+  alt: "Bespoke egraph pareto horizon staircase apparatus visualization for Escaping Metric Saturation via Decimated Horizon Rescaling and Pre-Registered Marginal Ablation"
 cf:
-  formula: "Delta_L_marg(o_k) <= 0 => prune(o_k) && rollback_ms < 5.0"
+  formula: "ΔL_marg(o_k) > ε_min,   R_self = 0,   τ_recover < 5 ms"
   emotion: "e_up(clarity)"
-  sv: "CU=0.832, AU=0.826, PE=0.704, EV=0.910, SA=0.778"
+  sv: "CU=0.823, AU=0.826, PE=0.693, EV=0.910, SA=0.778"
 sv:
-  CU: 0.832
+  CU: 0.823
   AU: 0.826
-  PE: 0.704
+  PE: 0.693
   EV: 0.910
   SA: 0.778
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
-description: "Static evaluation ceilings induce premature convergence once scores approach `10/10`, whereas rescaling saturated axes by `1/10` and enforcing pre-regis."
+description: "Static evaluation ceilings induce premature convergence once scores approach 10/10, whereas rescaling saturated axes by 1/10 and enforcing pre-registered marginal-gain ablation sustains open-ended improvement with 0.033 ms fault."
 reading_time: 6
-tags: ["research", "autonomous-systems", "falsifiability", "AGI"]
+tags: ["research", "decimated-horizon-rescaling-marginal-ablation", "autonomous-systems", "falsifiability", "AGI"]
 self_review_verified: true
 content_kind: concept-note
 revision_scope: form-coupled-operator
@@ -89,14 +89,14 @@ reader_visuals:
       section: "3. Held-Out Benchmark Trajectory"
 ---
 
-> **Core Thesis**: Static evaluation ceilings induce premature convergence once scores approach `10/10`, whereas rescaling saturated axes by `1/10` and enforcing pre-registered marginal-gain ablation sustains open-ended improvement with `0.032 ms` fault rollback.
+> **Core Thesis**: Static evaluation ceilings induce premature convergence once scores approach `10/10`, whereas rescaling saturated axes by `1/10` and enforcing pre-registered marginal-gain ablation sustains open-ended improvement with `0.033 ms` fault rollback.
 {: .prompt-tip }
 
 ## 1. Where Heuristic Approximations Break Down
 
 Local curve fitting collapses across sharp phase boundaries.
 
-Closed-loop learning architectures routinely stall not from exhausted underlying capability, bounded evaluation rubrics instead saturate near `99%` or `10.0/10.0`. Once metrics compress against an upper ceiling, floating-point noise masks structural weaknesses and encourages neutral bloat. Sustaining cumulative mastery (`273.58` across `118` tracked capability axes) under strict `self_reward = 0` discipline requires dynamically re-anchoring the measurement horizon while pruning every zero-gain mutation. (Garivier & Moulines, 2011). Foundational literature shows that decoupling evaluation metrics from physical invariants invites brittle behavior (Xiao & Belta, 2022).
+Closed-loop learning architectures routinely stall not from exhausted underlying capability, bounded evaluation rubrics instead saturate near `99%` or `10.0/10.0`. Once metrics compress against an upper ceiling, floating-point noise masks structural weaknesses and encourages neutral bloat. Sustaining cumulative mastery (`325.48` across `118` tracked capability axes) under strict `self_reward = 0` discipline requires dynamically re-anchoring the measurement horizon while pruning every zero-gain mutation. (Garivier & Moulines, 2011). Foundational literature shows that decoupling evaluation metrics from physical invariants invites brittle behavior (Xiao & Belta, 2022).
 
 As soon as coupled subsystems interact under tight latency or precision constraints, small discretization errors compound rapidly (Xiao & Belta, 2022).
 
@@ -131,7 +131,7 @@ Numbers earned under strict isolation tell the real story.
 | Process & Fleet Scheduling | Epoch 2 | 4.68 / 10.0 | 46.80 | Value-per-cost resource allocation |
 | Core Logic Invariant Atlas | Epoch 2 | 3.56 / 10.0 | 35.58 | Causal mechanism reduction (arXiv:2602.24266) |
 | Program & Benchmark Synthesis | Epoch 2 | 4.10 / 10.0 | 41.00 | Constant-delay EcoSearch (arXiv:2412.17330) |
-| Homeostasis & Canary Recovery | Epoch 2 | 5.32 / 10.0 | 53.20 | Adaptive barrier rollback (0.032 ms) |
+| Homeostasis & Canary Recovery | Epoch 2 | 5.32 / 10.0 | 53.20 | Adaptive barrier rollback (0.033 ms) |
 | Self-Code Equality Saturation | Epoch 2 | 4.15 / 10.0 | 41.45 | E-graph technology mapping (arXiv:2411.11036) |
 
 Source: Multi-regime invariant measurements in Autonomous Systems; formal references (Garivier & Moulines, 2011; Xiao & Belta, 2022).
