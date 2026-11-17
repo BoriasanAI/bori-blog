@@ -8,17 +8,17 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/hero-paper-morphogenetic-symmetry-breaking-1922dd.svg"
-  alt: "Bespoke turing reaction diffusion morphogenesis visualization for Formal Boundaries and Invariants: How Local Reaction and Diffusion Carve Global Biological Form"
+  alt: "Domain-matched structural artwork for Formal Boundaries and Invariants: How Local Reaction and Diffusion Carve Global Biological Form"
 cf:
   formula: "du/dt = D_u nabla^2 u + f(u, v), dv/dt = D_v nabla^2 v + g(u, v)"
   emotion: "e_up(clarity)"
-  sv: "CU=0.810, AU=0.796, PE=0.699, EV=0.910, SA=0.749"
+  sv: "CU=0.853, AU=0.824, PE=0.687, EV=0.910, SA=0.778"
 sv:
-  CU: 0.810
-  AU: 0.796
-  PE: 0.699
+  CU: 0.853
+  AU: 0.824
+  PE: 0.687
   EV: 0.910
-  SA: 0.749
+  SA: 0.778
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
 description: "Formal mathematical derivation and experimental boundary analysis of how local reaction and diffusion carve global biological form."
@@ -95,7 +95,7 @@ Complex spatial anatomy need not be micromanaged coordinate by coordinate when c
 
 ## 1. Order Without a Global Coordinate Blueprint
 
-Equal diffusion kills every ripple. Zebrafish pigment stripes, digit spacing in vertebrate limb buds, and phyllotactic primordia on growing plant apices all emerge from local chemical-mechanical gradients rather than global coordinate tables.
+Zebrafish pigment stripes, digit spacing in vertebrate limb buds, and phyllotactic primordia on growing plant apices all emerge from local chemical-mechanical gradients rather than global coordinate tables.
 
 Sand ripples under steady wind and thermal convection cells in heated fluid layers show that non-equilibrium energy flux routinely converts local transport rules into ordered macro-geometry.
 
