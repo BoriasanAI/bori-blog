@@ -8,17 +8,17 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/hero-paper-entangled-loop-consciousness-ccdcb9.svg"
-  alt: "Bespoke entangled interference spectral connectome visualization for Unified Conscious Experience Through Affective Valuation, Neural Interference, and Hierarchical Orchestration"
+  alt: "Vector diagram for Unified Conscious Experience Through Affective Valuation, Neural Interference, and Hierarchical Orchestration"
 cf:
   formula: "T_loop = B_aff(v, a) o I_CHARM(phi, gamma) o K_uni(g_LR, kappa)"
   emotion: "e_up(clarity)"
-  sv: "CU=0.772, AU=0.796, PE=0.691, EV=0.910, SA=0.749"
+  sv: "CU=0.886, AU=0.824, PE=0.689, EV=0.910, SA=0.778"
 sv:
-  CU: 0.772
-  AU: 0.796
-  PE: 0.691
+  CU: 0.886
+  AU: 0.824
+  PE: 0.689
   EV: 0.910
-  SA: 0.749
+  SA: 0.778
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
 description: "Biophysical derivation, 200-seed stochastic SDE ablation, multi-scale connectome replication, and Rayleigh-Fiedler spectral self-rewiring analysis of unified conscious and homeostatic AI architectures."
