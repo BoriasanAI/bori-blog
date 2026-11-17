@@ -69,7 +69,7 @@ reader_visuals:
       published: "1976-12-01"
       description: "Primary peer-reviewed source for Coupling Rate-Distortion Trade-Offs on Predictive with Optic-Flow Invariants and Time-to-Contact: Cross-Scale Operator Invariants."
   diagrams:
-    - kind: architecture
+    - kind: evidence-map
       title: "Cross-Scale Bridge: Information Theory <-> Embodied Cognition"
       nodes:
         - id: "domain-a"

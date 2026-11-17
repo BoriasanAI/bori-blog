@@ -67,7 +67,7 @@ reader_visuals:
       published: "2013-11-01"
       description: "Primary peer-reviewed source for Coupling Optic-Flow Invariants and Time-to-Contact with Integrating Out Short-Wavelength Shells: Cross-Scale Operator Invariants."
   diagrams:
-    - kind: architecture
+    - kind: evidence-map
       title: "Cross-Scale Bridge: Embodied Cognition <-> Statistical Physics"
       nodes:
         - id: "domain-a"
