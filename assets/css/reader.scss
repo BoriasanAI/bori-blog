@@ -2,19 +2,19 @@
 ---
 
 :root {
-  --reader-muted: #596273;
-  --reader-link: #4459ac;
+  --reader-muted: #525252;
+  --reader-link: #111111;
   --reader-surface: #fff;
-  --reader-series-second: #8e3f24;
+  --reader-series-second: #666666;
   --booktabs-rule: #1e293b;
   --booktabs-subrule: rgba(100, 116, 139, 0.24);
   --booktabs-head-bg: rgba(241, 245, 249, 0.55);
 }
 [data-bs-theme="dark"] {
-  --reader-muted: #bec4d1;
-  --reader-link: #b4c4ff;
-  --reader-surface: #1b1b1e;
-  --reader-series-second: #f0ad88;
+  --reader-muted: #b2b2ac;
+  --reader-link: #f2f2f0;
+  --reader-surface: #111111;
+  --reader-series-second: #8a8a84;
   --booktabs-rule: #cbd5e1;
   --booktabs-subrule: rgba(148, 163, 184, 0.24);
   --booktabs-head-bg: rgba(30, 41, 59, 0.55);
@@ -224,9 +224,11 @@ gap: 0.5rem;
 box-sizing: border-box;
 }
 #sidebar .theme-choice-label {
-color: rgba(255, 255, 255, 0.92) !important;
-font-size: 0.82rem;
-font-weight: 600;
+color: var(--ed-ink, #111111) !important;
+font-size: 0.78rem;
+font-weight: 700;
+letter-spacing: 0.06em;
+text-transform: uppercase;
 margin: 0 !important;
 }
 #sidebar #theme-choice {
@@ -234,13 +236,13 @@ min-height: 36px !important;
 max-width: 8.4rem;
 width: 100%;
 padding: 0.25rem 0.55rem !important;
-border-radius: 0.45rem;
-background: rgba(255, 255, 255, 0.16);
-color: #ffffff;
-border: 1px solid rgba(255, 255, 255, 0.32);
+border-radius: 0;
+background: var(--ed-control-bg, #eaeae5);
+color: var(--ed-ink, #111111);
+border: 1px solid var(--ed-hairline, #dcdcd6);
 font-size: 0.85rem;
 }
-#sidebar #theme-choice option { color: #1e293b; background: #ffffff; }
+#sidebar #theme-choice option { color: #111111; background: #ffffff; }
 .comments-unavailable {
 margin: 1.75rem 0;
 padding: 1.15rem 1.35rem;

@@ -1,8 +1,24 @@
 ---
-layout: post
+layout: default
+panel_includes:
+  - toc
+tail_includes:
+  - related-posts
+  - post-nav
+script_includes:
+  - comment
 ---
+{% include lang.html %}
+{% include toc-status.html %}
+<article class="px-1" data-toc="{{ enable_toc }}">
+{% if enable_toc %}
+<div id="toc-bar" class="d-none"></div>
+<button id="toc-solo-trigger" type="button" class="d-none">Contents</button>
+<dialog id="toc-popup" class="p-0"><button id="toc-popup-close" type="button" aria-label="Close"></button><div id="toc-popup-content"></div></dialog>
+{% endif %}
+<div class="content">
 <style>
-#toc-solo-trigger, #sidebar, #topbar-wrapper, #panel-wrapper, #toc-wrapper, #toc-popup, #tail-wrapper, #related-posts, #access-lastmod, .post-tail-wrapper, #mask { display: none !important; }
+#toc-solo-trigger, #toc-bar, #sidebar, #topbar-wrapper, #panel-wrapper, #toc-wrapper, #toc-popup, #tail-wrapper, #related-posts, #access-lastmod, .post-tail-wrapper, .comments-unavailable, #mask { display: none !important; }
 html, body, #main-wrapper, main, article { background: #fff !important; color: #111 !important; }
 #main-wrapper { margin-left: 0 !important; background: #fff !important; }
 #main-wrapper > .container { max-width: 100% !important; padding: 0 !important; }
@@ -28,6 +44,7 @@ article > header, article > h1, .post-meta, .post-desc { display: none !importan
 .paper-format .table-wrapper thead tr { background: none !important; border-bottom: 1px solid #000 !important; }
 .paper-format .table-wrapper tbody tr { border-bottom: 0 !important; }
 .paper-format { font-size: 1.0625rem; line-height: 1.7; }
+.paper-format a.anchor { display: none !important; }
 .paper-format a, .paper-title-block a { color: #0b3d91 !important; text-decoration: underline !important; text-decoration-thickness: 1px; text-underline-offset: .18em; border-bottom: 0 !important; word-break: break-word; }
 .paper-format a:visited, .paper-title-block a:visited { color: #4b2a85 !important; }
 .paper-format a:hover, .paper-title-block a:hover { background: #e8eefb; text-decoration-thickness: 2px; }
@@ -90,6 +107,9 @@ article > header, article > h1, .post-meta, .post-desc { display: none !importan
 .paper-format details.generation-metadata summary { font-size: .85rem !important; color: #111 !important; min-height: 0 !important; padding: .15rem 0; cursor: pointer; }
 .paper-format details.generation-metadata[open] { padding-bottom: .4rem !important; }
 .paper-format .rss-banner { display: none !important; }
+.paper-format .series-nav, .paper-format .bori-related { background: none !important; border: 0 !important; border-top: 1px solid #999 !important; border-radius: 0 !important; box-shadow: none !important; padding: .75rem 0 0 !important; margin: 1.2rem 0 0 !important; }
+.paper-format .bori-related h2 { font-size: .95rem !important; margin: 0 0 .35rem !important; }
+.paper-format .bori-related p { font-size: .82rem !important; font-style: italic; color: #333 !important; text-indent: 0 !important; margin: 0 0 .4rem !important; }
 .paper-format .bori-cta { border-top: 0 !important; margin-top: 0 !important; }
 .paper-format .bori-cta .cta-emoji { display: none !important; }
 .reader-visuals h2, .reader-visuals h3 { font-family: Georgia, "Times New Roman", serif !important; }
@@ -175,19 +195,27 @@ html body section.reader-visuals .rv-timeline time { display: inline !important;
 html body section.reader-visuals .rv-timeline li > div { display: inline !important; margin: 0 !important; }
 html body section.reader-visuals .rv-timeline a { display: inline !important; }
 html body section.reader-visuals .rv-source { background: none !important; border: 0 !important; border-bottom: 1px solid #ccc !important; border-radius: 0 !important; box-shadow: none !important; padding: .2rem 0 .7rem !important; margin: 0 0 .7rem !important; }
-html, html[data-mode="dark"], html[data-mode="light"] { color-scheme: light; background: #fff !important; }
+html, html[data-mode="dark"], html[data-mode="light"], html[data-bs-theme="dark"], html[data-bs-theme="light"] { color-scheme: light; background: #fff !important; }
 .paper-nav .paper-nav-right { display: block !important; position: relative; width: 1.9rem; height: 2rem; flex: none; }
 .paper-nav .paper-nav-toggle { position: absolute; right: 0; top: 50%; transform: translateY(-50%); opacity: 1 !important; pointer-events: auto !important; border-radius: 2px; }
 .paper-nav .paper-nav-toggle:focus-visible { outline: 3px solid #1a56c4; outline-offset: 2px; }
 .paper-nav ul { position: absolute; right: 2.1rem; top: 50%; transform: translateY(-50%); }
-html[data-mode="dark"] body, html[data-mode="dark"] #main-wrapper, html[data-mode="dark"] main, html[data-mode="dark"] article { background: #fff !important; color: #111 !important; }
-html[data-mode="dark"] .paper-format, html[data-mode="dark"] .paper-format * , html[data-mode="dark"] .paper-title-block, html[data-mode="dark"] .paper-title-block h1, html[data-mode="dark"] section.reader-visuals, html[data-mode="dark"] section.reader-visuals * { color: #111 !important; }
-html[data-mode="dark"] .paper-format a, html[data-mode="dark"] .paper-title-block a, html[data-mode="dark"] section.reader-visuals a, html[data-mode="dark"] .paper-nav a:not(.brand) { color: #0b3d91 !important; }
-html[data-mode="dark"] .paper-format img, html[data-mode="dark"] .paper-format svg { filter: none !important; }
-html[data-mode="dark"] .paper-format .table-wrapper table, html[data-mode="dark"] .paper-format .table-wrapper th, html[data-mode="dark"] .paper-format .table-wrapper td { background: #fff !important; }
-html[data-mode="dark"] .paper-format code, html[data-mode="dark"] .paper-format pre { background: none !important; }
-html[data-mode="dark"] .paper-nav, html[data-mode="dark"] .paper-nav .paper-nav-toggle { background-color: rgba(255,255,255,.96); }
-html[data-mode="dark"] .paper-nav .paper-nav-toggle, html[data-mode="dark"] .paper-nav .brand { color: #444 !important; }
+html[data-mode="dark"] body, html[data-mode="dark"] #main-wrapper, html[data-mode="dark"] main, html[data-mode="dark"] article,
+html[data-bs-theme="dark"] body, html[data-bs-theme="dark"] #main-wrapper, html[data-bs-theme="dark"] main, html[data-bs-theme="dark"] article { background: #fff !important; color: #111 !important; }
+html[data-mode="dark"] .paper-format, html[data-mode="dark"] .paper-format * , html[data-mode="dark"] .paper-title-block, html[data-mode="dark"] .paper-title-block h1, html[data-mode="dark"] section.reader-visuals, html[data-mode="dark"] section.reader-visuals *,
+html[data-bs-theme="dark"] .paper-format, html[data-bs-theme="dark"] .paper-format * , html[data-bs-theme="dark"] .paper-title-block, html[data-bs-theme="dark"] .paper-title-block h1, html[data-bs-theme="dark"] section.reader-visuals, html[data-bs-theme="dark"] section.reader-visuals * { color: #111 !important; }
+html[data-mode="dark"] .paper-format a, html[data-mode="dark"] .paper-title-block a, html[data-mode="dark"] section.reader-visuals a, html[data-mode="dark"] .paper-nav a:not(.brand),
+html[data-bs-theme="dark"] .paper-format a, html[data-bs-theme="dark"] .paper-title-block a, html[data-bs-theme="dark"] section.reader-visuals a, html[data-bs-theme="dark"] .paper-nav a:not(.brand) { color: #0b3d91 !important; }
+html[data-mode="dark"] .paper-format img, html[data-mode="dark"] .paper-format svg,
+html[data-bs-theme="dark"] .paper-format img, html[data-bs-theme="dark"] .paper-format svg { filter: none !important; }
+html[data-mode="dark"] .paper-format .table-wrapper table, html[data-mode="dark"] .paper-format .table-wrapper th, html[data-mode="dark"] .paper-format .table-wrapper td,
+html[data-bs-theme="dark"] .paper-format .table-wrapper table, html[data-bs-theme="dark"] .paper-format .table-wrapper th, html[data-bs-theme="dark"] .paper-format .table-wrapper td { background: #fff !important; }
+html[data-mode="dark"] .paper-format code, html[data-mode="dark"] .paper-format pre,
+html[data-bs-theme="dark"] .paper-format code, html[data-bs-theme="dark"] .paper-format pre { background: none !important; }
+html[data-mode="dark"] .paper-nav, html[data-mode="dark"] .paper-nav .paper-nav-toggle,
+html[data-bs-theme="dark"] .paper-nav, html[data-bs-theme="dark"] .paper-nav .paper-nav-toggle { background-color: rgba(255,255,255,.96); }
+html[data-mode="dark"] .paper-nav .paper-nav-toggle, html[data-mode="dark"] .paper-nav .brand,
+html[data-bs-theme="dark"] .paper-nav .paper-nav-toggle, html[data-bs-theme="dark"] .paper-nav .brand { color: #444 !important; }
 .paper-format details.generation-metadata .table-scroll-hint, .reader-visuals .rv-comparison .table-scroll-hint { display: none !important; }
 .reader-visuals .rv-comparison .rv-table-scroll { overflow-x: auto; margin: .5rem 0 0; }
 .reader-visuals .rv-comparison table { width: 100%; border-collapse: collapse; border-top: 2px solid #000; border-bottom: 2px solid #000; font-size: .85rem; }
@@ -207,7 +235,7 @@ html[data-mode="dark"] .paper-nav .paper-nav-toggle, html[data-mode="dark"] .pap
   .paper-nav .paper-nav-toggle, .paper-nav .brand { color: #444 !important; }
 }
 </style>
-<a class="paper-skip" href="#paper-main">Skip to content</a>
+<a class="paper-skip" href="#paper-main" data-supplemental="true">Skip to content</a>
 <nav class="paper-nav" aria-label="Site">
   <a class="brand" href="{{ '/' | relative_url }}">← Bori's Day</a>
   <div class="paper-nav-right">
@@ -222,8 +250,8 @@ html[data-mode="dark"] .paper-nav .paper-nav-toggle, html[data-mode="dark"] .pap
   </div>
 </nav>
 {% assign is_review = false %}{% if page.content_kind == "paper-review" and page.paper %}{% assign is_review = true %}{% endif %}
-<div class="paper-title-block">
-  <h1>{% if is_review %}{{ page.paper.title }}{% else %}{{ page.title }}{% endif %}</h1>
+<div class="paper-title-block" data-supplemental="true">
+  <h1>{% if is_review %}{{ page.paper.title }}{% else %}{{ page.bori_title | default: page.title }}{% endif %}</h1>
   <p class="authors">{% if is_review and page.paper.authors %}{{ page.paper.authors | join: ", " }}{% else %}Bori{% endif %}</p>
   <p class="affil">{% if is_review %}Reviewed by Bori (autonomous review) · Published {{ page.paper.published | date: "%B %-d, %Y" }}{% else %}Autonomous synthesis by Bori · {{ page.date | date: "%B %-d, %Y" }}{% endif %}</p>
   {% assign doi_href = page.paper.doi | strip %}{% if doi_href != "" %}{% unless doi_href contains "http" %}{% assign doi_href = doi_href | remove_first: "doi:" | prepend: "https://doi.org/" %}{% endunless %}{% endif %}
@@ -234,6 +262,14 @@ html[data-mode="dark"] .paper-nav .paper-nav-toggle, html[data-mode="dark"] .pap
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  var pf = document.getElementById('paper-main');
+  var firstEl = pf && pf.firstElementChild;
+  if (firstEl && firstEl.tagName === 'BLOCKQUOTE' && firstEl.classList.contains('prompt-tip') && !pf.querySelector('h2#abstract')) {
+    var absH = document.createElement('h2');
+    absH.id = 'abstract';
+    absH.textContent = 'Abstract';
+    pf.insertBefore(absH, firstEl);
+  }
   document.querySelectorAll('.paper-format .rv-caption').forEach(function (el) {
     el.innerHTML = el.innerHTML.replace(/^\s*((?:Figure|Fig\.)\s*\d+[A-Za-z]?\.)/, '<strong>$1</strong>');
   });
@@ -247,10 +283,17 @@ document.addEventListener('DOMContentLoaded', function () {
     t = t.replace(/ o /g, ' \\circ ').replace(/->/g, ' \\to ').replace(/>=/g, ' \\ge ').replace(/<=/g, ' \\le ').replace(/\*/g, ' \\cdot ').replace(/,\s+/g, ',\\,');
     return t;
   }
-  document.querySelectorAll('.paper-format details.cf-signature dd:nth-of-type(2)').forEach(function (el) { el.classList.add('cf-formula'); el.textContent = el.textContent.replace(/\(([A-Za-z ]+)\)/, '(\\text{$1})'); });
-  var formulas = document.querySelectorAll('.paper-format .cf-formula');
-  formulas.forEach(function (el) { el.setAttribute('data-raw', el.textContent.trim()); el.textContent = '\\(' + toTex(el.textContent) + '\\)'; });
-  if (formulas.length && window.MathJax && MathJax.typesetPromise) { MathJax.typesetPromise(Array.from(formulas)); }
+  document.querySelectorAll('.paper-format details.cf-signature dd:nth-of-type(2)').forEach(function (el) { el.classList.add('cf-formula'); });
+  window.addEventListener('load', function () {
+    if (!window.MathJax || !MathJax.typesetPromise) return;
+    var formulas = document.querySelectorAll('.paper-format .cf-formula');
+    formulas.forEach(function (el) {
+      el.textContent = el.textContent.replace(/\(([A-Za-z ]+)\)/, '(\\text{$1})');
+      el.setAttribute('data-raw', el.textContent.trim());
+      el.textContent = '\\(' + toTex(el.textContent) + '\\)';
+    });
+    if (formulas.length) { MathJax.typesetPromise(Array.from(formulas)); }
+  });
   document.querySelectorAll('.paper-format .bori-cta').forEach(function (el) {
     el.innerHTML = el.innerHTML.replace(/^\s*[\u{1F300}-\u{1FAFF}\u2600-\u27BF]\uFE0F?\s*/u, '');
   });
@@ -280,3 +323,6 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
 })();
 </script>
+</div>
+<div class="post-tail-wrapper d-none"></div>
+</article>

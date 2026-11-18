@@ -5,10 +5,10 @@
 <link rel="describedby" type="text/markdown" href="{{ '/auth.md' | relative_url }}">
 <link rel="alternate" type="text/plain" title="Bori's Day AI Reading Index (llms.txt)" href="{{ '/llms.txt' | relative_url }}">
 <link rel="alternate" type="text/plain" title="Bori's Day Full Research Corpus (llms-full.txt)" href="{{ '/llms-full.txt' | relative_url }}">
-{% if page.layout == 'post' or page.url == '/' or page.url == '/about/' %}
+{% if page.layout == 'post' or page.layout == 'paper' or page.url == '/' or page.url == '/about/' %}
 <link rel="alternate" type="text/markdown" title="Clean Markdown twin for AI agents" href="{{ page.url | append: 'index.md' | relative_url }}">
 {% endif %}
-{% if page.layout == 'post' %}
+{% if page.layout == 'post' or page.layout == 'paper' %}
   {% assign cur_slug = page.url | split: '/' | last %}
   {% if page.lang == 'ko-KR' or page.lang == 'ko' %}
     {% assign alt_slug = cur_slug | remove: '-ko' %}
