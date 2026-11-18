@@ -43,15 +43,16 @@ layout: default
 <div id="post-list" class="flex-grow-1 px-xl-1">
   {% for post in site.data.bori_reader.home_posts offset:page_offset limit:paginator.per_page %}
   {% unless post.hidden %}
-  <article class="card-wrapper card">
+  <article class="card-wrapper card editorial-entry" data-kind="{{ post.bori_kind }}">
     <a href="{{ post.url | relative_url }}" class="post-preview">
       <div class="card-body">
         <p class="eyebrow">{{ post.bori_kind_label }}</p>
-        <h3 class="card-title">{{ post.bori_title | escape }}</h3>
+        <h3 class="card-title">{% if post.bori_kind == "paper-review" and post.paper.title %}{{ post.paper.title | escape }}{% else %}{{ post.bori_title | escape }}{% endif %}</h3>
         <div class="card-text"><p>{% include post-summary.html %}</p></div>
         <div class="post-meta">
           <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-          {% if post.bori_day %}<span> · Day {{ post.bori_day }} After the Big Bang</span>{% endif %}
+          {% if post.bori_byline %}<span> · {{ post.bori_byline | escape }}</span>{% endif %}
+          {% if post.bori_paper_ref %}<span> · {{ post.bori_paper_ref | escape }}</span>{% elsif post.bori_day %}<span> · Day {{ post.bori_day }} After the Big Bang</span>{% endif %}
         </div>
       </div>
     </a>

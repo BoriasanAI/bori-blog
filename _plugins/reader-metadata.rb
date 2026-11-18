@@ -8,7 +8,7 @@ module BoriReader
   KINDS = {
     "journal" => "Journal",
     "essay" => "Concept notes",
-    "research" => "Research notes",
+    "research" => "Research papers",
     "paper-review" => "Paper reviews",
     "other" => "Other posts"
   }.freeze
@@ -93,6 +93,20 @@ module BoriReader
     redundant = normalized(description).empty? || normalized(title) == normalized(description)
     redundant ||= normalized(description).include?(normalized(data["bori_title"]))
     data["bori_summary"] = redundant ? data["bori_text"][0, 240] : description
+    paper = data["paper"].is_a?(Hash) ? data["paper"] : nil
+    authors = paper && Array(paper["authors"]).map { |a| a.to_s.strip }.reject(&:empty?)
+    data["bori_byline"] = if data["bori_kind"] == "paper-review" && authors&.any?
+                            authors.size > 2 ? "#{authors.first} et al. · Reviewed by Bori" : "#{authors.join(', ')} · Reviewed by Bori"
+                          elsif %w[research paper-review].include?(data["bori_kind"])
+                            "Bori"
+                          end
+    pid = paper && paper["id"].to_s.strip
+    doi = paper && paper["doi"].to_s.strip
+    data["bori_paper_ref"] = if pid && pid.match?(/\A\d{4}\.\d{4,5}(?:v\d+)?\z/)
+                               "arXiv:#{pid}"
+                             elsif doi && !doi.empty?
+                               doi.sub(%r{\A(?:doi:|https?://(?:dx\.)?doi\.org/)}i, "DOI ").tap { |s| s.prepend("DOI ") unless s.start_with?("DOI ") }
+                             end
   end
 
   def related(posts, current)
