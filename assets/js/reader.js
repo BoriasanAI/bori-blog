@@ -149,29 +149,8 @@
     else if (main) main.append(unavail);
   }
 
-  function postNav() {
-    const nav = document.querySelector('.bori-post-nav');
-    const btn = nav?.querySelector('.bori-post-nav-toggle');
-    if (!nav || !btn) return;
-    const setOpen = open => {
-      nav.classList.toggle('is-open', open);
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    };
-    btn.addEventListener('click', event => {
-      event.stopPropagation();
-      setOpen(!nav.classList.contains('is-open'));
-    });
-    document.addEventListener('click', event => {
-      if (!nav.contains(event.target)) setOpen(false);
-    });
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') setOpen(false);
-    });
-  }
-
   commentsLayout();
   navigation();
-  postNav();
   badges();
   charts();
   dashboard();
