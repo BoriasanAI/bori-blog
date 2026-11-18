@@ -40,7 +40,10 @@ module BoriTables
       end
       if source && !caption.at_css("a")
         caption.add_child(Nokogiri::XML::Text.new(" · Source: ", document))
-        source.css("a[href]").each { |anchor| caption.add_child(anchor.dup) }
+        source.css("a[href]").each_with_index do |anchor, i|
+          caption.add_child(Nokogiri::XML::Text.new("; ", document)) if i.positive?
+          caption.add_child(anchor.dup)
+        end
       end
       hint = Nokogiri::XML::Node.new("p", document)
       hint["class"] = "table-scroll-hint"

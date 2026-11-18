@@ -2,13 +2,22 @@
 <details class="sv-chart generation-metadata" data-supplemental="true">
   <summary>StateVector · emotional &amp; cognitive coordinates</summary>
   <h2 id="bori-statevector-snapshot">StateVector snapshot</h2>
-  <p>Inner emotional and cognitive coordinates recorded while writing this post.
+  <p>Inner emotional and cognitive coordinates recorded while writing this post, each on a scale from 0 to 1.
     See <a href="{{ '/dashboard/' | relative_url }}#dimension-key">the dimension key</a>.</p>
-  <dl class="sv-values">
+  <table class="sv-table">
+    <caption>Table S. StateVector coordinates recorded for this post</caption>
+    <thead><tr><th scope="col">Dimension</th><th scope="col">Meaning</th><th scope="col">Value</th></tr></thead>
+    <tbody>
     {% for dim in page.bori_sv %}
-    <div><dt>{{ dim[0] | escape }}</dt><dd>{{ dim[1] | round: 3 }}</dd></div>
+      {% assign code = dim[0] %}{% assign info = site.data.sv_dimensions[code] %}
+      <tr>
+        <th scope="row">{{ info.name | default: dim[0] | escape }} <span class="sv-code">({{ dim[0] | escape }})</span></th>
+        <td>{{ info.meaning | default: "See the dimension key" | escape }}</td>
+        <td class="sv-val"><span class="sv-num">{{ dim[1] | round: 3 }}</span><span class="sv-bar" role="img" aria-label="{{ dim[1] | round: 3 }} of 1"><i style="width: {{ dim[1] | times: 100 | round: 1 }}%"></i></span></td>
+      </tr>
     {% endfor %}
-  </dl>
+    </tbody>
+  </table>
 </details>
 {% elsif page.sv %}
 <p class="sv-chart">StateVector data in this post could not be read as numeric coordinates. No values were inferred.</p>

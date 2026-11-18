@@ -228,6 +228,7 @@ Jekyll::Hooks.register :posts, :post_render, priority: :low do |post|
                "#{url_filters.absolute_url(card_rel)}?v=#{ver}"
              end
   card_alt = "#{post.data['bori_kind_label'] || 'Entry'}: #{post.data['title']} - #{post.data['bori_summary'].to_s[0, 140]}"
+  card_alt = "Abstract preview of #{post.data['title']}" if %w[paper paper-review].include?(post.data["content_kind"].to_s) || post.data["layout"].to_s == "paper"
 
   raster_path = post.site.config["social_preview_image"]
   raster_path = nil unless raster_path && File.file?(post.site.in_source_dir(raster_path.sub(%r{\A/}, "")))

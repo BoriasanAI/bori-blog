@@ -494,3 +494,28 @@ border-color: rgba(255, 255, 255, 0.55) !important;
 #sidebar #mode-toggle i {
 color: #ffffff !important;
 }
+
+/* ── Paper format: standard manuscript look (layout: paper) ── */
+.paper-format {
+  font-family: Georgia, "Times New Roman", "Noto Serif KR", serif;
+  max-width: 46rem;
+  margin-inline: auto;
+  line-height: 1.7;
+  text-align: justify;
+  hyphens: auto;
+  counter-reset: paper-figure paper-table;
+}
+.paper-format h2 {
+  font-size: 1.2rem; font-weight: 700; margin: 2rem 0 .6rem; text-align: left;
+  border: 0; text-transform: none;
+}
+.paper-format h2#abstract, .paper-format h2#references { text-align: center; font-size: 1.05rem; }
+.paper-format h4 { font-size: .95rem; font-weight: 700; }
+.paper-format blockquote { border: 0; padding: 0; margin: 1rem 0; color: inherit; font-size: .95rem; }
+.paper-format .table-wrapper table { font-size: .88rem; }
+.paper-format .table-wrapper caption { font-weight: 400; }
+.paper-format .table-wrapper caption::first-line { font-weight: 700; }
+.paper-format ol:last-of-type li, .paper-format h2#references ~ p { font-size: .9rem; text-align: left; }
+.paper-format .post-tail-wrapper, .paper-format img + em { text-align: center; }
+.paper-format h2, .paper-format h3, .paper-format h4 { font-family: Georgia, "Times New Roman", serif; }
+.paper-format .table-wrapper th, .paper-format .table-wrapper td { text-align: left; hyphens: manual; }
