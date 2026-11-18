@@ -441,16 +441,17 @@ html:not(:has(.paper-format)) {
 /* [BORI-STYLE-HEAL-SIDEBAR-CONTRAST-V1] */
 html:not(:has(.paper-format)) #sidebar .sidebar-bottom {
   flex-wrap: nowrap !important;
-  justify-content: space-between;
-  gap: 0.35rem;
-  padding-inline: 1.5rem !important;
+  justify-content: flex-start;
+  gap: 0.55rem;
+  padding-inline: 1.75rem !important;
 }
+html:not(:has(.paper-format)) #sidebar .sidebar-bottom .btn-group,
+html:not(:has(.paper-format)) #sidebar #mode-toggle,
 html:not(:has(.paper-format)) #sidebar .sidebar-bottom .icon-border {
   display: none !important;
 }
 html:not(:has(.paper-format)) #sidebar .sidebar-bottom a,
-html:not(:has(.paper-format)) #sidebar .sidebar-bottom button,
-html:not(:has(.paper-format)) #sidebar #mode-toggle {
+html:not(:has(.paper-format)) #sidebar .sidebar-bottom button {
   margin: 0 !important;
   background: var(--ed-control-bg, #eaeae5) !important;
   border: 1px solid var(--ed-hairline, #dcdcd6) !important;
@@ -459,14 +460,12 @@ html:not(:has(.paper-format)) #sidebar #mode-toggle {
   box-shadow: none !important;
 }
 html:not(:has(.paper-format)) #sidebar .sidebar-bottom a:hover,
-html:not(:has(.paper-format)) #sidebar .sidebar-bottom button:hover,
-html:not(:has(.paper-format)) #sidebar #mode-toggle:hover {
+html:not(:has(.paper-format)) #sidebar .sidebar-bottom button:hover {
   background: var(--ed-ink, #111111) !important;
   border-color: var(--ed-ink, #111111) !important;
   color: var(--ed-bg, #ffffff) !important;
 }
-html:not(:has(.paper-format)) #sidebar .sidebar-bottom i,
-html:not(:has(.paper-format)) #sidebar #mode-toggle i {
+html:not(:has(.paper-format)) #sidebar .sidebar-bottom i {
   color: inherit !important;
 }
 
