@@ -216,10 +216,61 @@ module BoriReader
       site.data["locales"][site.config["lang"]]["tabs"]["dashboard"] = "Dashboard"
     end
   end
+  def normalize_manuscript_lead(raw_md, bori_kind)
+    has_abs = raw_md.match?(/^##\s+(?:Abstract|Executive\s+(?:Synthesis|Overview|Summary)|Overview|Summary)\b/i)
+    lines = raw_md.lines
+    out = []
+    seen_h2 = false
+    drop_tip = false
+    lines.each do |line|
+      tr = line.strip
+      if tr.start_with?("## ")
+        seen_h2 = true
+        drop_tip = false
+        if tr.match?(/\A##\s+(?:Executive\s+(?:Synthesis|Overview|Summary)|Overview)\b/i) && %w[research paper-review].include?(bori_kind)
+          out << "## Abstract\n"
+        else
+          out << line
+        end
+        next
+      end
+      unless seen_h2
+        if drop_tip && tr.match?(/\A\{:\s*\.prompt-tip\s*\}\z/)
+          drop_tip = false
+          next
+        end
+        drop_tip = false
+        next if tr.match?(/\A>\s*\*\*Original Paper\*\*\s*:/i) || tr.match?(/\A>\s*\*\*Original Paper:\*\*/i)
+        if has_abs && tr.match?(/\A>\s*\*\*(?:TL;DR|Core Thesis|Boundary Lens|Field Note):?\*\*:?/i)
+          drop_tip = true
+          next
+        end
+        if (m = line.match(/\A(\s*>\s*)\*\*(?:TL;DR|Core Thesis|Boundary Lens|Field Note):?\*\*:?\s*(.*)\z/i))
+          rest = m[2].sub(/\A\*Day\s+\d+\s+after the Big Bang\*\s*/i, "").strip
+          if bori_kind == "journal"
+            norm_lead = normalized(rest)
+            body_after = lines.drop_while { |l| !l.strip.start_with?("## ") }.join
+            if !norm_lead.empty? && normalized(body_after).include?(norm_lead)
+              drop_tip = true
+              next
+            end
+          else
+            out << "## Abstract\n\n" if !has_abs && out.none? { |l| l.strip == "## Abstract" }
+          end
+          out << "#{m[1]}#{rest}\n"
+          next
+        end
+      end
+      next if tr.match?(/\A\*\[Day\s*\+\d+\b.*\]\*\z/)
+      out << line
+    end
+    out.join
+  end
 end
 
 # Quoted Liquid examples are text, not include directives. This changes rendering only, never post files.
 Jekyll::Hooks.register :posts, :pre_render do |post|
+  post.content = BoriReader.normalize_manuscript_lead(post.content, post.data["bori_kind"] || BoriReader.kind(post.data))
   post.content = post.content.gsub(/`[^`\n]+`/) do |code|
     code.include?("{%") || code.include?("{{") ? "{% raw %}#{code}{% endraw %}" : code
   end

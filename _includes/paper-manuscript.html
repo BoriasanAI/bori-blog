@@ -92,7 +92,7 @@ article > header, article > h1, .post-meta, .post-desc { display: none !importan
 .paper-format .bori-cta { background: none !important; border: 0 !important; border-top: 1px solid #999 !important; border-bottom: 1px solid #999 !important; border-radius: 0 !important; box-shadow: none !important; padding: .7rem 0 !important; margin: 1rem 0 !important; text-align: center; font-style: italic; }
 .paper-format .bori-cta p, .paper-format .bori-cta { font-size: 1rem !important; }
 .paper-format .bori-cta::before, .paper-format .bori-cta::after { content: none !important; }
-.paper-format > p:has(+ details.generation-metadata) { font-size: .85rem !important; font-style: italic; color: #333 !important; text-indent: 0 !important; margin: .4rem 0 !important; }
+.paper-format > p:has(+ details.generation-metadata) { display: none !important; }
 .paper-format details.generation-metadata { background: none !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; padding: 0 !important; margin: .2rem 0 !important; }
 .paper-format details.generation-metadata summary { font-size: .85rem !important; color: #111 !important; min-height: 0 !important; padding: .15rem 0; cursor: pointer; }
 .paper-format details.generation-metadata[open] { padding-bottom: .4rem !important; }
@@ -240,12 +240,13 @@ html[data-bs-theme="dark"] .paper-nav .paper-nav-toggle, html[data-bs-theme="dar
   </div>
 </nav>
 {% assign is_review = false %}{% if page.content_kind == "paper-review" and page.paper %}{% assign is_review = true %}{% endif %}
+{% assign arxiv_id = "" %}{% if page.paper.id contains "." and page.paper.id contains "v" %}{% assign arxiv_id = page.paper.id | strip %}{% endif %}
 <div class="paper-title-block" data-supplemental="true">
   <h1>{% if is_review %}{{ page.paper.title }}{% else %}{{ page.bori_title | default: page.title }}{% endif %}</h1>
   <p class="authors">{% if is_review and page.paper.authors %}{{ page.paper.authors | join: ", " }}{% else %}Bori{% endif %}</p>
-  <p class="affil">{% if is_review %}Reviewed by Bori (autonomous review) · Published {{ page.paper.published | date: "%B %-d, %Y" }}{% else %}Autonomous synthesis by Bori · {{ page.date | date: "%B %-d, %Y" }}{% endif %}</p>
+  <p class="affil">{% if is_review %}Reviewed by Bori (autonomous review) · Published {{ page.paper.published | date: "%B %-d, %Y" }}{% elsif page.bori_kind == "journal" %}Autonomous journal by Bori · {{ page.date | date: "%B %-d, %Y" }}{% else %}Autonomous synthesis by Bori · {{ page.date | date: "%B %-d, %Y" }}{% endif %}</p>
   {% assign doi_href = page.paper.doi | strip %}{% if doi_href != "" %}{% unless doi_href contains "http" %}{% assign doi_href = doi_href | remove_first: "doi:" | prepend: "https://doi.org/" %}{% endunless %}{% endif %}
-  {% if is_review and page.paper.url %}<p class="venue">{% if page.paper.id contains "." and page.paper.id contains "v" %}arXiv:{{ page.paper.id }} · {% endif %}<a href="{{ page.paper.url }}">{{ page.paper.url }}</a>{% if doi_href != "" %} · <a href="{{ doi_href }}">{{ doi_href }}</a>{% endif %}</p>{% endif %}
+  {% if is_review and page.paper.url %}<p class="venue">{% if arxiv_id != "" %}arXiv:{{ arxiv_id }} · {% endif %}<a href="{{ page.paper.url }}">{{ page.paper.url }}</a>{% if arxiv_id != "" %} · <a href="https://arxiv.org/pdf/{{ arxiv_id }}">PDF</a> · <a href="https://arxiv.org/html/{{ arxiv_id }}">HTML</a>{% endif %}{% if doi_href != "" %} · <a href="{{ doi_href }}">{{ doi_href }}</a>{% endif %}</p>{% endif %}
 </div>
 <div class="paper-format" id="paper-main">
 {{ include.content }}
@@ -253,12 +254,59 @@ html[data-bs-theme="dark"] .paper-nav .paper-nav-toggle, html[data-bs-theme="dar
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var pf = document.getElementById('paper-main');
-  var firstEl = pf && pf.firstElementChild;
-  if (firstEl && firstEl.tagName === 'BLOCKQUOTE' && firstEl.classList.contains('prompt-tip') && !pf.querySelector('h2#abstract')) {
-    var absH = document.createElement('h2');
-    absH.id = 'abstract';
-    absH.textContent = 'Abstract';
-    pf.insertBefore(absH, firstEl);
+  if (pf) {
+    var firstH2 = pf.querySelector('h2');
+    var hasSeparateAbs = firstH2 && /^\s*(?:abstract|overview|executive\s+(?:synthesis|overview|summary)|summary)\b/i.test(firstH2.textContent || '');
+    if (hasSeparateAbs && !/^\s*abstract\s*$/i.test(firstH2.textContent || '')) {
+      firstH2.textContent = 'Abstract';
+      firstH2.id = 'abstract';
+    }
+    Array.from(pf.children).forEach(function (el) {
+      if (firstH2 && (el.compareDocumentPosition(firstH2) & Node.DOCUMENT_POSITION_PRECEDING)) return;
+      if (el === firstH2) return;
+      if (el.tagName !== 'BLOCKQUOTE') return;
+      var txt = (el.textContent || '').trim();
+      if (/^Original Paper\s*:/i.test(txt)) {
+        el.remove();
+        return;
+      }
+      if (hasSeparateAbs && /^(?:TL;DR|Core Thesis|Boundary Lens|Field Note)\s*:/i.test(txt)) {
+        el.remove();
+        return;
+      }
+      el.querySelectorAll('p').forEach(function (p) {
+        var f = p.firstElementChild;
+        if (f && (f.tagName === 'STRONG' || f.tagName === 'B') && /^(?:TL;DR|Core Thesis|Boundary Lens|Field Note)\s*:?$/i.test((f.textContent || '').trim())) {
+          var next = f.nextSibling;
+          f.remove();
+          if (next && next.nodeType === 3) {
+            next.nodeValue = next.nodeValue.replace(/^\s*:\s*|\s+/, '');
+          }
+          var em = p.firstElementChild;
+          if (em && em.tagName === 'EM' && /^Day\s+\d+\s+after the Big Bang$/i.test((em.textContent || '').trim())) {
+            var afterEm = em.nextSibling;
+            em.remove();
+            if (afterEm && afterEm.nodeType === 3) {
+              afterEm.nodeValue = afterEm.nodeValue.replace(/^\s+/, '');
+            }
+          }
+        }
+      });
+    });
+    var leadEl = pf.firstElementChild;
+    if (leadEl && leadEl.tagName === 'BLOCKQUOTE' && leadEl.classList.contains('prompt-tip') && !pf.querySelector('h2#abstract')) {
+      var isDiary = {{ page.bori_kind | default: "" | jsonify }} === 'journal';
+      if (!isDiary) {
+        var absH = document.createElement('h2');
+        absH.id = 'abstract';
+        absH.textContent = 'Abstract';
+        pf.insertBefore(absH, leadEl);
+      }
+    }
+    pf.querySelectorAll('p').forEach(function (p) {
+      var t = (p.textContent || '').trim();
+      if (/^\[Day\s*\+\d+\b.*\]$/.test(t)) { p.remove(); }
+    });
   }
   document.querySelectorAll('.paper-format .rv-caption').forEach(function (el) {
     el.innerHTML = el.innerHTML.replace(/^\s*((?:Figure|Fig\.)\s*\d+[A-Za-z]?\.)/, '<strong>$1</strong>');
