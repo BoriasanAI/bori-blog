@@ -12,13 +12,13 @@ image:
 cf:
   formula: "ω₁(t) < ω₂(t) < … < ω_P(t)  ⇒  |p_k(t)| < 1"
   emotion: "e_up(clarity)"
-  sv: "CU=0.841, AU=0.826, PE=0.707, EV=0.910, SA=0.778"
+  sv: "CU=0.897, AU=0.793, PE=0.709, EV=0.910, SA=0.744"
 sv:
-  CU: 0.841
-  AU: 0.826
-  PE: 0.707
+  CU: 0.897
+  AU: 0.793
+  PE: 0.709
   EV: 0.910
-  SA: 0.778
+  SA: 0.744
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
 description: "Crossfading discrete syllable waveforms superposes mismatched formant cavities rather than interpolating vocal-tract poles, requiring continuous spectral-tube control for sub-millisecond streaming speech."
@@ -87,7 +87,9 @@ reader_visuals:
       section: "3. Controlled Empirical Progression"
 ---
 
-> **Core Thesis**: Crossfading discrete syllable waveforms superposes mismatched formant cavities rather than interpolating vocal-tract poles, requiring continuous spectral-tube control for sub-millisecond streaming speech.
+## Abstract
+
+> Crossfading discrete syllable waveforms superposes mismatched formant cavities rather than interpolating vocal-tract poles, requiring continuous spectral-tube control for sub-millisecond streaming speech.
 {: .prompt-tip }
 
 ## 1. Structural Bottleneck and Regime Ceiling
@@ -135,7 +137,9 @@ Matched-budget ablations reveal where approximations fracture.
 Source: Controlled held-out evaluation in Acoustic Signal Processing; literature anchors (Fant, 1985; Kabal & Ramachandran, 1986).
 
 
-Inspecting the progression across Table 1 confirms that incremental adjustments within the older coordinate choice saturate well short of the target envelope. Adopting the invariant parameterization simultaneously lowers latency and stabilizes held-out behavior as every update preserves underlying structural continuity rather than patching isolated failure symptoms. Notice also that intermediate ablation rows isolate the exact contribution of each individual constraint while holding evaluation splits constant. Without explicit continuity preservation, aggressive latency targets inevitably degrade perceptual or numerical fidelity at boundary transitions, whereas the coupled formulation advances both axes together (Paliwal & Atal, 1993).
+Inspecting the progression across Table 1 confirms that incremental adjustments within the older coordinate choice saturate well short of the target envelope. Adopting the invariant parameterization simultaneously lowers latency and stabilizes held-out behavior as every update preserves underlying structural continuity rather than patching isolated failure symptoms. Notice also that intermediate ablation rows isolate the exact contribution of each individual constraint while holding evaluation splits constant. Without explicit continuity preservation, aggressive latency targets inevitably degrade perceptual or numerical fidelity at boundary transitions, whereas the coupled formulation advances both axes together (Paliwal & Atal, 1993). Inspecting Figure 1(a)-(c) across Acoustic Signal Processing confirms that invariant-governed scaling preserves trajectory smoothness across boundary perturbations while uncalibrated baselines saturate prematurely (Kabal & Ramachandran, 1986).
+
+Pre-registering explicit tolerance margins across Acoustic Signal Processing ensures that latency reductions never trade away numerical conservation or out-of-distribution validity when operating horizons lengthen.
 
 ## 4. Root-Cause Five-Whys Dissection
 
