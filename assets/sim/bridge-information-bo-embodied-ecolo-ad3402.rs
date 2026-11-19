@@ -1,4 +1,4 @@
-//! Standalone zero-dependency numerical verification script for coupled operator bridge (6, 11).
+//! Standalone zero-dependency numerical verification script for coupled operator bridge (6, 14).
 //! Compile & run: `rustc -O <file>.rs -o bridge_sim && ./bridge_sim`
 
 #[inline]
@@ -93,7 +93,7 @@ fn simulate_coupled_regime_200(ia: usize, ib: usize, base_seed: u64, eta: f64) -
 }
 
 fn main() {
-    let (ia, ib, base_seed) = (6_usize, 11_usize, 20038_u64);
+    let (ia, ib, base_seed) = (6_usize, 14_usize, 21342_u64);
     let mut best_eta = 0.05_f64;
     let mut best_mean = -1.0_f64;
     for step in 1..=27_usize {
