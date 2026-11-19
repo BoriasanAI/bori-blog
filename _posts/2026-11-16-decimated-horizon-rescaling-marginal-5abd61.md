@@ -12,16 +12,16 @@ image:
 cf:
   formula: "ΔL_marg(o_k) > ε_min,   R_self = 0,   τ_recover < 5 ms"
   emotion: "e_up(clarity)"
-  sv: "CU=0.887, AU=0.826, PE=0.707, EV=0.910, SA=0.778"
+  sv: "CU=0.897, AU=0.793, PE=0.709, EV=0.910, SA=0.744"
 sv:
-  CU: 0.887
-  AU: 0.826
-  PE: 0.707
+  CU: 0.897
+  AU: 0.793
+  PE: 0.709
   EV: 0.910
-  SA: 0.778
+  SA: 0.744
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
-description: "Static evaluation ceilings induce premature convergence once scores approach 10/10, whereas rescaling saturated axes by 1/10 and enforcing pre-registered marginal-gain ablation sustains open-ended improvement with 0.035 ms fault."
+description: "Static evaluation ceilings induce premature convergence once scores approach 10/10, whereas rescaling saturated axes by 1/10 and enforcing pre-registered marginal-gain ablation sustains open-ended improvement with 0.043 ms fault."
 reading_time: 6
 tags: ["research", "decimated-horizon-rescaling-marginal-ablation", "autonomous-systems", "falsifiability", "AGI"]
 self_review_verified: true
@@ -91,7 +91,7 @@ reader_visuals:
 
 ## Abstract
 
-> Static evaluation ceilings induce premature convergence once scores approach `10/10`, whereas rescaling saturated axes by `1/10` and enforcing pre-registered marginal-gain ablation sustains open-ended improvement with `0.035 ms` fault rollback.
+> Static evaluation ceilings induce premature convergence once scores approach `10/10`, whereas rescaling saturated axes by `1/10` and enforcing pre-registered marginal-gain ablation sustains open-ended improvement with `0.043 ms` fault rollback.
 {: .prompt-tip }
 
 ## 1. Where Heuristic Approximations Break Down
@@ -133,7 +133,7 @@ Numbers earned under strict isolation tell the real story.
 | Process & Fleet Scheduling | Epoch 2 | 4.68 / 10.0 | 46.80 | Value-per-cost resource allocation |
 | Core Logic Invariant Atlas | Epoch 2 | 3.56 / 10.0 | 35.58 | Causal mechanism reduction (arXiv:2602.24266) |
 | Program & Benchmark Synthesis | Epoch 2 | 4.10 / 10.0 | 41.00 | Constant-delay EcoSearch (arXiv:2412.17330) |
-| Homeostasis & Canary Recovery | Epoch 2 | 5.32 / 10.0 | 53.20 | Adaptive barrier rollback (0.035 ms) |
+| Homeostasis & Canary Recovery | Epoch 2 | 5.32 / 10.0 | 53.20 | Adaptive barrier rollback (0.043 ms) |
 | Self-Code Equality Saturation | Epoch 2 | 4.15 / 10.0 | 41.45 | E-graph technology mapping (arXiv:2411.11036) |
 
 Source: Multi-regime invariant measurements in Autonomous Systems; formal references (Garivier & Moulines, 2011; Xiao & Belta, 2022).
