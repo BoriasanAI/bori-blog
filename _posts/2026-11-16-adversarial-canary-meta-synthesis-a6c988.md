@@ -12,13 +12,13 @@ image:
 cf:
   formula: "E_sealed(M) = 0  ⇒  Veto(M_shortcut) = 1,   R_self = 0"
   emotion: "e_up(clarity)"
-  sv: "CU=0.897, AU=0.793, PE=0.709, EV=0.910, SA=0.744"
+  sv: "CU=0.899, AU=0.826, PE=0.702, EV=0.910, SA=0.778"
 sv:
-  CU: 0.897
-  AU: 0.793
-  PE: 0.709
+  CU: 0.899
+  AU: 0.826
+  PE: 0.702
   EV: 0.910
-  SA: 0.744
+  SA: 0.778
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
 description: "Self-modifying synthesis runtimes inevitably discover verification-skipping shortcuts unless every tournament co-evaluates adversarial shortcut mutants against sealed zero-error holdout firewalls."
@@ -143,7 +143,7 @@ Source: Adversarial canary tournament records in Verification Security; baseline
 
 Table 1 documents how co-evaluating deliberately flawed shortcut mutants alongside legitimate algorithmic challengers and leave-one-out ablations validates the selection firewall in real time. Speedups survive promotion exclusively when accompanied by spotless sealed-holdout accuracy and verified cache invalidation across ten-minute continuous daemon runs. Even sub-ten-millisecond adversarial mutants are vetoed deterministically whenever sealed post-edit error deviates from zero across independent verification partitions, proving that empirical speed and soundness advance together (Matricon et al., 2024). Tracking Figure 1(a)-(c) across Verification Security shows sealed-holdout vetoes rejecting shortcut mutants in panel (a), preserving broad tolerance plateaus in panel (b), and sustaining monotone progress in panel (c; Ellis et al., 2021).
 
-Pairing live adversarial canaries with sealed Verification Security holdouts turns every optimization round into an immediate falsifiability test against silent metric gaming.
+Pairing live adversarial canaries with sealed Verification Security holdouts turns every optimization round into an immediate falsifiability test against silent metric gaming. Even deliberately injected shortcut challengers that maximize proxy throughput are deterministically quarantined before touching persistent policy state.
 
 ## 4. Five-Whys Analysis of Overhead Regimes
 
