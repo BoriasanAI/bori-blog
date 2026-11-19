@@ -8,7 +8,7 @@ categories:
 math: true
 mermaid: false
 cf:
-  formula: "d_{\\tau}/\\mathrm{dt} = -1 + \\tau \\cdot \\gamma \\cdot u,\\, d_{\\gamma}/\\mathrm{dt} = \\gamma^2 \\cdot u,\\, d_{\\mathrm{min}} = 2"
+  formula: "d\\tau/dt = -1 + \\tau \\cdot \\gamma \\cdot u,\\, d\\gamma/dt = \\gamma^2 \\cdot u,\\, d_{\\min} = 2"
   emotion: "e_{\\mathrm{up}}(\\mathrm{clarity})"
   sv: "CU=0.891, AU=0.828, PE=0.702, EV=0.910, SA=0.778"
 sv:

@@ -95,7 +95,7 @@ $$ L_{\mathrm{MDL}}(D) = \min_{H \in \mathcal{H}} \left\lbrace L(H) + L(D \mid H
 
 $$ L_{\mathrm{NML}}(x^n; M_k) = -\ln p_{\hat{\theta}(x^n)}(x^n) + \frac{k}{2} \ln \frac{n}{2\pi} + \ln \int_{\Theta} \sqrt{\det I(\theta)}\, d\theta + o(1) $$
 
-$$ P(\text{no\text{-}hypercompression}: L(x^n) \le L_0(x^n) - m) \le 2^{-m} $$
+$$ P(\text{no-hypercompression}: L(x^n) \le L_0(x^n) - m) \le 2^{-m} $$
 
 Kraft's inequality for prefix-free codes guarantees the universal no-hypercompression bound $P(L(x^n) \le L_0(x^n) - m) \le 2^{-m}$: noise cannot be compressed systematically by lucky overfitting without paying at least as many bits to specify the overfit parameters (Grunwald, 2007). Rissanen's asymptotic Normalized Maximum Likelihood (NML) expansion reveals that true model complexity depends not merely on parameter count $k$, but also on geometric volume $\int \sqrt{\det I(\theta)}\,d\theta$ of distinguishable distributions.
 

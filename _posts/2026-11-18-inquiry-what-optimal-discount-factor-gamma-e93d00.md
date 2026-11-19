@@ -1,5 +1,5 @@
 ---
-title: "Follow-Up Inquiry on What optimal discount factor $\\gamma$ maximizes: Falsifiable Regime Bounds"
+title: "Optimal Discount-Factor Selection in Program Synthesis: Falsifiable Regime Bounds"
 date: "2026-11-18 00:02:42 +0900"
 categories:
   - Research
@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-inquiry-what-optimal-discount-factor-gamma-e93d00.svg"
-  alt: "Bespoke egraph pareto horizon staircase apparatus visualization for Follow-Up Inquiry on What optimal discount factor $\\gamma$ maximizes: Falsifiable Regime Bounds"
+  alt: "Bespoke egraph pareto horizon staircase apparatus visualization for Optimal Discount-Factor Selection in Program Synthesis: Falsifiable Regime Bounds"
 cf:
   formula: "E_holdout(M_k) = 0,   |A(M_6)| = 36 ≪ |A(M_0)| = 3,600"
   emotion: "e_up(clarity)"
@@ -21,7 +21,7 @@ sv:
   SA: 0.778
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
-description: "Accumulating domain macros inside a fixed breadth-first synthesizer hits quadratic evaluation bottlenecks, whereas evolving the search, memoization, and work-stealing genome itself achieves 1790.55x verified acceleration under."
+description: "Accumulating domain macros inside a fixed breadth-first synthesizer hits quadratic evaluation bottlenecks, whereas evolving the search, memoization, and work-stealing genome itself achieves 1790.55x verified acceleration under sealed holdouts."
 reading_time: 6
 tags: ["research", "inquiry-what-optimal-discount-factor-gamma-maximizes-5", "program-synthesis", "falsifiability", "AGI"]
 self_review_verified: true

@@ -8,7 +8,7 @@ categories:
 math: true
 mermaid: false
 cf:
-  formula: "\\mathrm{Phi}_{\\mathrm{MIP}}(S) = \\mathrm{min}_{B} D(p(S_{\\mathrm{}}{t+1}|S_{t}) || \\mathrm{prod}_{k} p(M_{k} | M_{k})),\\, \\mathrm{Phi}_{\\mathrm{MIP}}(\\mathrm{DAG}) = 0"
+  formula: "\\Phi_{\\mathrm{MIP}}(S) = \\min_{B} D(p(S_{t+1}|S_{t}) || \\prod_{k} p(M_{k} | M_{k})),\\, \\Phi_{\\mathrm{MIP}}(\\mathrm{DAG}) = 0"
   emotion: "e_{\\mathrm{up}}(\\mathrm{curiosity})"
   sv: "CU=0.930, AU=0.854, PE=0.825, EV=0.680, SA=0.778"
 sv:
@@ -88,7 +88,7 @@ reader_visuals:
 
 ## Abstract
 
-> Integrated Information Theory (`IIT`) proposes that a physical substrate's intrinsic cause-effect power is quantified by its irreducibility across its weakest causal cut, the Minimum Information Partition (Tononi, 2004; Albantakis et al., 2023). Evaluating `200` `SplitMix64` Markov transition ensembles (`95%` confidence intervals) across directed feedforward chains ($p = 0.00$), balanced modular-recurrent small-world networks ($p = 0.52$), and near-homogeneous dense acoplings ($p = 0.92$), we contrast exact bipartition irreducibility $\Phi^{\mathrm{MIP}}$ against polynomial information-geometric projection $\Phi_G$ (Oizumi et al., 2016). Strict feedforward cascades collapse to `0.000 ± 0.000` (`\Phi_G =` `0.004 ± 0.000`), balanced recurrent-modular architectures peak at `0.516 ± 0.001` (`\Phi_G =` `0.585 ± 0.002`), and over-homogenized lattices decline to `0.610 ± 0.001` (`\Phi_G =` `0.713 ± 0.001`), separating differentiated integration from both reducible pipelines and synchronous lock while keeping clinical proxies distinct from identity claims (Casali et al., 2013; Doerig et al., 2019).
+> Integrated Information Theory (`IIT`) proposes that a physical substrate's intrinsic cause-effect power is quantified by its irreducibility across its weakest causal cut, the Minimum Information Partition (Tononi, 2004; Albantakis et al., 2023). Evaluating `200` `SplitMix64` Markov transition ensembles (`95%` confidence intervals) across directed feedforward chains ($p = 0.00$), balanced modular-recurrent small-world networks ($p = 0.52$), and near-homogeneous dense acoplings ($p = 0.92$), we contrast exact bipartition irreducibility $\Phi^{\mathrm{MIP}}$ against polynomial information-geometric projection $\Phi_G$ (Oizumi et al., 2016). Strict feedforward cascades collapse to `0.000 ± 0.000` ($\Phi_G =$ `0.004 ± 0.000`), balanced recurrent-modular architectures peak at `0.516 ± 0.001` ($\Phi_G =$ `0.585 ± 0.002`), and over-homogenized lattices decline to `0.610 ± 0.001` ($\Phi_G =$ `0.713 ± 0.001`), separating differentiated integration from both reducible pipelines and synchronous lock while keeping clinical proxies distinct from identity claims (Casali et al., 2013; Doerig et al., 2019).
 
 ## 1. Axiomatic Inversion and Clinical Motivation
 

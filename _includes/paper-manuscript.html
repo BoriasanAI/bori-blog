@@ -312,25 +312,61 @@ document.addEventListener('DOMContentLoaded', function () {
     el.innerHTML = el.innerHTML.replace(/^\s*((?:Figure|Fig\.)\s*\d+[A-Za-z]?\.)/, '<strong>$1</strong>');
   });
   document.querySelectorAll('.reader-visuals .rv-heading h2').forEach(function (h) { h.textContent = 'Appendix A. Source Relationship Map'; });
-  var GREEK = ['alpha','beta','gamma','delta','epsilon','zeta','eta','theta','kappa','lambda','mu','nu','xi','rho','sigma','tau','phi','chi','psi','omega','Delta','Gamma','Lambda','Sigma','Phi','Psi','Omega'];
+  /* [BORI-CF-MATHJAX-V2] */
+  var GREEK = ['alpha','beta','gamma','delta','epsilon','varepsilon','zeta','eta','theta','kappa','lambda','mu','nu','xi','pi','rho','sigma','tau','phi','chi','psi','omega','Delta','Gamma','Theta','Lambda','Xi','Sigma','Phi','Psi','Omega'];
+  var MOPS = ['sum','prod','min','max','sup','inf','lim','log','ln','exp','sin','cos','tan','det','arg'];
+  function fmtAtom(a) {
+    if (a === 'log2') return '\\log_2';
+    if (GREEK.indexOf(a) >= 0 || MOPS.indexOf(a) >= 0) return '\\' + a;
+    return (a.length <= 1 || /^[0-9.]+$/.test(a)) ? a : '\\mathrm{' + a + '}';
+  }
   function toTex(s) {
     var t = s.trim();
     if (t.indexOf('\\') >= 0) { return t; }
-    t = t.replace(/([A-Za-z]+)_([A-Za-z0-9]+)/g, function (_, a, b) { return (GREEK.indexOf(a) >= 0 ? '\\' + a : a) + '_{' + (GREEK.indexOf(b) >= 0 ? '\\' + b : '\\mathrm{' + b + '}') + '}'; });
-    t = t.replace(/(?<![\\A-Za-z])(alpha|beta|gamma|delta|epsilon|zeta|eta|theta|kappa|lambda|mu|nu|xi|rho|sigma|tau|phi|chi|psi|omega)(?![A-Za-z])/g, '\\$1');
-    t = t.replace(/ o /g, ' \\circ ').replace(/->/g, ' \\to ').replace(/>=/g, ' \\ge ').replace(/<=/g, ' \\le ').replace(/\*/g, ' \\cdot ').replace(/,\s+/g, ',\\,');
+    t = t.replace(/([A-Za-z])_hat_([A-Za-z0-9]+)/g, '\\hat{$1}_{$2}').replace(/([A-Za-z])_bar\b/g, '\\bar{$1}');
+    t = t.replace(/\bd_tau\/dt\b/g, 'd\\tau/dt').replace(/\bd_gamma\/dt\b/g, 'd\\gamma/dt').replace(/\bd_theta\b/g, '\\dot{\\theta}');
+    for (var si = 0; si < 2; si++) { t = t.replace(/\bsqrt\(([^()]+)\)/g, '\\sqrt{$1}'); }
+    t = t.replace(/([A-Za-z]+)\*\(/g, '$1^{\\star}(').replace(/([A-Za-z]+)\*\)/g, '$1^{\\star})');
+    t = t.replace(/([A-Za-z]+)_\{([^}]+)\}/g, function (_, a, b) { return fmtAtom(a) + '_{' + b + '}'; });
+    t = t.replace(/([A-Za-z]+)_([A-Za-z0-9]+)/g, function (_, a, b) { return fmtAtom(a) + '_{' + fmtAtom(b) + '}'; });
+    t = t.replace(/(?<![\\A-Za-z])(alpha|beta|gamma|delta|epsilon|varepsilon|zeta|eta|theta|kappa|lambda|mu|nu|xi|pi|rho|sigma|tau|phi|chi|psi|omega|Delta|Gamma|Theta|Lambda|Xi|Sigma|Phi|Psi|Omega|sum|prod|min|max|sup|inf|lim|log|ln|exp|sin|cos|tan|det)(?![A-Za-z])/g, '\\$1');
+    t = t.replace(/(?<![\\A-Za-z])(Closure|Day|Veto|Norm|REL|RES|UNC|VC|LSF|Hz|Aut)(?![A-Za-z])/g, '\\mathrm{$1}');
+    t = t.replace(/e_\{\\mathrm\{up\}\}\(([A-Za-z ]+)\)/g, 'e_{\\mathrm{up}}(\\mathrm{$1})');
+    t = t.replace(/=>|⇒/g, ' \\implies ').replace(/->|→/g, ' \\to ').replace(/>=/g, ' \\ge ').replace(/<=/g, ' \\le ').replace(/≡/g, ' \\equiv ').replace(/≪/g, ' \\ll ').replace(/ o /g, ' \\circ ').replace(/\) x \(/g, ') \\times (').replace(/\*/g, ' \\cdot ').replace(/,\s+/g, ',\\,');
     return t;
   }
   document.querySelectorAll('.paper-format details.cf-signature dd:nth-of-type(2)').forEach(function (el) { el.classList.add('cf-formula'); });
-  window.addEventListener('load', function () {
-    if (!window.MathJax || !MathJax.typesetPromise) return;
+  var cfTypesetDone = false, mjxLoading = false;
+  function typesetCfNow() {
+    if (cfTypesetDone || !window.MathJax || !MathJax.typesetPromise) return;
     var formulas = document.querySelectorAll('.paper-format .cf-formula');
+    if (!formulas.length) return;
+    cfTypesetDone = true;
     formulas.forEach(function (el) {
-      el.textContent = el.textContent.replace(/\(([A-Za-z ]+)\)/, '(\\text{$1})');
-      el.setAttribute('data-raw', el.textContent.trim());
-      el.textContent = '\\(' + toTex(el.textContent) + '\\)';
+      var raw = el.getAttribute('data-raw') || el.textContent.trim();
+      el.setAttribute('data-raw', raw);
+      el.textContent = '\\(' + toTex(raw) + '\\)';
     });
-    if (formulas.length) { MathJax.typesetPromise(Array.from(formulas)); }
+    MathJax.typesetPromise(Array.from(formulas));
+  }
+  function ensureMjxForCf() {
+    if (cfTypesetDone) return;
+    if (window.MathJax && MathJax.typesetPromise) { typesetCfNow(); return; }
+    if (mjxLoading) return;
+    mjxLoading = true;
+    window.MathJax = { tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] } };
+    var sc = document.createElement('script');
+    sc.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';
+    sc.async = true;
+    sc.onload = function () { if (MathJax.startup && MathJax.startup.promise) { MathJax.startup.promise.then(typesetCfNow); } else { typesetCfNow(); } };
+    document.head.appendChild(sc);
+  }
+  window.addEventListener('load', function () {
+    if (window.MathJax && MathJax.typesetPromise) { typesetCfNow(); }
+    document.querySelectorAll('.paper-format details.cf-signature').forEach(function (det) {
+      if (det.open) ensureMjxForCf();
+      det.addEventListener('toggle', function () { if (det.open) ensureMjxForCf(); });
+    });
   });
   document.querySelectorAll('.paper-format .bori-cta').forEach(function (el) {
     el.innerHTML = el.innerHTML.replace(/^\s*[\u{1F300}-\u{1FAFF}\u2600-\u27BF]\uFE0F?\s*/u, '');

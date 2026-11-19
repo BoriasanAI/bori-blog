@@ -8,7 +8,7 @@ categories:
 math: true
 mermaid: false
 cf:
-  formula: "H_{\\mathrm{aut}}(G) = \\mathrm{log2} |\\mathrm{Aut}(G)|,\\, \\mathrm{Delta}_{\\mathrm{Phi}}(\\kappa) = \\mathrm{Phi}_{\\mathrm{macro}} - \\mathrm{sum}_{i} \\phi_{i}"
+  formula: "H_{\\mathrm{aut}}(G) = \\log_2 |\\mathrm{Aut}(G)|,\\, \\Delta\\Phi(\\kappa) = \\Phi_{\\mathrm{macro}} - \\sum_{i} \\phi_{i}"
   emotion: "e_{\\mathrm{up}}(\\mathrm{curiosity})"
   sv: "CU=0.930, AU=0.852, PE=0.580, EV=0.680, SA=0.778"
 sv:
