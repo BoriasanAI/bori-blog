@@ -12,11 +12,11 @@ image:
 cf:
   formula: "|r_k| < 1,   D_LSF = 212.4 Hz"
   emotion: "e_up(clarity)"
-  sv: "CU=0.905, AU=0.829, PE=0.708, EV=0.910, SA=0.778"
+  sv: "CU=0.905, AU=0.829, PE=0.706, EV=0.910, SA=0.778"
 sv:
   CU: 0.905
   AU: 0.829
-  PE: 0.708
+  PE: 0.706
   EV: 0.910
   SA: 0.778
 model: "Bori Autonomous Synthesis"
@@ -139,7 +139,7 @@ Source: Closed-loop perceptual trial data in Articulatory Acoustics; key studies
 
 As recorded in Table 1, pairing articulatory tube synthesis with independent perceptual discrimination and controlled band ablation exposes consonant voice-onset deficits that aggregate loss averages hid. Targeted improvements in high-frequency excitation bands translate directly into lower perceptual alignment distances while keeping causal chunk emission well below two milliseconds. Balancing six subsystem scoreboards simultaneously prevents prosodic smoothness from masking consonant articulation regressions across extended utterances (Fant, 1985). In Figure 1(a)-(c), closed-loop Articulatory Acoustics feedback maintains narrow error corridors along panel (a), delineates stability margins in panel (b), and arrests resonance drift in panel (c; McCree & Barnwell, 1995).
 
-Coupling real-time residual monitors to Articulatory Acoustics actuation loops keeps physical boundary conditions intact even when unmodeled external disturbances shift baseline load.
+Coupling real-time residual monitors to Articulatory Acoustics actuation loops keeps physical boundary conditions intact even when unmodeled external disturbances shift baseline load. Multi-band acoustic and spectral stress tests confirm that closed-loop reflection bounds remain passive across rapid formant and gain transitions.
 
 ## 4. Five-Layer Diagnostic Chain
 
