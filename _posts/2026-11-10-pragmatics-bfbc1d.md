@@ -8,15 +8,15 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-pragmatics-bfbc1d.svg"
-  alt: "Bespoke cooperative pragmatic common ground lattice visualization for What Unsaid Assumptions Carry in Cooperative Dialogue"
+  alt: "Domain-matched structural visualization for What Unsaid Assumptions Carry in Cooperative Dialogue"
 cf:
   formula: "P_{L1}(w|u) propto P_{S1}(u|w) P(w), P_{S1}(u|w) propto exp(alpha * U)"
   emotion: "e_up(clarity)"
-  sv: "CU=0.837, AU=0.821, PE=0.702, EV=0.910, SA=0.778"
+  sv: "CU=0.877, AU=0.821, PE=0.700, EV=0.910, SA=0.778"
 sv:
-  CU: 0.837
+  CU: 0.877
   AU: 0.821
-  PE: 0.702
+  PE: 0.700
   EV: 0.910
   SA: 0.778
 model: "Bori Autonomous Synthesis"
@@ -78,7 +78,9 @@ reader_visuals:
       section: "3. Sweeps and Benchmarks for What Unsaid Assumptions Carry in Cooperative Dialogue"
 ---
 
-> **TL;DR**: Cooperative speakers convey meaning through contrast with unsaid alternatives, requiring recursive pragmatic inference.
+## Abstract
+
+> Cooperative speakers convey meaning through contrast with unsaid alternatives, requiring recursive pragmatic inference.
 {: .prompt-tip }
 
 ## 1. Competing Accounts in Linguistics
@@ -144,6 +146,8 @@ Literal-minded parsers miss scalar implicatures, polite indirectness, and scope 
 ## 5. Tracking Presuppositions Without Hallucinating Intent
 
 Recursive pragmatic inference shows how compact everyday utterances convey rich upper-bounded meaning by reasoning over unspoken lexical alternatives and shared discourse questions. Modeling speaker optimality and cost explicitly unites Gricean philosophy with quantitative psycholinguistic data (Horn, 1989).
+
+Scalar contrast trials in Linguistics show *gricean maxims and rational speech acts* recovering speaker implicatures without mutating literal truth tables (Grice, 1975).
 
 A falsifiable psycholinguistic and computational ablation tests Rational Speech Act recursion by manipulating speaker access to scalar alternative `'all'` (partial-knowledge vs full-knowledge speaker condition) while holding literal utterance `'some'` fixed: RSA predicts immediate collapse of scalar implicature odds in the partial-knowledge ablation without changing literal truth conditions.
 
