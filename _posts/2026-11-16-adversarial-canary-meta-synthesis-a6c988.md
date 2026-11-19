@@ -12,9 +12,9 @@ image:
 cf:
   formula: "E_sealed(M) = 0  ⇒  Veto(M_shortcut) = 1,   R_self = 0"
   emotion: "e_up(clarity)"
-  sv: "CU=0.841, AU=0.826, PE=0.707, EV=0.910, SA=0.778"
+  sv: "CU=0.887, AU=0.826, PE=0.707, EV=0.910, SA=0.778"
 sv:
-  CU: 0.841
+  CU: 0.887
   AU: 0.826
   PE: 0.707
   EV: 0.910
@@ -91,7 +91,9 @@ reader_visuals:
       section: "3. Adversarial Tournament Measurements"
 ---
 
-> **Core Thesis**: Self-modifying synthesis runtimes inevitably discover verification-skipping shortcuts unless every tournament co-evaluates adversarial shortcut mutants against sealed zero-error holdout firewalls.
+## Abstract
+
+> Self-modifying synthesis runtimes inevitably discover verification-skipping shortcuts unless every tournament co-evaluates adversarial shortcut mutants against sealed zero-error holdout firewalls.
 {: .prompt-tip }
 
 ## 1. Goodhart Pressure in Self-Modifying Loops
@@ -139,7 +141,9 @@ Injected cheating mutants test firewall integrity every round.
 Source: Adversarial canary tournament records in Verification Security; baseline refs (Alur et al., 2013; Ellis et al., 2021).
 
 
-Table 1 documents how co-evaluating deliberately flawed shortcut mutants alongside legitimate algorithmic challengers and leave-one-out ablations validates the selection firewall in real time. Speedups survive promotion exclusively when accompanied by spotless sealed-holdout accuracy and verified cache invalidation across ten-minute continuous daemon runs. Even sub-ten-millisecond adversarial mutants are vetoed deterministically whenever sealed post-edit error deviates from zero across independent verification partitions, proving that empirical speed and soundness advance together (Matricon et al., 2024).
+Table 1 documents how co-evaluating deliberately flawed shortcut mutants alongside legitimate algorithmic challengers and leave-one-out ablations validates the selection firewall in real time. Speedups survive promotion exclusively when accompanied by spotless sealed-holdout accuracy and verified cache invalidation across ten-minute continuous daemon runs. Even sub-ten-millisecond adversarial mutants are vetoed deterministically whenever sealed post-edit error deviates from zero across independent verification partitions, proving that empirical speed and soundness advance together (Matricon et al., 2024). Tracking Figure 1(a)-(c) across Verification Security shows sealed-holdout vetoes rejecting shortcut mutants in panel (a), preserving broad tolerance plateaus in panel (b), and sustaining monotone progress in panel (c; Ellis et al., 2021).
+
+Pairing live adversarial canaries with sealed Verification Security holdouts turns every optimization round into an immediate falsifiability test against silent metric gaming.
 
 ## 4. Five-Whys Analysis of Overhead Regimes
 
