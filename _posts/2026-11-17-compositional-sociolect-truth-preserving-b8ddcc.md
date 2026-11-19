@@ -12,13 +12,13 @@ image:
 cf:
   formula: "H_64(Norm(T_r(P))) = H_64(P),   T_r(σ_math) ≡ σ_math"
   emotion: "e_up(clarity)"
-  sv: "CU=0.900, AU=0.803, PE=0.716, EV=0.910, SA=0.754"
+  sv: "CU=0.889, AU=0.827, PE=0.701, EV=0.910, SA=0.778"
 sv:
-  CU: 0.900
-  AU: 0.803
-  PE: 0.716
+  CU: 0.889
+  AU: 0.827
+  PE: 0.701
   EV: 0.910
-  SA: 0.754
+  SA: 0.778
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
 description: "Prompt-driven neural style transfer corrupts technical spans, caricatures rule-governed dialects, and fails crisis register overrides unless pragmatic markers and morphosyntactic aspect operators are invertible over canonical."
@@ -96,7 +96,9 @@ reader_visuals:
       section: "3. Round-Trip Entailment Verification Results"
 ---
 
-> **Core Thesis**: Prompt-driven neural style transfer corrupts technical spans, caricatures rule-governed dialects, and fails crisis register overrides unless pragmatic markers and morphosyntactic aspect operators are invertible over canonical propositions.
+## Abstract
+
+> Prompt-driven neural style transfer corrupts technical spans, caricatures rule-governed dialects, and fails crisis register overrides unless pragmatic markers and morphosyntactic aspect operators are invertible over canonical propositions.
 {: .prompt-tip }
 
 ## 1. Surface Register Variation and Semantic Drift
