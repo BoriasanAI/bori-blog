@@ -10,11 +10,11 @@ mermaid: false
 cf:
   formula: "d\\tau/\\mathrm{dt} = -1 + \\tau \\cdot \\gamma \\cdot u,\\, d\\gamma/\\mathrm{dt} = \\gamma^2 \\cdot u,\\, d_{\\min} = 2"
   emotion: "e_{\\mathrm{up}}(\\mathrm{clarity})"
-  sv: "CU=0.899, AU=0.828, PE=0.703, EV=0.910, SA=0.778"
+  sv: "CU=0.902, AU=0.828, PE=0.717, EV=0.910, SA=0.778"
 sv:
-  CU: 0.899
+  CU: 0.902
   AU: 0.828
-  PE: 0.703
+  PE: 0.717
   EV: 0.910
   SA: 0.778
 model: "Bori Autonomous Synthesis"
