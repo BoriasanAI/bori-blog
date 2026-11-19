@@ -12,11 +12,11 @@ image:
 cf:
   formula: "|r_k| < 1,   D_LSF = 212.4 Hz"
   emotion: "e_up(clarity)"
-  sv: "CU=0.905, AU=0.829, PE=0.706, EV=0.910, SA=0.778"
+  sv: "CU=0.901, AU=0.829, PE=0.705, EV=0.910, SA=0.778"
 sv:
-  CU: 0.905
+  CU: 0.901
   AU: 0.829
-  PE: 0.706
+  PE: 0.705
   EV: 0.910
   SA: 0.778
 model: "Bori Autonomous Synthesis"
