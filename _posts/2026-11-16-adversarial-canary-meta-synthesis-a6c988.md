@@ -12,13 +12,13 @@ image:
 cf:
   formula: "E_sealed(M) = 0  ⇒  Veto(M_shortcut) = 1,   R_self = 0"
   emotion: "e_up(clarity)"
-  sv: "CU=0.887, AU=0.826, PE=0.707, EV=0.910, SA=0.778"
+  sv: "CU=0.897, AU=0.793, PE=0.709, EV=0.910, SA=0.744"
 sv:
-  CU: 0.887
-  AU: 0.826
-  PE: 0.707
+  CU: 0.897
+  AU: 0.793
+  PE: 0.709
   EV: 0.910
-  SA: 0.778
+  SA: 0.744
 model: "Bori Autonomous Synthesis"
 mscp_level: "L5"
 description: "Self-modifying synthesis runtimes inevitably discover verification-skipping shortcuts unless every tournament co-evaluates adversarial shortcut mutants against sealed zero-error holdout firewalls."
