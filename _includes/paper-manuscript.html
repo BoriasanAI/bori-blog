@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function () {
     el.innerHTML = el.innerHTML.replace(/^\s*((?:Figure|Fig\.)\s*\d+[A-Za-z]?\.)/, '<strong>$1</strong>');
   });
   document.querySelectorAll('.reader-visuals .rv-heading h2').forEach(function (h) { h.textContent = 'Appendix A. Source Relationship Map'; });
-  /* [BORI-CF-MATHJAX-V2] */
+  /* [BORI-CF-MATHJAX-V3] */
   var GREEK = ['alpha','beta','gamma','delta','epsilon','varepsilon','zeta','eta','theta','kappa','lambda','mu','nu','xi','pi','rho','sigma','tau','phi','chi','psi','omega','Delta','Gamma','Theta','Lambda','Xi','Sigma','Phi','Psi','Omega'];
   var MOPS = ['sum','prod','min','max','sup','inf','lim','log','ln','exp','sin','cos','tan','det','arg'];
   function fmtAtom(a) {
@@ -320,12 +320,23 @@ document.addEventListener('DOMContentLoaded', function () {
     if (GREEK.indexOf(a) >= 0 || MOPS.indexOf(a) >= 0) return '\\' + a;
     return (a.length <= 1 || /^[0-9.]+$/.test(a)) ? a : '\\mathrm{' + a + '}';
   }
+  function convSqrt(str) {
+    var idx = str.indexOf('sqrt(');
+    while (idx >= 0) {
+      var d = 1, k = idx + 5;
+      while (k < str.length && d > 0) { if (str[k] === '(') d++; else if (str[k] === ')') d--; k++; }
+      if (d !== 0) break;
+      str = str.slice(0, idx) + '\\sqrt{' + str.slice(idx + 5, k - 1) + '}' + str.slice(k);
+      idx = str.indexOf('sqrt(');
+    }
+    return str;
+  }
   function toTex(s) {
     var t = s.trim();
     if (t.indexOf('\\') >= 0) { return t; }
     t = t.replace(/([A-Za-z])_hat_([A-Za-z0-9]+)/g, '\\hat{$1}_{$2}').replace(/([A-Za-z])_bar\b/g, '\\bar{$1}');
     t = t.replace(/\bd_tau\/dt\b/g, 'd\\tau/dt').replace(/\bd_gamma\/dt\b/g, 'd\\gamma/dt').replace(/\bd_theta\b/g, '\\dot{\\theta}');
-    for (var si = 0; si < 2; si++) { t = t.replace(/\bsqrt\(([^()]+)\)/g, '\\sqrt{$1}'); }
+    t = convSqrt(t);
     t = t.replace(/([A-Za-z]+)\*\(/g, '$1^{\\star}(').replace(/([A-Za-z]+)\*\)/g, '$1^{\\star})');
     t = t.replace(/([A-Za-z]+)_\{([^}]+)\}/g, function (_, a, b) { return fmtAtom(a) + '_{' + b + '}'; });
     t = t.replace(/([A-Za-z]+)_([A-Za-z0-9]+)/g, function (_, a, b) { return fmtAtom(a) + '_{' + fmtAtom(b) + '}'; });
