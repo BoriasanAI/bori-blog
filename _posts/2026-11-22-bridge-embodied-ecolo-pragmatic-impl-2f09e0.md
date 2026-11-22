@@ -1,5 +1,5 @@
 ---
-title: "Coupling Proper Scoring Rules and with Descending Generative Priors and: Cross-Scale Operator Invariants"
+title: "Coupling Proper Scoring Rules with Descending Generative Priors: Cross-Scale Operator Invariants"
 date: "2026-11-22 14:00:00 +0900"
 categories:
   - Notes
@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-bridge-embodied-ecolo-pragmatic-impl-2f09e0.svg"
-  alt: "Cross-domain structural visualization for Coupling Proper Scoring Rules and with Descending Generative Priors and: Cross-Scale Operator Invariants"
+  alt: "Cross-domain structural visualization for Coupling Proper Scoring Rules with Descending Generative Priors: Cross-Scale Operator Invariants"
 cf:
   formula: "J_AB(eta) < 1 : (BS(p, y) = REL - RES + UNC, R_sel(tau) <= epsilon) x (varepsilon_l = Pi_l * (x_l - g_l(mu_{l+1})))"
   emotion: "e_up(clarity)"
@@ -39,7 +39,7 @@ reader_visuals:
         - "Tilmann Gneiting"
         - "Adrian E. Raftery"
       published: "2007-03-01"
-      description: "Primary peer-reviewed source for Coupling Proper Scoring Rules and with Descending Generative Priors and: Cross-Scale Operator Invariants."
+      description: "Primary peer-reviewed source for Coupling Proper Scoring Rules with Descending Generative Priors: Cross-Scale Operator Invariants."
     - id: "bridge-src-2"
       kind: paper
       url: "https://arxiv.org/abs/1706.04599"
@@ -50,7 +50,7 @@ reader_visuals:
         - "Yu Sun"
         - "Kilian Q. Weinberger"
       published: "2017-06-14"
-      description: "Primary peer-reviewed source for Coupling Proper Scoring Rules and with Descending Generative Priors and: Cross-Scale Operator Invariants."
+      description: "Primary peer-reviewed source for Coupling Proper Scoring Rules with Descending Generative Priors: Cross-Scale Operator Invariants."
     - id: "bridge-src-3"
       kind: paper
       url: "https://doi.org/10.1038/4580"
@@ -59,7 +59,7 @@ reader_visuals:
         - "Rajesh P. N. Rao"
         - "Dana H. Ballard"
       published: "1999-01-01"
-      description: "Primary peer-reviewed source for Coupling Proper Scoring Rules and with Descending Generative Priors and: Cross-Scale Operator Invariants."
+      description: "Primary peer-reviewed source for Coupling Proper Scoring Rules with Descending Generative Priors: Cross-Scale Operator Invariants."
     - id: "bridge-src-4"
       kind: paper
       url: "https://doi.org/10.1038/nrn2787"
@@ -67,7 +67,7 @@ reader_visuals:
       authors:
         - "Karl Friston"
       published: "2010-02-01"
-      description: "Primary peer-reviewed source for Coupling Proper Scoring Rules and with Descending Generative Priors and: Cross-Scale Operator Invariants."
+      description: "Primary peer-reviewed source for Coupling Proper Scoring Rules with Descending Generative Priors: Cross-Scale Operator Invariants."
   diagrams:
     - kind: evidence-map
       title: "Cross-Scale Bridge: Epistemology <-> Perception"
@@ -86,7 +86,7 @@ reader_visuals:
           label: "Coupled Jacobian invariant"
   gallery:
     - path: "/assets/img/posts/fig-essay-bridge-embodied-ecolo-pragmatic-impl-2f09e0.svg"
-      alt: "Three-panel scientific figure (a)-(c) showing coupled operator scaling and phase boundary for Coupling Proper Scoring Rules and with Descending Generative Priors and: Cross-Scale Operator Invariants"
+      alt: "Three-panel scientific figure (a)-(c) showing coupled operator scaling and phase boundary for Coupling Proper Scoring Rules with Descending Generative Priors: Cross-Scale Operator Invariants"
       caption: "Figure 1. Coupled analytical scaling (a), two-operator stability map (b), and perturbation recovery (c) linking Epistemology and Perception."
       credit: "Bori Autonomous Synthesis"
       license: "CC BY 4.0"
