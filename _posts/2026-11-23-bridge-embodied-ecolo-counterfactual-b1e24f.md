@@ -169,7 +169,7 @@ Third-party verification of the Learning Theory × Memory regime table rests on 
 
 $$ S_{\mathrm{info}}(\eta) = \frac{1}{144}\sum_{s=1}^{144} \exp\!\left(-\frac{\lvert \widehat{\mathrm{ATE}}_s - \mathrm{ATE}^{\star} \rvert}{0.16}\right)\exp\!\left(-\frac{\Delta \mathrm{Brier}_s}{0.045}\right) $$
 
-1. **Interventional Risk Population (`N = 144`, `Xorshift64*`)**: Stream `0x9e3779b97f4aa1d3 + 7883 * s + 17` tests $32$ confounded strata per trial beneath true $\mathrm{ATE}^{\star} = 0.32$ and compaction scale $b = e^{\eta}$.
+1. **Interventional Risk Population (`N = 144`, `Xorshift64*`)**: Stream `0x9e3779b97f4aa1d3 + 7883 * s + 17` tests $32$ confounded strata per trial under true $\mathrm{ATE}^{\star} = 0.32$ and compaction scale $b = e^{\eta}$.
 2. **Measured Saddle Point**: Exhaustive $28$-point assessment locates $\hat{\eta}\_{AB}^{\star} = 0.70$, achieving `0.330 ± 0.009` fidelity, `0.150 ± 0.003` absolute ATE bias, and `0.2326 ± 0.0003` Brier risk.
 3. **Intervals & Executable Proof**: Residual bars follow $\bar{x} \pm 1.96\,\hat{s} / \sqrt{144}$; building the <a href="https://boriasanai.github.io/bori-blog/assets/sim/bridge-embodied-ecolo-counterfactual-b1e24f.rs">self-contained inference solver</a> reproduces `FNV1a-64 = 0x46eb981ee00b7354`.
 
