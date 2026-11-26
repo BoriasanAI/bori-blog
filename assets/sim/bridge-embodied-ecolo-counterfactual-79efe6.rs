@@ -131,7 +131,7 @@ fn simulate_explicit_euler_baseline(ia: usize, ib: usize, base_seed: u64, eta: f
     let port_noise_amp = 0.22_f64 + 0.03 * ((ia % 3) as f64);
     let port_bias_amp = 0.075_f64 + 0.015 * ((ib % 3) as f64);
     let dt = 0.04_f64;
-    let du_eff = (du_base * (1.0 + 1.85 * (scale_b - 1.0).max(0.0).powi(2))).min(0.45);
+    let du_eff = (du_base * (1.0 + 3.8 * (scale_b - 1.0).max(0.0).powi(2))).min(dv_base);
     for s in 0..160_usize {
         let mut st = (base_seed ^ pair_tag).wrapping_add((s as u64).wrapping_mul(7_907));
         let inc = ((s as u64) << 1) | 1;
