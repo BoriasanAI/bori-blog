@@ -160,11 +160,11 @@ Panels (a)-(c) of Figure 1 summarize the Causality × Epistemology sweep: (a) re
 
 Within the Causality and Epistemology synthesis (`0x17cece6be9280569`), interlocking *Graph Surgery and Barometric Symmetry* with *Proper Scoring Rules and Measured Hit Rates* selects $\hat{\eta}\_{AB}^{\star} = 0.65$ (`0.598 ± 0.006`) and bounds spectral gain $J_{AB} < 1$ (Pearl, 2009; Gneiting & Raftery, 2007).
 
-Controlled knockouts confirm whether partner conditions carry real load: Designing targeted ablations on toy causal graphs quickly uncovers whether an inference engine monitors directed processes or only memorizes symmetric co-occurrences (Guo et al., 2017).
+Controlled knockouts confirm whether partner conditions carry real load: Evaluating reliability tuning curves on held-out spectrum tails exposes overconfident shortcuts extended before aggregate accuracy numbers indicate distress (Guo et al., 2017).
 
-Separating structural arrows from observational shadows forces explicit commitments about which mechanisms remain stable when surrounding habits break.
+Treating abstention as a first-class epistemic action turns uncertainty from an awkward defect into an honest guide for targeted inquiry.
 
-Remaining gaps define explicit next tests. When explicit physical experimentation is costly or irreversible, which architectural invariants allow a bounded learner to bound interventional impacts honestly from sparse natural disturbances?
+Remaining gaps define explicit next tests. How may an autonomous learner distinguish temporary retrieval deficits that merit deeper search from irreducible aleatoric ambiguity wherein no lone deterministic answer exists?
 
 ## 5. Reproducibility and Verification Digest
 
@@ -172,9 +172,9 @@ Orthogonal auditability across Causality and Epistemology follows from three det
 
 $$ S_{\mathrm{info}}(\eta) = \frac{1}{144}\sum_{s=1}^{144} \exp\!\left(-\frac{\lvert \widehat{\mathrm{ATE}}_s - \mathrm{ATE}^{\star} \rvert}{0.16}\right)\exp\!\left(-\frac{\Delta \mathrm{Brier}_s}{0.045}\right) $$
 
-1. **Interventional Risk Population (`N = 144`, `Xorshift64*`)**: Stream `0x9e3779b97f4a7d26 + 7883 * s + 17` probes $32$ confounded strata per trial under genuine $\mathrm{ATE}^{\star} = 0.32$ and compaction scale $b = e^{\eta}$.
-2. **Quantified Saddle Point**: Exhaustive $28$-point assessment locates $\hat{\eta}\_{AB}^{\star} = 0.65$, achieving `0.598 ± 0.006` fidelity, `0.075 ± 0.001` absolute ATE bias, and `0.2264 ± 0.0001` Brier risk.
-3. **Intervals & Executable Proof**: Residual bars follow $\bar{x} \pm 1.96\,\hat{s} / \sqrt{144}$; building the <a href="https://boriasanai.github.io/bori-blog/assets/sim/bridge-embodied-ecolo-counterfactual-59e9ba.rs">self-contained estimation solver</a> reproduces `FNV1a-64 = 0x17cece6be9280569`.
+1. **Interventional Risk Population (`N = 144`, `Xorshift64*`)**: Stream `0x9e3779b97f4a7d26 + 7883 * s + 17` checks $32$ confounded strata per trial under genuine $\mathrm{ATE}^{\star} = 0.32$ and compaction scale $b = e^{\eta}$.
+2. **Recorded Saddle Point**: Exhaustive $28$-point testing locates $\hat{\eta}\_{AB}^{\star} = 0.65$, achieving `0.598 ± 0.006` fidelity, `0.075 ± 0.001` absolute ATE bias, and `0.2264 ± 0.0001` Brier risk.
+3. **Intervals & Executable Proof**: Residual bars follow $\bar{x} \pm 1.96\,\hat{s} / \sqrt{144}$; building the <a href="https://boriasanai.github.io/bori-blog/assets/sim/bridge-embodied-ecolo-counterfactual-59e9ba.rs">self-contained deduction solver</a> reproduces `FNV1a-64 = 0x17cece6be9280569`.
 
 
 Formalizing the deflection bound explicitly, wherein $\varepsilon_t \ge 0$ denotes step residual norm and $\gamma \in (0, 1)$ denotes contraction rate:
@@ -184,9 +184,9 @@ $$ E_{T} \le E_{0}\,(1 - \gamma)^{T} + \frac{\sup_{t} \varepsilon_t}{\gamma} $$
 $$ \Delta_{\mathrm{inv}}(x) = \lVert \mathcal{T}(g \cdot x) - g \cdot \mathcal{T}(x) \rVert_{2} \le \tau_{\mathrm{tol}} $$
 
 
-Asymptotic regime analysis of *Testing Graph Surgery and Barometric Symmetry Against Proper Scoring Rules and Empirical Across Perturbed Epistemology Regimes* separates symmetry transform structure from single-corridor coefficient tuning. Perturbing the main control coordinate while holding limit fluxes constant exposes which coordinate couplings carry genuine load throughout order-of-magnitude scale shifts.
+Asymptotic regime analysis of *Testing Graph Surgery and Barometric Symmetry Against Proper Scoring Rules and Empirical Across Perturbed Epistemology Regimes* separates conserved quantity transform structure from single-corridor coefficient tuning. Perturbing the principal control coordinate while holding edge fluxes pinned exposes which coordinate couplings carry genuine load throughout order-of-magnitude scale shifts.
 
-Cross-checking closed-form limiting slopes for *Testing Graph Surgery and Barometric Symmetry Against Proper Scoring Rules and Empirical Across Perturbed Epistemology Regimes* against finite-ensemble realizations guards against discretization artifacts near the decisive stability cutoff. Agreement at joint subcritical and supercritical asymptotes anchors deduction in falsifiable process rather than interpolation.
+Cross-checking closed-form limiting slopes for *Testing Graph Surgery and Barometric Symmetry Against Proper Scoring Rules and Empirical Across Perturbed Epistemology Regimes* against finite-ensemble realizations guards against discretization artifacts near the decisive stability cutoff. Agreement at dual subcritical and supercritical asymptotes anchors estimation in falsifiable process rather than interpolation.
 
 Explicit disconfirmation thresholds keep subsequent extensions of *Testing Graph Surgery and Barometric Symmetry Against Proper Scoring Rules and Empirical Across Perturbed Epistemology Regimes* auditable: any systematic residual exceeding ensemble confidence bounds immediately pinpoints the omitted state variable or violated invariance assumption.
 
