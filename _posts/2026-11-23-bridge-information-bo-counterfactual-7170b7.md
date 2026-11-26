@@ -133,11 +133,11 @@ Source: [Turrigiano et al. (1998)](https://doi.org/10.1038/36103); [Zenke et al.
 *Note.* Differentiating $w_i / \sum_j w_j$ verifies exact cancellation of the system-wide homeostatic term, preserving pairwise synaptic ratios.
 
 
-Deriving an explicit mapping map from *Multiplicative Synaptic Scaling in Cortex* (Neuroscience; Turrigiano et al., 1998) into *Susceptibility Divergence Near Branching Unity* (Complex Systems; Albert & Barabasi, 2002) composes trajectory sensitivity along Normalized Adaptability Epoch t / tau_H with coarse scale Normalized Branching Ratio $\kappa / 2$ at factor $b = e^{\eta}$:
+Deriving an explicit operator map from *Multiplicative Synaptic Scaling in Cortex* (Neuroscience; Turrigiano et al., 1998) into *Susceptibility Divergence Near Branching Unity* (Complex Systems; Albert & Barabasi, 2002) composes trajectory sensitivity along Normalized Adaptability Epoch t / tau_H with coarse scale Normalized Branching Ratio $\kappa / 2$ at factor $b = e^{\eta}$:
 
 $$ J_{AB}(\eta) = DF_A \circ \Pi_{AB}(e^{\eta}), \qquad \mathcal{E}(\eta) = \sigma_A^2\, e^{-2 \gamma_1 \eta} + \beta_{AB}\, (e^{\eta} - 1)^4 $$
 
-Pulling back nuisance fluctuations onto stiff partner coordinates (Newman, 2001) contracts raw dispersion exponentially at moderate $\eta$ preceding finite-horizon lag increases quartically, locating the grid-verified optimum at $\hat{\eta}\_{AB}^{\star} = 0.20$ ($b^{\star} \approx 1.22$).
+Pulling back nuisance fluctuations onto stiff partner coordinates (Newman, 2001) contracts raw variance exponentially at moderate $\eta$ before finite-horizon lag grows quartically, locating the grid-verified optimum at $\hat{\eta}\_{AB}^{\star} = 0.20$ ($b^{\star} \approx 1.22$).
 
 ## 3. Coupled Neuroscience and Complex Systems Numerical Sweep
 
@@ -169,7 +169,7 @@ Two empirical questions remain open. What minimal signal law lets a growing unde
 
 ## 5. Domain-Native Numerical Verification
 
-Full numerical replication linking Neuroscience to Complex Systems applies the fixed-seed protocol specified under:
+Full numerical replication linking Neuroscience to Complex Systems employs the fixed-seed protocol specified under:
 
 $$ S_{\mathrm{symp}}(\eta) = \frac{1}{160}\sum_{s=1}^{160} \left[ 0.68\,\exp\!\left(-\frac{\lvert \Delta H_s \rvert_{\max}}{0.18}\right) + 0.32\,\mathrm{clip} _ {[0,1]}\!\left(\frac{\mathrm{Re}\,\lambda_s(k_c)}{0.38}\right) \right] $$
 
@@ -178,7 +178,7 @@ $$ S_{\mathrm{symp}}(\eta) = \frac{1}{160}\sum_{s=1}^{160} \left[ 0.68\,\exp\!\l
 3. **Normal-Theory Margins & Checksum**: Two-sided `95%` intervals scale standard error by $1.96$; run the <a href="https://boriasanai.github.io/bori-blog/assets/sim/bridge-information-bo-counterfactual-7170b7.rs">zero-dependency dispersion script</a> to confirm `FNV1a-64 = 0x6db1fbc3b73d5db0`.
 
 
-Asymptotic regime analysis of *How Susceptibility Divergence Near Branching Unity Regulates Multiplicative Synaptic Scaling in Cortex Beyond Single-Scale Neuroscience Assumptions* separates symmetry transform structure from single-corridor coefficient tuning. Perturbing the main control coordinate while holding boundary fluxes constant exposes which coordinate couplings carry genuine load throughout order-of-magnitude scale shifts.
+Asymptotic regime analysis of *How Susceptibility Divergence Near Branching Unity Regulates Multiplicative Synaptic Scaling in Cortex Beyond Single-Scale Neuroscience Assumptions* separates invariant transform structure from single-corridor coefficient tuning. Perturbing the main control coordinate while holding boundary fluxes constant exposes which coordinate couplings carry genuine load across order-of-magnitude scale shifts.
 
 
 Formalizing the disturbance bound explicitly, wherein $\varepsilon_t \ge 0$ denotes step residual norm and $\gamma \in (0, 1)$ denotes contraction rate:
