@@ -161,7 +161,7 @@ Source: `144`-trial `Xorshift64*` interventional risk sweep (`0x78e133ad9a77277b
 | Brier Risk | $N^{-1} \sum_{i=1}^{96} (Y_i - \hat{p}\_i(X_i, Z_{b,i}))^2$ | Minimized when $Z_b$ tracks confounder $U$ cleanly | `brier` in `simulate()` |
 | Fidelity $S$ | $\exp(-\lvert \Delta\hat{\tau} \rvert / 0.22)\,\exp(-(\mathrm{Brier}-0.19)\_+ / 0.09)$ | Balances causal unbiasedness and probabilistic calibration | `fid[s]` in `simulate()` |
 
-Source: [Pearl (2009)](https://doi.org/10.1017/CBO9780511803161); [Gneiting & Raftery (2007)](https://doi.org/10.1198/016214506000001437)
+Source: [Pearl (2009)](https://doi.org/10.1017/CBO9780511803161); Standalone `Xorshift64*` SCM solver (`0x78e133ad9a77277b`)
 
 
 Testing `Back-Door P(Y|do(X))` next to `Confounded P(Y|X)` over Causality (Latent Confounding Coupling Strength gamma) and `Calibrated Abstention` against `Forced Overconfident Guess` for Epistemology (Out-of-Support Inferential Tail Fraction) shows how partner constraints regularize drift: empirical score maximizes at $\hat{\eta}\_{AB}^{\star} = 0.35$ (`0.673 ± 0.033`) and collapses to `0.483 ± 0.019` under excess gain $\eta_{AB} = 1.35$ (`0x78e133ad9a77277b`, component hashes `0x057a685224802c34`, `0x213c3cea732e08be`).
@@ -196,7 +196,7 @@ $$ E_{T} \le E_{0}\,(1 - \gamma)^{T} + \frac{\sup_{t} \varepsilon_t}{\gamma} $$
 $$ \Delta_{\mathrm{inv}}(x) = \lVert \mathcal{T}(g \cdot x) - g \cdot \mathcal{T}(x) \rVert_{2} \le \tau_{\mathrm{tol}} $$
 
 
-Asymptotic regime analysis of *Testing Graph Surgery and Barometric Symmetry Against Proper Scoring Rules and Empirical Across Perturbed Epistemology Regimes* divides symmetry mapping structure from single-corridor control variable tuning. Perturbing the principal control coordinate while holding edge fluxes pinned exposes which configuration couplings carry genuine load throughout order-of-magnitude scale shifts.
+Asymptotic regime analysis of *Testing Graph Surgery and Barometric Symmetry Against Proper Scoring Rules and Empirical Across Perturbed Epistemology Regimes* partitions symmetry mapping structure from single-corridor control variable tuning. Perturbing the primary control coordinate while holding boundary fluxes pinned exposes which configuration couplings carry genuine load throughout order-of-magnitude scale shifts.
 
 ## References
 
