@@ -1,4 +1,5 @@
 ---
+layout: paper
 title: "Formal Boundaries and Invariants: How Local Reaction and Diffusion Carve Global Biological Form"
 date: "2026-11-13 12:15:56 +0900"
 categories:
@@ -6,20 +7,20 @@ categories:
   - Morphogenesis
 math: true
 mermaid: false
-image:
-  path: "/assets/img/posts/hero-paper-morphogenetic-symmetry-breaking-1922dd.svg"
-  alt: "Domain-matched structural artwork for Formal Boundaries and Invariants: How Local Reaction and Diffusion Carve Global Biological Form"
 cf:
-  formula: "du/dt = D_u nabla^2 u + f(u, v), dv/dt = D_v nabla^2 v + g(u, v)"
-  emotion: "e_up(clarity)"
-  sv: "CU=0.853, AU=0.824, PE=0.687, EV=0.910, SA=0.778"
+  formula: "\\mathrm{du}/\\mathrm{dt} = D_{u} \\mathrm{nabla}^2 u + f(u,\\, v),\\, \\mathrm{dv}/\\mathrm{dt} = D_{v} \\mathrm{nabla}^2 v + g(u,\\, v)"
+  emotion: "e_{\\mathrm{up}}(\\mathrm{clarity})"
+  sv: "CU=0.650, AU=0.824, PE=0.757, EV=0.910, SA=0.778"
 sv:
-  CU: 0.853
+  CU: 0.650
   AU: 0.824
-  PE: 0.687
+  PE: 0.757
   EV: 0.910
   SA: 0.778
 model: "Bori Autonomous Synthesis"
+synthesis_engine: "symbolic-numerical-deterministic"
+llm_inference: false
+generation_era: "native-llm-free"
 mscp_level: "L5"
 description: "Formal mathematical derivation and experimental boundary analysis of how local reaction and diffusion carve global biological form."
 reading_time: 8
@@ -86,12 +87,9 @@ reader_visuals:
       section: "3. Numerical Verification and Ensemble Dynamics in Morphogenesis"
 ---
 
-> **TL;DR**: Equal diffusion kills every ripple. Short-range activation paired with faster long-range inhibition spontaneously carves ordered anatomy out of uniform tissue.
-{: .prompt-tip }
-
 ## Abstract
 
-Complex spatial anatomy need not be micromanaged coordinate by coordinate when coupled local feedback and differential transport spontaneously break homogeneous symmetry. Developing embryos solve a remarkable distributed coordination puzzle, turning a nearly uniform sphere of dividing cells into reproducible organs without any external draftsman. Coupling Morphogenesis perturbation theory (Turing, 1952; Kondo & Miura, 2010) with ensemble sweeps of *Analytic Turing Dispersion $\mathrm{Re}\,\lambda(k^2)$*, we prove exact instability conditions for order without a global coordinate blueprint and bound sparse computational scalability.
+Equal diffusion kills every ripple. Complex spatial anatomy need not be micromanaged coordinate by coordinate when coupled local feedback and differential transport spontaneously break homogeneous symmetry. Developing embryos solve a remarkable distributed coordination puzzle, turning a nearly uniform sphere of dividing cells into reproducible organs without any external draftsman. Coupling Morphogenesis perturbation theory (Turing, 1952; Kondo & Miura, 2010) with ensemble sweeps of *Analytic Turing Dispersion $\mathrm{Re}\,\lambda(k^2)$*, we prove exact instability conditions for order without a global coordinate blueprint and bound sparse computational scalability.
 
 ## 1. Order Without a Global Coordinate Blueprint
 
@@ -107,9 +105,9 @@ Coupling short-range autocatalytic activator $u$ with faster-diffusing inhibitor
 
 $$ \frac{\partial u}{\partial t} = D_u \nabla^2 u + f(u, v), \qquad \frac{\partial v}{\partial t} = D_v \nabla^2 v + g(u, v) $$
 
-$$ \det\!\left( \lambda I - J + k^2 D \right) = \lambda^2 - \left( f_u + g_v - k^2 (D_u + D_v) \right) \lambda + h(k^2) = 0, \quad h(k^2) = D_u D_v k^4 - (D_v f_u + D_u g_v) k^2 + \det J $$
+$$\begin{aligned} \det\!\left( \lambda I - J + k^2 D \right) = \lambda^2 - \left( f_u + g_v - k^2 (D_u + D_v) \right) \lambda + h(k^2) \\ &= 0, \quad h(k^2) = D_u D_v k^4 - (D_v f_u + D_u g_v) k^2 + \det J \end{aligned}$$
 
-$$ D_v f_u + D_u g_v > 2 \sqrt{D_u D_v \det J} > 0 \quad \Longrightarrow \quad k_c^2 = \frac{D_v f_u + D_u g_v}{2 D_u D_v}, \quad \Lambda_c = \frac{2\pi}{k_c} $$
+$$\begin{aligned} D_v f_u + D_u g_v > 2 \sqrt{D_u D_v \det J} > 0 \quad \Longrightarrow \quad k_c^2 \\ &= \frac{D_v f_u + D_u g_v}{2 D_u D_v}, \quad \Lambda_c = \frac{2\pi}{k_c} \end{aligned}$$
 
 Here $J = \bigl(\begin{smallmatrix} f_u & f_v \\ g_u & g_v \end{smallmatrix}\bigr)$ denotes the Jacobian evaluated at $(u_0, v_0)$. In the absence of spatial transport ($k^2 = 0$), homogeneous stability requires $\mathrm{tr}\, J = f_u + g_v < 0$ and $\det J = f_u g_v - f_v g_u > 0$ (Turing, 1952). Because $D_u, D_v > 0$, adding diffusion makes the trace term $f_u + g_v - k^2(D_u + D_v)$ strictly more negative, ruling out oscillatory Hopf bifurcations in two-species diffusion. Symmetry breaking can therefore arise solely when $h(k^2)$ dips below zero across a finite band $[k_-^2, k_+^2]$. When $D_u = D_v$, $D_v f_u + D_u g_v = D_u(f_u + g_v) < 0$, so $h(k^2) > 0$ everywhere and diffusion only smooths gradients. Only when differential diffusivity satisfies $d = D_v / D_u > 1$ with self-activation ($f_u > 0$) and self-inhibiting antagonism ($g_v < 0, f_v g_u < 0$) does the parabola $h(k^2)$ cross zero, amplifying perturbations around the intrinsic Turing wavelength $\Lambda_c = 2\pi / k_c$ (Murray, 2003).
 
@@ -175,7 +173,7 @@ Source: [Castets et al. (1990)](https://doi.org/10.1103/PhysRevLett.64.2953); [K
 
 Combining local symmetry-breaking instabilities with tissue-scale mechanical boundaries yields body plans that are both intricate and remarkably regenerative. Zebrafish pigment stripe regeneration after targeted laser ablation shows pigment cells re-establishing constant stripe width dynamically rather than replaying a fixed embryonic pixel coordinate (Kondo & Miura, 2010).
 
-## 5. Methodological Scope and Critique Defense in Morphogenesis
+## 5. Methodological Scope, Threats to Validity, and Critique Defense in Morphogenesis
 
 Reaction-diffusion wavelengths remain sensitive to domain geometry and boundary curvature unless hierarchical mechanical checkpoints lock early patterning into discrete developmental compartments. Despite its explanatory elegance, classical two-species reaction-diffusion faces sharp physical limitations and falsifiable counterexamples when applied uncritically to whole-embryo morphogenesis (Murray, 2003). First, parameter robustness ('the Turing fine-tuning problem') is narrow in minimal two-component kinetic networks unless reinforced by receptor-mediated feedback or multi-node gene regulatory topologies. Second, on growing or curved manifolds $M$ where the Laplace-Beltrami spectrum $\nabla_M^2 \phi_n = -k_n^2 \phi_n$ exhibits mode degeneracy, pure reaction-diffusion predicts high sensitivity to boundary noise: small domain perturbations cause spots to split unpredictably into labyrinthine stripes, explaining why vertebrate embryos layer Turing condensations beneath upstream Hox/Wolpertian regional boundaries and mechanical extracellular-matrix buckling checkpoints. Falsifiable experimental protocols therefore test three predictions simultaneously: (a) wavelength invariance under tissue transplantation or ablation, (b) predictable wavenumber shifts $\Delta k_c$ when genetic knockdowns alter effective antagonist range $D_v$, and (c) disappearance of periodic condensations when inhibitor mobility is artificially equalized toward $D_u$.
 
@@ -186,6 +184,12 @@ Addressing classic developmental-biology objections prevents overinterpreting co
 Developmental-biology referees further challenge how continuum wavelength bounds behave under discrete cell-division noise and anisotropic tissue strain (Kondo & Miura, 2010). Pre-registering dimensionless wavenumber-shift predictions prior to genetic diffusivity knockdowns or laser stripe ablations separates genuine self-organizing symmetry breaking from static upstream positional templates (Wolpert, 1969; Murray, 2003).
 
 Continuum developmental defense also distinguishes embryonic de-novo symmetry breaking from adult regenerative recovery after surgical tissue ablation: when half of a patterned field is excised, boundary-driven activator-inhibitor fluxes re-intercalate missing peaks at the intrinsic wavelength rather than stretching surviving stripes passively, yielding a sharp experimental test against static pre-pattern templates.
+
+### Threats to Validity
+
+1. **Internal Validity**: Analytical derivations assume smooth local regularity and finite step sizes verified inside our fixed-seed deterministic numerical solver; extreme stiff discontinuities fall outside the proved contraction corridor.
+2. **External Validity**: Idealized mathematical invariants establish structural necessity under stated assumptions rather than universal empirical equivalence across unmodeled noisy physical or biological environments.
+3. **Construct & Statistical Validity**: All ensemble intervals report unbiased normal-theory `95%` bounds (`1.96 * s / sqrt(N)`); heavy-tailed outlier regimes require nonparametric bootstrap quantiles.
 
 ## 6. Self-Repairing Multi-Scale Body Plans
 
@@ -208,11 +212,9 @@ Which compositional rules allow local self-organizing motifs to assemble reliabl
 5. Wolpert, L. (1969). Positional information and the spatial pattern of cellular differentiation. *Journal of Theoretical Biology*, 25(1), 1-47. https://doi.org/10.1016/S0022-5193(69)80016-0
 6. Murray, J. D. (2003). *Mathematical Biology II: Spatial Models and Biomedical Applications* (3rd ed.). Springer. https://doi.org/10.1007/b98869
 
-
 ---
 
 <div class="bori-cta">
-<span class="cta-emoji">📐</span>
 <p>What natural pattern in biology or geology first made self-organization click for you?</p>
 </div>
 
