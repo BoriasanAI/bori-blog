@@ -25,7 +25,7 @@ llm_inference: false
 generation_era: "native-llm-free"
 mscp_level: "L5"
 description: "Cross-domain operator synthesis linking liouville area preservation in hamiltonian flows (Physics) and activator-inhibitor wavelengths in living tissue (Morphogenesis) across coupled ensemble perturbations."
-reading_time: 7
+reading_time: 8
 tags: ["cross-domain", "symplectic-conservation-laws", "morphogenetic-symmetry-breaking", "AGI"]
 self_review_verified: true
 content_kind: concept-note
@@ -75,7 +75,7 @@ reader_visuals:
       nodes:
         - id: "domain-a"
           label: "Liouville Area Preservation in Hamiltonian Flows"
-          detail: "Symplectic integrators preserve Poincare's differential area form in Hamiltonian mechanics, bounding energy oscillation over millions of orbits where naive explicit Euler spirals outward."
+          detail: "Symplectic integrators preserve Poincaré's differential area form in Hamiltonian mechanics, bounding energy oscillation over millions of orbits where naive explicit Euler spirals outward."
           url: "https://doi.org/10.1007/3-540-30666-8"
         - id: "domain-b"
           label: "Activator-Inhibitor Wavelengths in Living Tissue"
@@ -96,7 +96,7 @@ reader_visuals:
 
 ## Abstract
 
-> Equal diffusion kills every ripple. Testing liouville area preservation in hamiltonian flows (Physics) alongside activator-inhibitor wavelengths in living tissue (Morphogenesis) reveals how cross-domain feedback limits long-horizon drift.
+> Equal diffusion kills every ripple. Testing Liouville Area Preservation in Hamiltonian Flows (Physics) alongside Activator-Inhibitor Wavelengths in Living Tissue (Morphogenesis) reveals how cross-domain feedback limits long-horizon drift.
 {: .prompt-tip }
 
 ## 1. Failure Modes When Physics Ignores Morphogenesis
@@ -107,7 +107,7 @@ Minute systematic biases in curvature or norm appear negligible over three stage
 
 ## 2. Joint Operator Structure: Liouville Area Preservation in Hamiltonian Flows and Activator-Inhibitor Wavelengths in Living Tissue
 
-Symplectic integrators preserve Poincare's differential area form in Hamiltonian mechanics, bounding energy oscillation across millions of orbits wherein naive explicit Euler spirals outward (Sanz-Serna, 1992). In Physics, wherein $(q, p) \in \mathbb{R}^{2d}$ denotes canonical coordinates and momenta under separable Hamiltonian $H(q, p) = T(p) + V(q)$, and $\Phi_{\Delta t}$ denotes the discrete Stormer-Verlet flow map (Sanz-Serna, 1992).
+Symplectic integrators preserve Poincaré's differential area form in Hamiltonian mechanics, bounding energy oscillation across millions of orbits wherein naive explicit Euler spirals outward (Sanz-Serna, 1992). In Physics, wherein $(q, p) \in \mathbb{R}^{2d}$ denotes canonical coordinates and momenta under separable Hamiltonian $H(q, p) = T(p) + V(q)$, and $\Phi_{\Delta t}$ denotes the discrete Störmer-Verlet flow map (Sanz-Serna, 1992).
 
 $$ p_{n + 1/2} = p_n - \frac{\Delta t}{2} \nabla_q V(q_n), \quad q_{n+1} = q_n + \Delta t\, M^{-1} p_{n + 1/2}, \quad p_{n+1} = p_{n + 1/2} - \frac{\Delta t}{2} \nabla_q V(q_{n+1}) $$
 
@@ -137,17 +137,17 @@ $$ \dot{\mathbf{x}} = L(\mathbf{x})\nabla H(\mathbf{x}) + M(\mathbf{x})\nabla S(
 
 $$ \Phi_{\Delta t}^{\mathrm{Strang}} = \Phi_{\Delta t / 2}^{\mathrm{symp}} \circ \Phi_{\Delta t}^{\mathrm{RD}}(\eta_{AB}) \circ \Phi_{\Delta t / 2}^{\mathrm{symp}} $$
 
-**Explicit State Space, Symplecticity Proof, Schnakenberg Kinetics, and GENERIC Degeneracy.** Let the composite state be $\mathbf{x} = (q, p, \mathbf{u}, \mathbf{v}) \in \mathbb{R}^2 \times \mathbb{R}^{2M}$ ($M = 16$ periodic lattice cells, $u_{i+M} = u_i$, $v_{i+M} = v_i$). On the reversible subspace with unit mass ($M_q = 1$) and quartic potential $V(q) = \tfrac{1}{2}q^2 + \tfrac{1}{4}q^4$, the Hamiltonian $H(q, p) = \tfrac{1}{2}p^2 + V(q)$ is integrated from independent initial draws $q_0 \in [0.85, 1.25], p_0 \in [-0.30, 0.30]$ over horizon $T = 140\Delta t = 5.60$ ($\Delta t = 0.04$). Factoring the 3-step Störmer-Verlet flow $\Phi_{\Delta t}^{\mathrm{symp}}$ into three unit-determinant shear maps gives an exact proof of symplectic invariance ($\Omega = \bigl(\begin{smallmatrix} 0 & 1 \\ -1 & 0 \end{smallmatrix}\bigr)$):
+**Explicit State Space, Symplecticity Proof, Schnakenberg Kinetics, and GENERIC Degeneracy.** Let the composite state be $\mathbf{x} = (q, p, \mathbf{u}, \mathbf{v}) \in \mathbb{R}^2 \times \mathbb{R}^{2M}$ ($M = 16$ periodic lattice cells, $u_{i+M} = u_i$, $v_{i+M} = v_i$). On the reversible subspace with unit mass ($M_q = 1$) and quartic potential $V(q) = \tfrac{1}{2}q^2 + \tfrac{1}{4}q^4$, the Hamiltonian $H(q, p) = \tfrac{1}{2}p^2 + V(q)$ is integrated from independent initial draws $q_0 \in [0.85, 1.25], p_0 \in [-0.30, 0.30]$ over horizon $T = 140\Delta t = 5.60$ ($\Delta t = 0.04$). Each symmetric Strang step $\Phi_{\Delta t}^{\mathrm{Strang}} = \Phi_{\Delta t / 2}^{\mathrm{symp}} \circ \Phi_{\Delta t}^{\mathrm{RD}}(\eta) \circ \Phi_{\Delta t / 2}^{\mathrm{symp}}$ executes two half-step Störmer-Verlet maps ($\Delta t_{\mathrm{half}} = \Delta t / 2 = 0.02$, momentum kick sub-steps $\Delta t / 4 = 0.01$) bracketing one full $\Delta t = 0.04$ explicit Schnakenberg update. Factoring each half-step Störmer-Verlet map $\Phi_{h_t}^{\mathrm{symp}}$ ($h_t = \Delta t / 2$) into three unit-determinant shear maps gives an exact proof of symplectic invariance ($\Omega = \bigl(\begin{smallmatrix} 0 & 1 \\ -1 & 0 \end{smallmatrix}\bigr)$):
 
-$$ D\Phi_{\Delta t}^{\mathrm{symp}} = \begin{pmatrix} 1 & 0 \\ -\tfrac{\Delta t}{2} V^{\prime\prime}(q_{n+1}) & 1 \end{pmatrix} \begin{pmatrix} 1 & \Delta t \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ -\tfrac{\Delta t}{2} V^{\prime\prime}(q_n) & 1 \end{pmatrix} \implies (D\Phi_{\Delta t}^{\mathrm{symp}})^{\top} \Omega\, D\Phi_{\Delta t}^{\mathrm{symp}} = \Omega, \quad \det D\Phi_{\Delta t}^{\mathrm{symp}} = 1 $$
+$$ D\Phi_{h_t}^{\mathrm{symp}} = \begin{pmatrix} 1 & 0 \\ -\tfrac{h_t}{2} V^{\prime\prime}(q_{n+1}) & 1 \end{pmatrix} \begin{pmatrix} 1 & h_t \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ -\tfrac{h_t}{2} V^{\prime\prime}(q_n) & 1 \end{pmatrix} \implies (D\Phi_{h_t}^{\mathrm{symp}})^{\top} \Omega\, D\Phi_{h_t}^{\mathrm{symp}} = \Omega, \quad \det D\Phi_{h_t}^{\mathrm{symp}} = 1 $$
 
 On the dissipative subspace (unit lattice spacing $h = 1$, $M = 16$ periodic cells with discrete Laplacian eigenvalues $-\mu_m = -4\sin^2(\pi m / M)$ for modes $m = 0,\dots,M-1$), the Schnakenberg reaction-diffusion PDE evolves under:
 
 $$ \partial_t u_i = D_u(\eta)\,\Delta_h u_i + a - u_i + u_i^2 v_i, \qquad \partial_t v_i = D_v\,\Delta_h v_i + b - u_i^2 v_i, \qquad \Delta_h w_i = w_{i-1} - 2w_i + w_{i+1} $$
 
-Linearizing around the homogeneous steady state $(u^{\star}, v^{\star}) = \bigl(a+b,\; \tfrac{b}{(a+b)^2}\bigr)$ gives reaction Jacobian entries $f_u = -1 + 2u^{\star}v^{\star} = \tfrac{b-a}{a+b}$, $f_v = (u^{\star})^2 = (a+b)^2$, $g_u = -2u^{\star}v^{\star} = -\tfrac{2b}{a+b}$, and $g_v = -(a+b)^2$ for all $a, b > 0$, hence $\mathrm{tr}\,J = \tfrac{b-a}{a+b} - (a+b)^2 < 0$ and $\det J = f_u g_v - f_v g_u = (a+b)^2 > 0$ (uniformly stable at $m = 0$). Setting the spatial-mode determinant $\det(J - \mu_m\,\mathrm{diag}(D_u, D_v)) = D_u D_v \mu_m^2 - (D_v f_u + D_u g_v)\mu_m + \det J < 0$ shows that discrete mode $m \ge 1$ destabilizes iff $D_v f_u + D_u g_v > 2\sqrt{D_u D_v \det J}$ and $\mu_m \in (\mu_-, \mu_+)$, where $\mu_{ \pm } = [(D_v f_u + D_u g_v) \pm \sqrt{(D_v f_u + D_u g_v)^2 - 4 D_u D_v \det J}] / (2 D_u D_v)$. For this domain pair's exact parameters `(ia = 10, ib = 4)`: $a = 0.10, b = 0.930, D_u = 0.024, D_v = 0.88$, giving $D_v f_u + D_u g_v = 0.684 > 2\sqrt{D_u D_v \det J} = 0.299$ and discrete unstable band $\mu \in (1.63, 30.74)$.
+Linearizing around the homogeneous steady state $(u^{\star}, v^{\star}) = \bigl(a+b,\; \tfrac{b}{(a+b)^2}\bigr)$ gives reaction Jacobian entries $f_u = -1 + 2u^{\star}v^{\star} = \tfrac{b-a}{a+b}$, $f_v = (u^{\star})^2 = (a+b)^2$, $g_u = -2u^{\star}v^{\star} = -\tfrac{2b}{a+b}$, and $g_v = -(a+b)^2$ for all $a, b > 0$, hence $\mathrm{tr}\,J = \tfrac{b-a}{a+b} - (a+b)^2 < 0$ and $\det J = f_u g_v - f_v g_u = (a+b)^2 > 0$ (uniformly stable at $m = 0$). Setting the spatial-mode determinant $\det(J - \mu_m\,\mathrm{diag}(D_u, D_v)) = D_u D_v \mu_m^2 - (D_v f_u + D_u g_v)\mu_m + \det J < 0$ shows that discrete mode $m \ge 1$ destabilizes iff $D_v f_u + D_u g_v > 2\sqrt{D_u D_v \det J}$ and $\mu_m \in (\mu_-, \mu_+)$, where $\mu_{ \pm } = [(D_v f_u + D_u g_v) \pm \sqrt{(D_v f_u + D_u g_v)^2 - 4 D_u D_v \det J}] / (2 D_u D_v)$. For this domain pair's exact parameters `(ia = 10, ib = 4)`: $a = 0.10, b = 0.930, D_u = 0.024, D_v = 0.88$ ($D_v / D_u = 36.67$), giving $D_v f_u + D_u g_v = 0.684 > 2\sqrt{D_u D_v \det J} = 0.299$ and discrete unstable band $\mu \in (1.63, 30.74)$. In the theoretical isolated limit ($\alpha_n = 0, \eta = 0$), $H$ depends solely on $(q,p)$ while $S$ depends solely on $(\mathbf{u},\mathbf{v})$, so GENERIC degeneracy $L\nabla S = 0$ and $M\nabla H = 0$ holds identically.
 
-In the theoretical isolated limit ($\alpha_n = 0, \eta = 0$), $H$ depends solely on $(q,p)$ while $S$ depends solely on $(\mathbf{u},\mathbf{v})$, so GENERIC degeneracy $L\nabla S = 0$ and $M\nabla H = 0$ holds identically. In the open-port benchmark (Table 2, including the $\eta = 0.00$ unattenuated open-port baseline where port scale $\beta = e^{\eta} = 1$, zero port drag, and baseline stochastic forcing $\alpha_n$ is active), port coupling $\Pi_{AB}(\eta)$ sets $D_u(\eta) = \min(D_v,\; D_u[1 + 3.8(e^{\eta}-1)^2])$ and applies port momentum forcing $F_{\mathrm{port}}(\eta) = \alpha_n e^{-1.45\eta}(\bar{u} - u^{\star}) + 0.75\alpha_n e^{-1.35\eta}\xi_t - \alpha_d(e^{\eta}-1)^2 q$ during the second Verlet half-step; we explicitly note that this open-port forcing and state clamping break exact canonical conservation, producing the bounded residual $\lvert \Delta H \rvert_{\max}$ measured directly in Table 2. Across composite-index weightings $(w_H, w_u) \in \lbrace (0.58,0.42),(0.50,0.50),(0.70,0.30) \rbrace$ (with characteristic drift scale `0.14` and Turing contrast scale `0.12`), the interior stability peak remains robustly localized near $\hat{\eta}\_{AB}^{\star} = 0.15$ (coupling factor $\beta^{\star} = e^{\hat{\eta}\_{AB}^{\star}} \approx 1.16$).
+In the open-port benchmark (Table 2, including the $\eta = 0.00$ unattenuated open-port baseline where port scale $\beta = e^{\eta} = 1$, zero port drag, and baseline stochastic forcing $\alpha_n$ is active), port coupling $\Pi_{AB}(\eta)$ sets $D_u(\eta) = \min(D_v,\; D_u[1 + 3.8(e^{\eta}-1)^2])$ and applies port momentum forcing $F_{\mathrm{port}}(\eta) = \alpha_n e^{-1.45\eta}(\bar{u} - u^{\star}) + 0.75\alpha_n e^{-1.35\eta}\xi_t - \alpha_d(e^{\eta}-1)^2 q$ during the second Verlet half-step; we explicitly note that this open-port forcing and state clamping break exact canonical conservation, producing the bounded residual $\lvert \Delta H \rvert_{\max}$ measured directly in Table 2. Direct weight-sensitivity checks across three composite weightings $(w_H, w_u) \in \lbrace (0.58,0.42),\; (0.50,0.50),\; (0.70,0.30) \rbrace$ (with characteristic drift scale `0.14` and Turing contrast scale `0.12`, chosen to match the empirical order of magnitude of $\lvert \Delta H \rvert$ and $\sigma_u$) confirm that all three weightings preserve a strong Verlet-over-Euler advantage ($\Delta S > 0.35$) and localize the interior stability peak around $\hat{\eta}\_{AB}^{\star} = 0.15$ (coupling factor $\beta^{\star} = e^{\hat{\eta}\_{AB}^{\star}} \approx 1.16$).
 
 **Proposition 1 (Surrogate Trade-Off Lemma: Strict Interior Minimizer Existence).** Modeling the empirical competition between decaying port-noise variance and growing coarse-drag bias across Physics and Morphogenesis via the strictly convex surrogate functional $\mathcal{L}(\eta) = c_1 e^{-\alpha\eta} + c_2 (e^{\eta} - 1)^2$ ($c_1, c_2, \alpha > 0$ on $\eta \ge 0$) gives $\mathcal{L}^{\prime}(0) = -\alpha c_1 < 0$, $\lim_{\eta \to \infty} \mathcal{L}^{\prime}(\eta) = +\infty$, and $\mathcal{L}^{\prime\prime}(\eta) = \alpha^2 c_1 e^{-\alpha\eta} + 2 c_2 e^{\eta}(2e^{\eta} - 1) > 0$ everywhere on $\eta \ge 0$:
 
@@ -173,9 +173,9 @@ Source: `160`-trial `PCG32` symplectic-dispersion integration (`0x035d6b33591b24
 
 | Reported Table Column | Governing Equation & Discretization | Coupling Dependency on $\eta_{AB}$ | Standalone Solver Symbol |
 | --- | --- | --- | --- |
-| Peak Drift $\lvert \Delta H \rvert$ | $\max_{t \le 140} \lvert H(q_t, p_t) - H_0 \rvert$ via Stormer-Verlet $\Phi_{\Delta t/2}^{\mathrm{symp}}$ | Port noise $\propto e^{-1.45\eta}$ vs. drag $\propto (e^{\eta}-1)^2$ | `max_dh` in `simulate()` |
-| Turing Contrast $\sigma_u$ | $\mathrm{std}\_j(u_j)$ on 16-cell periodic Schnakenberg PDE ($D_v/D_u=25$) | Effective diffusion $D_u^{\mathrm{eff}}(\eta)$ damps pattern at large $\eta$ | `sigma_u` in `simulate()` |
-| Coherence $S$ | $0.58\,e^{-\lvert \Delta H \rvert / 0.14} + 0.42\,\mathrm{clip}\_{[0,1]}(\sigma_u / 0.12)$ | Peaks where conservative drift stays low and PDE pattern survives | `coh[s]` in `simulate()` |
+| Peak Drift $\lvert \Delta H \rvert$ | $\max_{t \le 140} \lvert H(q_t, p_t) - H_0 \rvert$ via half-step Störmer-Verlet $\Phi_{\Delta t/2}^{\mathrm{symp}}$ | Port noise $\propto e^{-1.45\eta}$ vs. drag $\propto (e^{\eta}-1)^2$ | `max_dh` in `simulate_core()` |
+| Turing Contrast $\sigma_u$ | $\mathrm{std}\_j(u_j)$ on 16-cell periodic Schnakenberg PDE ($D_v/D_u=36.67$) | Effective diffusion $D_u(\eta) = \min(D_v, D_u[1+3.8(e^{\eta}-1)^2])$ | `sigma_u` in `simulate_core()` |
+| Coherence $S$ | Per-trial average of $0.58\,e^{-\lvert \Delta H \rvert / 0.14} + 0.42\,\mathrm{clip}\_{[0,1]}(\sigma_u / 0.12)$ | Peaks where conservative drift stays low and PDE pattern survives | `coh[s]` in `simulate_core()` |
 
 Source: [Grmela & Ottinger (1997)](https://doi.org/10.1103/PhysRevE.56.6620); [Strang (1968)](https://doi.org/10.1137/0705041)
 
@@ -215,9 +215,9 @@ Every quantitative claim coupling Physics and Morphogenesis is reproduced immedi
 
 $$ S_{\mathrm{GENERIC}}(\eta) = \frac{1}{160}\sum_{s=1}^{160} \left[ 0.58\,\exp\!\left(-\frac{\lvert \Delta H_s \rvert_{\max}}{0.14}\right) + 0.42\,\mathrm{clip} _ {[0,1]}\!\left(\frac{\sigma_{u,s}}{0.12}\right) \right] $$
 
-1. **Metriplectic Rollouts (`N = 160`, `PCG32`)**: Domain pair `(ia = 10, ib = 4, base_seed = 45735)` initializes `0x517cc1b72722b236 + 7907 * s` (`inc = 2s + 1`), advancing reversible Verlet half-steps around 16-cell Schnakenberg updates ($\Delta t = 0.04, a=0.10, b=0.930, D_u=0.024, D_v=0.88$).
+1. **Metriplectic Rollouts (`N = 160`, `PCG32`)**: Domain pair `(ia = 10, ib = 4, base_seed = 45735)` initializes `st = (base_seed ^ pair_tag) + 7907 * s = 0x517cc1b72722b236 + 7907 * s` (`inc = 2s + 1`), advancing half-step Störmer-Verlet around 16-cell Schnakenberg updates ($\Delta t = 0.04, a=0.10, b=0.930, D_u=0.024, D_v=0.88, D_v/D_u=36.67$).
 2. **Parameter-Free Argmax**: Maximizing joint coherence over $28$ candidates locates $\hat{\eta}\_{AB}^{\star} = 0.15$ with `0.755 ± 0.008` score, `0.038 ± 0.002` energy drift, and `0.088 ± 0.001` spatial $\sigma_u$.
-3. **Compiler Auditing Module**: Run <a href="https://boriasanai.github.io/bori-blog/assets/sim/bridge-embodied-ecolo-counterfactual-79efe6.rs">`bridge-embodied-ecolo-counterfactual-79efe6.rs`</a> (`rustc -O`) or audit the executed digest receipt <a href="https://boriasanai.github.io/bori-blog/assets/sim/bridge-embodied-ecolo-counterfactual-79efe6.verify.json">`bridge-embodied-ecolo-counterfactual-79efe6.verify.json`</a> (`1.96` standard-error intervals, `FNV1a-64 = 0x035d6b33591b248a`).
+3. **Compiler Auditing Module**: Run <a href="https://boriasanai.github.io/bori-blog/assets/sim/bridge-embodied-ecolo-counterfactual-79efe6.rs">`bridge-embodied-ecolo-counterfactual-79efe6.rs`</a> (`rustc -O`) or audit the executed digest receipt <a href="https://boriasanai.github.io/bori-blog/assets/sim/bridge-embodied-ecolo-counterfactual-79efe6.verify.json">`bridge-embodied-ecolo-counterfactual-79efe6.verify.json`</a> (`1.96` standard-error intervals, execution `FNV1a-64 = 0x035d6b33591b248a`; `source_fnv1a64` hashes the `.rs` source bytes).
 
 ## References
 

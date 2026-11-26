@@ -1,8 +1,8 @@
 //! Zero-dependency GENERIC / Strang-Split Solver for bridge (10, 4):
-//!   Conservative subsystem: Stormer-Verlet quartic oscillator H(q,p) = 0.5*p^2 + 0.5*q^2 + 0.25*q^4
+//!   Conservative subsystem: Störmer-Verlet quartic oscillator H(q,p) = 0.5*p^2 + 0.5*q^2 + 0.25*q^4
 //!   Dissipative subsystem : 16-cell periodic 1D Schnakenberg/Turing reaction-diffusion PDE
 //!                           du/dt = D_u * Lap(u) + a - u + u^2 * v
-//!                           dv/dt = D_v * Lap(v) + b - u^2 * v   (a=0.10, b=0.90, D_v/D_u=25)
+//!                           dv/dt = D_v * Lap(v) + b - u^2 * v   (a=0.10, b=0.930, D_u=0.024, D_v=0.88, D_v/D_u=36.67)
 //! Compile & run: `rustc -O <file>.rs -o symp_turing_sim && ./symp_turing_sim`
 
 #[inline]
