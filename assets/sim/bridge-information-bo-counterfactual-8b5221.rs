@@ -63,7 +63,7 @@ fn simulate(ia: usize, ib: usize, base_seed: u64, eta: f64) -> ((f64, f64), (f64
 }
 
 fn main() {
-    let (ia, ib, base_seed) = (9_usize, 3_usize, 42636_u64);
+    let (ia, ib, base_seed) = (9_usize, 3_usize, 42676_u64);
     let (mut best_eta, mut best_m) = (0.05_f64, -1.0_f64);
     for step in 1..=27_usize {
         let eta = (step as f64) * 0.05;
