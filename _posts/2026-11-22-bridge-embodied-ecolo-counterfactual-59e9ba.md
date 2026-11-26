@@ -132,7 +132,7 @@ Source: [Pearl (2009)](https://doi.org/10.1017/CBO9780511803161); [Bareinboim & 
 *Note.* Conditioning on a descendant or pre-treatment collider violates d-separation even as temporal precedence applies.
 
 
-Interlocking *Graph Surgery and Barometric Symmetry* (Causality; Pearl, 2009) with *Proper Scoring Rules and Experimental Hit Velocities* (Epistemology; Gneiting & Raftery, 2007) binds Latent Confounding Coupling Strength gamma control margins to Out-of-Support Inferential Tail Fraction bandwidth $b = e^{\eta}$:
+Interlocking *Graph Surgery and Barometric Symmetry* (Causality; Pearl, 2009) with *Proper Scoring Rules and Experimental Hit Rates* (Epistemology; Gneiting & Raftery, 2007) binds Latent Confounding Coupling Strength gamma control margins to Out-of-Support Inferential Tail Fraction bandwidth $b = e^{\eta}$:
 
 $$ J_{AB}(\eta) = DF_A \circ \Pi_{AB}(e^{\eta}), \qquad \mathcal{E}(\eta) = \sigma_A^2\, e^{-2 \gamma_1 \eta} + \beta_{AB}\, (e^{\eta} - 1)^4 $$
 
