@@ -30,6 +30,12 @@ module BoriSeoGeoAgent
     sim_rel = File.join("assets", "sim", "#{slug}.rs")
     sim_abs = File.join(site.source, sim_rel)
     has_sim = !slug.empty? && File.file?(sim_abs)
+    verify_rel = File.join("assets", "sim", "#{slug}.verify.json")
+    verify_abs = File.join(site.source, verify_rel)
+    has_verify = !slug.empty? && File.file?(verify_abs)
+    verify_data = if has_verify
+                    JSON.parse(File.read(verify_abs, encoding: "UTF-8")) rescue nil
+                  end
     raw_src = File.file?(post.path.to_s) ? File.read(post.path, encoding: "UTF-8") : post.content.to_s
     {
       "slug" => slug,
@@ -45,6 +51,10 @@ module BoriSeoGeoAgent
       "provenance_url" => "#{base}/assets/provenance/#{slug}.json",
       "simulation_source_url" => has_sim ? "#{base}/#{sim_rel}" : nil,
       "simulation_source_sha256" => has_sim ? Digest::SHA256.file(sim_abs).hexdigest : nil,
+      "verification_receipt_url" => has_verify ? "#{base}/#{verify_rel}" : nil,
+      "execution_verified" => verify_data.is_a?(Hash) && verify_data["digest_matched"] == true,
+      "observed_digest" => verify_data.is_a?(Hash) ? verify_data["observed_digest"] : nil,
+      "compiler_version" => verify_data.is_a?(Hash) ? verify_data["compiler_version"] : nil,
       "repro_command" => has_sim ? "rustc -O #{slug}.rs -o sim && ./sim" : nil
     }
   end
@@ -147,6 +157,9 @@ module BoriSeoGeoAgent
       "- **Provenance Manifest**: #{prov['provenance_url']}"
     ]
     lines << "- **Standalone Rust Solver**: #{prov['simulation_source_url']} (`#{prov['repro_command']}`)" if prov["simulation_source_url"]
+    if prov["verification_receipt_url"]
+      lines << "- **Compiler Execution Receipt**: #{prov['verification_receipt_url']} (`execution_verified: #{prov['execution_verified']}`, `observed_digest: #{prov['observed_digest']}`, `#{prov['compiler_version']}`)"
+    end
     lines << "- **Topics**: #{tags}" unless tags.empty?
     lines << "- **Summary**: #{summary}" unless summary.empty?
     lines.concat(["", body_md, "", "---", "- **Corpus & Verification Discovery**: `/provenance/architecture.json` | `/.well-known/api-catalog` | `/openapi.json` | `/llms.txt` | `/auth.md`", ""])
