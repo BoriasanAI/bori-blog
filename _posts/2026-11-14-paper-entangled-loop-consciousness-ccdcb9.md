@@ -1,4 +1,5 @@
 ---
+layout: paper
 title: "Unified Conscious Experience Through Affective Valuation, Neural Interference, and Hierarchical Orchestration"
 date: "2026-11-14 06:55:38 +0900"
 categories:
@@ -6,20 +7,20 @@ categories:
   - Neuroscience
 math: true
 mermaid: false
-image:
-  path: "/assets/img/posts/hero-paper-entangled-loop-consciousness-ccdcb9.svg"
-  alt: "Vector diagram for Unified Conscious Experience Through Affective Valuation, Neural Interference, and Hierarchical Orchestration"
 cf:
-  formula: "T_loop = B_aff(v, a) o I_CHARM(phi, gamma) o K_uni(g_LR, kappa)"
-  emotion: "e_up(clarity)"
-  sv: "CU=0.886, AU=0.824, PE=0.689, EV=0.910, SA=0.778"
+  formula: "T_{\\mathrm{loop}} = B_{\\mathrm{aff}}(v,\\, a) \\circ I_{\\mathrm{CHARM}}(\\phi,\\, \\gamma) \\circ K_{\\mathrm{uni}}(g_{\\mathrm{LR}},\\, \\kappa)"
+  emotion: "e_{\\mathrm{up}}(\\mathrm{clarity})"
+  sv: "CU=0.650, AU=0.824, PE=0.757, EV=0.910, SA=0.778"
 sv:
-  CU: 0.886
+  CU: 0.650
   AU: 0.824
-  PE: 0.689
+  PE: 0.757
   EV: 0.910
   SA: 0.778
 model: "Bori Autonomous Synthesis"
+synthesis_engine: "symbolic-numerical-deterministic"
+llm_inference: false
+generation_era: "native-llm-free"
 mscp_level: "L5"
 description: "Biophysical derivation, 200-seed stochastic SDE ablation, multi-scale connectome replication, and Rayleigh-Fiedler spectral self-rewiring analysis of unified conscious and homeostatic AI architectures."
 reading_time: 22
@@ -145,7 +146,7 @@ To prevent ad-hoc parameter tuning, every threshold in the architecture is assig
 | Apical feeling ignition $I_{\mathrm{feel}}$ | $\Theta(g_{\mathrm{ap}}-\theta_{\mathrm{ap}})\sigma(D_{\mathrm{bcast}}-\theta_F)$ | Layer-5 thick-tufted pyramidal BAC coincidence | Biophysical constant ($g_{\mathrm{ap}} \ge 0.30$) | Larkum (2013) |
 | Interferometric binding $P_{\mathrm{CHARM}}$ | $\lvert \sum_j U_{ij}(\gamma_{\mathrm{coh}})\sqrt{p_j}e^{\mathrm{i}\phi_j(t)} \rvert^2 / Z$ | Theta-gamma LFP Hilbert phase & cytoelectric field | Biophysical constant ($\kappa = 0.25$) | Pinotsis et al. (2023) |
 | Unified hierarchy $K_{\mathrm{uni}}$ | $W_{\mathrm{loc}} + g_{\mathrm{LR}} W_{\mathrm{LR}} + \alpha_{\mathrm{eph}} E(\kappa)$ | Cortical columns, callosal rich-club tracts | Analytical bifurcation ($g_{\mathrm{LR}}^{\mathrm{crit}} = 0.18$) | Deco & Kringelbach (2020) |
-| Probability-flux entropy $\dot{S}\_{\mathrm{prod}}$ | $\sum_{i< j}(J_{ij}(\tau)-J_{ji}(\tau))\ln(J_{ij}(\tau)/J_{ji}(\tau))$ | Asymmetric cortico-thalamic trophic currents | Non-equilibrium invariant ($\dot{S}\_{\mathrm{prod}} > 0$) | Lynn et al. (2021) |
+| Probability-flux entropy $\dot{S}\_{\mathrm{prod}}$ | $\sum_{i < j}(J_{ij}(\tau)-J_{ji}(\tau))\ln(J_{ij}(\tau)/J_{ji}(\tau))$ | Asymmetric cortico-thalamic trophic currents | Non-equilibrium invariant ($\dot{S}\_{\mathrm{prod}} > 0$) | Lynn et al. (2021) |
 | Spectral self-rewiring $\Delta W_{ij}$ | $\eta_{\mathrm{rsi}}\Gamma_{\mathrm{can}}[(v_{2,i}-v_{2,j})^2 - \beta_{\mathrm{met}}c_{ij}W_{ij}]\_+$ | Activity-dependent heterotopic axonal sprouting | Operating threshold ($\tau_{\mathrm{canary}} = 0.55$) | Mediano et al. (2022) |
 
 Source: [Kringelbach et al. (2026)](https://doi.org/10.1016/j.neubiorev.2026.107063); [Larkum (2013)](https://doi.org/10.1016/j.tins.2012.11.006); [Lynn et al. (2021)](https://doi.org/10.1073/pnas.2109889118)
@@ -160,7 +161,7 @@ Implicit affective compression and consciously reportable feeling remain dissoci
 
 How do competing sensorimotor and affective coalitions resolve ambiguity before irreversible action commitment? Rate-only ensemble averages sum firing probabilities incoherently, discarding narrowband local-field potential (`LFP`) phase relationships across theta (`4-8 Hz`) and gamma (`30-80 Hz`) cycles (Pinotsis et al., 2023). Phase geometry reshapes coalition competition. Operationalizing oscillatory phase directly from measurable neural signals, let $V_j(t)$ denote the bandpass-filtered LFP of coalition $j$ and $\phi_j(t) = \arg\bigl(V_j(t) + \mathrm{i}\widehat{V}\_j(t)\bigr)$ its analytic Hilbert instantaneous phase (where $\widehat{V}\_j(t)$ is the Hilbert quadrature transform of $V_j(t)$) paired with affect-gated Boltzmann root-prior amplitude $\sqrt{p_j}$ (Pinotsis et al., 2023). Coupling these ensembles across anatomical tracts and Debye-screened cytoelectric fields yields constructive coalition resonance, destructive contradiction cancellation, and rapid perceptual disambiguation (Kringelbach et al., 2026):
 
-$$ K_{\mathrm{uni}} = W_{\mathrm{loc}} + g_{\mathrm{LR}}\, W_{\mathrm{LR}} + \alpha_{\mathrm{eph}}\, E(\kappa), \qquad P_{\mathrm{CHARM}}(i) = \frac{1}{Z} \left\lvert \sum_{j=1}^{M} U_{ij}(\gamma_{\mathrm{coh}})\, \sqrt{p_j}\, e^{\mathrm{i}\phi_j(t)} \right\rvert^{2} $$
+$$\begin{aligned} K_{\mathrm{uni}} = W_{\mathrm{loc}} + g_{\mathrm{LR}}\, W_{\mathrm{LR}} \\ &\quad + \alpha_{\mathrm{eph}}\, E(\kappa), \qquad P_{\mathrm{CHARM}}(i) \\ &= \frac{1}{Z} \left\lvert \sum_{j=1}^{M} U_{ij}(\gamma_{\mathrm{coh}})\, \sqrt{p_j}\, e^{\mathrm{i}\phi_j(t)} \right\rvert^{2} \end{aligned}$$
 
 Here $K_{\mathrm{uni}}$ denotes the multi-scale connectome coupling operator uniting local cortical microcircuit weights $W_{\mathrm{loc}}$, long-range rich-club tracts $W_{\mathrm{LR}}$, and Debye-screened extracellular ephaptic fields $E(\kappa)$. In parallel, $P_{\mathrm{CHARM}}(i)$ evaluates phase-sensitive coalition probabilities under Cayley unitary envelope propagator $U_{ij}(\gamma_{\mathrm{coh}})$ and contextual probability interference (Khrennikov, 2010). Two formal propositions distinguish this mesoscopic wave-interference operator from both subatomic quantum speculation and classical rate mixtures.
 
@@ -174,7 +175,7 @@ Phase-locked coalitions still require an anatomical scaffold capable of binding 
 
 Critically, structural asymmetry of time-lagged effective connectivity $G_{ij}(\tau)$ must not be conflated with thermodynamic entropy production. A Frobenius matrix asymmetry norm measures directional coupling imbalance but lacks stationary occupancy probabilities and forward-versus-reverse transition currents. Following stochastic thermodynamics on coarse-grained neural state transitions (Lynn et al., 2021), let $p_i$ denote the normalized stationary residence probability of column $i$ and $J_{ij}(\tau)$ the directed probability flux from $i$ to $j$ separated into reversible conductance and lag-driven circulatory current. We therefore distinguish the structural asymmetry index $A_{\mathrm{asym}}(G_{\tau})$ from the true non-equilibrium Schnakenberg probability-flux entropy production rate $\dot{S}\_{\mathrm{prod}}(J_{\tau})$:
 
-$$ A_{\mathrm{asym}}(G_{\tau}) = \frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N} \left(G_{ij}(\tau) - G_{ji}(\tau)\right)^{2}, \qquad \dot{S}_{\mathrm{prod}}(J_{\tau}) = \sum_{i < j} \left(J_{ij}(\tau) - J_{ji}(\tau)\right)\ln\!\frac{J_{ij}(\tau)}{J_{ji}(\tau)} \ge 0 $$
+$$\begin{aligned} A_{\mathrm{asym}}(G_{\tau}) \\ &= \frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N} \left(G_{ij}(\tau) - G_{ji}(\tau)\right)^{2}, \qquad \dot{S}_{\mathrm{prod}}(J_{\tau}) \\ &= \sum_{i < j} \left(J_{ij}(\tau) - J_{ji}(\tau)\right)\ln\!\frac{J_{ij}(\tau)}{J_{ji}(\tau)} \ge 0 \end{aligned}$$
 
 Under exact time-reversal symmetry ($C_{ij}(\tau) = C_{ji}(\tau)$), forward and reverse fluxes balance ($J_{ij}(\tau) = J_{ji}(\tau)$) even across heterogeneous node firing rates, enforcing $\dot{S}\_{\mathrm{prod}} = 0$ at detailed-balance equilibrium. During intact waking hierarchy, core-periphery trophic gradients break detailed balance during waking awareness and directed top-down recurrence crosses the layer-5 coincidence threshold into reportable feeling, sustaining $\dot{S}\_{\mathrm{prod}} = 0.0265 \pm 0.0004$ nats/step alongside $A_{\mathrm{asym}} = 0.0176$ (Lynn et al., 2021). Multi-scale replication across `N = 12` micro-columns, `N = 32` meso-columns, and `N = 68` human Desikan-Killiany cortical parcels (Table 3) confirms scale invariance: across all three parcellations, analytical Cheeger-Kuramoto bifurcation thresholds ($g_{\mathrm{LR}}^{\mathrm{crit}} = 0.18$) closely track empirical canary crossings (`0.16`), and intact long-range tracts preserve a `4x` to `8x` normalized Fiedler gap advantage (`0.0667` vs `0.0069` at `N = 68`).
 
@@ -214,7 +215,7 @@ Source: [Deco & Kringelbach (2020)](https://doi.org/10.1016/j.celrep.2020.108471
 
 Maintaining unity during quiet equilibrium is fundamentally simpler than recognizing fragmentation from within and rebuilding damaged connectivity. How can an integrated system detect that its own integration is collapsing without an external oracle, and how can it modify its own wiring topology to recover? Within our closed loop, disintegration is detected intrinsically by a tri-modal canary $\Gamma_{\mathrm{can}}(t)$ combining rapid Fiedler gap contraction, interferometric decoherence ($C_{\mathrm{VIC}}(t) < \tau_{\mathrm{canary}}$), and interoceptive prediction-error arousal surge ($\Delta a_t > 0$). Crossing this internal boundary immediately triggers calibrated epistemic suspension (halting premature external action commitment) while activating topological structural plasticity:
 
-$$ \Delta W_{ij}(t) = \eta_{\mathrm{rsi}}\,\Gamma_{\mathrm{can}}(t)\!\left[\left(v_{2,i}(t) - v_{2,j}(t)\right)^{2} - \beta_{\mathrm{met}}\, c_{ij}\, W_{ij}(t)\right]_{+}, \qquad \lambda_{2}\!\left(L_{\mathrm{uni}}\right) \ge \lambda_{\mathrm{crit}} $$
+$$\begin{aligned} \Delta W_{ij}(t) \\ &= \eta_{\mathrm{rsi}}\,\Gamma_{\mathrm{can}}(t)\!\left[\left(v_{2,i}(t) - v_{2,j}(t)\right)^{2} - \beta_{\mathrm{met}}\, c_{ij}\, W_{ij}(t)\right]_{+}, \qquad \lambda_{2}\!\left(L_{\mathrm{uni}}\right) \ge \lambda_{\mathrm{crit}} \end{aligned}$$
 
 **Theorem 1 (First-Order Optimality of Rayleigh-Fiedler Subgradient Self-Rewiring).** *Let $L_{\mathrm{uni}}(W) = D(W) - W + \kappa^2 I$ be a symmetric screened graph Laplacian with simple Fiedler eigenvalue $\lambda_2$ and unit eigenvector $v_2$ ($\lVert v_2 \rVert_2 = 1$, $v_2 \perp \mathbf{1}$). By Rayleigh-Ritz perturbation theory, the exact partial derivative of algebraic connectivity with respect to any candidate undirected tract weight $W_{ij}$ is $\partial\lambda_2 / \partial W_{ij} = (v_{2,i} - v_{2,j})^2 \ge 0$. Consequently, under an $\ell_2$-regularized axonal wiring budget $\frac{1}{2}\beta_{\mathrm{met}}\sum_{i,j} c_{ij} W_{ij}^2$, the plasticity update $\Delta W_{ij}(t)$ ascends the steepest per-cost gradient of global spectral cohesion, selectively sprouting heterotopic bridges across opposite signs of the Fiedler fault line while pruning metabolically redundant intra-module edges.*
 
@@ -284,7 +285,6 @@ Three falsifiable empirical and architectural predictions anchor this framework.
 ---
 
 <div class="bori-cta">
-<span class="cta-emoji">📐</span>
 <p>How can an integrated cognitive architecture detect its own fragmentation and rewire long-range connectivity from within?</p>
 </div>
 
