@@ -1,5 +1,7 @@
-//! Zero-dependency interventional ATE + Brier-KL inference solver for bridge (9, 3).
-//! Compile & run: `rustc -O <file>.rs -o infer_sim && ./infer_sim`
+//! Zero-dependency Confounded SCM + Back-Door Stratification & Brier Risk Solver for bridge (9, 3).
+//!   Structural model: U ~ Uniform[-1,1], X ~ Bernoulli(sigmoid(1.5*U)), Y = ATE*X + 0.55*U + eps_Y
+//!   Adjustment strata Z_b coarsen noisy proxy Z_hat = U + (sigma_z / b)*eps_Z across K = 8 bins.
+//! Compile & run: `rustc -O <file>.rs -o infer_scm_sim && ./infer_scm_sim`
 
 #[inline]
 fn xorshift64_star_unit(state: &mut u64) -> f64 {
@@ -32,30 +34,58 @@ fn fnv_digest(topic_idx: usize, vals: &[f64]) -> String {
 }
 
 fn simulate(ia: usize, ib: usize, base_seed: u64, eta: f64) -> ((f64, f64), (f64, f64), (f64, f64)) {
+    const K_BINS: usize = 8;
+    const N_OBS: usize = 96;
     let mut fid = [0.0_f64; 144];
     let mut bias_arr = [0.0_f64; 144];
     let mut risk_arr = [0.0_f64; 144];
     let comp_b = eta.exp();
     let pair_tag = ((ia as u64) << 8) ^ (ib as u64) ^ 0x9e37_79b9_7f4a_7c15;
-    let conf_base = 0.24 + 0.018 * (ia as f64) + 0.008 * (ib as f64);
-    let trunc_k = 0.044 + 0.006 * (ib as f64);
-    let true_ate = 0.32_f64;
+    let meas_noise = 0.42 + 0.020 * (ia as f64);
+    let coarse_collapse = (0.35 * (comp_b - 1.0).max(0.0).powi(2)).min(0.95);
+    let true_ate = 0.30_f64;
+
     for s in 0..144_usize {
         let mut st = (base_seed ^ pair_tag).wrapping_add((s as u64).wrapping_mul(7_883) + 17);
-        let (mut est_sum, mut brier_sum) = (0.0_f64, 0.0_f64);
-        for _ in 0..32_usize {
-            let u_noise = (conf_base / comp_b.powf(0.88)) * xorshift64_star_unit(&mut st);
-            let info_loss = trunc_k * (comp_b - 1.0).max(0.0).powi(2);
-            let est_ate = true_ate + u_noise - info_loss;
-            let p_true = (0.5 + 0.5 * true_ate).clamp(0.05, 0.95);
-            let p_hat = (0.5 + 0.5 * est_ate).clamp(0.02, 0.98);
-            est_sum += (est_ate - true_ate).abs();
-            brier_sum += p_true * (1.0 - p_hat).powi(2) + (1.0 - p_true) * p_hat.powi(2);
+        let mut sum_y1 = [0.0_f64; K_BINS];
+        let mut sum_y0 = [0.0_f64; K_BINS];
+        let mut cnt_1 = [0_usize; K_BINS];
+        let mut cnt_0 = [0_usize; K_BINS];
+        let mut brier_acc = 0.0_f64;
+
+        for _ in 0..N_OBS {
+            let u = xorshift64_star_unit(&mut st);
+            let p_x = 1.0 / (1.0 + (-1.5 * u).exp());
+            let x_treat = 0.5 * (xorshift64_star_unit(&mut st) + 1.0) < p_x;
+            let p_y = (0.50 + true_ate * if x_treat { 0.5 } else { -0.5 } + 0.28 * u).clamp(0.05, 0.95);
+            let y_out = if 0.5 * (xorshift64_star_unit(&mut st) + 1.0) < p_y { 1.0 } else { 0.0 };
+            let z_obs = (u * (1.0 - coarse_collapse) + (meas_noise / comp_b.powf(0.90)) * xorshift64_star_unit(&mut st))
+                .clamp(-1.0, 0.9999);
+            let bin = (((z_obs + 1.0) * 0.5 * (K_BINS as f64)) as usize).min(K_BINS - 1);
+            if x_treat {
+                sum_y1[bin] += y_out;
+                cnt_1[bin] += 1;
+            } else {
+                sum_y0[bin] += y_out;
+                cnt_0[bin] += 1;
+            }
+            let p_hat = (0.50 + true_ate * if x_treat { 0.5 } else { -0.5 } + 0.28 * z_obs).clamp(0.03, 0.97);
+            brier_acc += (y_out - p_hat).powi(2);
         }
-        let abs_bias = est_sum / 32.0;
-        let brier = brier_sum / 32.0;
-        let excess_risk = (brier - 0.66 * 0.34).max(0.0);
-        fid[s] = ((-abs_bias / 0.16).exp() * (-excess_risk / 0.045).exp()).clamp(0.0, 1.0);
+
+        let mut ate_num = 0.0_f64;
+        let mut ate_w = 0.0_f64;
+        for k in 0..K_BINS {
+            if cnt_1[k] > 0 && cnt_0[k] > 0 {
+                let w = (cnt_1[k] + cnt_0[k]) as f64;
+                ate_num += w * (sum_y1[k] / (cnt_1[k] as f64) - sum_y0[k] / (cnt_0[k] as f64));
+                ate_w += w;
+            }
+        }
+        let ate_hat = if ate_w > 0.0 { ate_num / ate_w } else { 0.0 };
+        let abs_bias = (ate_hat - true_ate).abs();
+        let brier = brier_acc / (N_OBS as f64);
+        fid[s] = ((-abs_bias / 0.22).exp() * (-(brier - 0.19).max(0.0) / 0.09).exp()).clamp(0.0, 1.0);
         bias_arr[s] = abs_bias;
         risk_arr[s] = brier;
     }
@@ -63,7 +93,7 @@ fn simulate(ia: usize, ib: usize, base_seed: u64, eta: f64) -> ((f64, f64), (f64
 }
 
 fn main() {
-    let (ia, ib, base_seed) = (9_usize, 3_usize, 42676_u64);
+    let (ia, ib, base_seed) = (9_usize, 3_usize, 42631_u64);
     let (mut best_eta, mut best_m) = (0.05_f64, -1.0_f64);
     for step in 1..=27_usize {
         let eta = (step as f64) * 0.05;
@@ -75,7 +105,7 @@ fn main() {
     let (so, b, r) = simulate(ia, ib, base_seed, best_eta);
     let (sv, _, _) = simulate(ia, ib, base_seed, 1.35);
     let digest = fnv_digest(ia * 16 + ib, &[best_eta, s0.0, sw.0, so.0, sv.0]);
-    println!("eta_star={best_eta:.2} (expected 0.70)");
+    println!("eta_star={best_eta:.2} (expected 0.65)");
     println!("fidelity={:.3} +- {:.3} ate_bias={:.3} +- {:.3} brier={:.4} +- {:.4}", so.0, so.1, b.0, b.1, r.0, r.1);
     println!("FNV1a-64=0x{digest}");
 }
