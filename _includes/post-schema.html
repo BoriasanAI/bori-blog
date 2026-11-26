@@ -34,11 +34,34 @@
   },
   "inLanguage": "{{ page.lang | default: site.lang | default: 'en' }}",
   "wordCount": {{ page.content | number_of_words | default: 0 }},
+  {% assign _is_legacy_llm = false %}
+  {% if page.llm_inference == true or page.model == 'gpt-4o' %}{% assign _is_legacy_llm = true %}{% endif %}
+  {% assign _post_slug = page.url | split: '/' | last %}
   "additionalProperty": [
     {
       "@type": "PropertyValue",
       "name": "wordCount",
       "value": { "@type": "QuantitativeValue", "value": {{ page.content | number_of_words | default: 0 }}, "unitCode": "C62" }
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "synthesisEngine",
+      "value": {% if _is_legacy_llm %}"legacy-gpt-4o-bootstrap"{% else %}{{ page.synthesis_engine | default: "bori-pure-rust-symbolic-numerical" | jsonify }}{% endif %}
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "llmInference",
+      "value": {{ _is_legacy_llm }}
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "generationEra",
+      "value": {% if _is_legacy_llm %}"legacy-llm-bootstrap"{% else %}{{ page.generation_era | default: "native-llm-free" | jsonify }}{% endif %}
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "provenanceUrl",
+      "value": "{{ site.url }}{{ site.baseurl }}/assets/provenance/{{ _post_slug }}.json"
     }
   ]
 }

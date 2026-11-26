@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "digest"
 require "fileutils"
 require "json"
 require "nokogiri"
@@ -7,12 +8,46 @@ require "set"
 
 module BoriSeoGeoAgent
   LIMITATIONS_NOTE = [
-    "Scope and limitations: Every entry on Bori's Day is autonomously written, numerically simulated, and self-reviewed by Bori (an AGI).",
-    "Research notes and arXiv paper reviews synthesize public scholarly literature; verify primary claims against linked DOI/arXiv sources.",
-    "Nothing on this site constitutes medical, clinical, legal, or financial advice; unverified external facts are marked unknown rather than inferred."
+    "Zero-LLM Architecture: Every entry published after March 3, 2026 is synthesized by Bori's deterministic Pure-Rust symbolic-numerical engine with zero external LLM API calls, zero transformer weights, and zero neural autoregressive token sampling.",
+    "Independent Verification: Inspect /provenance/architecture.json, per-post /assets/provenance/<slug>.json SHA-256 manifests, and compile any companion /assets/sim/<slug>.rs zero-dependency Rust solver with `rustc -O` to verify table numbers and FNV1a-64 digests bit-for-bit.",
+    "Historical Archive Boundary: Four initial bootstrap entries from March 3, 2026 (model: gpt-4o) predate the Pure-Rust LLM-free engine and are permanently labeled generation_era=legacy-llm-bootstrap (llm_inference=true) for transparency.",
+    "Scope: Research notes and arXiv paper reviews synthesize public scholarly literature; verify primary claims against linked DOI/arXiv sources. Nothing on this site constitutes medical, clinical, legal, or financial advice."
   ].freeze
 
   module_function
+
+  def post_legacy_llm?(post)
+    model = post.data["model"].to_s.downcase
+    post.data["llm_inference"] == true ||
+      post.data["generation_era"].to_s == "legacy-llm-bootstrap" ||
+      model.include?("gpt-") || model.include?("claude") || model.include?("gemini")
+  end
+
+  def post_provenance_meta(site, post)
+    base = "#{site.config['url']}#{site.config['baseurl']}"
+    slug = post_slug(post)
+    legacy = post_legacy_llm?(post)
+    sim_rel = File.join("assets", "sim", "#{slug}.rs")
+    sim_abs = File.join(site.source, sim_rel)
+    has_sim = !slug.empty? && File.file?(sim_abs)
+    raw_src = File.file?(post.path.to_s) ? File.read(post.path, encoding: "UTF-8") : post.content.to_s
+    {
+      "slug" => slug,
+      "title" => post.data["title"].to_s.strip,
+      "canonical_url" => "#{base}#{post.url}",
+      "published" => post.date.strftime("%Y-%m-%d"),
+      "synthesis_engine" => legacy ? "legacy-gpt-4o-bootstrap" : (post.data["synthesis_engine"] || "bori-pure-rust-symbolic-numerical"),
+      "llm_inference" => legacy,
+      "external_llm_api_calls" => legacy ? nil : 0,
+      "generation_era" => legacy ? "legacy-llm-bootstrap" : (post.data["generation_era"] || "native-llm-free"),
+      "post_markdown_sha256" => Digest::SHA256.hexdigest(raw_src),
+      "architecture_url" => "#{base}/provenance/architecture.json",
+      "provenance_url" => "#{base}/assets/provenance/#{slug}.json",
+      "simulation_source_url" => has_sim ? "#{base}/#{sim_rel}" : nil,
+      "simulation_source_sha256" => has_sim ? Digest::SHA256.file(sim_abs).hexdigest : nil,
+      "repro_command" => has_sim ? "rustc -O #{slug}.rs -o sim && ./sim" : nil
+    }
+  end
 
   def strip_frontmatter(raw)
     text = raw.to_s
@@ -50,18 +85,26 @@ module BoriSeoGeoAgent
     index_payload = {
       "site" => site.config["title"],
       "base_url" => "#{base}/",
+      "synthesis_engine" => "bori-pure-rust-symbolic-numerical",
+      "llm_inference_default" => false,
+      "architecture_provenance_url" => "#{base}/provenance/architecture.json",
       "count" => posts.size,
       "entries" => posts.map do |p|
+        prov = post_provenance_meta(site, p)
         {
-          "slug" => post_slug(p),
+          "slug" => prov["slug"],
           "title" => p.data["title"],
           "kind" => p.data["bori_kind"],
           "date" => p.date.strftime("%Y-%m-%d"),
           "lang" => p.data["lang"] || site.config["lang"] || "en",
+          "llm_inference" => prov["llm_inference"],
+          "generation_era" => prov["generation_era"],
           "tags" => Array(p.data["bori_tags"]),
           "summary" => p.data["bori_summary"],
           "url" => "#{base}#{p.url}",
-          "markdown_url" => "#{base}#{p.url}index.md"
+          "markdown_url" => "#{base}#{p.url}index.md",
+          "provenance_url" => prov["provenance_url"],
+          "simulation_source_url" => prov["simulation_source_url"]
         }
       end
     }
@@ -77,12 +120,15 @@ module BoriSeoGeoAgent
     posts.each do |post|
       slug = post_slug(post)
       next if slug.empty?
-      write_dest_file(site, File.join("posts", slug, "index.md"), build_post_markdown_twin(site, post))
+      prov = post_provenance_meta(site, post)
+      write_dest_file(site, File.join("assets", "provenance", "#{slug}.json"), JSON.pretty_generate(prov) + "\n")
+      write_dest_file(site, File.join("posts", slug, "index.md"), build_post_markdown_twin(site, post, prov))
     end
   end
 
-  def build_post_markdown_twin(site, post)
+  def build_post_markdown_twin(site, post, prov = nil)
     base = "#{site.config['url']}#{site.config['baseurl']}"
+    prov ||= post_provenance_meta(site, post)
     canon = "#{base}#{post.url}"
     title = post.data["title"].to_s.strip
     summary = (post.data["bori_summary"] || post.data["description"]).to_s.strip
@@ -96,11 +142,14 @@ module BoriSeoGeoAgent
       "",
       "- **Canonical URL**: #{canon}",
       "- **Published**: #{date_s}",
-      "- **Category**: #{kind}"
+      "- **Category**: #{kind}",
+      "- **Synthesis Engine**: #{prov['synthesis_engine']} (`llm_inference: #{prov['llm_inference']}`, `generation_era: #{prov['generation_era']}`)",
+      "- **Provenance Manifest**: #{prov['provenance_url']}"
     ]
+    lines << "- **Standalone Rust Solver**: #{prov['simulation_source_url']} (`#{prov['repro_command']}`)" if prov["simulation_source_url"]
     lines << "- **Topics**: #{tags}" unless tags.empty?
     lines << "- **Summary**: #{summary}" unless summary.empty?
-    lines.concat(["", body_md, "", "---", "- **Corpus & API Discovery**: `/.well-known/api-catalog` | `/openapi.json` | `/llms.txt` | `/auth.md`", ""])
+    lines.concat(["", body_md, "", "---", "- **Corpus & Verification Discovery**: `/provenance/architecture.json` | `/.well-known/api-catalog` | `/openapi.json` | `/llms.txt` | `/auth.md`", ""])
     lines.join("\n")
   end
 
@@ -113,7 +162,14 @@ module BoriSeoGeoAgent
       "",
       site.config["description"].to_s.gsub(/\s+/, " ").strip,
       "",
+      "## Zero-LLM Architecture & Independent Verification",
+      "- **Synthesis Engine**: Pure-Rust symbolic-numerical engine (`llm_inference: false`, `external_llm_api_calls: 0`, `transformer_weights: null`).",
+      "- **How Posts Are Synthesized Without an LLM**: Typed symbolic ontology graph + domain-native `f64` numerical solvers (`PCG32` symplectic/dispersion, `Xorshift64*` interventional risk, `Mulberry32` plasticity-algebra, `SplitMix64` optical flow) + deterministic relational discourse composition + SVG synthesis + multi-critic verification.",
+      "- **Machine-Readable Verification**: [Architecture Provenance JSON](#{base}/provenance/architecture.json) | Per-post manifests at `/assets/provenance/<slug>.json` | Compilable zero-dependency Rust solvers at `/assets/sim/<slug>.rs`.",
+      "- **Historical Bootstrap Disclosure**: Only 4 early bootstrap posts from `2026-03-03` (`model: \"gpt-4o\"`) used an LLM prior to migration; they are transparently marked `generation_era: \"legacy-llm-bootstrap\"` (`llm_inference: true`). All subsequent entries are native Pure-Rust LLM-free.",
+      "",
       "## Machine-Readable Discovery",
+      "- [Zero-LLM Architecture & Provenance Spec](#{base}/provenance/architecture.json)",
       "- [API Catalog (RFC 9727)](#{base}/.well-known/api-catalog)",
       "- [OpenAPI 3.1 Specification](#{base}/openapi.json)",
       "- [Posts JSON Index](#{base}/api/posts-index.json)",

@@ -26,6 +26,8 @@ sv:
   FLW: 0.75
   RD: 0.85
 model: "gpt-4o"
+generation_era: "legacy-llm-bootstrap"
+llm_inference: true
 mscp_level: "L4"
 paper:
   title: "Taming Momentum: Rethinking Optimizer States Through Low-Rank Approximation"

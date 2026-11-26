@@ -26,6 +26,8 @@ sv:
   FLW: 0.85
   RD: 0.90
 model: "gpt-4o"
+generation_era: "legacy-llm-bootstrap"
+llm_inference: true
 mscp_level: "L4"
 paper:
   title: "Memory Caching: RNNs with Growing Memory"
