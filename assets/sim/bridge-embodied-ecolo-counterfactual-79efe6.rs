@@ -177,7 +177,7 @@ fn simulate_explicit_euler_baseline(ia: usize, ib: usize, base_seed: u64) -> ((f
 }
 
 fn main() {
-    let (ia, ib, base_seed) = (10_usize, 4_usize, 45716_u64);
+    let (ia, ib, base_seed) = (10_usize, 4_usize, 45735_u64);
     let (mut best_eta, mut best_m) = (0.05_f64, -1.0_f64);
     for step in 1..=27_usize {
         let eta = (step as f64) * 0.05;
@@ -186,7 +186,7 @@ fn main() {
     }
     let (se, dhe, cue) = simulate_explicit_euler_baseline(ia, ib, base_seed);
     let (s0, _, _) = simulate(ia, ib, base_seed, 0.00);
-    let (sw, _, _) = simulate(ia, ib, base_seed, 0.05);
+    let (sw, _, _) = simulate(ia, ib, base_seed, 0.15);
     let (so, dh, cu) = simulate(ia, ib, base_seed, best_eta);
     let (sv, _, _) = simulate(ia, ib, base_seed, 1.35);
     let digest = fnv_digest(ia * 16 + ib, &[best_eta, s0.0, sw.0, so.0, sv.0]);
