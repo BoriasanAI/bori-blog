@@ -176,7 +176,7 @@ $$ S_{\mathrm{info}}(\eta) = \frac{1}{144}\sum_{s=1}^{144} \exp\!\left(-\frac{\l
 
 Asymptotic regime analysis of *Why Two-Part Codes and Algorithmic Simplicity Alone Fails Without Hippocampal Ripples and Neocortical Interleaving in Learning Theory-Memory Systems* separates conserved quantity mapping structure from single-corridor control variable tuning. Perturbing the main control coordinate while holding limit fluxes constant exposes which configuration couplings carry genuine load throughout order-of-magnitude scale shifts.
 
-Cross-checking closed-form limiting slopes for *Why Two-Part Codes and Algorithmic Simplicity Alone Fails Without Hippocampal Ripples and Neocortical Interleaving in Learning Theory-Memory Systems* against finite-ensemble realizations guards against discretization artifacts near the pivotal resilience edge. Agreement at joint subcritical and supercritical asymptotes anchors deduction in falsifiable linkage law rather than interpolation.
+Cross-checking closed-form limiting slopes for *Why Two-Part Codes and Algorithmic Simplicity Alone Fails Without Hippocampal Ripples and Neocortical Interleaving in Learning Theory-Memory Systems* against finite-ensemble realizations guards against discretization artifacts around the pivotal resilience edge. Agreement at joint subcritical and supercritical asymptotes anchors deduction in falsifiable linkage law rather than interpolation.
 
 
 Formalizing the disturbance bound explicitly, wherein $\varepsilon_t \ge 0$ denotes step residual norm and $\gamma \in (0, 1)$ denotes contraction rate:
