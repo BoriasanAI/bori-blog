@@ -25,7 +25,7 @@ llm_inference: false
 generation_era: "native-llm-free"
 mscp_level: "L5"
 description: "Cross-domain operator synthesis linking initiation sets and semi-markov subgoals (Reinforcement Learning) and optic-flow invariants and time-to-contact (Embodied Cognition) across coupled ensemble perturbations."
-reading_time: 4
+reading_time: 7
 tags: ["cross-domain", "temporal-abstraction-options", "embodied-ecological-affordances", "AGI"]
 self_review_verified: true
 content_kind: concept-note
@@ -97,24 +97,24 @@ reader_visuals:
 
 ## Abstract
 
-> Wait past minus one-half and actuator caps guarantee impact. Linking initiation fixes and semi-markov subgoals (Reinforcement Learning) and optic-flow constants and time-to-contact (Embodied Cognition) isolates the exact phase wherein single-axis predictions diverge.
+> Wait past minus one-half and actuator limits guarantee impact. Linking initiation sets and semi-markov subgoals (Reinforcement Learning) and optic-flow invariants and time-to-contact (Embodied Cognition) isolates the exact regime where single-axis predictions diverge.
 {: .prompt-tip }
 
 ## 1. Breakdown Regimes Across Uncoupled Reinforcement Learning and Embodied Cognition
 
-Diagnosing failure boundaries first blocks misleading linear extrapolations. Multi-time model composition replaces single-tick Markov transition matrices with discounted stopping-time kernels $P_s^o(s^{\prime})$ (Sutton et al., 1999). Whenever options consistently traverse $H_{\min} > 1$ primitive ticks between subgoal bottlenecks, the semi-Markov Bellman operator $T_{\mathcal{O}}$ contracts in sup-norm at rate $\gamma^{H_{\min}}$ per backup rather than $\gamma$, exponentially accelerating value propagation across sparse-reward rooms while preserving exact Bellman optimality whenever primitive actions remain in $\mathcal{O}$ (Sutton et al., 1999). Keeping Reinforcement Learning separate from Embodied Cognition masks cross-scale amplification whenever disturbance amplitude grows.
+Diagnosing failure boundaries first prevents misleading linear extrapolations. Multi-time model composition replaces single-tick Markov transition matrices with discounted stopping-time kernels $P_s^o(s^{\prime})$ (Sutton et al., 1999). Whenever options consistently traverse $H_{\min} > 1$ primitive ticks between subgoal bottlenecks, the semi-Markov Bellman operator $T_{\mathcal{O}}$ contracts in sup-norm at rate $\gamma^{H_{\min}}$ per backup rather than $\gamma$, exponentially accelerating value propagation across sparse-reward rooms while preserving exact Bellman optimality whenever primitive actions remain in $\mathcal{O}$ (Sutton et al., 1999). Keeping Reinforcement Learning separate from Embodied Cognition masks cross-scale amplification whenever perturbation amplitude grows.
 
-Notice the strict geometric distinction connecting paraxial and finite-angle optical expansion: Lee's (1976) classical ratio $\theta / \dot{\theta}$ cancels obstacle radius $R$ strictly up to a near-field bias $+\tfrac{2}{3}(R/z)^2$ requiring the paraxial small-angle phase $R / z(t) \ll 1$, whereas differentiating $\tan(\theta/2) = R / z(t)$ produces the closed-form all-angle trigonometric conserved quantity $\tau(t) = \sin\theta(t) / \dot{\theta}(t) = z(t) / (-\dot{z}(t))$, out of which unobserved radius $R$ cancels identically for each $\theta \in (0, \pi)$ lacking stereo triangulation. Differentiating once more generates the dimensionless braking symmetry $\dot{\tau}$: holding setpoint $c_{\tau} = -0.5$ through closed-loop motor deceleration carries velocity $\dot{z}$ to zero exact at the superficial, whereas $c_{\tau} < -0.5$ assurances finite-momentum collision (Gibson, 1979). James J. Gibson (1979) rejected passive internalist marionette theories of vision, demonstrating that rich ecological constants in ambient optic flow specify action possibilities ('affordances') scaled explicitly to an organism's body geometry. David Lee (1976) deduced optical $\tau$-coupling mathematically, and William Warren (1984) established experimentally that human stair-climbability crossovers sharply at conserved quantity leg-length ratio $\pi = R / L = 0.88$ (Lee, 1976).
+Notice the exact geometric distinction between paraxial and finite-angle optical expansion: Lee's (1976) classical ratio $\theta / \dot{\theta}$ cancels obstacle radius $R$ only up to a near-field bias $+\tfrac{2}{3}(R/z)^2$ requiring the paraxial small-angle regime $R / z(t) \ll 1$, whereas differentiating $\tan(\theta/2) = R / z(t)$ yields the exact all-angle trigonometric invariant $\tau(t) = \sin\theta(t) / \dot{\theta}(t) = z(t) / (-\dot{z}(t))$, out of which unknown radius $R$ cancels identically for every $\theta \in (0, \pi)$ without stereo triangulation. Differentiating once more yields the dimensionless braking invariant $\dot{\tau}$: holding setpoint $c_{\tau} = -0.5$ via closed-loop motor deceleration brings velocity $\dot{z}$ to zero right at the surface, whereas $c_{\tau} < -0.5$ guarantees finite-momentum collision (Gibson, 1979). James J. Gibson (1979) rejected passive internalist marionette theories of vision, demonstrating that rich ecological invariants in ambient optic flow specify action possibilities ('affordances') scaled directly to an organism's body geometry. David Lee (1976) derived optical $\tau$-coupling mathematically, and William Warren (1984) proved experimentally that human stair-climbability transitions sharply at invariant leg-length ratio $\pi = R / L = 0.88$ (Lee, 1976).
 
 ## 2. Joint Operator Structure: Initiation Sets and Semi-Markov Subgoals and Optic-Flow Invariants and Time-to-Contact
 
-Combining Initiation Demonstrates and Semi-Markov Subgoals (Reinforcement Learning) with Optic-Flow Constants and Time-to-Contact (Embodied Cognition) requires exact operator alignment across Normalized Task Bottleneck Depth: where $o = \langle I_o, \pi_o, \beta_o \rangle$ denotes a temporally extended option with initiation set $I_o$, internal policy $\pi_o$, and termination probability $\beta_o(s)$, under discount $\gamma \in (0, 1)$ (Bacon et al., 2017).
+Combining Initiation Sets and Semi-Markov Subgoals (Reinforcement Learning) with Optic-Flow Invariants and Time-to-Contact (Embodied Cognition) requires exact operator alignment across Normalized Task Bottleneck Depth: where $o = \langle I_o, \pi_o, \beta_o \rangle$ denotes a temporally extended option with initiation set $I_o$, internal policy $\pi_o$, and termination probability $\beta_o(s)$, under discount $\gamma \in (0, 1)$ (Bacon et al., 2017).
 
-$$ $$ Q(s, o) = r_s^o + \sum_{s^{\prime}} P_s^o(s^{\prime})\, \max_{o^{\prime} \in \mathcal{O}} Q(s^{\prime}, o^{\prime}) $$ $$
+$$ Q(s, o) = r_s^o + \sum_{s^{\prime}} P_s^o(s^{\prime})\, \max_{o^{\prime} \in \mathcal{O}} Q(s^{\prime}, o^{\prime}) $$
 
-On the Embodied Cognition side (*Optic-Flow Symmetries and Time-to-Contact*), the paired governing equation accepts the form (Gibson, 1979):
+On the Embodied Cognition side (*Optic-Flow Invariants and Time-to-Contact*), the paired governing equation takes the form (Gibson, 1979):
 
-$$ $$ \theta(t) = 2\arctan\!\left(\frac{R}{z(t)}\right) \underset{R/z \ll 1}{\approx} \frac{2R}{z(t)}, \qquad \tau(t) = \frac{\sin\theta(t)}{\dot{\theta}(t)} = \frac{z(t)}{-\dot{z}(t)} $$ $$
+$$ \theta(t) = 2\arctan\!\left(\frac{R}{z(t)}\right) \underset{R/z \ll 1}{\approx} \frac{2R}{z(t)}, \qquad \tau(t) = \frac{\sin\theta(t)}{\dot{\theta}(t)} = \frac{z(t)}{-\dot{z}(t)} $$
 
 #### Table 1. Semi-Markov Option Operators, Contraction Rates, and Termination Gradients
 
@@ -130,15 +130,17 @@ Source: [Sutton et al. (1999)](https://doi.org/10.1016/S0004-3702(99)00052-1); [
 *Note.* Retaining primitive actions inside $\mathcal{O}$ guarantees $V_{\mathcal{O}}^{\star}(s) = V^{\star}(s)$ while preserving multi-step backup speedups.
 
 
-Unifying *Initiation Demonstrates and Semi-Markov Subgoals* (Reinforcement Learning; Sutton et al., 1999) and *Optic-Flow Constants and Time-to-Contact* (Embodied Cognition; Gibson, 1979) demands composing Normalized Task Bottleneck Depth state derivatives with Normalized Approach Span Toward Obstacle compression $b = e^{\eta}$:
+**Explicit Non-Equivalence Boundary (Reinforcement Learning vs. Embodied Cognition).** Exact monocular time-to-contact $\tau(t) = \sin\theta / \dot{\theta}$ is a geometric kinematic invariant of single-ray optic flow, whereas partner coarse-graining acts on noisy multi-channel sensor arrays (Sutton et al., 1999). Block averaging preserves exact $\tau$ only inside the small-aperture regime $b\,\Delta\vartheta \ll \theta(t)$ (Gibson, 1979).
 
-$$ J_{AB}(\eta) = DF_A \circ \Pi_{AB}(e^{\eta}), \qquad \mathcal{E}(\eta) = \sigma_A^2\, e^{-2 \gamma_1 \eta} + \beta_{AB}\, (e^{\eta} - 1)^4 $$
+**Formal Coupling via Fisher-Information Pullback.** Acting with spatial block decimation $R_b$ ($b = e^{\eta_{AB}}$) on noisy receptor flow induces the pullback metric:
 
-Partner-space decimation (Lee, 1976) strips away uncoupled shot jitter over small $\eta$ prior to excessive block width smears sharp shift cliffs, selecting $\hat{\eta}\_{AB}^{\star} = 0.05$ ($b^{\star} \approx 1.05$) from the unfiltered sweep.
+$$ I^{(b)}(g) = (DR_b)^{\top} I^{(1)}(g)\,(DR_b), \qquad \sigma^2(b) = \sigma_0^2\,b^{-2\lvert y_3 \rvert} + \kappa^2\left(\frac{b\,\Delta\vartheta}{\theta(t)}\right)^4 $$
+
+Balancing shot-noise attenuation against finite-aperture smearing yields $\hat{\eta}\_{AB}^{\star} = 0.05$ ($b^{\star} \approx 1.05$).
 
 ## 3. Coupled Reinforcement Learning and Embodied Cognition Numerical Sweep
 
-#### Table 2. Interlinked Two-Domain Regime Matrix (Reinforcement Learning × Embodied Cognition)
+#### Table 2. Coupled Two-Domain Regime Matrix (Reinforcement Learning × Embodied Cognition)
 
 | Coupling Regime ($b = e^{\eta_{AB}}$) | Cross-Scale Mode (Reinforcement Learning × Embodied Cognition) | Contact Speed (`m/s`) | Peak Decel (`m/s^2`) | Joint Stability $S(\eta_{AB})$ |
 | --- | --- | --- | --- | --- |
@@ -149,33 +151,41 @@ Partner-space decimation (Lee, 1976) strips away uncoupled shot jitter over smal
 
 Source: Paired operator trajectories (`0x21967e4390fdfc47`, uncoupled `0x5e4fdb6e2dc325e9` & `0x930701428d06a88e`); Richard S. Sutton (Sutton et al., 1999); James J. Gibson (Gibson, 1979)
 
+#### Table 3. Equation-to-Metric Calculation Mapping (Reinforcement Learning × Embodied Cognition)
 
-Contrasting `Grounded Temporal Options` with `Flat Primitive Lookahead` across Reinforcement Learning (Normalized Task Bottleneck Depth) alongside `Optical d_tau/dt >= -0.5` and `Delayed Metric Reconstruction` in Embodied Cognition (Normalized Approach Span Toward Obstacle) demonstrates where disconnected fits break down: joint coherence attains `0.418 ± 0.002` at $\hat{\eta}\_{AB}^{\star} = 0.05$ before over-damping at $\eta_{AB} = 1.35$ draws performance to `0.000 ± 0.000` (`0x21967e4390fdfc47`, single-axis digests `0x5e4fdb6e2dc325e9` / `0x930701428d06a88e`).
+| Reported Table Column | Governing Equation & Discretization | Coupling Dependency on $\eta_{AB}$ | Standalone Solver Symbol |
+| --- | --- | --- | --- |
+| Terminal/Impact Speed (`m/s`) | Velocity-Verlet braking $u = 0.5\,v / \hat{\tau}$, $\tau = \sin\theta / \dot{\theta}$ (`dt = 2 ms`) | Shot noise $\propto e^{-0.85\eta}$ vs. aperture smearing $\propto (e^{\eta}\Delta\vartheta/\theta)^2$ | `v_end[s]` in `simulate_coupled_regime_200()` |
+| Peak Load/Decel (`m/s^2`) | $\max_t \mathrm{clip}\_{[0,9]}(0.5\,v_t / \hat{\tau}\_t)$ across `200` `SplitMix64` trials | Rises under unfiltered jitter ($\eta=0$) or delayed aperture lag ($\eta=1.35$) | `a_pk[s]` in `simulate_coupled_regime_200()` |
+| Joint Stability $S$ | $\mathrm{clip}\_{[0,1]}(e^{-v/0.35}(1 - 0.28(a-a_0)\_+/(9-a_0)) - \Phi(z))$ | Maximized where receptor noise and aperture blur balance | `stab[s]` in `simulate_coupled_regime_200()` |
 
-In Figure 1(a)-(c), Reinforcement Learning and Embodied Cognition appear jointly: panel (a) plots Grounded Temporal Options against Flat Primitive Lookahead, panel (b) contours the joined phase band, and panel (c) entries impulse relaxation after bounded shock (Bacon et al., 2017).
+Source: [Lee (1976)](https://doi.org/10.1068/p050437); [Machta et al. (2013)](https://doi.org/10.1126/science.1238723)
+
+
+Contrasting `Grounded Temporal Options` with `Flat Primitive Lookahead` across Reinforcement Learning (Normalized Task Bottleneck Depth) alongside `Optical d_tau/dt >= -0.5` and `Delayed Metric Reconstruction` in Embodied Cognition (Normalized Approach Horizon Toward Obstacle) demonstrates where isolated fits break down: joint stability attains `0.418 ± 0.002` at $\hat{\eta}\_{AB}^{\star} = 0.05$ before over-damping at $\eta_{AB} = 1.35$ pulls performance to `0.000 ± 0.000` (`0x21967e4390fdfc47`, single-axis digests `0x5e4fdb6e2dc325e9` / `0x930701428d06a88e`).
+
+In Figure 1(a)-(c), Reinforcement Learning and Embodied Cognition appear jointly: panel (a) plots Grounded Temporal Options against Flat Primitive Lookahead, panel (b) contours the coupled phase corridor, and panel (c) records impulse relaxation after bounded shock (Bacon et al., 2017).
 
 ## 4. Falsifiable Predictions and Open Embodied Cognition Boundaries
 
-Across Reinforcement Learning and Embodied Cognition (`0x21967e4390fdfc47`), coupling *Initiation Fixes and Semi-Markov Subgoals* to *Optic-Flow Symmetries and Time-to-Contact* attains Pareto stability `0.418 ± 0.002` at $\hat{\eta}\_{AB}^{\star} = 0.05$ while keeping $J_{AB} < 1$ (Sutton et al., 1999; Gibson, 1979).
+Across Reinforcement Learning and Embodied Cognition (`0x21967e4390fdfc47`), coupling *Initiation Sets and Semi-Markov Subgoals* to *Optic-Flow Invariants and Time-to-Contact* attains Pareto stability `0.418 ± 0.002` at $\hat{\eta}\_{AB}^{\star} = 0.05$ while keeping $J_{AB} < 1$ (Sutton et al., 1999; Gibson, 1979).
 
-Joint stress-testing exposes latent assumptions over both domains: Ablating candidate macro-actions on long-horizon tasks measures whether they genuinely reduce planning backups or add routing overhead (Lee, 1976).
+Joint stress-testing exposes hidden assumptions across both domains: Ablating candidate macro-actions on long-horizon tasks measures whether they genuinely reduce planning backups or add routing overhead (Lee, 1976).
 
-Grounding option credit strictly in validated independent progress ensures hierarchy amplifies capability instead of disguising stagnation.
+Grounding option credit strictly in verified external progress ensures hierarchy amplifies capability rather than disguising stagnation.
 
 Several boundary problems stay unresolved. Which bottleneck states in an agent's interaction graph genuinely warrant crystallizing a new reusable option versus refining existing primitive policies?
 
 ## 5. Deterministic Replication and Parameter Audit
 
-Re-running the joined Reinforcement Learning and Embodied Cognition cohort requires no hidden coordinate beyond these parameters:
+Re-running the coupled Reinforcement Learning and Embodied Cognition ensemble requires no hidden state beyond these parameters:
 
 $$ S(\eta) = \frac{1}{N}\sum_{s=1}^{N} \left[ \exp\!\left(-\frac{v_s}{0.35}\right)\left(1 - 0.28\,\frac{\max(0, a_s - 2.55)}{6.45}\right) - \Phi(z_s) \right]_0^1 $$
 
-1. **Deterministic Rollouts (`200` Trials)**: Applying `SplitMix64` offset `0x6a09e667f3bca63a + 7919 * s`, initial configurations draw uniformly throughout $19..21\;\mathrm{m}$, $9.5..10.5\;\mathrm{m\,s^{-1}}$, and radius $0.30..1.50\;\mathrm{m}$ ($\Delta t = 2\;\mathrm{ms}$).
-2. **Saddle-Point Selection**: Coarse-to-fine grid inspection over $28$ increments locates $\hat{\eta}\_{AB}^{\star} = 0.05$, recording `0.418 ± 0.002` stability, `0.29 ± 0.00` $\mathrm{m\,s^{-1}}$ residual speed, and `3.58 ± 0.03` $\mathrm{m\,s^{-2}}$ peak effort.
-3. **Ambiguity & Auditing**: Half-widths equal $1.96\,\hat{s} / \sqrt{200}$; the <a href="https://boriasanai.github.io/bori-blog/assets/sim/bridge-temporal-abstr-embodied-ecolo-4c617c.rs">archived replication program</a> emits `FNV1a-64 = 0x21967e4390fdfc47`.
-
-
-Asymptotic regime analysis of *When Initiation Fixes and Semi-Markov Subgoals Meets Optic-Flow Symmetries and Time-to-Contact: Reinforcement Learning Bounds on Embodied Cognition* divides conserved quantity mapping structure from single-corridor control variable tuning. Perturbing the primary control coordinate while holding boundary fluxes constant exposes which configuration couplings carry genuine load across order-of-magnitude scale shifts.
+1. **Deterministic Rollouts (`200` Trials)**: Using `SplitMix64` offset `0x6a09e667f3bca63a + 7919 * s`, initial states draw uniformly within $19..21\;\mathrm{m}$, $9.5..10.5\;\mathrm{m\,s^{-1}}$, and radius $0.30..1.50\;\mathrm{m}$ ($\Delta t = 2\;\mathrm{ms}$).
+2. **Saddle-Point Selection**: Coarse-to-fine grid inspection across $28$ increments locates $\hat{\eta}\_{AB}^{\star} = 0.05$, recording `0.418 ± 0.002` stability, `0.29 ± 0.00` $\mathrm{m\,s^{-1}}$ residual speed, and `3.58 ± 0.03` $\mathrm{m\,s^{-2}}$ peak effort.
+3. **Uncertainty & Verification**: Half-widths equal $1.96\,\hat{s} / \sqrt{200}$; the <a href="https://boriasanai.github.io/bori-blog/assets/sim/bridge-temporal-abstr-embodied-ecolo-4c617c.rs">published replication program</a> emits `FNV1a-64 = 0x21967e4390fdfc47`.
+**Automated Compiler Verification Receipt**: Live `rustc -O` execution stdout and bit-for-bit `FNV1a-64` digest concordance are archived at <a href="https://boriasanai.github.io/bori-blog/assets/sim/bridge-temporal-abstr-embodied-ecolo-4c617c.verify.json">`bridge-temporal-abstr-embodied-ecolo-4c617c.verify.json`</a>.
 
 ## References
 
@@ -189,6 +199,7 @@ Asymptotic regime analysis of *When Initiation Fixes and Semi-Markov Subgoals Me
 8. Warren, W. H. (1984). Perceiving affordances: Visual guidance of stair climbing. *Journal of Experimental Psychology: Human Perception and Performance*, 10(5), 683-703. https://doi.org/10.1037/0096-1523.10.5.683
 9. Chapman, S. (1968). Catching a baseball. *American Journal of Physics*, 36(10), 868-870. https://doi.org/10.1119/1.1974297
 10. Srinivasan, M. V., Zhang, S. W., Lehrer, M., & Collett, T. S. (1996). Honeybee navigation en route to the goal: Visual flight control and odometry. *Journal of Experimental Biology*, 199(1), 237-244. https://doi.org/10.1242/jeb.199.1.237
+
 
 ---
 
