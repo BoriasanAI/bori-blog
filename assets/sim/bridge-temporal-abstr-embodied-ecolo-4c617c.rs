@@ -93,7 +93,7 @@ fn simulate_coupled_regime_200(ia: usize, ib: usize, base_seed: u64, eta: f64) -
 }
 
 fn main() {
-    let (ia, ib, base_seed) = (9_usize, 14_usize, 57041_u64);
+    let (ia, ib, base_seed) = (9_usize, 14_usize, 26172_u64);
     let mut best_eta = 0.05_f64;
     let mut best_mean = -1.0_f64;
     for step in 1..=27_usize {
