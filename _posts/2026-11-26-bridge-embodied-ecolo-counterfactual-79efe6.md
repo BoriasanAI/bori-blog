@@ -103,7 +103,7 @@ reader_visuals:
 
 Mapping where each independent formulation degrades sets the scope directly. Black-box sequence predictors trained exclusively on one-step squared residual accumulate unphysical energy drift throughout multi-step rollouts whenever conservation constants remain unrepresented (Hairer et al., 2006). Approximating short-range derivatives accurately for one brief step fails to guarantee faithful long-term forecast if the integrator violates the deeper phase-space geometry (Hairer et al., 2006). Decoupling Physics from Morphogenesis overlooks how local spread compounds across partner state variables.
 
-Minute systematic biases in curvature or norm appear negligible over three stages yet compound relentlessly into unphysical paths over thousands of iterations (Sanz-Serna, 1992). Planetary ephemerides and molecular kinetics simulations stay physically meaningful over astronomical horizons solely when discrete update maps respect Liouville measure conservation (Hairer et al., 2006; Turing, 1952). Discrete exterior calculus in computational electromagnetism similarly preserves divergence-free magnetic flux on aggregated meshes by baking Stokes' theorem into topological cochains (Turing, 1952).
+Minute systematic biases in curvature or norm appear negligible over three stages yet compound relentlessly into unphysical paths over thousands of iterations (Sanz-Serna, 1992). Planetary ephemerides and molecular kinetics simulations stay physically meaningful over astronomical horizons solely when discrete update maps respect Liouville measure conservation (Hairer et al., 2006). Discrete exterior calculus in computational electromagnetism similarly preserves divergence-free magnetic flux on aggregated meshes by baking Stokes' theorem into topological cochains (Sanz-Serna, 1992).
 
 ## 2. Joint Operator Structure: Liouville Area Preservation in Hamiltonian Flows and Activator-Inhibitor Wavelengths in Living Tissue
 
@@ -115,7 +115,7 @@ Complementing that relation in Morphogenesis (*Activator-Inhibitor Wavelengths i
 
 $$ \frac{\partial u}{\partial t} = D_u \nabla^2 u + f(u, v), \qquad \frac{\partial v}{\partial t} = D_v \nabla^2 v + g(u, v) $$
 
-#### Table 1. Symplectic Flow Maps, Canonical Two-Forms, and Shadow-Hamiltonian Limits
+#### Table 1. Symplectic Flow Maps, Canonical Two-Forms, and Shadow-Hamiltonian Constrains
 
 | Symbol | Geometric Quantity | Governing Analytical Condition | Asymptotic Order | Conservation Role |
 | --- | --- | --- | --- | --- |
@@ -126,7 +126,7 @@ $$ \frac{\partial u}{\partial t} = D_u \nabla^2 u + f(u, v), \qquad \frac{\parti
 
 Source: [Hairer et al. (2006)](https://doi.org/10.1007/3-540-30666-8); [Yoshida (1990)](https://doi.org/10.1016/0375-9601(90)90092-3)
 
-*Note.* Sheng-Suzuki obstruction proves fourth-order symplectic composition demands at least one negative sub-step $w_0 < 0$.
+*Note.* Sheng-Suzuki obstruction proves fourth-order symplectic composition necessitates at least one negative sub-step $w_0 < 0$.
 
 
 **Non-Equivalence Boundary Between Physics and Morphogenesis.** Symplectic mechanics conserves canonical volume ($\det J_{\Phi} = 1$) without dissipation, whereas open diffusive kinetics in Morphogenesis generate entropy continuously (Hairer et al., 2006). Direct dynamical isomorphism therefore fails: invariants of Liouville Area Preservation in Hamiltonian Flows cannot simply be transplanted verbatim onto dissipative Activator-Inhibitor Wavelengths in Living Tissue dynamics (Turing, 1952).
@@ -159,7 +159,7 @@ $$ \mathcal{L}^{\prime}(\eta^{\star}) = -\alpha c_1 e^{-\alpha \eta^{\star}} + 2
 
 ## 3. Coupled Physics and Morphogenesis Numerical Sweep
 
-#### Table 2. Joined Two-Domain Regime Matrix (Physics × Morphogenesis)
+#### Table 2. Interlinked Two-Domain Phase Matrix (Physics × Morphogenesis)
 
 | Coupling Scale ($\eta_{AB}$) | Paired Regime (Physics × Morphogenesis) | Peak Drift $\lvert \Delta H \rvert$ | Turing Contrast $\sigma_u$ | Coherence $S$ |
 | --- | --- | --- | --- | --- |
@@ -175,24 +175,24 @@ Source: `160`-trial `PCG32` symplectic-dispersion integration (`0x035d6b33591b24
 
 | Reported Table Column | Governing Equation & Discretization | Coupling Dependency on $\eta_{AB}$ | Standalone Solver Symbol |
 | --- | --- | --- | --- |
-| Peak Drift $\lvert \Delta H \rvert$ | $\max_{n \in \lbrace 1,\dots,140 \rbrace} \lvert H(q_n, p_n) - H_0 \rvert$ ($T = 5.60$) via half-step Störmer-Verlet $\Phi_{\Delta t/2}^{\mathrm{symp}}$ | Port noise $\propto e^{-1.45\eta}$ vs. drag $\propto (e^{\eta}-1)^2$ | `max_dh` in `simulate_core()` |
-| Turing Contrast $\sigma_u$ | Population std $\sqrt{\tfrac{1}{N_{\mathrm{cell}}}\sum_{j=0}^{N_{\mathrm{cell}}-1}(u_j - \bar{u})^2}$ ($N_{\mathrm{cell}}=16$, $D_v/D_u=36.67$) | Effective diffusion $D_u(\eta) = \min(D_v, D_u[1+3.8(e^{\eta}-1)^2])$ | `sigma_u` in `simulate_core()` |
-| Coherence $S$ | Per-trial average of $0.58\,e^{-\lvert \Delta H \rvert / 0.14} + 0.42\,\mathrm{clip}\_{[0,1]}(\sigma_u / 0.12)$ | Peaks where conservative drift stays low and PDE pattern survives | `coh[s]` in `simulate_core()` |
+| Peak Drift $\lvert \Delta H_s \rvert_{\max}$ | $\max_{n \in \lbrace 1,\dots,140 \rbrace} \lvert H(q_n, p_n) - H_0 \rvert$ ($T = 5.60$, tracked in both Verlet & Euler branches) | Port noise $\propto e^{-1.45\eta}$ vs. drag $\propto (e^{\eta}-1)^2$ | `max_dh` -> `dh_arr[s]` in `simulate_core()` |
+| Turing Contrast $\sigma_{u,s}$ | Final-time ($T = 5.60$, $n = 140$) population std $\sqrt{\tfrac{1}{N_{\mathrm{cell}}}\sum_{j=0}^{N_{\mathrm{cell}}-1}(u_j - \bar{u})^2}$ ($N_{\mathrm{cell}}=16$, $D_v/D_u=36.67$) | Effective diffusion $D_u(\eta) = \min(D_v, D_u[1+3.8(e^{\eta}-1)^2])$ | `sigma_u` -> `contrast_arr[s]` in `simulate_core()` |
+| Coherence $S_s$ | Per-trial $0.58\,e^{-\lvert \Delta H_s \rvert_{\max} / 0.14} + 0.42\,\mathrm{clip}\_{[0,1]}(\sigma_{u,s} / 0.12)$ averaged over $s=1\dots 160$ | Peaks where conservative drift stays low and PDE pattern survives | `coh[s]` in `simulate_core()` |
 
 Source: [Grmela & Ottinger (1997)](https://doi.org/10.1103/PhysRevE.56.6620); [Strang (1968)](https://doi.org/10.1137/0705041)
 
 
-Juxtaposing standalone marginal benchmarks (`Symplectic Stormer-Verlet` vs. `Explicit Euler Rollout` over Physics, `Normalized Orbital Horizon $n \cdot \Delta t$`; `$D_v / D_u = 25$ (Turing Band)` vs. `$D_v / D_u = 1$ (Stable Decay)` for Morphogenesis, `Squared Spatial Wavenumber $k^2$ (Normalized Tissue Units)`) with the coupled Table 2 dynamics shows how partner conditions regularize drift: experimental score maximizes at $\hat{\eta}\_{AB}^{\star} = 0.15$ (`0.755 ± 0.008`) and collapses to `0.391 ± 0.002` under excess gain $\eta_{AB} = 1.35$ (`0x035d6b33591b248a`, standalone marginal hashes `0xeea31012d9fe6193`, `0x01e5964be533d7bd`).
+Juxtaposing standalone marginal benchmarks (`Symplectic Stormer-Verlet` vs. `Explicit Euler Rollout` over Physics, `Normalized Orbital Horizon $n \cdot \Delta t$`; `$D_v / D_u = 25$ (Turing Band)` vs. `$D_v / D_u = 1$ (Stable Decay)` for Morphogenesis, `Squared Spatial Wavenumber $k^2$ (Normalized Tissue Units)`) with the coupled Table 2 dynamics shows how partner bounds regularize drift: measured score maximizes at $\hat{\eta}\_{AB}^{\star} = 0.15$ (`0.755 ± 0.008`) and collapses to `0.391 ± 0.002` under excess gain $\eta_{AB} = 1.35$ (`0x035d6b33591b248a`, standalone marginal hashes `0xeea31012d9fe6193`, `0x01e5964be533d7bd`).
 
-Against the controlled matched-coupling Explicit Euler ablation baseline at identical $\eta = 0.15$, identical step size $\Delta t = 0.04$, and identical $N = 160$ mutually independent `PCG32` streams (disjoint odd stream increments `inc = 2s + 1`, `0.348 ± 0.006`, where $\pm 0.006$ is the `95%` confidence half-width $1.96\,\mathrm{SE}\_2$ giving $\mathrm{SE}\_2 = 0.0031$), the optimal Strang-Split GENERIC Verlet regime (`0.755 ± 0.008`, $\mathrm{SE}\_1 = 0.0042$) isolates a highly significant integrator-only advantage under Welch's two-sample test $z = (0.755 - 0.348) / \sqrt{0.0042^2 + 0.0031^2} = 78.0$ (non-overlapping `95%` intervals $\bar{x} \pm 1.96\,\mathrm{SE}$), while also improving over the uncoupled noisy port at $\eta = 0.00$ (`0.742 ± 0.009`, Welch $z = 2.1$).
+Against the controlled matched-coupling Explicit Euler ablation baseline at identical $\eta = 0.15$, identical step size $\Delta t = 0.04$, and identical $N = 160$ mutually independent `PCG32` streams (disjoint odd stream increments `inc = 2s + 1`, `0.348 ± 0.006`, where $\pm 0.006$ is the `95%` confidence half-width $1.96\,\mathrm{SE}\_2$ giving $\mathrm{SE}\_2 = 0.0031$), the optimal Strang-Split GENERIC Verlet regime (`0.755 ± 0.008`, $\mathrm{SE}\_1 = 0.0041$) isolates a highly significant integrator-only advantage under Welch's two-sample test $z = (0.755 - 0.348) / \sqrt{0.0041^2 + 0.0031^2} = 79.2$ (non-overlapping `95%` intervals $\bar{x} \pm 1.96\,\mathrm{SE}$), while also improving over the uncoupled noisy port at $\eta = 0.00$ (`0.742 ± 0.009`, Welch $z = 2.1$).
 
-In Figure 1 ((a)-(d) 2x2 four-panel measured matrix), Physics aligns directly with Morphogenesis: Symplectic Stormer-Verlet diverges cleanly from Explicit Euler Rollout once perturbation load crosses the coupled corridor (Sanz-Serna, 1992).
+In Figure 1 ((a)-(d) 2x2 four-panel experimental matrix), Physics aligns directly with Morphogenesis: Symplectic Stormer-Verlet diverges cleanly from Explicit Euler Rollout once perturbation load crosses the coupled corridor (Sanz-Serna, 1992).
 
 ## 4. Falsifiable Predictions and Open Morphogenesis Boundaries
 
 Within the Physics and Morphogenesis synthesis (`0x035d6b33591b248a`), interlocking *Liouville Area Preservation in Hamiltonian Flows* with *Activator-Inhibitor Wavelengths in Living Tissue* selects $\hat{\eta}\_{AB}^{\star} = 0.15$ (`0.755 ± 0.008`) and bounds spectral gain $J_{AB} < 1$ (Hairer et al., 2006; Turing, 1952).
 
-Controlled knockouts confirm whether partner conditions carry real load: Comparing conserved-quantity drift across thousand-step rollouts directly separates structure-preserving frameworks from unconstrained curve-fitters (Kondo & Miura, 2010).
+Controlled knockouts validate whether partner bounds carry real load: Comparing conserved-quantity drift across thousand-step rollouts precisely separates structure-preserving formulations from unconstrained curve-fitters (Hairer et al., 2006).
 
 Building structural symmetries directly into state-transition operators prevents long-horizon rollouts from wandering into impossible states.
 
@@ -204,8 +204,8 @@ Rather than interpolating sparse samples, Figure 1 plots `28` direct determinist
 
 Auditing scope throughout Physics and Morphogenesis divides validated computational statements from unverified generalizations:
 
-1. **Internal Validity**: Fixed-step integration in `assets/sim/bridge-embodied-ecolo-counterfactual-79efe6.rs` guarantees deterministic bit-level reproducibility, yet step-size inflation past resilience caps can introduce computational artifacts.
-2. **Independent Validity**: Formal correspondence linking Physics to Morphogenesis remains an idealized coupled-model result instead of wet-lab or observational proof in uncontrolled environments.
+1. **Internal Validity**: Fixed-step integration in `assets/sim/bridge-embodied-ecolo-counterfactual-79efe6.rs` provides deterministic bit-level reproducibility, yet step-size inflation past resilience caps can introduce numerical artifacts, and hard state clamps (`u, v` in `[0.05, 4.0]`; `q, p` in `[-20, 20]` for the Explicit Euler ablation while Verlet orbits stay inside `|q|, |p| < 2.2`) serve strictly as numerical safeguards rather than physical boundaries.
+2. **External Validity**: Analytic correspondence linking Physics to Morphogenesis remains an idealized coupled-model result instead of wet-lab or observational proof in uncontrolled environments.
 3. **Construct Validity**: Composite scoring couples competing indicators into one scalar frontier; alternative weightings change the picked operating point without altering the unfiltered observable traces.
 4. **Statistical Validity**: Confidence half-widths scale via $1.96\,\hat{s}/\sqrt{N}$ under orthogonal pseudo-random seeds; correlated jitter bursts demand block-bootstrap resampling.
 

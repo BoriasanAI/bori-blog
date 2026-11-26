@@ -127,7 +127,7 @@ fn main() {
     for step in 0..=27_usize {
         let eta = (step as f64) * 0.05;
         let ((m, _), _, _) = simulate(ia, ib, base_seed, eta);
-        if step >= 1 && m > best_m { best_m = m; best_eta = eta; }
+        if m > best_m { best_m = m; best_eta = eta; }
     }
     let (se, dhe, cue) = simulate_explicit_euler_baseline(ia, ib, base_seed, best_eta);
     let (s0, _, _) = simulate(ia, ib, base_seed, 0.00);
