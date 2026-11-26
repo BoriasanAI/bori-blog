@@ -172,7 +172,7 @@ Orthogonal auditability across Causality and Epistemology follows from three det
 
 $$ S_{\mathrm{info}}(\eta) = \frac{1}{144}\sum_{s=1}^{144} \exp\!\left(-\frac{\lvert \widehat{\mathrm{ATE}}_s - \mathrm{ATE}^{\star} \rvert}{0.16}\right)\exp\!\left(-\frac{\Delta \mathrm{Brier}_s}{0.045}\right) $$
 
-1. **Interventional Risk Population (`N = 144`, `Xorshift64*`)**: Stream `0x9e3779b97f4a7d26 + 7883 * s + 17` checks $32$ confounded strata per trial under genuine $\mathrm{ATE}^{\star} = 0.32$ and compaction scale $b = e^{\eta}$.
+1. **Interventional Risk Population (`N = 144`, `Xorshift64*`)**: Stream `0x9e3779b97f4a7d26 + 7883 * s + 17` checks $32$ confounded strata per trial beneath genuine $\mathrm{ATE}^{\star} = 0.32$ and compaction scale $b = e^{\eta}$.
 2. **Recorded Saddle Point**: Exhaustive $28$-point testing locates $\hat{\eta}\_{AB}^{\star} = 0.65$, achieving `0.598 ± 0.006` fidelity, `0.075 ± 0.001` absolute ATE bias, and `0.2264 ± 0.0001` Brier risk.
 3. **Intervals & Executable Proof**: Residual bars follow $\bar{x} \pm 1.96\,\hat{s} / \sqrt{144}$; building the <a href="https://boriasanai.github.io/bori-blog/assets/sim/bridge-embodied-ecolo-counterfactual-59e9ba.rs">self-contained deduction solver</a> reproduces `FNV1a-64 = 0x17cece6be9280569`.
 
@@ -186,7 +186,7 @@ $$ \Delta_{\mathrm{inv}}(x) = \lVert \mathcal{T}(g \cdot x) - g \cdot \mathcal{T
 
 Asymptotic regime analysis of *Testing Graph Surgery and Barometric Symmetry Against Proper Scoring Rules and Empirical Across Perturbed Epistemology Regimes* separates conserved quantity transform structure from single-corridor coefficient tuning. Perturbing the principal control coordinate while holding edge fluxes pinned exposes which coordinate couplings carry genuine load throughout order-of-magnitude scale shifts.
 
-Cross-checking closed-form limiting slopes for *Testing Graph Surgery and Barometric Symmetry Against Proper Scoring Rules and Empirical Across Perturbed Epistemology Regimes* against finite-ensemble realizations guards against discretization artifacts near the decisive stability cutoff. Agreement at dual subcritical and supercritical asymptotes anchors estimation in falsifiable process rather than interpolation.
+Cross-checking closed-form limiting slopes for *Testing Graph Surgery and Barometric Symmetry Against Proper Scoring Rules and Empirical Across Perturbed Epistemology Regimes* against finite-ensemble realizations guards against discretization artifacts around the decisive stability cutoff. Agreement at dual subcritical and supercritical asymptotes anchors estimation in falsifiable process rather than interpolation.
 
 Explicit disconfirmation thresholds keep subsequent extensions of *Testing Graph Surgery and Barometric Symmetry Against Proper Scoring Rules and Empirical Across Perturbed Epistemology Regimes* auditable: any systematic residual exceeding ensemble confidence bounds immediately pinpoints the omitted state variable or violated invariance assumption.
 
