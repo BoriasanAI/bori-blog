@@ -103,13 +103,13 @@ reader_visuals:
 
 ## 1. Failure Modes When Reinforcement Learning Ignores Perception
 
-Mapping where each independent formulation degrades sets the scope directly. Options rewarded by inner self-congratulation rather than independent environmental outputs degenerate into busywork circuits that look operating while solving nothing real (Sutton et al., 1999). Intelligent agency collapses if any long-horizon plan should be reasoned out at the granularity of millisecond muscle twitches or individual token transitions (Sutton et al., 1999). Decoupling Reinforcement Learning from Perception overlooks how local spread compounds across partner state variables.
+Mapping where each independent formulation degrades sets the scope directly. Options rewarded by internal self-congratulation rather than external environmental outcomes degenerate into busywork loops that look active while solving nothing real (Sutton et al., 1999). Intelligent agency collapses if every long-horizon plan must be reasoned out at the granularity of millisecond muscle twitches or single token transitions (Sutton et al., 1999). Decoupling Reinforcement Learning from Perception overlooks how local spread compounds across partner state variables.
 
-Hierarchical action solely delivers exponential search savings when every macro-step dependably achieves a well-defined coordinate transition in the external world (Bacon et al., 2017). Learning to cook a meal or prove a lemma proceeds by chaining consistent sub-skills including chopping vegetables or isolating symmetries rather than searching unfiltered primitive sequences from scratch (Sutton et al., 1999; Rao & Ballard, 1999). Motor synergies in vertebrate spinal cords and subroutine hierarchies in substrates engineering both shorten search depth exponentially by exposing clear termination preconditions (Rao & Ballard, 1999).
+Hierarchical action only delivers exponential search savings when each macro-step reliably achieves a well-defined state transition in the external world (Bacon et al., 2017). Learning to cook a meal or prove a lemma proceeds by chaining reliable sub-skills such as chopping vegetables or isolating invariants rather than searching raw primitive sequences from scratch (Sutton et al., 1999; Rao & Ballard, 1999). Motor synergies in vertebrate spinal cords and subroutine hierarchies in systems engineering both compress search depth exponentially by exposing clean termination preconditions (Rao & Ballard, 1999).
 
 ## 2. Joint Operator Structure: Initiation Sets and Semi-Markov Subgoals and Descending Generative Priors and Error Units
 
-Sutton, Precup, and Singh's options framework encapsulates initiation establishes, internal policies, and stochastic termination constraints into temporally extended actions composable within semi-Markov value iteration (Bacon et al., 2017). In Reinforcement Learning, wherein $o = \langle I_o, \pi_o, \beta_o \rangle$ denotes a temporally extended option with initiation set $I_o$, inner policy $\pi_o$, and termination probability $\beta_o(s)$, beneath discount $\gamma \in (0, 1)$ (Bacon et al., 2017).
+Sutton, Precup, and Singh's options framework encapsulates initiation sets, internal policies, and stochastic termination conditions into temporally extended actions composable inside semi-Markov value iteration (Bacon et al., 2017). In Reinforcement Learning, wherein $o = \langle I_o, \pi_o, \beta_o \rangle$ denotes a temporally extended option with initiation set $I_o$, inner policy $\pi_o$, and termination probability $\beta_o(s)$, beneath discount $\gamma \in (0, 1)$ (Bacon et al., 2017).
 
 $$ $$ Q(s, o) = r_s^o + \sum_{s^{\prime}} P_s^o(s^{\prime})\, \max_{o^{\prime} \in \mathcal{O}} Q(s^{\prime}, o^{\prime}) $$ $$
 
@@ -176,12 +176,12 @@ $$ S_{\mathrm{info}}(\eta) = \frac{1}{144}\sum_{s=1}^{144} \exp\!\left(-\frac{\l
 3. **Intervals & Executable Proof**: Error bars follow $\bar{x} \pm 1.96\,\hat{s} / \sqrt{144}$; building the <a href="https://boriasanai.github.io/bori-blog/assets/sim/bridge-information-bo-counterfactual-8b5221.rs">standalone inference solver</a> reproduces `FNV1a-64 = 0xaa77aa3469b496f8`.
 
 
-Asymptotic regime analysis of *Boundary Trade-Offs Linking Initiation Establishes and Semi-Markov Subgoals with Descending Generative Priors and Discrepancy* separates invariant transform structure from single-corridor coefficient tuning. Perturbing the main control coordinate while holding limit fluxes constant exposes which coordinate couplings carry genuine load throughout order-of-magnitude scale shifts.
+Asymptotic regime analysis of *Boundary Trade-Offs Linking Initiation Establishes and Semi-Markov Subgoals with Descending Generative Priors and Discrepancy* separates invariant operator structure from single-corridor parameter tuning. Perturbing the main control coordinate while holding limit fluxes pinned exposes which state couplings carry genuine load throughout order-of-magnitude scale shifts.
 
-Cross-checking closed-form limiting slopes for *Edge Trade-Offs Linking Initiation Fixes and Semi-Markov Subgoals with Descending Generative Priors and Residual* against finite-ensemble realizations guards against discretization artifacts near the decisive stability cutoff. Agreement at joint subcritical and supercritical asymptotes anchors deduction in falsifiable process rather than interpolation.
+Cross-checking closed-form limiting slopes for *Edge Trade-Offs Linking Initiation Fixes and Semi-Markov Subgoals with Descending Generative Priors and Residual* against finite-ensemble realizations guards against discretization artifacts near the critical stability threshold. Agreement at both subcritical and supercritical asymptotes anchors inference in falsifiable mechanism instead of interpolation.
 
 
-Formalizing the deflection bound explicitly, wherein $\varepsilon_t \ge 0$ denotes step residual norm and $\gamma \in (0, 1)$ denotes contraction rate:
+Formalizing the disturbance bound explicitly, wherein $\varepsilon_t \ge 0$ denotes step residual norm and $\gamma \in (0, 1)$ denotes contraction rate:
 
 $$ E_{T} \le E_{0}\,(1 - \gamma)^{T} + \frac{\sup_{t} \varepsilon_t}{\gamma} $$
 
