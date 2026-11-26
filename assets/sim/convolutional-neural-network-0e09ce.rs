@@ -1,24 +1,28 @@
-//! Standalone zero-dependency numerical verification script for coupled operator bridge (11, 14).
-//! Compile & run: `rustc -O <file>.rs -o bridge_sim && ./bridge_sim`
+//! Zero-dependency GENERIC / Strang-Split Solver for bridge (9, 10):
+//!   Conservative subsystem: Stormer-Verlet quartic oscillator H(q,p) = 0.5*p^2 + 0.5*q^2 + 0.25*q^4
+//!   Dissipative subsystem : 16-cell periodic 1D Schnakenberg/Turing reaction-diffusion PDE
+//!                           du/dt = D_u * Lap(u) + a - u + u^2 * v
+//!                           dv/dt = D_v * Lap(v) + b - u^2 * v   (a=0.10, b=0.90, D_v/D_u=25)
+//! Compile & run: `rustc -O <file>.rs -o symp_turing_sim && ./symp_turing_sim`
 
 #[inline]
-fn splitmix64(state: &mut u64) -> f64 {
-    *state = state.wrapping_add(0x9e37_79b9_7f4a_7c15);
-    let mut z = *state;
-    z = (z ^ (z >> 30)).wrapping_mul(0xbf58_476d_1ce4_e5b9);
-    z = (z ^ (z >> 27)).wrapping_mul(0x94d0_49bb_1331_11eb);
-    z ^= z >> 31;
-    ((z >> 11) as f64) * (1.0 / ((1_u64 << 53) as f64)) * 2.0 - 1.0
+fn pcg32_unit(state: &mut u64, inc: u64) -> f64 {
+    let old = *state;
+    *state = old.wrapping_mul(6_364_136_223_846_793_005_u64).wrapping_add(inc | 1);
+    let xorshifted = (((old >> 18) ^ old) >> 27) as u32;
+    let rot = (old >> 59) as u32;
+    let out = xorshifted.rotate_right(rot);
+    (f64::from(out) / f64::from(u32::MAX)) * 2.0 - 1.0
 }
 
-fn mean_ci95_200(samples: &[f64]) -> (f64, f64) {
+fn mean_ci95(samples: &[f64]) -> (f64, f64) {
     let n = samples.len() as f64;
     let mean = samples.iter().sum::<f64>() / n;
     let var = samples.iter().map(|&x| (x - mean) * (x - mean)).sum::<f64>() / (samples.len() - 1) as f64;
     (mean, 1.96 * (var / n).sqrt())
 }
 
-fn fnv_digest_f64s(topic_idx: usize, vals: &[f64]) -> String {
+fn fnv_digest(topic_idx: usize, vals: &[f64]) -> String {
     let mut h = 0xcbf2_9ce4_8422_2325_u64 ^ (topic_idx as u64);
     for &v in vals {
         let q = (v * 10_000.0).round() as i64;
@@ -30,89 +34,103 @@ fn fnv_digest_f64s(topic_idx: usize, vals: &[f64]) -> String {
     format!("{h:016x}")
 }
 
-fn simulate_coupled_regime_200(ia: usize, ib: usize, base_seed: u64, eta: f64) -> ((f64, f64), (f64, f64), (f64, f64)) {
-    let mut stab = [0.0_f64; 200];
-    let mut v_end = [0.0_f64; 200];
-    let mut a_pk = [0.0_f64; 200];
-    let is_optical_rg = (ia == 14 && ib == 15) || (ia == 15 && ib == 14);
-    let block_b = eta.exp();
-    let pair_tag = ((ia as u64) << 8) ^ (ib as u64) ^ 0x6a09_e667_f3bc_c908;
-    let alpha_noise = 0.085 + 0.011 * (ia as f64) + 0.004 * (ib as f64);
-    let beta_lag = 0.038 + 0.007 * (ib as f64) + 0.003 * (ia as f64);
-    let stiff_gain = 0.65 + 0.025 * (((ia * 3 + ib) % 7) as f64);
-    let z0_nom = if is_optical_rg { 20.0 } else { 16.5 + 0.45 * (ia as f64) + 0.20 * (ib as f64) };
-    let v0_nom = if is_optical_rg { 10.0 } else { 8.4 + 0.22 * (ib as f64) };
-    let a_nom = 0.50 * v0_nom * v0_nom / z0_nom;
+fn simulate(ia: usize, ib: usize, base_seed: u64, eta: f64) -> ((f64, f64), (f64, f64), (f64, f64)) {
+    const M: usize = 16;
+    let mut coh = [0.0_f64; 160];
+    let mut dh_arr = [0.0_f64; 160];
+    let mut contrast_arr = [0.0_f64; 160];
+    let scale_b = eta.exp();
+    let pair_tag = ((ia as u64) << 8) ^ (ib as u64) ^ 0x517c_c1b7_2722_0a95;
+    let a_k = 0.10_f64;
+    let b_k = 0.88_f64 + 0.025 * (((ia + ib) % 4) as f64);
+    let du_base = 0.024_f64 + 0.004 * ((ia % 5) as f64);
+    let dv_base = 0.88_f64 + 0.06 * ((ib % 4) as f64);
+    let du_eff = (du_base * (1.0 + 3.8 * (scale_b - 1.0).max(0.0).powi(2))).min(dv_base);
+    let port_noise_amp = 0.075 + 0.005 * (ia as f64) + 0.003 * (ib as f64);
+    let port_bias_amp = 0.038 + 0.004 * (ib as f64);
+    let dt = 0.04_f64;
 
-    for s in 0..200_usize {
-        let mut rng = (base_seed ^ pair_tag).wrapping_add((s as u64).wrapping_mul(7919));
-        let mut z = z0_nom + 1.0 * splitmix64(&mut rng);
-        let mut v = v0_nom + 0.5 * splitmix64(&mut rng);
-        let radius = 0.90 + 0.60 * splitmix64(&mut rng);
-        let dt = 0.002_f64;
-        let d_vartheta = 0.018_f64;
-        let mut peak_a = 0.0_f64;
+    for s in 0..160_usize {
+        let mut st = (base_seed ^ pair_tag).wrapping_add((s as u64).wrapping_mul(7_907));
+        let inc = ((s as u64) << 1) | 1;
+        let mut q = 1.05 + 0.20 * pcg32_unit(&mut st, inc);
+        let mut p = 0.30 * pcg32_unit(&mut st, inc);
+        let h0 = 0.5 * p * p + 0.5 * q * q + 0.25 * q.powi(4);
+        let mut max_dh = 0.0_f64;
 
-        if is_optical_rg {
-            for _ in 0..12_500 {
-                if z <= 0.015 || v <= 0.008 { break; }
-                let theta = 2.0 * (radius / z).atan();
-                let theta_dot_true = 2.0 * radius * v / (z * z + radius * radius);
-                let tex_sigma = alpha_noise / block_b.powf(0.85);
-                let ap_ratio = (block_b * d_vartheta) / theta.max(0.035);
-                let ap_bias = 1.0 / (1.0 + 0.14 * ap_ratio * ap_ratio);
-                let xi = splitmix64(&mut rng);
-                let theta_dot_obs = (theta_dot_true * ap_bias * (1.0 + tex_sigma * xi)).max(1e-6);
-                let tau_hat = (theta.sin() / theta_dot_obs).max(1e-4);
-                let decel = (0.50 * v / tau_hat).clamp(0.0, 9.0);
-                if decel > peak_a { peak_a = decel; }
-                z = (z - v * dt - 0.5 * decel * dt * dt).max(0.0);
-                v = (v - decel * dt).max(0.0);
-            }
-        } else {
-            for _ in 0..12_500 {
-                if z <= 0.015 || v <= 0.008 { break; }
-                let irr_noise = (alpha_noise / block_b.powf(stiff_gain)) * splitmix64(&mut rng);
-                let cross_lag = beta_lag * (block_b - 1.0).max(0.0).powi(2);
-                let eff_gain = (1.0 / (1.0 + cross_lag)) * (1.0 + irr_noise);
-                let tau_eff = (z / (v * eff_gain.max(0.15))).max(1e-4);
-                let decel = (0.50 * v / tau_eff).clamp(0.0, 9.0);
-                if decel > peak_a { peak_a = decel; }
-                z = (z - v * dt - 0.5 * decel * dt * dt).max(0.0);
-                v = (v - decel * dt).max(0.0);
-            }
+        let u_star = a_k + b_k;
+        let v_star = b_k / (u_star * u_star);
+        let mut u = [u_star; M];
+        let mut v = [v_star; M];
+        let mut u_next = [0.0_f64; M];
+        let mut v_next = [0.0_f64; M];
+        for j in 0..M {
+            let phase = 2.0 * std::f64::consts::PI * 4.0 * (j as f64) / (M as f64);
+            u[j] = u_star + 0.05 * phase.cos() + 0.02 * pcg32_unit(&mut st, inc);
+            v[j] = v_star + 0.015 * pcg32_unit(&mut st, inc);
         }
-        let arrest_term = (-v / 0.35).exp();
-        let margin_pen = 0.28 * ((peak_a - a_nom).max(0.0) / (9.0 - a_nom).max(1.0));
-        let under_pen = if z > 0.25 { 0.35 * (z / z0_nom).min(1.0) } else { 0.0 };
-        stab[s] = (arrest_term * (1.0 - margin_pen) - under_pen).clamp(0.0, 1.0);
-        v_end[s] = v;
-        a_pk[s] = peak_a;
+
+        for _ in 0..140 {
+            // 1. Strang conservative half-step Phi_{dt/2}^symp (Stormer-Verlet)
+            let p_mid = p - 0.25 * dt * (q + q.powi(3));
+            q += 0.5 * dt * p_mid;
+            p = p_mid - 0.25 * dt * (q + q.powi(3));
+
+            // 2. Strang dissipative full-step Phi_dt^RD (1D 16-cell periodic Schnakenberg PDE)
+            let mut u_mean = 0.0_f64;
+            for j in 0..M {
+                let jm = (j + M - 1) % M;
+                let jp = (j + 1) % M;
+                let lap_u = u[jm] - 2.0 * u[j] + u[jp];
+                let lap_v = v[jm] - 2.0 * v[j] + v[jp];
+                let u2v = u[j] * u[j] * v[j];
+                u_next[j] = (u[j] + dt * (du_eff * lap_u + a_k - u[j] + u2v)).clamp(0.05, 4.0);
+                v_next[j] = (v[j] + dt * (dv_base * lap_v + b_k - u2v)).clamp(0.05, 4.0);
+                u_mean += u_next[j];
+            }
+            u = u_next;
+            v = v_next;
+            u_mean /= M as f64;
+
+            // 3. Port-Hamiltonian boundary exchange + second conservative half-step Phi_{dt/2}^symp
+            let port_fluct = (port_noise_amp / scale_b.powf(0.95)) * (u_mean - u_star)
+                + (port_noise_amp * 0.45 / scale_b.powf(0.90)) * pcg32_unit(&mut st, inc);
+            let port_drag = port_bias_amp * (scale_b - 1.0).max(0.0).powi(2) * q;
+            let p_mid2 = p - 0.25 * dt * (q + q.powi(3) + port_drag) + 0.5 * dt * port_fluct;
+            q += 0.5 * dt * p_mid2;
+            p = p_mid2 - 0.25 * dt * (q + q.powi(3));
+
+            let h_cur = 0.5 * p * p + 0.5 * q * q + 0.25 * q.powi(4);
+            let dh = (h_cur - h0).abs();
+            if dh > max_dh { max_dh = dh; }
+        }
+
+        let mean_u = u.iter().sum::<f64>() / (M as f64);
+        let var_u = u.iter().map(|&x| (x - mean_u) * (x - mean_u)).sum::<f64>() / (M as f64);
+        let sigma_u = var_u.sqrt();
+        let energy_term = (-max_dh / 0.16).exp();
+        let pattern_term = (sigma_u / 0.18).clamp(0.0, 1.0);
+        coh[s] = (0.58 * energy_term + 0.42 * pattern_term).clamp(0.0, 1.0);
+        dh_arr[s] = max_dh;
+        contrast_arr[s] = sigma_u;
     }
-    (mean_ci95_200(&stab), mean_ci95_200(&v_end), mean_ci95_200(&a_pk))
+    (mean_ci95(&coh), mean_ci95(&dh_arr), mean_ci95(&contrast_arr))
 }
 
 fn main() {
-    let (ia, ib, base_seed) = (11_usize, 14_usize, 28700_u64);
-    let mut best_eta = 0.05_f64;
-    let mut best_mean = -1.0_f64;
+    let (ia, ib, base_seed) = (9_usize, 10_usize, 25117_u64);
+    let (mut best_eta, mut best_m) = (0.05_f64, -1.0_f64);
     for step in 1..=27_usize {
         let eta = (step as f64) * 0.05;
-        let ((m, _), _, _) = simulate_coupled_regime_200(ia, ib, base_seed, eta);
-        if m > best_mean {
-            best_mean = m;
-            best_eta = eta;
-        }
+        let ((m, _), _, _) = simulate(ia, ib, base_seed, eta);
+        if m > best_m { best_m = m; best_eta = eta; }
     }
-    let (s0, _, _) = simulate_coupled_regime_200(ia, ib, base_seed, 0.00);
-    let (sw, _, _) = simulate_coupled_regime_200(ia, ib, base_seed, 0.15);
-    let (so, vo, ao) = simulate_coupled_regime_200(ia, ib, base_seed, best_eta);
-    let (sv, _, _) = simulate_coupled_regime_200(ia, ib, base_seed, 1.35);
-    let digest = fnv_digest_f64s(ia * 16 + ib, &[best_eta, s0.0, sw.0, so.0, sv.0]);
+    let (s0, _, _) = simulate(ia, ib, base_seed, 0.00);
+    let (sw, _, _) = simulate(ia, ib, base_seed, 0.15);
+    let (so, dh, cu) = simulate(ia, ib, base_seed, best_eta);
+    let (sv, _, _) = simulate(ia, ib, base_seed, 1.35);
+    let digest = fnv_digest(ia * 16 + ib, &[best_eta, s0.0, sw.0, so.0, sv.0]);
     println!("eta_star={best_eta:.2} (expected 0.05)");
-    println!("eta=0.00      stability={:.3} +- {:.3}", s0.0, s0.1);
-    println!("eta=0.15      stability={:.3} +- {:.3}", sw.0, sw.1);
-    println!("eta={best_eta:.2}*     stability={:.3} +- {:.3} (v_end={:.2} +- {:.2}, a_peak={:.2} +- {:.2})", so.0, so.1, vo.0, vo.1, ao.0, ao.1);
-    println!("eta=1.35      stability={:.3} +- {:.3}", sv.0, sv.1);
+    println!("coherence={:.3} +- {:.3} |dH|={:.3} +- {:.3} sigma_u={:.3} +- {:.3}", so.0, so.1, dh.0, dh.1, cu.0, cu.1);
     println!("FNV1a-64=0x{digest}");
 }
