@@ -1,4 +1,4 @@
-//! Zero-dependency GENERIC / Strang-Split Solver for bridge (9, 10):
+//! Zero-dependency GENERIC / Strang-Split Solver for bridge (13, 7):
 //!   Conservative subsystem: Stormer-Verlet quartic oscillator H(q,p) = 0.5*p^2 + 0.5*q^2 + 0.25*q^4
 //!   Dissipative subsystem : 16-cell periodic 1D Schnakenberg/Turing reaction-diffusion PDE
 //!                           du/dt = D_u * Lap(u) + a - u + u^2 * v
@@ -118,7 +118,7 @@ fn simulate(ia: usize, ib: usize, base_seed: u64, eta: f64) -> ((f64, f64), (f64
 }
 
 fn main() {
-    let (ia, ib, base_seed) = (9_usize, 10_usize, 25117_u64);
+    let (ia, ib, base_seed) = (13_usize, 7_usize, 53389_u64);
     let (mut best_eta, mut best_m) = (0.05_f64, -1.0_f64);
     for step in 1..=27_usize {
         let eta = (step as f64) * 0.05;
