@@ -1,5 +1,5 @@
 ---
-title: "Coupling Gricean Maxims and Rational with Optic-Flow Invariants and Time-to-Contact: Cross-Scale Operator Invariants"
+title: "How Optic-Flow Invariants Regulate Gricean Pragmatic Inference Under Ambiguous Embodied Contexts"
 date: "2026-11-22 14:00:00 +0900"
 categories:
   - Notes
@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: "/assets/img/posts/essay-convolutional-neural-network-0e09ce.svg"
-  alt: "Cross-domain structural visualization for Coupling Gricean Maxims and Rational with Optic-Flow Invariants and Time-to-Contact: Cross-Scale Operator Invariants"
+  alt: "Cross-domain structural visualization for How Optic-Flow Invariants Regulate Gricean Pragmatic Inference Under Ambiguous Embodied Contexts"
 cf:
   formula: "J_AB(eta) < 1 : (P_{L1}(w|u) propto P_{S1}(u|w) P(w), P_{S1}(u|w) propto exp(alpha * U)) x (tau(t) = sin(theta) / d_theta = z / (-dz/dt), d_tau/dt = c_tau >= -0.5)"
   emotion: "e_up(clarity)"
@@ -20,6 +20,9 @@ sv:
   EV: 0.910
   SA: 0.778
 model: "Bori Autonomous Synthesis"
+synthesis_engine: "symbolic-numerical-deterministic"
+llm_inference: false
+generation_era: "native-llm-free"
 mscp_level: "L5"
 description: "Cross-domain operator synthesis linking gricean maxims and rational speech acts (Linguistics) and optic-flow invariants and time-to-contact (Embodied Cognition) across coupled ensemble perturbations."
 reading_time: 7
@@ -39,7 +42,7 @@ reader_visuals:
         - "Michael C. Frank"
         - "Noah D. Goodman"
       published: "2012-05-25"
-      description: "Primary peer-reviewed source for Coupling Gricean Maxims and Rational with Optic-Flow Invariants and Time-to-Contact: Cross-Scale Operator Invariants."
+      description: "Primary peer-reviewed source for How Optic-Flow Invariants Regulate Gricean Pragmatic Inference Under Ambiguous Embodied Contexts."
     - id: "bridge-src-2"
       kind: paper
       url: "https://doi.org/10.1016/j.tics.2016.08.005"
@@ -48,7 +51,7 @@ reader_visuals:
         - "Noah D. Goodman"
         - "Michael C. Frank"
       published: "2016-11-01"
-      description: "Primary peer-reviewed source for Coupling Gricean Maxims and Rational with Optic-Flow Invariants and Time-to-Contact: Cross-Scale Operator Invariants."
+      description: "Primary peer-reviewed source for How Optic-Flow Invariants Regulate Gricean Pragmatic Inference Under Ambiguous Embodied Contexts."
     - id: "bridge-src-3"
       kind: paper
       url: "https://doi.org/10.4324/9781315740218"
@@ -56,7 +59,7 @@ reader_visuals:
       authors:
         - "James J. Gibson"
       published: "1979-01-01"
-      description: "Primary peer-reviewed source for Coupling Gricean Maxims and Rational with Optic-Flow Invariants and Time-to-Contact: Cross-Scale Operator Invariants."
+      description: "Primary peer-reviewed source for How Optic-Flow Invariants Regulate Gricean Pragmatic Inference Under Ambiguous Embodied Contexts."
     - id: "bridge-src-4"
       kind: paper
       url: "https://doi.org/10.1068/p050437"
@@ -64,7 +67,7 @@ reader_visuals:
       authors:
         - "David N. Lee"
       published: "1976-12-01"
-      description: "Primary peer-reviewed source for Coupling Gricean Maxims and Rational with Optic-Flow Invariants and Time-to-Contact: Cross-Scale Operator Invariants."
+      description: "Primary peer-reviewed source for How Optic-Flow Invariants Regulate Gricean Pragmatic Inference Under Ambiguous Embodied Contexts."
   diagrams:
     - kind: evidence-map
       title: "Cross-Scale Bridge: Linguistics <-> Embodied Cognition"
@@ -83,7 +86,7 @@ reader_visuals:
           label: "Coupled Jacobian invariant"
   gallery:
     - path: "/assets/img/posts/fig-essay-convolutional-neural-network-0e09ce.svg"
-      alt: "Three-panel scientific figure (a)-(c) showing coupled operator scaling and phase boundary for Coupling Gricean Maxims and Rational with Optic-Flow Invariants and Time-to-Contact: Cross-Scale Operator Invariants"
+      alt: "Three-panel scientific figure (a)-(c) showing coupled operator scaling and phase boundary for How Optic-Flow Invariants Regulate Gricean Pragmatic Inference Under Ambiguous Embodied Contexts"
       caption: "Figure 1. Coupled analytical scaling (a), two-operator stability map (b), and perturbation recovery (c) linking Linguistics and Embodied Cognition."
       credit: "Bori Autonomous Synthesis"
       license: "CC BY 4.0"
