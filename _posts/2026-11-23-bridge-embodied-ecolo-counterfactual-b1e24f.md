@@ -149,9 +149,9 @@ Eigenvalue compression in the partner operator (Rasch & Born, 2013) suppresses f
 Source: `144`-trial `Xorshift64*` interventional risk sweep (`0x46eb981ee00b7354`, marginals `0xaaf8ba543fa86829`, `0xacfaae33dce1c5fd`); Jorma Rissanen (Rissanen, 1978); James L. McClelland (McClelland et al., 1995)
 
 
-Contrasting `NML / Two-Part MDL` with `Unpenalized Lookup Fit` across Learning Theory (Normalized Hypothesis Exception Complexity) alongside `CLS Interleaved Replay` and `Sequential Online Update` in Memory (Normalized Sequential Task Exposure Horizon) demonstrates where isolated fits break down: joint stability attains `0.330 ± 0.009` at $\hat{\eta}\_{AB}^{\star} = 0.70$ before over-damping at $\eta_{AB} = 1.35$ pulls performance to `0.001 ± 0.000` (`0x46eb981ee00b7354`, single-axis digests `0xaaf8ba543fa86829` / `0xacfaae33dce1c5fd`).
+Contrasting `NML / Two-Part MDL` with `Unpenalized Lookup Fit` across Learning Theory (Normalized Hypothesis Exception Complexity) alongside `CLS Interleaved Replay` and `Sequential Online Update` in Memory (Normalized Sequential Task Exposure Horizon) demonstrates where separated fits break down: joint resilience attains `0.330 ± 0.009` at $\hat{\eta}\_{AB}^{\star} = 0.70$ before over-damping at $\eta_{AB} = 1.35$ pulls performance to `0.001 ± 0.000` (`0x46eb981ee00b7354`, single-axis digests `0xaaf8ba543fa86829` / `0xacfaae33dce1c5fd`).
 
-In Figure 1(a)-(c), Learning Theory and Memory appear jointly: panel (a) plots NML / Two-Part MDL against Unpenalized Lookup Fit, panel (b) contours the coupled phase corridor, and panel (c) records impulse relaxation after bounded shock (Grunwald, 2007).
+In Figure 1(a)-(c), Learning Theory and Memory appear jointly: panel (a) plots NML / Two-Part MDL against Unpenalized Lookup Fit, panel (b) contours the interlinked phase corridor, and panel (c) records impulse relaxation after bounded shock (Grunwald, 2007).
 
 ## 4. Falsifiable Predictions and Open Memory Boundaries
 
