@@ -98,7 +98,7 @@ reader_visuals:
 
 ## Abstract
 
-> Silence at the sensor yet fires the error unit. Testing initiation establishes and semi-markov subgoals (Reinforcement Learning) alongside descending generative priors and residual units (Perception) reveals how cross-domain feedback constrains long-horizon drift.
+> Silence at the sensor still fires the error unit. Testing initiation establishes and semi-markov subgoals (Reinforcement Learning) alongside descending generative priors and residual units (Perception) reveals how cross-domain feedback constrains long-horizon drift.
 {: .prompt-tip }
 
 ## 1. Failure Modes When Reinforcement Learning Ignores Perception
