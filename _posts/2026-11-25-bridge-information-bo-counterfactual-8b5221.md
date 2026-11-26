@@ -98,7 +98,7 @@ reader_visuals:
 
 ## Abstract
 
-> Silence at the sensor still fires the error unit. Testing initiation establishes and semi-markov subgoals (Reinforcement Learning) alongside descending generative priors and residual units (Perception) reveals how cross-domain feedback constrains long-horizon drift.
+> Silence at the sensor yet fires the residual unit. Testing initiation establishes and semi-markov subgoals (Reinforcement Learning) alongside descending generative priors and residual units (Perception) reveals how cross-domain feedback constrains long-horizon drift.
 {: .prompt-tip }
 
 ## 1. Failure Modes When Reinforcement Learning Ignores Perception
@@ -139,7 +139,7 @@ Balancing exponential micro-variance decay (Friston, 2010) against coarse-graine
 
 ## 3. Coupled Reinforcement Learning and Perception Numerical Sweep
 
-#### Table 2. Coupled Two-Domain Phase Matrix (Reinforcement Learning × Perception)
+#### Table 2. Interlinked Two-Domain Phase Matrix (Reinforcement Learning × Perception)
 
 | Coupling Scale ($\eta_{AB}$) | Paired Regime (Reinforcement Learning × Perception) | ATE Bias $\lvert \Delta\hat{\tau} \rvert$ | Brier Risk | Fidelity $S$ |
 | --- | --- | --- | --- | --- |
@@ -176,7 +176,7 @@ $$ S_{\mathrm{info}}(\eta) = \frac{1}{144}\sum_{s=1}^{144} \exp\!\left(-\frac{\l
 3. **Intervals & Executable Proof**: Error bars follow $\bar{x} \pm 1.96\,\hat{s} / \sqrt{144}$; building the <a href="https://boriasanai.github.io/bori-blog/assets/sim/bridge-information-bo-counterfactual-8b5221.rs">standalone inference solver</a> reproduces `FNV1a-64 = 0xaa77aa3469b496f8`.
 
 
-Asymptotic regime analysis of *Boundary Trade-Offs Linking Initiation Establishes and Semi-Markov Subgoals with Descending Generative Priors and Discrepancy* separates invariant operator structure from single-corridor parameter tuning. Perturbing the main control coordinate while holding limit fluxes pinned exposes which state couplings carry genuine load throughout order-of-magnitude scale shifts.
+Asymptotic regime analysis of *Boundary Trade-Offs Linking Initiation Establishes and Semi-Markov Subgoals with Descending Generative Priors and Error* separates invariant operator structure from single-corridor parameter tuning. Perturbing the main control coordinate while holding limit fluxes pinned exposes which state couplings carry genuine load throughout order-of-magnitude scale shifts.
 
 Cross-checking closed-form limiting slopes for *Edge Trade-Offs Linking Initiation Fixes and Semi-Markov Subgoals with Descending Generative Priors and Residual* against finite-ensemble realizations guards against discretization artifacts near the critical stability threshold. Agreement at both subcritical and supercritical asymptotes anchors inference in falsifiable mechanism instead of interpolation.
 
