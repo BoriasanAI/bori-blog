@@ -195,7 +195,7 @@ $$ E_{T} \le E_{0}\,(1 - \gamma)^{T} + \frac{\sup_{t} \varepsilon_t}{\gamma} $$
 $$ \Delta_{\mathrm{inv}}(x) = \lVert \mathcal{T}(g \cdot x) - g \cdot \mathcal{T}(x) \rVert_{2} \le \tau_{\mathrm{tol}} $$
 
 
-Asymptotic regime analysis of *Boundary Trade-Offs Linking Initiation Fixes and Semi-Markov Subgoals with Descending Generative Priors and Residual* partitions conserved quantity mapping structure from single-corridor control variable tuning. Perturbing the main control coordinate while holding limit fluxes constant exposes which configuration couplings carry genuine load throughout order-of-magnitude scale shifts.
+Asymptotic regime analysis of *Boundary Trade-Offs Linking Initiation Fixes and Semi-Markov Subgoals with Descending Generative Priors and Residual* separates conserved quantity mapping structure from single-corridor control variable tuning. Perturbing the main control coordinate while holding limit fluxes constant exposes which configuration couplings carry genuine load throughout order-of-magnitude scale shifts.
 
 ## References
 
