@@ -12,7 +12,7 @@ fn pcg32_unit(state: &mut u64, inc: u64) -> f64 {
     let xorshifted = (((old >> 18) ^ old) >> 27) as u32;
     let rot = (old >> 59) as u32;
     let out = xorshifted.rotate_right(rot);
-    (f64::from(out) / f64::from(u32::MAX)) * 2.0 - 1.0
+    (f64::from(out) / 4_294_967_296.0) * 2.0 - 1.0
 }
 
 fn mean_ci95(samples: &[f64]) -> (f64, f64) {
