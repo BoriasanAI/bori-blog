@@ -99,7 +99,7 @@ reader_visuals:
 
 ## 1. Failure Modes When Perception Ignores Embodied Cognition
 
-Uncoupled assumptions collapse fastest near sharp shift cliffs. Uncoupled Perception analysis (Why Brains Subtract What They Already Expect) tracks `Sensory Gain K(rho)` versus `Residual Variance` along Log Sensory-to-Prior Precision Ratio rho = Pi_{l-1} / Pi_l, whereas Embodied Cognition (World Structure Indexed by Possible Action) tracks `Optical d_tau/dt >= -0.5` against `Delayed Metric Reconstruction` along Normalized Approach Horizon Toward Obstacle (Rao & Ballard, 1999; Gibson, 1979). Studying Perception apart from Embodied Cognition misses the closed-form feedback loop governing joint stability.
+Uncoupled assumptions collapse fastest near sharp shift cliffs. Uncoupled Perception analysis (Why Brains Subtract What They Earlier Expect) monitors `Sensory Gain K(rho)` versus `Residual Variance` beside Log Sensory-to-Prior Precision Ratio rho = Pi_{l-1} / Pi_l, whereas Embodied Cognition (World Structure Indexed by Possible Action) tracks `Optical d_tau/dt >= -0.5` against `Delayed Metric Reconstruction` along Normalized Approach Horizon Toward Obstacle (Rao & Ballard, 1999; Gibson, 1979). Studying Perception apart from Embodied Cognition misses the closed-form feedback loop governing joint stability.
 
 Empirical falsification demands checking whether gains on Descending Generative Priors and Discrepancy Units survive perturbation across Optic-Flow Symmetries and Time-to-Contact without hand-tuned constants (Rao & Ballard, 1999). Prior single-domain baselines (`0x321cea9eb908ecab`, `0xfb9405a06b55fec4`) establish separate reference envelopes prior to joint interaction (`0x9c916042e78ba066`) tests contraction throughout both coordinates simultaneously (Gibson, 1979).
 
@@ -149,7 +149,7 @@ Eigenvalue compaction in the partner transform (Lee, 1976) suppresses swift stoc
 Source: Ensemble calibration ledger (`0x9c916042e78ba066`, marginals `0x321cea9eb908ecab` + `0xfb9405a06b55fec4`); Rajesh P. N. Rao (Rao & Ballard, 1999); James J. Gibson (Gibson, 1979)
 
 
-Evaluating `Sensory Gain K(rho)` against `Residual Variance` along Perception (Log Sensory-to-Prior Precision Ratio rho = Pi_{l-1} / Pi_l) concurrently with `Optical d_tau/dt >= -0.5` versus `Delayed Metric Reconstruction` in Embodied Cognition (Normalized Approach Lookahead Toward Obstacle) divides true joined closure from curve fitting: grid search locks optimum $\hat{\eta}\_{AB}^{\star} = 0.05$ (`0.398 ± 0.002`), whereas pushing linkage to 1.35 degrades output to `0.000 ± 0.000` (`0x9c916042e78ba066`; uncoupled `0x321cea9eb908ecab` and `0xfb9405a06b55fec4`).
+Evaluating `Sensory Gain K(rho)` against `Residual Variance` beside Perception (Log Sensory-to-Prior Precision Ratio rho = Pi_{l-1} / Pi_l) concurrently with `Optical d_tau/dt >= -0.5` versus `Delayed Metric Reconstruction` in Embodied Cognition (Normalized Approach Lookahead Toward Obstacle) divides true joined closure from curve fitting: grid search locks optimum $\hat{\eta}\_{AB}^{\star} = 0.05$ (`0.398 ± 0.002`), whereas pushing linkage to 1.35 degrades output to `0.000 ± 0.000` (`0x9c916042e78ba066`; uncoupled `0x321cea9eb908ecab` and `0xfb9405a06b55fec4`).
 
 Inspecting Figure 1(a)-(c) connects Perception curves immediately to Embodied Cognition scaling: panel (a) contrasts Sensory Gain K(rho) with Residual Variance, panel (b) exposes the bifurcation cliff throughout coupling strength, and panel (c) quantifies damping speed (Friston, 2010).
 
@@ -183,7 +183,7 @@ $$ \Delta_{\mathrm{inv}}(x) = \lVert \mathcal{T}(g \cdot x) - g \cdot \mathcal{T
 
 Asymptotic regime analysis of *Testing Descending Generative Priors and Error Against Optic-Flow Constants and Time-to-Contact Across Perturbed Embodied Cognition Regimes* divides conserved quantity mapping structure from single-corridor control variable tuning. Perturbing the main control coordinate while holding limit fluxes constant exposes which configuration couplings carry genuine load across order-of-magnitude scale shifts.
 
-Cross-checking closed-form limiting slopes for *Probing Descending Generative Priors and Error Against Optic-Flow Constants and Time-to-Contact Across Perturbed Embodied Cognition Operating zones* against finite-ensemble realizations guards against discretization artifacts near the decisive resilience cutoff. Agreement at joint subcritical and supercritical asymptotes anchors deduction in falsifiable process instead of interpolation.
+Cross-checking closed-form limiting slopes for *Probing Descending Generative Priors and Error Against Optic-Flow Constants and Time-to-Contact Across Perturbed Embodied Cognition Operating zones* against finite-ensemble realizations guards against discretization artifacts around the decisive resilience cutoff. Agreement at joint subcritical and supercritical asymptotes anchors deduction in falsifiable process instead of interpolation.
 
 Clear disconfirmation cutoffs keep subsequent extensions of *Testing Descending Generative Priors and Error Against Optic-Flow Constants and Time-to-Contact Across Perturbed Embodied Cognition Operating zones* auditable: any systematic residual exceeding population confidence constrains immediately pinpoints the omitted coordinate variable or violated invariance assumption.
 
