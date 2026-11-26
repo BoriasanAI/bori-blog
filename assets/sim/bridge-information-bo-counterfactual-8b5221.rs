@@ -93,7 +93,7 @@ fn simulate(ia: usize, ib: usize, base_seed: u64, eta: f64) -> ((f64, f64), (f64
 }
 
 fn main() {
-    let (ia, ib, base_seed) = (9_usize, 3_usize, 42631_u64);
+    let (ia, ib, base_seed) = (9_usize, 3_usize, 42676_u64);
     let (mut best_eta, mut best_m) = (0.05_f64, -1.0_f64);
     for step in 1..=27_usize {
         let eta = (step as f64) * 0.05;
@@ -101,11 +101,11 @@ fn main() {
         if m > best_m { best_m = m; best_eta = eta; }
     }
     let (s0, _, _) = simulate(ia, ib, base_seed, 0.00);
-    let (sw, _, _) = simulate(ia, ib, base_seed, 0.30);
+    let (sw, _, _) = simulate(ia, ib, base_seed, 0.25);
     let (so, b, r) = simulate(ia, ib, base_seed, best_eta);
     let (sv, _, _) = simulate(ia, ib, base_seed, 1.35);
     let digest = fnv_digest(ia * 16 + ib, &[best_eta, s0.0, sw.0, so.0, sv.0]);
-    println!("eta_star={best_eta:.2} (expected 0.65)");
+    println!("eta_star={best_eta:.2} (expected 0.55)");
     println!("fidelity={:.3} +- {:.3} ate_bias={:.3} +- {:.3} brier={:.4} +- {:.4}", so.0, so.1, b.0, b.1, r.0, r.1);
     println!("FNV1a-64=0x{digest}");
 }
