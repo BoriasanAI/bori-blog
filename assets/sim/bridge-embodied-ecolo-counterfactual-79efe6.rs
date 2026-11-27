@@ -122,7 +122,7 @@ fn simulate_explicit_euler_baseline(ia: usize, ib: usize, base_seed: u64, eta: f
 }
 
 fn main() {
-    let (ia, ib, base_seed) = (10_usize, 4_usize, 45735_u64);
+    let (ia, ib, base_seed) = (10_usize, 4_usize, 45822_u64);
     let (mut best_eta, mut best_m) = (0.0_f64, -1.0_f64);
     for step in 0..=27_usize {
         let eta = (step as f64) * 0.05;
