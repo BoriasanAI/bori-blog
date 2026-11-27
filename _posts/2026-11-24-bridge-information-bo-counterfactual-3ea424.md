@@ -103,11 +103,11 @@ reader_visuals:
 
 Counterexamples across dual axes constrain any valid cross-domain law. Uncoupled Morphogenesis analysis (Order Without a Macroscopic Coordinate Blueprint) tracks `$D_v / D_u = 25$ (Turing Band)` versus `$D_v / D_u = 1$ (Stable Decay)` along Squared Spatial Wavenumber $k^2$ (Normalized Tissue Units), whereas Linguistics (Why Dictionary Meaning Underdetermines Utterances) tracks `Pragmatic RSA L1` against `Literal Decoder L0` along Normalized Alternative-Set Asymmetry (Turing, 1952; Frank & Goodman, 2012). Modeling Morphogenesis without Linguistics retains pivotal instability cutoffs invisible in single-domain sweeps.
 
-Empirical falsification necessitates checking whether gains on Activator-Inhibitor Wavelengths in Living Tissue survive perturbation across Gricean Maxims and Rational Speech Acts without hand-tuned constants (Turing, 1952). Prior single-domain baselines (`0x4c88245a1231c799`, `0x318ccd7b05a9f7b5`) establish separate reference envelopes before joint linkage (`0xc1cdc0036a347404`) tests contraction over both coordinates simultaneously (Frank & Goodman, 2012).
+Empirical falsification necessitates checking whether gains on Activator-Inhibitor Wavelengths in Living Tissue survive perturbation across Gricean Maxims and Rational Speech Acts without hand-tuned constants (Turing, 1952). Prior single-domain baselines (`0x4c88245a1231c799`, `0x318ccd7b05a9f7b5`) establish separate reference envelopes prior to joint linkage (`0xc1cdc0036a347404`) tests contraction over both coordinates simultaneously (Frank & Goodman, 2012).
 
 ## 2. Joint Operator Structure: Activator-Inhibitor Wavelengths in Living Tissue and Gricean Maxims and Rational Speech Acts
 
-Writing the Morphogenesis operator (Activator-Inhibitor Wavelengths in Living Tissue) directly beside the Linguistics relation (Gricean Maxims and Rational Speech Acts) anchors every computational sweep below in explicit closed form (Kondo & Miura, 2010):
+Writing the Morphogenesis operator (Activator-Inhibitor Wavelengths in Living Tissue) directly beside the Linguistics relation (Gricean Maxims and Rational Speech Acts) anchors every computational sweep under in explicit closed form (Kondo & Miura, 2010):
 
 $$ \frac{\partial u}{\partial t} = D_u \nabla^2 u + f(u, v), \qquad \frac{\partial v}{\partial t} = D_v \nabla^2 v + g(u, v) $$
 
@@ -178,9 +178,9 @@ Source: `160`-trial `PCG32` symplectic-dispersion integration (`0xc1cdc0036a3474
 Source: [Grmela & Ottinger (1997)](https://doi.org/10.1103/PhysRevE.56.6620); [Strang (1968)](https://doi.org/10.1137/0705041)
 
 
-Comparing standalone marginal references (`$D_v / D_u = 25$ (Turing Band)` vs. `$D_v / D_u = 1$ (Stable Decay)` on Morphogenesis, `Squared Spatial Wavenumber $k^2$ (Normalized Tissue Units)`; `Pragmatic RSA L1` vs. `Literal Decoder L0` on Linguistics, `Normalized Alternative-Set Asymmetry`) against the live joined integrator isolates why single-domain heuristics store narrow corridors: the interlinked ensemble peaks at $\hat{\eta}\_{AB}^{\star} = 0.10$ (`0.769 ± 0.008`) and drops sharply once excess interaction ($\eta_{AB} = 1.35$, `0.325 ± 0.002`) overwhelms partner bandwidth (`0xc1cdc0036a347404`). Independent marginal digests (`0x4c88245a1231c799`, `0x318ccd7b05a9f7b5`) confirm dual references without constant placeholders.
+Comparing standalone marginal references (`$D_v / D_u = 25$ (Turing Band)` vs. `$D_v / D_u = 1$ (Stable Decay)` on Morphogenesis, `Squared Spatial Wavenumber $k^2$ (Normalized Tissue Units)`; `Pragmatic RSA L1` vs. `Literal Decoder L0` on Linguistics, `Normalized Alternative-Set Asymmetry`) against the live joined integrator isolates why single-domain heuristics store narrow corridors: the interlinked ensemble peaks at $\hat{\eta}\_{AB}^{\star} = 0.10$ (`0.769 ± 0.008`) and drops sharply once excess interaction ($\eta_{AB} = 1.35$, `0.325 ± 0.002`) overwhelms partner bandwidth (`0xc1cdc0036a347404`). Independent marginal digests (`0x4c88245a1231c799`, `0x318ccd7b05a9f7b5`) confirm joint references without constant placeholders.
 
-Against the controlled matched-coupling Explicit Euler ablation baseline at identical $\eta = 0.10$, identical step size $\Delta t = 0.04$, and identical $N = 160$ mutually separate `PCG32` streams (disjoint odd stream increments `inc = 2s + 1`, `0.368 ± 0.006`, where $\pm 0.006$ is the `95%` confidence half-width $1.96\,\mathrm{SE}\_2$ giving $\mathrm{SE}\_2 = 0.0031$), the best Strang-Split GENERIC Verlet operating zone (`0.769 ± 0.008`, $\mathrm{SE}\_1 = 0.0041$) isolates a highly substantial integrator-only advantage under Welch's two-sample probe $z = (0.769 - 0.368) / \sqrt{0.0041^2 + 0.0031^2} = 78.0$ (non-overlapping `95%` intervals $\bar{x} \pm 1.96\,\mathrm{SE}$), while likewise improving across the uncoupled noisy port at $\eta = 0.00$ (`0.760 ± 0.009`, Welch $z = 1.5$).
+Against the controlled matched-coupling Explicit Euler ablation baseline at identical $\eta = 0.10$, identical step size $\Delta t = 0.04$, and identical $N = 160$ mutually separate `PCG32` streams (disjoint odd stream increments `inc = 2s + 1`, `0.368 ± 0.006`, where $\pm 0.006$ is the `95%` confidence half-width $1.96\,\mathrm{SE}\_2$ giving $\mathrm{SE}\_2 = 0.0031$), the best Strang-Split GENERIC Verlet operating zone (`0.769 ± 0.008`, $\mathrm{SE}\_1 = 0.0041$) isolates a highly substantial integrator-only advantage under Welch's two-sample probe $z = (0.769 - 0.368) / \sqrt{0.0041^2 + 0.0031^2} = 78.0$ (non-overlapping `95%` intervals $\bar{x} \pm 1.96\,\mathrm{SE}$), while likewise improving throughout the uncoupled noisy port at $\eta = 0.00$ (`0.760 ± 0.009`, Welch $z = 1.5$).
 
 Visual diagnostics in Figure 1 ((a)-(b) asymmetric scatter-regression and CI forest plot) map Morphogenesis against Linguistics, distinguishing $D_v / D_u = 25$ (Turing Band) stability from $D_v / D_u = 1$ (Stable Decay) breakdown across the coupling grid (Kondo & Miura, 2010).
 
@@ -190,22 +190,22 @@ Joint sweeps across Morphogenesis and Linguistics (`0xc1cdc0036a347404`) show *A
 
 Paired disturbance verifications distinguish architectural closure from curve fitting: Perturbing Morphogenesis control coordinates while holding Linguistics boundary terms fixed divides genuine joint symmetries from coincidental single-regime curve fits (Turing, 1952; Frank & Goodman, 2012).
 
-Treating Activator-Inhibitor Wavelengths in Living Tissue (Morphogenesis) and Gricean Maxims and Rational Speech Acts (Linguistics) as one interlinked dynamical substrate forces every claim to survive both analytical conservation limits and deterministic multi-seed verification.
+Treating Activator-Inhibitor Wavelengths in Living Tissue (Morphogenesis) and Gricean Maxims and Rational Speech Acts (Linguistics) as one interlinked dynamical substrate forces any claim to survive dual analytical conservation limits and deterministic multi-seed verification.
 
 ### Coefficient Provenance and Grid Sensitivity
 
-Any curve plotted in Figure 1 is sampled immediately across `28` equally spaced linkage coordinates ($\Delta\eta = 0.05$, $\eta \in [0.00, 1.35]$) from the deterministic integrator without post-hoc interpolation or synthetic curve fitting. Across the interior window bracketing $\hat{\eta}\_{AB}^{\star} = 0.10$, short-range curvature stays continuous linking the weak-coupling check ($\eta = 0.05$) and the over-coupled stress bound ($\eta = 1.35$), demonstrating that modest grid-step deflections preserve the matched qualitative optimum instead of relying on a knife-edge tuning spike. All documented means, `95%` confidence half-widths, and ablation contrasts are exported immediately from the compiled executable and hashed into `FNV1a-64` digest `c1cdc0036a347404`, ensuring bit-identical quantitative reproducibility across orthogonal reruns and host machines.
+Any curve plotted in Figure 1 is sampled immediately across `28` equally spaced linkage coordinates ($\Delta\eta = 0.05$, $\eta \in [0.00, 1.35]$) from the deterministic integrator without post-hoc interpolation or synthetic curve fitting. Throughout the interior window bracketing $\hat{\eta}\_{AB}^{\star} = 0.10$, neighborhood curvature stays continuous linking the weak-coupling check ($\eta = 0.05$) and the over-coupled stress bound ($\eta = 1.35$), demonstrating that modest grid-step deflections preserve the matched qualitative optimum instead of relying on a knife-edge tuning spike. All documented means, `95%` confidence half-widths, and ablation contrasts are exported immediately from the compiled executable and hashed into `FNV1a-64` digest `c1cdc0036a347404`, ensuring bit-identical quantitative reproducibility across orthogonal reruns and host machines.
 
 ### Threats to Validity and Methodological Caveats
 
-Honest reporting for Morphogenesis × Linguistics demands stating quadruple limit caveats explicitly:
+Honest reporting for Morphogenesis × Linguistics demands stating fourfold limit caveats explicitly:
 
 1. **Internal Validity**: All listed numbers reflect the exact equations implemented in `assets/sim/bridge-information-bo-counterfactual-3ea424.rs`, including explicit computational range clamps (`u, v` in `[0.05, 4.0]` and `q, p` in `[-20, 20]` bounding Explicit Euler spread); unmodeled stiffness or non-smooth actuator ceiling lies outside this proof interval.
 2. **External Validity**: Bridging Morphogenesis with Linguistics mathematically confirms what joint evolution can occur under joined constraints, not that natural substrates implement this exact discretization.
 3. **Construct Validity**: Selecting $\hat{\eta}\_{AB}^{\star}$ depends on normalized trade-off weights; inspecting joint unfiltered observable columns in Table 2 precludes single-metric distortion.
 4. **Statistical Validity**: Cohort margins quantify Monte Carlo sampling spread across separate trials rather of systematic model-specification residual.
 
-Unsettled cross-scale queries merit further measurement. Under what non-stationary noise spectrum does the optimal linkage $\hat{\eta}\_{AB}^{\star} = 0.10$ between Morphogenesis and Linguistics lose architectural closure?
+Unsettled cross-scale queries merit further measurement. Under what non-stationary jitter spectrum does the optimal linkage $\hat{\eta}\_{AB}^{\star} = 0.10$ between Morphogenesis and Linguistics lose architectural closure?
 
 ## 5. Independent Solver Replication
 
