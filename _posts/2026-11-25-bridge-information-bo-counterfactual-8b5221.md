@@ -98,14 +98,14 @@ reader_visuals:
 
 ## Abstract
 
-> Silence at the sensor still fires the error unit. Testing initiation sets and semi-markov subgoals (Reinforcement Learning) alongside descending generative priors and error units (Perception) reveals how cross-domain feedback bounds long-horizon drift.
+> Silence at the sensor still fires the error unit. Testing Initiation Sets and Semi-Markov Subgoals (Reinforcement Learning) alongside Descending Generative Priors and Error Units (Perception) reveals how cross-domain feedback bounds long-horizon drift.
 {: .prompt-tip }
 
 ## 1. Failure Modes When Reinforcement Learning Ignores Perception
 
 Mapping where each standalone formulation degrades sets the scope cleanly. Options rewarded by internal self-congratulation rather than external environmental outcomes degenerate into busywork loops that look active while solving nothing real (Sutton et al., 1999). Intelligent agency collapses if every long-horizon plan must be reasoned out at the granularity of millisecond muscle twitches or single token transitions (Sutton et al., 1999). Decoupling Reinforcement Learning from Perception overlooks how local variance compounds across partner state variables.
 
-Hierarchical action only delivers exponential search savings when each macro-step reliably achieves a well-defined state transition in the external world (Bacon et al., 2017). Learning to cook a meal or prove a lemma proceeds by chaining reliable sub-skills such as chopping vegetables or isolating invariants rather than searching raw primitive sequences from scratch (Sutton et al., 1999; Rao & Ballard, 1999). Motor synergies in vertebrate spinal cords and subroutine hierarchies in systems engineering both compress search depth exponentially by exposing clean termination preconditions (Rao & Ballard, 1999).
+Hierarchical action only delivers exponential search savings when each macro-step reliably achieves a well-defined state transition in the external world (Bacon et al., 2017). Learning to cook a meal or prove a lemma proceeds by chaining reliable sub-skills such as chopping vegetables or isolating invariants rather than searching raw primitive sequences from scratch (Sutton et al., 1999). Motor synergies in vertebrate spinal cords and subroutine hierarchies in systems engineering both compress search depth exponentially by exposing clean termination preconditions (Bacon et al., 2017).
 
 ## 2. Joint Operator Structure: Initiation Sets and Semi-Markov Subgoals and Descending Generative Priors and Error Units
 
@@ -169,7 +169,7 @@ Source: `144`-trial `Xorshift64*` interventional risk sweep (`0x0a224833eb901d8a
 Source: [Pearl (2009)](https://doi.org/10.1017/CBO9780511803161); Standalone `Xorshift64*` SCM solver (`0x0a224833eb901d8a`)
 
 
-Testing `Grounded Temporal Options` next to `Flat Primitive Lookahead` over Reinforcement Learning (Normalized Task Bottleneck Depth) and `Sensory Gain K(rho)` against `Residual Variance` for Perception (Log Sensory-to-Prior Precision Ratio rho = Pi_{l-1} / Pi_l) shows how partner constraints regularize drift: empirical score maximizes at $\hat{\eta}\_{AB}^{\star} = 0.55$ (`0.651 ± 0.032`) and collapses to `0.467 ± 0.017` under excess gain $\eta_{AB} = 1.35$ (`0x0a224833eb901d8a`, component hashes `0xae09bdee08ca9910`, `0x787ab5658fc8f8da`).
+Juxtaposing standalone marginal benchmarks (`Grounded Temporal Options` vs. `Flat Primitive Lookahead` over Reinforcement Learning, `Normalized Task Bottleneck Depth`; `Sensory Gain K(rho)` vs. `Residual Variance` for Perception, `Log Sensory-to-Prior Precision Ratio rho = Pi_{l-1} / Pi_l`) with the coupled Table 2 dynamics shows how partner constraints regularize drift: empirical score maximizes at $\hat{\eta}\_{AB}^{\star} = 0.55$ (`0.651 ± 0.032`) and collapses to `0.467 ± 0.017` under excess gain $\eta_{AB} = 1.35$ (`0x0a224833eb901d8a`, standalone marginal hashes `0xae09bdee08ca9910`, `0x787ab5658fc8f8da`).
 
 Relative to the uncoupled $\eta = 0.00$ baseline (`0.624 ± 0.031`), the grid-selected coupling $\hat{\eta}\_{AB}^{\star} = 0.55$ (`0.651 ± 0.032`) achieves a Welch separation of $z = 1.2$ across independent ensemble trials.
 
@@ -179,19 +179,19 @@ Visual diagnostics in Figure 1 ((a)-(d) 2x2 four-panel empirical matrix) map Rei
 
 Within the Reinforcement Learning and Perception synthesis (`0x0a224833eb901d8a`), interlocking *Initiation Sets and Semi-Markov Subgoals* with *Descending Generative Priors and Error Units* selects $\hat{\eta}\_{AB}^{\star} = 0.55$ (`0.651 ± 0.032`) and bounds spectral gain $J_{AB} < 1$ (Sutton et al., 1999; Rao & Ballard, 1999).
 
-Controlled knockouts verify whether partner constraints carry real load: Ablating candidate macro-actions on long-horizon tasks measures whether they genuinely reduce planning backups or add routing overhead (Friston, 2010).
+Controlled knockouts verify whether partner constraints carry real load: Ablating candidate macro-actions on long-horizon tasks measures whether they genuinely reduce planning backups or add routing overhead (Sutton et al., 1999).
 
 Grounding option credit strictly in verified external progress ensures hierarchy amplifies capability rather than disguising stagnation.
 
-### Parameter Provenance and Grid Sensitivity
+### Sensitivity Analysis and Parameter Provenance
 
-Every curve in Figure 1 is sampled directly across `28` equally spaced coupling points ($\Delta\eta = 0.05$, $\eta \in [0.00, 1.35]$) without post-hoc interpolation or synthetic curve fitting. Across the interior window surrounding $\hat{\eta}\_{AB}^{\star} = 0.55$, local curvature remains smooth between the weak-coupling check ($\eta = 0.25$) and the over-coupled stress bound ($\eta = 1.35$), ensuring that small grid perturbations preserve the qualitative optimum while keeping the `rustc -O` verification checksum `0a224833eb901d8a` bit-exact across independent reruns.
+Rather than interpolating sparse samples, Figure 1 plots `28` direct deterministic solver runs across $\eta \in [0.00, 1.35]$ ($\Delta\eta = 0.05$). Comparing $\eta = 0.25$, $\hat{\eta}\_{AB}^{\star} = 0.55$, and $\eta = 1.35$ confirms a broad interior stability basin robust to grid resolution. Independent reruns reproduce the exact `FNV1a-64` verification digest `0a224833eb901d8a` bit-for-bit.
 
 ### Threats to Validity
 
 Auditing scope across Reinforcement Learning and Perception separates verified numerical claims from unverified generalizations:
 
-1. **Internal Validity**: Fixed-step integration in `assets/sim/bridge-information-bo-counterfactual-8b5221.rs` guarantees deterministic bit-level reproducibility, yet step-size inflation past stability limits can introduce numerical artifacts.
+1. **Internal Validity**: Fixed-step integration in `assets/sim/bridge-information-bo-counterfactual-8b5221.rs` provides deterministic bit-level reproducibility, yet step-size inflation past stability limits can introduce numerical artifacts, and hard state clamps (`u, v` in `[0.05, 4.0]`; `q, p` in `[-20, 20]` for the Explicit Euler ablation while Verlet orbits stay inside `|q|, |p| < 2.2`) serve strictly as numerical safeguards rather than physical boundaries.
 2. **External Validity**: Structural correspondence linking Reinforcement Learning to Perception remains an idealized coupled-model result rather than wet-lab or observational proof in uncontrolled environments.
 3. **Construct Validity**: Composite scoring combines competing metrics into one scalar frontier; alternative weightings change the selected operating point without altering the raw observable curves.
 4. **Statistical Validity**: Confidence half-widths scale via $1.96\,\hat{s}/\sqrt{N}$ under independent pseudo-random seeds; correlated noise bursts demand block-bootstrap resampling.
@@ -220,6 +220,7 @@ $$ S_{\mathrm{SCM}}(\eta) = \frac{1}{144}\sum_{s=1}^{144} \exp\!\left(-\frac{\lv
 8. Srinivasan, M. V., Laughlin, S. B., & Dubs, A. (1982). Predictive coding: a fresh view of inhibition in the retina. *Proceedings of the Royal Society of London B*, 216(1205), 427-459. https://doi.org/10.1098/rspb.1982.0085
 9. Garrido, M. I., Kilner, J. M., Stephan, K. E., & Friston, K. J. (2009). The mismatch negativity: a review of underlying mechanisms. *Clinical Neurophysiology*, 120(3), 453-463. https://doi.org/10.1016/j.clinph.2008.11.029
 10. Bastos, A. M., Usrey, W. M., Adams, R. A., Mangun, G. R., Fries, P., & Friston, K. J. (2012). Canonical microcircuits for predictive coding. *Neuron*, 76(4), 695-711. https://doi.org/10.1016/j.neuron.2012.10.038
+11. Pearl, J. (2009). *Causality: Models, Reasoning, and Inference* (2nd ed.). Cambridge University Press. https://doi.org/10.1017/CBO9780511803161
 
 
 ---
