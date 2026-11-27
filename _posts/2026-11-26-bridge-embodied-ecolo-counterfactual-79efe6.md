@@ -207,7 +207,7 @@ Auditing scope throughout Physics and Morphogenesis separates verified quantitat
 1. **Internal Validity**: Fixed-step integration in `assets/sim/bridge-embodied-ecolo-counterfactual-79efe6.rs` provides deterministic bit-level reproducibility, yet step-size inflation past coherence limits can introduce numerical artifacts, and hard state clamps (`u, v` in `[0.05, 4.0]`; `q, p` in `[-20, 20]` for the Explicit Euler ablation while Verlet orbits stay inside `|q|, |p| < 2.2`) serve strictly as numerical safeguards rather than physical boundaries.
 2. **External Validity**: Architectural correspondence linking Physics to Morphogenesis remains an idealized coupled-model result instead of wet-lab or observational proof in uncontrolled environments.
 3. **Construct Validity**: Composite scoring unites competing measures into one scalar frontier; alternative weightings change the chosen operating point without altering the unfiltered observable profiles.
-4. **Statistical Validity**: Confidence half-widths scale via $1.96\,\hat{s}/\sqrt{N}$ under separate pseudo-random seeds; correlated jitter bursts demand block-bootstrap resampling.
+4. **Statistical Validity**: Confidence half-widths scale through $1.96\,\hat{s}/\sqrt{N}$ under separate pseudo-random seeds; correlated jitter bursts demand block-bootstrap resampling.
 
 Residual gaps define direct next tests. How should learned world formulations embed approximate conservation and non-negativity constants when observing dissipative open substrates through partial sensors?
 
